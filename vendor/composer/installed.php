@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'rrrjesus/rodsmvc',
+        'name' => 'rrrjesus/smsubcoti',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ad2c4e380d5f160c3518f4bc9938c545d1137143',
+        'reference' => '89c02c69ce20361370119a086c311a2d8ac48b42',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -118,10 +118,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'rrrjesus/rodsmvc' => array(
+        'rrrjesus/smsubcoti' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ad2c4e380d5f160c3518f4bc9938c545d1137143',
+            'reference' => '89c02c69ce20361370119a086c311a2d8ac48b42',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
