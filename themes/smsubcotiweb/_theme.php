@@ -98,6 +98,47 @@
 
 <script src="<?= theme("/assets/scripts.js"); ?>"></script>
 <?= $this->section("scripts"); ?>
+<script>
+    $(document).ready(function() {
+        var table = $('#example').DataTable( {
+            // lengthChange: false,
+            responsive: {
+                details: {
+                    display: DataTable.Responsive.display.modal({
+                        header: function (row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: DataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            },
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado","sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros","sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoThousands": ".","sLengthMenu": "_MENU_ Resultados por Página","sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...","sZeroRecords": "Nenhum registro encontrado","sSearch": "Pesquisar",
+                "oPaginate": {"sNext": "Próximo","sPrevious": "Anterior","sFirst": "Primeiro","sLast": "Último"},
+                "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
+            },
+            dom: "lBftipr",
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+            "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
+            "aoColumnDefs": [
+
+            ],
+            //buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+            buttons: [{extend:'excel',title:'<?=CONF_SITE_NAME?> Agenda',header: '<?=CONF_SITE_NAME?> Agenda',filename:'<?=CONF_SITE_NAME?> Agenda',className: 'btn btn-outline-success',text:'<i class="fa fa-file-excel-o"></i>' },
+                {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'<?=CONF_SITE_NAME?> Agenda',header: '<?=CONF_SITE_NAME?> Agenda',filename:'<?=CONF_SITE_NAME?> Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<span class="fa fa-file-pdf-o"></span>'},
+                {extend:'print', exportOptions: {columns: ':visible'},title:'<?=CONF_SITE_NAME?> Agenda',header: '<?=CONF_SITE_NAME?> Agenda',filename:'<?=CONF_SITE_NAME?> Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary',text:'<span class="fa fa-print"></span>'},
+                {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info',text:'<span class="fa fa-list"></span>'}]
+        });
+        table.buttons().container()
+            .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+    });
+</script>
 
 </body>
 </html>

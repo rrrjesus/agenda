@@ -2,8 +2,8 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
 <article class="blog_article">
-                    <table id="example" class="table table-striped" style="width:100%">
-                        <thead>
+                    <table id="example" class="table table-bordered border-info table-striped" style="width:100%">
+                        <thead class="table-info">
                         <tr>
                             <th class="text-center">SETOR</th>
                             <th class="text-center">NOME</th>
