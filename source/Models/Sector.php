@@ -14,7 +14,7 @@ class Sector extends Model
      */
     public function __construct()
     {
-        parent::__construct("sectors", ["id"], ["name_sector", "id"]);
+        parent::__construct("sectors", ["id"], ["sector_name", "id"]);
     }
 
     /**

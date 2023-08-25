@@ -11,7 +11,6 @@ use Source\Models\Contact;
 use Source\Models\Faq\Channel;
 use Source\Models\Faq\Question;
 use Source\Models\Post;
-use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Pager;
 
@@ -27,8 +26,7 @@ class Web extends Controller
     {
         //Connect::getInstance();
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME . "/");
-       var_dump((new Contact())->sector()); //Teste de Objeto sem filtro
-
+        // var_dump((new Post(true))->find()->fetch()); //Teste de Objeto sem filtro
     }
 
     /**
@@ -37,20 +35,21 @@ class Web extends Controller
     public function home(): void
     {
         $head = $this->seo->render(
-        CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
-        CONF_SITE_DESC,
-        url(),
-        theme("/assets/images/share.jpg")
-    );
+            CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg")
+        );
 
-    echo $this->view->render("home",
-        [
-            "head" => $head,
-            "blog" => (new Post())
-                ->find()
-                ->order("post_at DESC")
-                ->limit(6)->fetch(true)
-        ]);
+        echo $this->view->render("home",
+            [
+                "head" => $head,
+                "video" => "lDZGl9Wdc7Y",
+                "blog" => (new Post())
+                    ->find()
+                    ->order("post_at DESC")
+                    ->limit(6)->fetch(true)
+            ]);
     }
 
     /**
@@ -68,6 +67,7 @@ class Web extends Controller
         echo $this->view->render("about",
             [
                 "head" => $head,
+                "video" => "lDZGl9Wdc7Y",
                 "faq" => (new Question())
                     ->find("channel_id = :id", "id=1", "question, response")
                     ->order("order_by")
@@ -75,18 +75,26 @@ class Web extends Controller
             ]);
     }
 
-    public function contacts()
+    /**
+     * SITE BLOG
+     * @param array|null $data
+     * @return void
+     */
+    public function contact(?array $data): void
     {
         $head = $this->seo->render(
-            "Agenda Inteligente - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
+            "Agenda - " . CONF_SITE_NAME ,
+            "Confira em nosso blog dicas e sacadas de como controlar melhor as suas contas. Vamos tomar um café?",
             url("/agenda"),
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("contacts",
+        $contact = (new Contact())->find()->fetch(true);
+
+        echo $this->view->render("contact",
             [
-                "head" => $head
+                "head" => $head,
+                "contact" => $contact
             ]);
     }
 
@@ -133,7 +141,7 @@ class Web extends Controller
         echo $this->view->render("auth-login",[
             "head" => $head,
             "cookie" => filter_input(INPUT_COOKIE, "authEmail")
-            ]);
+        ]);
     }
 
     /**
@@ -330,7 +338,7 @@ class Web extends Controller
         echo $this->view->render("optin",
             [
                 "head" => $head,
- //               "data" => $this->seo->data()
+                //               "data" => $this->seo->data()
                 "data" => (object)[
                     "title" => "Tudo pronto. Você já pode controlar :)",
                     "desc" => "Bem-vindo(a) ao seu controle de contas, vamos tomar um café?",
@@ -338,7 +346,7 @@ class Web extends Controller
                     "link" => url("/entrar"),
                     "linkTitle" => "Fazer Login",
                     "url" => url()
-                  ]
+                ]
             ]);
     }
 
@@ -395,22 +403,22 @@ class Web extends Controller
                 $error->message = "Sentimos muito, mas o conteúdo que você tentou acessar não existe, está indisponível no momento";
                 $error->linkTitle = "Continue navegando!";
                 $error->link = url_back();
-            break;
+                break;
 
 
         }
 
         $head = $this->seo->render(
             "{$error->code} | {$error->title}",
-             $error->message,
+            $error->message,
             url("/ops/{$error->code}"),
             theme("/assets/images/share.jpg"),
             false
-            );
+        );
 
 
         echo $this->view->render("error", [
-                "head" => $head,
+            "head" => $head,
             "error" => $error
         ]);
     }

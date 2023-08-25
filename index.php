@@ -19,8 +19,11 @@ $route = new Router(url(), ":");
 $route->namespace("Source\App");
 $route->get("/", "Web:home");
 $route->get("/home", "Web:home");
-$route->get("/agenda", "Web:contacts");
 $route->get("/sobre", "Web:about");
+
+//agenda
+$route->group("/agenda");
+$route->get("/", "Web:contact");
 
 //auth
 $route->group(null);

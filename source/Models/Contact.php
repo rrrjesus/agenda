@@ -18,7 +18,7 @@ class Contact extends Model
     public function __construct(bool $all = false)
     {
         $this->all = $all;
-        parent::__construct("contacts", ["id"], ["id", "sector", "collaborator", "ramal"]);
+        parent::__construct("contacts", ["id"], ["id", "colaborattor", "ramal"]);
     }
 
     //Poliformismo da Find
@@ -33,8 +33,8 @@ class Contact extends Model
     {
         //Condições para exibir apenas postagens atuais até hoje
         if(!$this->all){
-        $terms = "status = :status AND post_at <= NOW()" .($terms ? " AND {$terms}" : "");
-        $params = "status=post".($params ? "&{$params}" : "");
+        $terms = "status = :status";
+        $params = "status=post";
         }
         return parent::find($terms, $params, $colums);
 
@@ -69,15 +69,15 @@ class Contact extends Model
     {
         /** Post Update */
         if(!empty($this->id)) { // Se já estiver cadastrado ...
-            $postId = $this->id;
-            $this->update($this->safe(), "id = :id", "id={$postId}");
+            $contactId = $this->id;
+            $this->update($this->safe(), "id = :id", "id={$contactId}");
             if($this->fail){
                 $this->message->error("Erro ao atualizar, verifique os dados");
                 return false;
             }
         }
         /** Post Create */
-        $this->data = $this->findById($postId)->data();
+        $this->data = $this->findById($contactId)->data();
         $this->message->success("Registro atualizado com sucesso!");
         return true;
     }
