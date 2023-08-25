@@ -127,7 +127,18 @@
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
             "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
             "aoColumnDefs": [
-
+                {
+                    "aTargets": [0], // o numero 6 é o nº da coluna
+                    "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+                        return '<a title="EDITAR" data-toggle="tooltip" href="editar/' + full[0] + '" role="button" class="btn btn-outline-warning btn-md rounded-circle text-center"><i class="fa fa-pencil"></i> ' + full[0] + '</a>';
+                    }
+                },
+                {
+                    "aTargets": [4], // o numero 6 é o nº da coluna
+                    "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+                        return '<a title="EDITAR" data-toggle="tooltip" href="excluir/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="fa fa-pencil"></i> ' + full[0] + '</a>';
+                    }
+                },
             ],
             //buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
             buttons: [{extend:'excel',title:'<?=CONF_SITE_NAME?> Agenda',header: '<?=CONF_SITE_NAME?> Agenda',filename:'<?=CONF_SITE_NAME?> Agenda',className: 'btn btn-outline-success',text:'<i class="fa fa-file-excel-o"></i>' },
