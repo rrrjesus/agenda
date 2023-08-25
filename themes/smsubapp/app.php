@@ -31,9 +31,9 @@
             <span class="main_header_nav_mobile j_menu_mobile_open icon-menu icon-notext radius transition"></span>
             <div class="main_header_nav_links j_menu_mobile_tab">
                 <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
-                <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/agenda"); ?>">Agenda</a>
-                <a class="link transition radius" title="Sobre" href="<?= url("/setores"); ?>">Setores</a>
+                <a class="link transition radius" title="Home" href="<?= url("app"); ?>">Home</a>
+                <a class="link transition radius" title="Home" href="<?= url("app/agenda"); ?>">Agenda</a>
+                <a class="link transition radius" title="Sobre" href="<?= url("app/setores"); ?>">Setores</a>
                 <a class="link login transition radius icon-sign-out" title="Sair"
                    href="<?= url("/app/sair"); ?>">Sair</a>
             </div>

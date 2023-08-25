@@ -1,15 +1,14 @@
-
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("app", ["head" => $head, "user" => $user]); ?>
 
 <section class="contact_page">
     <div class="contact_page_content content">
         <header class="contact_header text-center">
-            <h1>Agenda Inteligente SMSUB-COTI</h1>
-            <p>Na barra <strong>Pesquisar</strong> cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente</p>
+            <h1>Painel de Controle SMSUB-TI</h1>
+            <p>Bem Vindo <?=$user->first_name." ".$user->last_name?> </p>
         </header>
 
-                    <table id="contact" class="table table-bordered border-info table-striped" style="width:100%">
-                        <thead class="table-info">
+                    <table id="contact" class="table table-bordered border-danger table-striped" style="width:100%">
+                        <thead class="table-danger">
                         <tr>
                             <th class="text-center">EDITAR</th>
                             <th class="text-center">SETOR</th>

@@ -15,7 +15,7 @@ class App extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        var_dump(Auth::user());
+        //var_dump(Auth::user());
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o APP")->flash();
             redirect("/entrar");
@@ -37,11 +37,12 @@ class App extends Controller
         );
 
         $users = (new User())->find()->fetch(true);
-        $session = (new Auth())->find()->fetch();
+        //$user_session = (new Auth())->user();
 
         echo $this->view->render("home-app",
             [
                 "head" => $head,
+                "user_session" => Auth::user(),
                 "users" => $users
             ]);
     }
@@ -59,11 +60,13 @@ class App extends Controller
         );
 
         $contact = (new Contact())->find()->fetch(true);
+        $user = (new Auth())->user();
 
-        echo $this->view->render("home-app",
+        echo $this->view->render("contact-app",
             [
                 "head" => $head,
-                "contact" => $contact
+                "contact" => $contact,
+                "user" => $user
             ]);
     }
 

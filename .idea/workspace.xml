@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd55b451-ac54-4362-b6a8-428243a6f1ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Boot/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Boot/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/App/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/App/Web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Models/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Models/Contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/assets/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/home-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/home-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/user-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/contact-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubweb/_theme.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/_theme.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubweb/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/home.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +82,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/smsubintranet",
+    "last_opened_file_path": "C:/xampp/htdocs/rodsmvc",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -88,18 +95,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\smsubcoti\themes\smsubapp" />
+      <recent name="C:\xampp\htdocs\smsubcoti\shared\styles" />
+      <recent name="C:\xampp\htdocs\smsubcoti\themes\cafeapp" />
       <recent name="C:\xampp\htdocs\smsubcoti\shared" />
       <recent name="C:\xampp\htdocs\smsubcoti\themes\smsubcotiweb" />
-      <recent name="C:\xampp\htdocs\smsubcoti" />
-      <recent name="C:\xampp\htdocs\smsubcoti\themes\cafeweb\assets\css" />
-      <recent name="C:\xampp\htdocs\smsubcoti\shared\styles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\smsubcoti\themes\smsubapp" />
       <recent name="C:\xampp\htdocs\smsubcoti\shared\styles" />
       <recent name="C:\xampp\htdocs\rodsmvc\source\Boot" />
       <recent name="C:\xampp\htdocs\rodsmvc\shared\scripts" />
       <recent name="C:\xampp\htdocs\rodsmvc\shared\styles" />
-      <recent name="C:\xampp\htdocs\rodsmvc\themes\cafecontrol\views" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

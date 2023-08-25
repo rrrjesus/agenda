@@ -56,8 +56,8 @@ class Contact extends Model
      */
     public function sector(): ?Sector
     {
-        if($this->sector) {
-            return(new Sector())->findById($this->sector);
+        if($this->sector_id) {
+            return(new Sector())->findById($this->sector_id);
         }
         return null;
     }

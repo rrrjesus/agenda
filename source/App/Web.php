@@ -41,10 +41,12 @@ class Web extends Controller
             theme("/assets/images/share.jpg")
         );
 
+        $user_session = (new Auth())->user();
+
         echo $this->view->render("home",
             [
                 "head" => $head,
-                "video" => "lDZGl9Wdc7Y",
+                "user_session" => Auth::user(),
                 "blog" => (new Post())
                     ->find()
                     ->order("post_at DESC")

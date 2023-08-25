@@ -34,8 +34,14 @@
                 <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
                 <a class="link transition radius" title="Home" href="<?= url("/agenda"); ?>">Agenda</a>
                 <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
-                <a class="link login transition radius icon-sign-in" title="Entrar"
-                   href="<?= url("/entrar"); ?>">Entrar</a>
+                <?php if(!empty($user_session->id)):?>
+                    <button type="button" class="btn text-light btn-info" disabled><?=$user_session->functional_record?></button>
+                    <a class="btn btn-danger link-light icon-sign-in" title="Entrar"
+                       href="<?= url("/entrar"); ?>">Sair</a>
+                <?php else:?>
+                    <a class="link login transition radius icon-sign-in" title="Entrar"
+                        href="<?= url("/entrar"); ?>">Entrar</a>
+                <?php endif;?>
             </div>
         </nav>
     </div>

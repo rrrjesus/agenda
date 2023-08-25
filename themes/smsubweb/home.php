@@ -1,4 +1,4 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme", ["head" => $head, "user_session" => $user_session]); ?>
 
 <!--FEATURED-->
 <article class="home_featured">
