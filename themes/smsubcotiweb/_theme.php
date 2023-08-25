@@ -97,10 +97,11 @@
 </footer>
 
 <script src="<?= theme("/assets/scripts.js"); ?>"></script>
+<script src="<?= theme("/assets/js/datatables.js"); ?>"></script>
 
 <?= $this->section("scripts"); ?>
 
-<script src="<?= theme("/assets/js/datatables.js"); ?>"></script>
+
 
 </body>
 </html>

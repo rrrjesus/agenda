@@ -846,6 +846,120 @@ body {
     box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
+/*CONTACT PAGE*/
+/*contact PAGE*/
+.contact_header {
+    text-align: center;
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto 40px auto;
+    color: #555555;
+}
+
+.contact_header h1 {
+    font-size: 2em;
+    font-weight: var(--weight-light);
+}
+
+.contact_page_steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact_page_steps article {
+    flex-basis: calc(33.33% - 40px);
+    margin: 20px;
+    text-align: center;
+    padding: 30px;
+    color: #555555;
+}
+
+.contact_page_steps article .icon {
+    display: inline-block;
+    padding: 15px 20px;
+    background: var(--gradient-blue);
+    font-size: 2em;
+    color: #ffffff;
+    -webkit-border-radius: var(--radius-medium);
+    -moz-border-radius: var(--radius-medium);
+    border-radius: var(--radius-medium);
+    background-size: 200%;
+}
+
+.contact_page_steps article h3 {
+    margin: 20px 0 0 0;
+    font-size: var(--font-medium);
+    font-weight: var(--weight-normal);
+}
+
+.contact_page_steps article p {
+    line-height: 1.4;
+    margin-top: 15px;
+}
+
+/*media*/
+.contact_page_media {
+    position: relative;
+}
+
+.contact_page_media:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    background: var(--gradient-blue);
+    background-size: 200%;
+    z-index: var(--index-back);
+}
+
+.contact_media_video {
+    width: 860px;
+    max-width: 90%;
+    margin: 0 auto;
+    -webkit-border-radius: var(--radius-medium);
+    -moz-border-radius: var(--radius-medium);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/*cta*/
+.contact_page_cta {
+    background: var(--gradient-blue);
+    background-size: 200%;
+    text-align: center;
+}
+
+.contact_page_cta_content {
+    width: 600px;
+    max-width: 100%;
+}
+
+.contact_page_cta_content p {
+    margin: 20px 0;
+}
+
+.contact_page_cta_btn {
+    display: inline-block;
+    padding: 20px 40px;
+    background: var(--hover-color-blue);
+    cursor: pointer;
+    font-size: var(--font-medium);
+    font-weight: var(--weight-black);
+    color: #ffffff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.contact_page_cta_btn:hover {
+    background: var(--color-blue);
+}
+
 /*cta*/
 .about_page_cta {
     background: var(--gradient-blue);

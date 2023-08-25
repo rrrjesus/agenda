@@ -1,8 +1,17 @@
 $(document).ready(function() {
     //var table =
-    $('#example').DataTable( {
+    $('#contact').DataTable( {
         // lengthChange: false,
-        responsive: {details: {display: DataTable.Responsive.display.modal({header: function (row) { var data = row.data();}}), renderer: DataTable.Responsive.renderer.tableAll({})}},
+        responsive:
+            {details:
+                {display: DataTable.Responsive.display.modal({
+                        header: function (row) {
+                            var data = row.data();
+                            return data[1] + ' ' + data[2];
+                },
+                update: true
+            }),
+            renderer: DataTable.Responsive.renderer.tableAll({})}},
         "language": {
             "sEmptyTable": "Nenhum registro encontrado","sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
             "sInfoEmpty": "Mostrando 0 até 0 de 0 registros","sInfoFiltered": "(Filtrados de _MAX_ registros)",
@@ -13,7 +22,7 @@ $(document).ready(function() {
         },
         // dom: "lBftipr",
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-        "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
+        "aaSorting": [2, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
         "aoColumnDefs": [
             {
                 "aTargets": [0], // o numero 6 é o nº da coluna
