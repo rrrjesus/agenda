@@ -44,7 +44,10 @@ $route->get("/obrigado/{email}", "Web:success");
  * APP
  */
 $route->group("/app");
-$route->get("/", "App:home");
+$route->get("/", "App:homeApp");
+$route->get("/agenda", "App:contactApp");
+$route->post("/agenda/cadastrar", "App:registerAg");
+$route->get("/agenda/{id}", "App:editAg");
 $route->get("/sair", "App:logout");
 
 /**

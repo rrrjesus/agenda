@@ -38,9 +38,9 @@
     <aside class="about_page_cta">
         <div class="about_page_cta_content container content">
             <h2>Ainda não está usando a agenda inteligente?</h2>
-            <p>Comece já, você tem acesso aos diversos ramais dos setores de SMSUB buscando por setor, nome e ramal. Caso não encontre o ramal desejado, entre em contato conosco.</p>
+            <p>Comece já, você tem acesso aos diversos ramais dos setores de SMSUB buscando por setor, nome e ramal. Caso não encontre o ramal desejado, entre em contato conosco no e-mail: <strong>cotisuporte@smsub.prefeitura.sp.gov.br</strong></p>
             <a href="mailto:<?=CONF_SITE_EMAIL?>" title="Suporte"
-               class="about_page_cta_btn transition radius icon-check-square-o"><?=CONF_SITE_EMAIL?></a>
+               class="about_page_cta_btn transition radius icon-check-square-o"><?=substr(CONF_SITE_EMAIL,0,12)?></a>
         </div>
     </aside>
 </section>

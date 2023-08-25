@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
-define("CONF_DB_HOST", "192.168.15.9");
+define("CONF_DB_HOST", "10.23.237.61");
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
 define("CONF_DB_NAME", "smsubcoti");
@@ -11,7 +11,7 @@ define("CONF_DB_NAME", "smsubcoti");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://192.168.15.9/smsubcoti");
+define("CONF_URL_BASE", "https://10.23.237.61/smsubcoti");
 define("CONF_URL_TESTE", "https://www.localhost/smsubcoti");
 define("CONF_URL_ADMIN", "/admin");
 
@@ -37,6 +37,7 @@ define("CONF_SITE_ADDR_ZIPCODE", "01011-100");
  * COLORS
  */
 define("CONF_SITE_BASECOLOR","blue");
+//define("CONF_SITE_BASECOLOR_APP","red");
 
 /**
  * SOCIAL
@@ -44,7 +45,7 @@ define("CONF_SITE_BASECOLOR","blue");
 define("CONF_SOCIAL_TWITTER_CREATOR", "");
 define("CONF_SOCIAL_TWITTER_PUBLISHER", "");
 define("CONF_SOCIAL_FACEBOOK_APP", "");
-define("CONF_SOCIAL_FACEBOOK_PAGE", "https://www.facebook.com/secretariamunicipaldassubprefeituras");
+define("CONF_SOCIAL_FACEBOOK_PAGE", "secretariamunicipaldassubprefeituras");
 define("CONF_SOCIAL_FACEBOOK_AUTHOR", "secretariamunicipaldassubprefeituras");
 define("CONF_SOCIAL_GOOGLE_PAGE", ""); //107305124528362639842
 define("CONF_SOCIAL_GOOGLE_AUTHOR", ""); //103958419096641225872
@@ -70,8 +71,8 @@ define("CONF_PASSWD_OPTION", ["cost" => 10]);
  */
 define("CONF_VIEW_PATH", __DIR__ . "/../../shared/views");
 define("CONF_VIEW_EXT", "php");
-define("CONF_VIEW_THEME", "smsubcotiweb");
-define("CONF_VIEW_APP", "cafeapp");
+define("CONF_VIEW_THEME", "smsubweb");
+define("CONF_VIEW_THEME_APP", "smsubapp");
 
 /**
  * UPLOAD

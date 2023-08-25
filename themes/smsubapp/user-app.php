@@ -11,11 +11,11 @@
                     <table id="contact" class="table table-bordered border-info table-striped" style="width:100%">
                         <thead class="table-info">
                         <tr>
-                            <th class="text-center"><i class="fas fa-pencil" aria-hidden="true">EDITAR</th>
-                            <th class="text-center"><i class="fas fa-facebook" aria-hidden="true">SETOR</th>
+                            <th class="text-center">EDITAR</th>
+                            <th class="text-center">SETOR</th>
                             <th class="text-center">NOME</th>
                             <th class="text-center">RAMAL</th>
-                            <th class="text-center"><i class="fas fa-pencil" aria-hidden="true">EXCLUIR</th>
+                            <th class="text-center">EXCLUIR</th>
                         </tr>
                         </thead>
                         <tbody>

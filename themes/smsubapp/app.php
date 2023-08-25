@@ -7,23 +7,23 @@
     <?= $head;?>
 
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
-    <link rel="stylesheet" href="<?= theme("/assets/style.css"); ?>"/>
+    <link rel="stylesheet" href="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/style.css"); ?>"/>
 </head>
 <body>
 
 <div class="ajax_load">
     <div class="ajax_load_box">
         <div class="ajax_load_box_circle"></div>
-            <p class="ajax_load_box_title">Aguarde, carregando ...</p>
+        <p class="ajax_load_box_title">Aguarde, carregando ...</p>
     </div>
 </div>
 
 <!--HEADER-->
-<header class="main_header gradient gradient-<?=CONF_SITE_BASECOLOR?>">
+<header class="main_header gradient gradient-red">
     <div class="container">
         <div class="main_header_logo">
             <div class="main_header_logo">
-                <h1><a class="icon icon-leanpub icon-notext transition" title="Home" href="<?= url(); ?>"> SMSUB<b>COTI</b></a></h1>
+                <h1><a class="icon icon-leanpub icon-notext transition" title="Home" href="<?= url(); ?>"> <strong>PAINEL</strong> AGENDA</a></h1>
             </div>
         </div>
 
@@ -33,9 +33,9 @@
                 <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
                 <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
                 <a class="link transition radius" title="Home" href="<?= url("/agenda"); ?>">Agenda</a>
-                <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
-                <a class="link login transition radius icon-sign-in" title="Entrar"
-                   href="<?= url("/entrar"); ?>">Entrar</a>
+                <a class="link transition radius" title="Sobre" href="<?= url("/setores"); ?>">Setores</a>
+                <a class="link login transition radius icon-sign-out" title="Sair"
+                   href="<?= url("/app/sair"); ?>">Sair</a>
             </div>
         </nav>
     </div>
@@ -77,8 +77,8 @@
             <article class="main_footer_content_item">
                 <h2>Contato:</h2>
                 <p class="icon-phone"><b>Telefone:</b><br> +55 11 4934-3131</p>
-                <p class="icon-envelope"><b>Email:</b><br><a class="link transition radius" title="e-mail suporte"
-                    href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a> </p>
+                <p class="icon-envelope pb-1"><b>Email:</b><a class="link transition radius" title="e-mail suporte"
+                                                              href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a> </p>
                 <p class="icon-map-marker"><b>Endereço:</b><br>
                     <?=CONF_SITE_ADDR_STREET.", ".CONF_SITE_ADDR_NUMBER." - ".CONF_SITE_ADDR_COMPLEMENT." - ".CONF_SITE_ADDR_NEIGHBORHOOD." - ".CONF_SITE_ADDR_CITY?></p>
             </article>
@@ -93,15 +93,16 @@
                    title="SMSUB no YouTube">/SMSUB</a>
             </article>
         </section>
+
+        <p class="termos text-center p-3">
+            &copy; 2023, SMSUB-COTI todos os direitos reservados
+        </p>
     </div>
 </footer>
 
-<script src="<?= theme("/assets/scripts.js"); ?>"></script>
-<script src="<?= theme("/assets/js/datatables.js"); ?>"></script>
+<script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
 
 <?= $this->section("scripts"); ?>
-
-
 
 </body>
 </html>
