@@ -3,34 +3,28 @@
 <article class="auth">
     <div class="auth_content container content">
         <header class="auth_header">
-            <h1>Cadastre-se</h1>
-            <p>Já tem uma conta? <a title="Entrar" href="<?= url("/entrar"); ?>">Fazer login!</a></p>
+            <h1>Cadastro de Setor</h1>
         </header>
 
-        <form class="auth_form" action="<?=url("/cadastrar");?>" method="post" enctype="multipart/form-data">
+        <form class="auth_form" action="<?=url("/cadastrar-contato");?>" method="post" enctype="multipart/form-data">
             <div class="ajax_response"><?=flash();?></div>
             <?=csrf_input();?>
             <label>
                 <div><span class="icon-user">Nome:</span></div>
-                <input type="text" name="first_name" placeholder="Primeiro nome:" required/>
+                <input type="text" name="name" placeholder="Nome:" required/>
             </label>
 
             <label>
-                <div><span class="icon-user-plus">Sobrenome:</span></div>
-                <input type="text" name="last_name" placeholder="Último nome:" required/>
+                <div><span class="icon-user-plus">Setor:</span></div>
+                <input type="text" name="sector" placeholder="Setor:" required/>
             </label>
 
             <label>
-                <div><span class="icon-envelope">Email:</span></div>
-                <input type="email" name="email" placeholder="Informe seu e-mail:" required/>
+                <div><span class="icon-envelope">Ramal:</span></div>
+                <input type="number" name="ramal" placeholder="Ramal:" required/>
             </label>
 
-            <label>
-                <div class="unlock-alt"><span class="icon-unlock-alt">Senha:</span></div>
-                <input type="password" name="password" placeholder="Informe sua senha:" required/>
-            </label>
-
-            <button class="auth_form_btn transition gradient gradient-<?=CONF_SITE_BASECOLOR?> gradient-hover">Criar conta</button>
+            <button class="auth_form_btn transition gradient gradient-red gradient-hover">Criar Contato</button>
         </form>
     </div>
 </article>

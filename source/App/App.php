@@ -91,10 +91,11 @@ class App extends Controller
             ]);
     }
 
-    public function contRegisterApp(): void
+    public function registerContact(?array $data): void
     {
+
         $head = $this->seo->render(
-            "Usuários - " . CONF_SITE_NAME ,
+            "Contatos - " . CONF_SITE_NAME ,
             "Setores de SMSUB",
             url("/app/agenda/cadastrar"),
             theme("/assets/images/share.jpg")
@@ -106,10 +107,11 @@ class App extends Controller
             ]);
     }
 
-    public function setRegisterApp(): void
+    public function registerSector(): void
     {
+
         $head = $this->seo->render(
-            "Usuários - " . CONF_SITE_NAME ,
+            "Setores - " . CONF_SITE_NAME ,
             "Setores de SMSUB",
             url("/app/setores/cadastrar"),
             theme("/assets/images/share.jpg")

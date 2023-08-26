@@ -27,13 +27,29 @@ $(document).ready(function() {
             {
                 "aTargets": [0], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="editar/' + full[0] + '" role="button" class="btn btn-outline-warning btn-md rounded-circle text-center"><i class="fa fa-pencil"></i> ' + full[0] + '</a>';
+                    return '<a title="EDITAR" data-toggle="tooltip" href="editar-contato/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="fas fa-pencil"></i></a>';
                 }
             },
             {
                 "aTargets": [4], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="fa fa-pencil"></i> ' + full[0] + '</a>';
+                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir-contato/' + full[0] + '" role="button" class="btn btn-outline-danger btn-sm rounded-circle text-center" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'"><i class="fas fa-trash"></i></a>' +
+    '                           <!-- Modal -->\n' +
+                                '<div class="modal fade" id="trashModal' + full[0] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                                    '<div class="modal-dialog modal-sm">\n' +
+                                        '<div class="modal-content">\n' +
+                                            '<div class="modal-header bg-danger text-light">\n' +
+                                                '<h5 class="modal-title" id="exampleModalLabel">Excluir '+ full[2] +'</h5>\n' +
+                                                '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                                            '</div>\n' +
+                                            '<div class="modal-body">Deseja excluir o contato ' + full[2] + ' ?</div>\n' +
+                                                '<div class="modal-footer">\n' +
+                                                    '<button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="fas fa-trash"></i> NÃO</button>\n' +
+                                                    '<a href="excluir-contato/' + full[0] + '" class="btn btn-outline-success"><i class="fas fa-plus-circle" role="button" ></i> SIM</a>\n' +
+                                                '</div>\n' +
+                                            '</div>\n' +
+                                    '</div>\n' +
+                                '</div>';
                 }
             }
         ],
