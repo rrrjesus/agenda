@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd55b451-ac54-4362-b6a8-428243a6f1ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/App/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/smsubapp/contact-app-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/contact-register-app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/smsubapp/sector-app-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/sector-register-app.php" afterDir="false" />
-    </list>
+    <list default="true" id="bd55b451-ac54-4362-b6a8-428243a6f1ad" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,7 +131,7 @@
       <workItem from="1692904713470" duration="6392000" />
       <workItem from="1692916547218" duration="15404000" />
       <workItem from="1692957124433" duration="3920000" />
-      <workItem from="1693014926753" duration="10608000" />
+      <workItem from="1693014926753" duration="10788000" />
     </task>
     <servers />
   </component>
