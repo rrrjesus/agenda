@@ -46,10 +46,10 @@ $route->get("/obrigado/{email}", "Web:success");
 $route->group("/app");
 $route->get("/", "App:homeApp");
 $route->get("/agenda", "App:contactApp");
-$route->get("/agenda/cadastrar", "App:registerAg");
+$route->get("/agenda-cadastrar", "App:contRegisterApp");
 $route->get("/agenda/{id}", "App:editAg");
 $route->get("/setores", "App:sectorApp");
-$route->get("/setores/cadastrar", "App:registerSe");
+$route->get("/setores-cadastrar", "App:setRegisterApp");
 $route->get("/sair", "App:logout");
 
 /**

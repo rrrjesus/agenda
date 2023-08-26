@@ -91,7 +91,7 @@ class App extends Controller
             ]);
     }
 
-    public function registerAg()
+    public function contRegisterApp(): void
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
@@ -100,13 +100,13 @@ class App extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("contact-app-post",
+        echo $this->view->render("contact-register-app",
             [
                 "head" => $head
             ]);
     }
 
-    public function registerSe()
+    public function setRegisterApp(): void
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
@@ -115,7 +115,7 @@ class App extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("sector-app-post",
+        echo $this->view->render("sector-register-app",
             [
                 "head" => $head
             ]);
