@@ -7,6 +7,7 @@ use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
 use Source\Models\Post;
+use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Message;
 
@@ -16,8 +17,9 @@ class App extends Controller
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
         //var_dump(Auth::user());
+        //var_dump((new Message())->render());
         if(!Auth::user()){
-            $this->message->warning("Efetue login para acessar o APP")->flash();
+            $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
         }
         
@@ -31,7 +33,7 @@ class App extends Controller
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
-            "Na barra Pesquisar cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente",
+            "Listando usuários do sistema",
             url("/agenda"),
             theme("/assets/images/share.jpg")
         );
@@ -47,6 +49,7 @@ class App extends Controller
             ]);
     }
 
+
     /**
      * SITE HOME
      */
@@ -54,7 +57,7 @@ class App extends Controller
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
-            "Na barra Pesquisar cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente",
+            "Agenda com dados dos colaboradores",
             url("/agenda"),
             theme("/assets/images/share.jpg")
         );
@@ -67,6 +70,54 @@ class App extends Controller
                 "head" => $head,
                 "contact" => $contact,
                 "user" => $user
+            ]);
+    }
+
+    public function sectorApp(): void
+    {
+        $head = $this->seo->render(
+            "Usuários - " . CONF_SITE_NAME ,
+            "Setores de SMSUB",
+            url("/agenda"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $sector = (new Sector())->find()->fetch(true);
+
+        echo $this->view->render("sector-app",
+            [
+                "head" => $head,
+                "sector" => $sector
+            ]);
+    }
+
+    public function registerAg()
+    {
+        $head = $this->seo->render(
+            "Usuários - " . CONF_SITE_NAME ,
+            "Setores de SMSUB",
+            url("/app/agenda/cadastrar"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("contact-app-post",
+            [
+                "head" => $head
+            ]);
+    }
+
+    public function registerSe()
+    {
+        $head = $this->seo->render(
+            "Usuários - " . CONF_SITE_NAME ,
+            "Setores de SMSUB",
+            url("/app/setores/cadastrar"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("sector-app-post",
+            [
+                "head" => $head
             ]);
     }
 

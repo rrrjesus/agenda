@@ -3,8 +3,8 @@
 <section class="contact_page">
     <div class="contact_page_content content">
         <header class="contact_header text-center">
-            <h1>Painel de Controle SMSUB-TI</h1>
-            <p>Bem Vindo <?=$user->first_name." ".$user->last_name?> </p>
+            <h1>Lista de Contatos de SMSUB</h1>
+            <a class="btn btn-outline-success" href="<?=url("/app/agenda/cadastrar")?>" role="button"><i class="fas fa-plus-circle"></i> NOVO</a>
         </header>
 
                     <table id="contact" class="table table-bordered border-danger table-striped" style="width:100%">

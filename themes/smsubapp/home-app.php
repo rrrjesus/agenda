@@ -4,8 +4,9 @@
     <div class="contact_page_content content">
         <header class="contact_header text-center">
             <h1>Painel de Controle SMSUB-TI</h1>
-            <p>Bem Vindo <?=$user_session->first_name." ".$user_session->last_name?> </p>
         </header>
+
+        <div class="ajax_response"><?=flash();?></div>
 
         <table id="contact" class="table table-bordered border-danger table-striped" style="width:100%">
             <thead class="table-danger">

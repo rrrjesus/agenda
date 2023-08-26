@@ -27,7 +27,7 @@ class Contact extends Model
      * @param string|null $terms
      * @param string|null $params
      * @param string $colums
-     * @return mixed|Post
+     * @return mixed|Contact
      */
     public function find(?string $terms = null, ?string $params = null, string $colums = "*")
     {
@@ -43,7 +43,7 @@ class Contact extends Model
     /**
      * @param string $uri
      * @param string $columns
-     * @return Post|null
+     * @return Contact|null
      */
     public function findByUri(string $uri, string $columns = "*"): ?Contact
     {
@@ -56,8 +56,8 @@ class Contact extends Model
      */
     public function sector(): ?Sector
     {
-        if($this->sector_id) {
-            return(new Sector())->findById($this->sector_id);
+        if($this->sector) {
+            return(new Sector())->findById($this->sector);
         }
         return null;
     }

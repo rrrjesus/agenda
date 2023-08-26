@@ -15,7 +15,9 @@ if (strpos(url(), "localhost")) {
     // CSS Responsive Datatables Bootstrap 5
     $minCSS->add(__DIR__ . "/../../shared/styles/responsive.bootstrap5.min.css");
     // CSS Fontawesome
-    $minCSS->add(__DIR__ . "/../../shared/fontawesome/css/fontawesome.css");
+    $minCSS->add(__DIR__ . "/../../shared/styles/fontawesome/css/fontawesome.css");
+    $minCSS->add(__DIR__ . "/../../shared/styles/fontawesome/css/solid.css");
+    $minCSS->add(__DIR__ . "/../../shared/styles/fontawesome/css/brands.css");
 
     //CSS Theme
     $cssDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/assets/css");
@@ -44,7 +46,9 @@ if (strpos(url(), "localhost")) {
     // CSS Responsive Datatables Bootstrap 5 App
     $minCssApp->add(__DIR__ . "/../../shared/styles/responsive.bootstrap5.min.css");
     // CSS Fontawesome App
-    $minCssApp->add(__DIR__ . "/../../shared/fontawesome/css/fontawesome.css");
+    $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/fontawesome.css");
+    $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/solid.css");
+    $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/brands.css");
 
     //CSS Theme App
     $cssDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/css");

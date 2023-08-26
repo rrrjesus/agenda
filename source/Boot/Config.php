@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
-define("CONF_DB_HOST", "10.23.237.61");
+define("CONF_DB_HOST", "192.168.15.59");
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
 define("CONF_DB_NAME", "smsubcoti");
@@ -11,7 +11,7 @@ define("CONF_DB_NAME", "smsubcoti");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://10.23.237.61/smsubcoti");
+define("CONF_URL_BASE", "https://192.168.15.59/smsubcoti");
 define("CONF_URL_TESTE", "https://www.localhost/smsubcoti");
 define("CONF_URL_ADMIN", "/admin");
 
@@ -108,7 +108,7 @@ define("CONF_MAIL_OPTION_CHARSET", "utf-8");
  * MESSAGE
  */
 define("CONF_MESSAGE_CLASS", "message");
-define("CONF_MESSAGE_INFO", "info icon-info");
-define("CONF_MESSAGE_SUCCESS", "success icon-check-square-o ");
-define("CONF_MESSAGE_WARNING", "warning icon-warning");
-define("CONF_MESSAGE_ERROR", "error icon-warning");
+define("CONF_MESSAGE_INFO", "alert alert-info icon-info");
+define("CONF_MESSAGE_SUCCESS", "alert alert-success icon-check-square-o ");
+define("CONF_MESSAGE_WARNING", "alert alert-warning icon-warning");
+define("CONF_MESSAGE_ERROR", "alert alert-danger icon-warning");
