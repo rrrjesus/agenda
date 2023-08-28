@@ -9,35 +9,13 @@ use Source\Core\Model;
  */
 class Contact extends Model
 {
-    /** @var bool*/
-    private $all;
 
     /**
      * @param bool $all = ignore status and post_at
      */
-    public function __construct(bool $all = false)
+    public function __construct()
     {
-        $this->all = $all;
-        parent::__construct("contacts", ["id"], ["id", "colaborattor", "ramal"]);
-    }
-
-    //Poliformismo da Find
-
-    /**
-     * @param string|null $terms
-     * @param string|null $params
-     * @param string $colums
-     * @return mixed|Contact
-     */
-    public function find(?string $terms = null, ?string $params = null, string $colums = "*")
-    {
-        //Condições para exibir apenas postagens atuais até hoje
-        if(!$this->all){
-        $terms = "status = :status";
-        $params = "status=post";
-        }
-        return parent::find($terms, $params, $colums);
-
+        parent::__construct("contacts", ["id"], ["collaborator", "ramal"]);
     }
 
     /**
@@ -48,6 +26,17 @@ class Contact extends Model
     public function findByUri(string $uri, string $columns = "*"): ?Contact
     {
         $find = $this->find("uri = :uri", "uri={$uri}", $columns);
+        return $find->fetch();
+    }
+
+    /**
+     * @param string $ramal
+     * @param string $columns
+     * @return null|Contact
+     */
+    public function findByRamal(string $ramal, string $columns = "*"): ?Contact
+    {
+        $find = $this->find("ramal = :ramal", "ramal={$ramal}", "ramal");
         return $find->fetch();
     }
 
@@ -63,22 +52,68 @@ class Contact extends Model
     }
 
     /**
+     * @param string $email
+     * @param string $code
+     * @param string $password
+     * @param string $passwordRe
+     * @return bool
+     */
+    public function register(string $sector, string $collaborator, string $ramal): bool
+    {
+        $contact = new Contact();
+
+        if (!$contact){
+            $this->message->warning("O contato não foi cadastrado!");
+            return false;
+        }
+
+        $contact->sector = $sector;
+        $contact->collaborator = $collaborator;
+        $contact->ramal = $ramal;
+        $contact->save();
+        return true;
+
+    }
+
+
+    /**
      * @return bool
      */
     public function save(): bool
     {
-        /** Post Update */
-        if(!empty($this->id)) { // Se já estiver cadastrado ...
+        /** User Update */
+        if (!empty($this->id)) {
+
             $contactId = $this->id;
+
+            if ($this->find("ramal = :r AND id != :i", "r={$this->ramal}&i={$contactId}", "id")->fetch()) {
+                $this->message->warning("O ramal informado já está cadastrado");
+                return false;
+            }
+
             $this->update($this->safe(), "id = :id", "id={$contactId}");
-            if($this->fail){
+            if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
                 return false;
             }
         }
-        /** Post Create */
-        $this->data = $this->findById($contactId)->data();
-        $this->message->success("Registro atualizado com sucesso!");
+
+        /** User Create */
+        if (empty($this->id)) {
+            if ($this->findByRamal($this->ramal, "id")) {
+                $this->message->warning("O Ramal informado pertence a outro contato");
+                return false;
+            }
+
+            $contactId = $this->create($this->safe());
+
+            if ($this->fail()) {
+                $this->message->error("Erro ao cadastrar, verifique os dados");
+                return false;
+            }
+        }
+
+        $this->data = ($this->findById($contactId))->data();
         return true;
     }
 }

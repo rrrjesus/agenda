@@ -40476,7 +40476,7 @@ solar-panel:
     pro:
       - family: classic
         style: solid
-  label: Solar Panel
+  label: Solar PanelContact
   search:
     terms:
       - clean

@@ -38,7 +38,6 @@ $route->post("/recuperar/resetar", "Web:reset");
 
 //optin
 $route->get("/confirma", "Web:confirm");
-$route->get("/confirma-contato", "App:confirmContact");
 $route->get("/obrigado/{email}", "Web:success");
 
 /**
@@ -47,8 +46,8 @@ $route->get("/obrigado/{email}", "Web:success");
 $route->group("/app");
 $route->get("/", "App:homeApp");
 $route->get("/agenda", "App:contactApp");
-$route->get("/cadastrar-contato", "App:registerContact");
-$route->post("/cadastrar-contato", "App:registerContact");
+$route->get("/contato", "App:register");
+$route->post("/contato/cadastrar", "App:register");
 $route->get("/editar-contato/{id}", "App:updateContact");
 $route->get("/excluir-contato/{id}", "App:updateContact");
 $route->get("/agenda/{id}", "App:editAg");

@@ -190,4 +190,14 @@ class Auth extends Model
         return true;
 
     }
+
+    public function registerContact(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }
+
+        return true;
+    }
 }

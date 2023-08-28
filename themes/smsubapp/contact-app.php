@@ -4,7 +4,8 @@
     <div class="contact_page_content content">
         <header class="contact_header text-center">
             <h1>Lista de Contatos de SMSUB</h1>
-            <a class="btn btn-outline-success" href="<?=url("/app/cadastrar-contato")?>" role="button"><i class="fas fa-plus-circle"></i> NOVO</a>
+            <div class="ajax_response"><?=flash();?></div>
+            <a class="btn btn-outline-success" href="<?=url("/app/contato")?>" role="button"><i class="fas fa-plus-circle"></i> NOVO</a>
         </header>
 
                     <table id="contactApp" class="table table-bordered border-danger table-hover table-responsive-sm" style="width:100%">

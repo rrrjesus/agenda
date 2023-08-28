@@ -6,18 +6,26 @@ use mysql_xdevapi\Session;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
+use Source\Models\PanelContact;
 use Source\Models\Post;
 use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Message;
 
+/**
+ *
+ */
 class App extends Controller
 {
+    /**
+     *
+     */
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
         //var_dump(Auth::user());
-        //var_dump((new Message())->render());
+        //var_dump((new Contact())->register("24", "RODOLFO", "3354"));
+       // var_dump((new Contact())->findByRamal("3424"));
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
@@ -73,6 +81,9 @@ class App extends Controller
             ]);
     }
 
+    /**
+     * @return void
+     */
     public function sectorApp(): void
     {
         $head = $this->seo->render(
@@ -91,22 +102,63 @@ class App extends Controller
             ]);
     }
 
-    public function registerContact(?array $data): void
+
+    /**
+     * SITE FORGET RESET
+     * @param array $data
+     * @return void
+     */
+    public function register(array $data): void
     {
 
+        if(!empty($data['csrf'])) {
+            if (!csrf_verify($data)) {
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if(in_array("", $data)){
+                $json['message'] = $this->message->info("Informe os dados do contato")->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $contact = new Contact();
+
+            if($contact->findByRamal($data['ramal'])) {
+                $json['message'] = $this->message->info("O Ramal informado pertence a outro contato")->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if ($contact->register($data['sector'], $data['collaborator'], $data['ramal'])){
+                $this->message->success("Contato {$data['collaborator']} criado com sucesso!!!")->flash();
+                $json["redirect"] = url("/app/contato");
+            }else{
+                $json["message"] = $contact->message()->render();
+            }
+
+            echo json_encode($json);
+            return;
+        }
+
         $head = $this->seo->render(
-            "Contatos - " . CONF_SITE_NAME ,
-            "Setores de SMSUB",
-            url("/app/agenda/cadastrar"),
+            "Cadastro de Contato - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/app/contato"),
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("contact-register-app",
+        echo $this->view->render("contact-register",
             [
                 "head" => $head
             ]);
     }
 
+    /**
+     * @return void
+     */
     public function registerSector(): void
     {
 
@@ -123,6 +175,9 @@ class App extends Controller
             ]);
     }
 
+    /**
+     * @return void
+     */
     public function logout()
     {
         (new Message())->info("Você saiu com sucesso " . Auth::user()->first_name . " Volta logo :)")->flash();

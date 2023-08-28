@@ -23,7 +23,7 @@
     <div class="container">
         <div class="main_header_logo">
             <div class="main_header_logo">
-                <h1><a class="icon icon-leanpub icon-notext transition" title="Home" href="<?= url("app"); ?>"> <strong>PAINEL</strong> SMSUB</a></h1>
+                <h1><a class="icon icon-leanpub icon-notext transition" title="Painel" href="<?= url("app"); ?>"> <strong>PAINEL</strong> SMSUB</a></h1>
             </div>
         </div>
 
@@ -31,9 +31,9 @@
             <span class="main_header_nav_mobile j_menu_mobile_open icon-menu icon-notext radius transition"></span>
             <div class="main_header_nav_links j_menu_mobile_tab">
                 <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
-                <a class="link transition radius" title="Home" href="<?= url("app"); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("app/agenda"); ?>">Agenda</a>
-                <a class="link transition radius" title="Sobre" href="<?= url("app/setores"); ?>">Setores</a>
+                <a class="link transition radius" title="Painel" href="<?= url("app"); ?>"><i class="fas fa-dashboard"></i> Painel</a>
+                <a class="link transition radius" title="Agenda" href="<?= url("app/agenda"); ?>"><i class="fas fa-comments"></i> Agenda</a>
+                <a class="link transition radius" title="Setores" href="<?= url("app/setores"); ?>"><i class="fas fa-address-card"></i> Setores</a>
                 <a class="link login transition radius icon-sign-out" title="Sair"
                    href="<?= url("/app/sair"); ?>">Sair</a>
             </div>

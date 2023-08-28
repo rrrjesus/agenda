@@ -32737,7 +32737,7 @@ solar-panel:
     - 6.2.0
     - 6.3.0
     - 6.4.0
-  label: Solar Panel
+  label: Solar PanelContact
   search:
     terms:
       - clean
