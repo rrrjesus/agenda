@@ -25,6 +25,7 @@ class App extends Controller
         //var_dump(Auth::user());
         //var_dump((new Contact())->register("24", "RODOLFO", "3354"));
        // var_dump((new Contact())->findByRamal("3424"));
+        //var_dump((new Contact())->findByRamal(3005));
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
@@ -152,33 +153,42 @@ class App extends Controller
 
     public function updateContact(array $data):void
     {
+
         if(!empty($data['csrf'])) {
-            if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+            if(!empty($data['csrf'])) {
+                if (!csrf_verify($data)) {
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if(in_array("", $data)){
+                    $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $dash = new Dashboard();
+                $contact = new Contact();
+                $contact->bootstrapId(
+                    $data["id"],
+                    $data["sector"],
+                    $data["collaborator"],
+                    $data["ramal"]
+                );
+
+                if($dash->register($contact)){
+                    $json['redirect'] = url("/app/agenda");
+                } else {
+                    $json['message'] = $dash->message()->render();
+                }
                 echo json_encode($json);
                 return;
             }
-
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Insira o setor, nome e ramal para editar contato")->render();
-                echo json_encode($json);
-                return;
-            }
-
-            $
-
-            $contact = new Contact();
-
-            if ($contact->edit($data["sector"], $data["collaborator"], $data["ramal"])){
-                $this->message->success("Contato editado com sucesso")->flash();
-                $json["redirect"] = url("/app/agenda");
-            }else{
-                $json["message"] = $contact->message()->render();
-            }
-
-            echo json_encode($json);
-            return;
         }
+
+        $ramal = $data['ramal'];
+        $edit = (new Contact())->findByRamal($ramal);
 
         $head = $this->seo->render(
             "Edição de Contato - " . CONF_SITE_TITLE,
@@ -189,7 +199,8 @@ class App extends Controller
 
         echo $this->view->render("contact-edit",
             [
-                "head" => $head
+                "head" => $head,
+                "edit" => $edit
             ]);
     }
 

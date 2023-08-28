@@ -37,6 +37,27 @@ class Contact extends Model
     }
 
     /**
+     * @param string $sector
+     * @param string $collaborator
+     * @param string $ramal
+     * @param string|null $document
+     * @return Contact
+     */
+    public function bootstrapId(
+        string $id,
+        string $sector,
+        string $collaborator,
+        string $ramal
+    ): Contact
+    {
+        $this->id = $id;
+        $this->sector = $sector;
+        $this->collaborator = $collaborator;
+        $this->ramal = $ramal;
+        return $this;
+    }
+
+    /**
      * @param string $ramal
      * @param string $columns
      * @return null|Contact

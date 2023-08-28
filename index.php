@@ -49,7 +49,7 @@ $route->get("/agenda", "App:contactApp");
 $route->get("/contato", "App:register");
 $route->post("/contato/cadastrar", "App:register");
 $route->get("/contato/{ramal}", "App:updateContact");
-$route->post("/contato/editar/{id}", "App:updateContact");
+$route->post("/contato/editar", "App:updateContact");
 $route->get("/agenda/{id}", "App:editAg");
 $route->get("/setores", "App:sectorApp");
 $route->get("/cadastrar-setor", "App:registerSector");

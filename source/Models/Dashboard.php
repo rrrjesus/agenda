@@ -31,9 +31,12 @@ class Dashboard extends Model
         if(!$contact->save()) {
             $this->message = $contact->message;
             return false;
+        }elseif(!empty($this->id)){
+            $this->message->success("Edição de {$this->collaborator} salva com sucesso!!!")->flash();
         }else{
-            $this->message->success("Cadastro {$contact->collaborator} salvo com sucesso!!!")->flash();
+            $this->message->success("Cadastro de {$this->collaborator} salvo com sucesso!!!")->flash();
         }
+
 
         return true;
     }
