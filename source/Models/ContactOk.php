@@ -7,33 +7,26 @@ use Source\Core\Model;
 /**
  *
  */
-class Contact extends Model
+class ContactOk extends Model
 {
+
     /**
-     *
+     * @param bool $all = ignore status and post_at
      */
     public function __construct()
     {
-        parent::__construct("contacts", ["id"], ["sector", "collaborator", "ramal"]);
+        parent::__construct("contacts", ["id"], ["collaborator", "ramal"]);
     }
 
     /**
-     * @param string $sector
-     * @param string $collaborator
-     * @param string $ramal
-     * @param string|null $document
-     * @return Contact
+     * @param string $uri
+     * @param string $columns
+     * @return Contact|null
      */
-    public function bootstrap(
-        string $sector,
-        string $collaborator,
-        string $ramal
-    ): Contact
+    public function findBySector(string $sector_name, string $columns = "*"): ?ContactOk
     {
-        $this->sector = $sector;
-        $this->collaborator = $collaborator;
-        $this->ramal = $ramal;
-        return $this;
+        $find = $this->find("sector_name = :sector_name", "uri={$sector_name}", $columns);
+        return $find->fetch();
     }
 
     /**
@@ -41,9 +34,9 @@ class Contact extends Model
      * @param string $columns
      * @return null|Contact
      */
-    public function findByRamal(string $ramal, string $columns = "*"): ?Contact
+    public function findByRamal(string $ramal, string $columns = "*"): ?ContactOk
     {
-        $find = $this->find("ramal = :ramal", "ramal={$ramal}", $columns);
+        $find = $this->find("ramal = :ramal", "ramal={$ramal}", "ramal");
         return $find->fetch();
     }
 
@@ -58,6 +51,30 @@ class Contact extends Model
         return null;
     }
 
+    /**
+     * @param string $email
+     * @param string $code
+     * @param string $password
+     * @param string $passwordRe
+     * @return bool
+     */
+    public function register(string $sector, string $collaborator, string $ramal): bool
+    {
+        $contact = new ContactOk();
+
+        if (!$contact){
+            $this->message->warning("O contato não foi cadastrado!");
+            return false;
+        }
+
+        $contact->sector = $sector;
+        $contact->collaborator = $collaborator;
+        $contact->ramal = $ramal;
+        $contact->save();
+        return true;
+
+    }
+
 
     /**
      * @return bool
@@ -66,6 +83,7 @@ class Contact extends Model
     {
         /** User Update */
         if (!empty($this->id)) {
+
             $contactId = $this->id;
 
             if ($this->find("ramal = :r AND id != :i", "r={$this->ramal}&i={$contactId}", "id")->fetch()) {
@@ -86,37 +104,16 @@ class Contact extends Model
                 $this->message->warning("O Ramal informado pertence a outro contato");
                 return false;
             }
+
             $contactId = $this->create($this->safe());
 
             if ($this->fail()) {
-                $this->message->error("Erro ao cadastrar, verifique os dadoss");
+                $this->message->error("Erro ao cadastrar, verifique os dados");
                 return false;
             }
         }
 
         $this->data = ($this->findById($contactId))->data();
         return true;
-    }
-
-    public function edit(string $sector, string $collaborator, string $ramal):bool
-    {
-        $contact = (new Contact())->findByRamal($ramal);
-
-        if (!$contact){
-            $this->message->warning("O contato para editar não foi encontrado!");
-            return false;
-        }
-
-        if ($contact->ramal != $ramal){
-            $this->message->error("Desculpe mas o contato não é válido");
-            return false;
-        }
-
-        $contact->sector = $sector;
-        $contact->collaborator = $collaborator;
-        $contact->ramal = $ramal;
-        $contact->save();
-        return true;
-
     }
 }

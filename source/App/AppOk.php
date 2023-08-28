@@ -2,11 +2,12 @@
 
 namespace Source\App;
 
-use Source\Core\Connect;
+use mysql_xdevapi\Session;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
-use Source\Models\Dashboard;
+use Source\Models\PanelContact;
+use Source\Models\Post;
 use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Message;
@@ -14,7 +15,7 @@ use Source\Support\Message;
 /**
  *
  */
-class App extends Controller
+class AppOk extends Controller
 {
     /**
      *
@@ -101,12 +102,15 @@ class App extends Controller
             ]);
     }
 
+
     /**
+     * SITE FORGET RESET
+     * @param array $data
      * @return void
-     * @param null|array $data
      */
-    public function register(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
+    public function register(array $data): void
     {
+
         if(!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
                 $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
@@ -115,27 +119,31 @@ class App extends Controller
             }
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->render();
+                $json['message'] = $this->message->info("Informe os dados do contato")->render();
                 echo json_encode($json);
                 return;
             }
 
-            $dash = new Dashboard();
             $contact = new Contact();
-            $contact->bootstrap(
-                $data["sector"],
-                $data["collaborator"],
-                $data["ramal"]
-            );
 
-            if($dash->register($contact)){
-                $json['redirect'] = url("/app/contato");
-            } else {
-                $json['message'] = $dash->message()->render();
+            if($contact->findByRamal($data['ramal'])) {
+                $json['message'] = $this->message->info("O Ramal informado pertence a outro contato")->render();
+                echo json_encode($json);
+                return;
             }
+
+            if ($contact->register($data['sector'], $data['collaborator'], $data['ramal'])){
+                $this->message->success("Contato {$data['collaborator']} criado com sucesso!!!")->flash();
+                $json["redirect"] = url("/app/contato");
+            }else{
+                $json["message"] = $contact->message()->render();
+            }
+
             echo json_encode($json);
             return;
         }
+
+        $contactSector = (new Contact())->find()->fetch(true);
 
         $head = $this->seo->render(
             "Cadastro de Contato - " . CONF_SITE_TITLE,
@@ -146,50 +154,8 @@ class App extends Controller
 
         echo $this->view->render("contact-register",
             [
-                "head" => $head
-            ]);
-    }
-
-    public function updateContact(array $data):void
-    {
-        if(!empty($data['csrf'])) {
-            if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Insira o setor, nome e ramal para editar contato")->render();
-                echo json_encode($json);
-                return;
-            }
-
-            $
-
-            $contact = new Contact();
-
-            if ($contact->edit($data["sector"], $data["collaborator"], $data["ramal"])){
-                $this->message->success("Contato editado com sucesso")->flash();
-                $json["redirect"] = url("/app/agenda");
-            }else{
-                $json["message"] = $contact->message()->render();
-            }
-
-            echo json_encode($json);
-            return;
-        }
-
-        $head = $this->seo->render(
-            "Edição de Contato - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
-            url("/app/contato"),
-            theme("/assets/images/share.jpg")
-        );
-
-        echo $this->view->render("contact-edit",
-            [
-                "head" => $head
+                "head" => $head,
+                "contactSector" => $contactSector
             ]);
     }
 

@@ -6,8 +6,8 @@
         <header class="auth_header">
             <h1><i class="fas fa-comments"></i> Contato</h1>
         </header>
-
-        <form class="auth_form" action="<?=url("/app/contato/cadastrar")?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="code" value="<?=$ramal; ?>">
+        <form class="auth_form" action="<?=url("/app/contato/editar")?>" method="post" enctype="multipart/form-data">
             <div class="ajax_response"><?=flash();?></div>
             <?=csrf_input();?>
 

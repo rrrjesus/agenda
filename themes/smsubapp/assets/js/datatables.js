@@ -27,7 +27,7 @@ $(document).ready(function() {
             {
                 "aTargets": [0], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="editar-contato/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="fas fa-pencil"></i></a>';
+                    return '<a title="EDITAR" data-toggle="tooltip" href="contato/' + full[3] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="fas fa-pencil"></i></a>';
                 }
             },
             {
@@ -91,7 +91,7 @@ $(document).ready(function() {
                 }
             },
             {
-                "aTargets": [6], // o numero 6 é o nº da coluna
+                "aTargets": [5], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<a title="EDITAR" data-toggle="tooltip" href="excluir/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="fas fa-trash"></i></a>';
                 }
