@@ -119,6 +119,12 @@ class Contact extends Model
         return true;
     }
 
+    /**
+     * @param string $sector
+     * @param string $collaborator
+     * @param string $ramal
+     * @return bool
+     */
     public function edit(string $sector, string $collaborator, string $ramal):bool
     {
         $contact = (new Contact())->findByRamal($ramal);

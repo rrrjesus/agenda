@@ -22,9 +22,9 @@ class Sector extends Model
      * @param string $columns
      * @return Category|null
      */
-    public function findyByUri(string $uri, string $columns = "*"): ?Sector
+    public function findyBySector(string $sector, string $columns = "*"): ?Sector
     {
-        $find = $this->find("uri = :uri", "uri={$uri}", $columns);
+        $find = $this->find("sector_name = :s", "s={$sector}", $columns);
         return $find->fetch();
     }
 

@@ -1,6 +1,7 @@
 <?= $this->layout("app", ["head" => $head, "user" => $user]); ?>
 
 <section class="contact_page">
+
     <div class="contact_page_content content">
         <header class="contact_header text-center">
             <h1>Lista de Contatos de SMSUB</h1>

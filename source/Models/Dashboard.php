@@ -40,4 +40,32 @@ class Dashboard extends Model
 
         return true;
     }
+
+    static function completeSector($columns): ?Sector
+    {
+        $stm = (new Sector())->find("","",$columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->sector_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    static function completeRamal($columns): ?Contact
+    {
+        $stm = (new Contact())->find("","",$columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->ramal;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
 }

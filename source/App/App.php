@@ -22,7 +22,7 @@ class App extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        //var_dump(Auth::user());
+        //var_dump([(new Dashboard())->completeSector("sector_name")]);
         //var_dump((new Contact())->register("24", "RODOLFO", "3354"));
        // var_dump((new Contact())->findByRamal("3424"));
         //var_dump((new Contact())->findByRamal(3005));

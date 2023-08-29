@@ -30,7 +30,7 @@
         <nav class="main_header_nav">
             <span class="main_header_nav_mobile j_menu_mobile_open icon-menu icon-notext radius transition"></span>
             <div class="main_header_nav_links j_menu_mobile_tab">
-                <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
+                <a class="link transition radius" title="Site" href="<?= url("/agenda"); ?>"><i class="fas fa-contact-card"></i> Site</a>
                 <a class="link transition radius" title="Painel" href="<?= url("app"); ?>"><i class="fas fa-dashboard"></i> Painel</a>
                 <a class="link transition radius" title="Agenda" href="<?= url("app/agenda"); ?>"><i class="fas fa-comments"></i> Agenda</a>
                 <a class="link transition radius" title="Setores" href="<?= url("app/setores"); ?>"><i class="fas fa-address-card"></i> Setores</a>
@@ -100,9 +100,31 @@
     </div>
 </footer>
 
+
+
 <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
 
+<script>
+    $(document).ready(function() {
+        let sector = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: <?=(new \Source\Models\Dashboard())->completeSector("sector_name")?>
+        });
+        sector.initialize();
+        $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
+
+        let ramal = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: <?=(new \Source\Models\Dashboard())->completeRamal("ramal")?>
+        });
+        sector.initialize();
+        $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});
+    });
+</script>
+
 <?= $this->section("scripts"); ?>
+
+
 
 </body>
 </html>
