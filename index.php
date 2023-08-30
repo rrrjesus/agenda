@@ -22,7 +22,7 @@ $route->get("/home", "Web:home");
 $route->get("/sobre", "Web:about");
 
 //agenda
-$route->group("/agenda");
+$route->group("/contatos");
 $route->get("/", "Web:contact");
 
 //auth

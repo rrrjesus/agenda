@@ -4,7 +4,7 @@
 <section class="contact_page">
     <div class="contact_page_content content">
         <header class="contact_header text-center">
-            <h1>Agenda Inteligente SMSUB-COTI</h1>
+            <h1>Agenda Inteligente SMSUB</h1>
             <p>Na barra <strong>Pesquisar</strong> cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente</p>
         </header>
 

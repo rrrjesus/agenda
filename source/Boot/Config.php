@@ -3,27 +3,27 @@
 /**
  * DATABASE
  */
-define("CONF_DB_HOST", "192.168.15.59");
+define("CONF_DB_HOST", "10.23.237.93");
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
-define("CONF_DB_NAME", "smsubcoti");
+define("CONF_DB_NAME", "smsub");
 
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://192.168.15.59/smsubcoti");
-define("CONF_URL_TESTE", "https://www.localhost/smsubcoti");
-define("CONF_URL_ADMIN", "/admin");
+define("CONF_URL_BASE", "https://10.23.237.93/agenda");
+define("CONF_URL_TESTE", "https://www.localhost/agenda");
+define("CONF_URL_ADMIN", "/app");
 
 /**
  * SITE
  */
-define("CONF_SITE_NAME", "SMSUB-COTI");
-define("CONF_SITE_TITLE", "COORDENAÇÃO DE TECNOLOGIA DA INFORMAÇÃO - COTI");
+define("CONF_SITE_NAME", "SMSUB");
+define("CONF_SITE_TITLE", "AGENDA");
 define("CONF_SITE_DESC",
     "A Coordenação de Tecnologia da Informação – COTI ....");
 define("CONF_SITE_LANG", "pt_BR");
-define("CONF_SITE_DOMAIN", "smsubcoti");
+define("CONF_SITE_DOMAIN", "agenda");
 define("CONF_SITE_EMAIL", "cotisuporte@smsub.prefeitura.sp.gov.br");
 define("CONF_SITE_ADDR_STREET", "Rua São Bento, 405 / Rua Líbero Badaró");
 define("CONF_SITE_ADDR_NUMBER", "504");
@@ -49,8 +49,8 @@ define("CONF_SOCIAL_FACEBOOK_PAGE", "secretariamunicipaldassubprefeituras");
 define("CONF_SOCIAL_FACEBOOK_AUTHOR", "secretariamunicipaldassubprefeituras");
 define("CONF_SOCIAL_GOOGLE_PAGE", ""); //107305124528362639842
 define("CONF_SOCIAL_GOOGLE_AUTHOR", ""); //103958419096641225872
-define("CONF_SOCIAL_INSTAGRAM_PAGE", "");
-define("CONF_SOCIAL_YOUTUBE_PAGE", "");
+define("CONF_SOCIAL_INSTAGRAM_PAGE", "smsub_sp/");
+define("CONF_SOCIAL_YOUTUBE_PAGE", "channel/UCmim2vKCDYw6aSBF8uRf93g");
 
 /**
  * DATES

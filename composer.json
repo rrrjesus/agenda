@@ -1,6 +1,6 @@
 {
-  "name": "rrrjesus/smsubcoti",
-  "description": "Sistema de Gestão COTI",
+  "name": "rrrjesus/agenda",
+  "description": "Agenda Interna da SMSUB",
   "minimum-stability": "stable",
   "authors": [
     {

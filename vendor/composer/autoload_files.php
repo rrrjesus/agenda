@@ -6,7 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    '048c979113a7fbc36290bc4385899e05' => $baseDir . '/source/Boot/Config.php',
-    'edc8148741918fe7056b4d6b32bc8844' => $baseDir . '/source/Boot/Helpers.php',
-    '4f1e695316011dba4de918e4cd2accd3' => $baseDir . '/source/Boot/Minify.php',
+    '431b8a595d17a6481d29f0159438f683' => $baseDir . '/source/Boot/Config.php',
+    'e06b8758150737305072dd1b18aa64eb' => $baseDir . '/source/Boot/Helpers.php',
+    'f2152ffd869a2af8134b87fea66a2a62' => $baseDir . '/source/Boot/Minify.php',
 );

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'rrrjesus/smsubcoti',
+        'name' => 'rrrjesus/agenda',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '69d2285353edc49dd479b20c112a01444fe920ec',
+        'reference' => '3722653434639faffee2483b36f27df02388e3d1',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -92,9 +92,9 @@
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(
-            'pretty_version' => 'v6.8.1',
-            'version' => '6.8.1.0',
-            'reference' => 'e88da8d679acc3824ff231fdc553565b802ac016',
+            'pretty_version' => 'v6.8.0',
+            'version' => '6.8.0.0',
+            'reference' => 'df16b615e371d81fb79e506277faea67a1be18f1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpmailer/phpmailer',
             'aliases' => array(),
@@ -118,10 +118,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'rrrjesus/smsubcoti' => array(
+        'rrrjesus/agenda' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '69d2285353edc49dd479b20c112a01444fe920ec',
+            'reference' => '3722653434639faffee2483b36f27df02388e3d1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

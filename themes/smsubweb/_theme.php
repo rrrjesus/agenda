@@ -32,8 +32,9 @@
             <div class="main_header_nav_links j_menu_mobile_tab">
                 <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
                 <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/agenda"); ?>">Agenda</a>
+                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Agenda</a>
                 <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
+                <a class="link transition radius" title="Sobre" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
                 <?php if(!empty($user_session->id)):?>
                     <button type="button" class="btn text-light btn-info" disabled><?=$user_session->functional_record?></button>
                     <a class="btn btn-danger link-light icon-sign-in" title="Entrar"
@@ -76,8 +77,9 @@
             <article class="main_footer_content_item">
                 <h2>Mais:</h2>
                 <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/agenda"); ?>">Agenda</a>
+                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Agenda</a>
                 <a class="link transition radius" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
+                <a class="link transition radius" title="Entrar" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
             </article>
 
             <article class="main_footer_content_item">
@@ -101,7 +103,7 @@
         </section>
 
         <p class="termos text-center p-3">
-            &copy; 2023, SMSUB-COTI todos os direitos reservados
+            &copy; 2023, SMSUB todos os direitos reservados
         </p>
     </div>
 </footer>

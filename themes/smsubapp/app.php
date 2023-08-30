@@ -95,7 +95,7 @@
         </section>
 
         <p class="termos text-center p-3">
-            &copy; 2023, SMSUB-COTI todos os direitos reservados
+            &copy; 2023, SMSUB todos os direitos reservados
         </p>
     </div>
 </footer>
