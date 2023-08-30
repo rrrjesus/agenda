@@ -6,21 +6,16 @@ body {
 
 /* Paginação da Tabela*/
 .page-link {
-    position: relative;
-    display: block;
-    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
-    font-size: var(--bs-pagination-font-size);
     color: #0dcaf0;
-    text-decoration: none;
-    background-color: var(--bs-pagination-bg);
-    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.pagination {
+    --bs-link-hover-color: #0f4dec;
 }
 
 /* Paginação da Tabela*/
-.active>.page-link, .page-link.active {
-    z-index: 3;
-    color: var(--bs-pagination-active-color);
+.page-item.active .page-link {
+    color: #0f4dec;
     background-color: #0dcaf0;
     border-color: #0dcaf0;
 }
