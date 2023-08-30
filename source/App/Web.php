@@ -118,7 +118,7 @@ class Web extends Controller
             $login = $auth->login($data['email'], $data['password'], $save);
 
             if($login){
-                $json['redirect'] = url("/ass");
+                $json['redirect'] = url("/app");
             }else{
                 $json['message'] = $auth->message()->render();
             }

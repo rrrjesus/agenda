@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
-define("CONF_DB_HOST", "192.168.15.200");
+define("CONF_DB_HOST", "192.168.15.59");
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
 define("CONF_DB_NAME", "smsubcoti");
@@ -11,7 +11,7 @@ define("CONF_DB_NAME", "smsubcoti");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://192.168.15.200/smsubcoti");
+define("CONF_URL_BASE", "https://192.168.15.59/smsubcoti");
 define("CONF_URL_TESTE", "https://www.localhost/smsubcoti");
 define("CONF_URL_ADMIN", "/admin");
 
