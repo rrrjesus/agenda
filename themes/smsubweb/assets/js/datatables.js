@@ -56,7 +56,7 @@ $(document).ready(function() {
                     {display: DataTable.Responsive.display.modal({
                             header: function (row) {
                                 var data = row.data();
-                                return data[0] + ' ' + data[1];
+                                return data[0] + ' - ' + data[1] + ' - ' + data[2];
                             },
                             update: true
                         }),

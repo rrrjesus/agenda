@@ -10,7 +10,7 @@
 
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
-                <div class="col-8">
+                <div class="col-9">
                 <table id="contact" class="table table-bordered border-info table-striped" style="width:100%">
                     <thead class="table-info">
                     <tr>
