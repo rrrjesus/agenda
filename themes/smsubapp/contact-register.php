@@ -11,13 +11,6 @@
                 <li class="breadcrumb-item text-uppercase active"><strong>AGENDA</strong> </li>
             </ol>
         </nav>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
-            </ol>
-        </nav>
     </div>
 
     <div class="col-md-12 text-center">;
@@ -33,21 +26,22 @@
 
                         <div class="row justify-content-lg-center mb-3">
                             <div class="col-lg-3">
-                                <label for="inputSector" class="form-label-lg"><i class="icon-user-plus"></i>SETOR</label>
+                                <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="icon-user-plus"></i>SETOR</label>
+
                                 <input class="form-control form-control-lg text-center sector" type="text" name="sector" placeholder="COTI"/>
                             </div>
                         </div>
 
                         <div class="row justify-content-lg-center mb-3">
-                                <label for="inputSector" class="col-lg-1 col-form-label"><i class="fas fa-user-plus"></i> NOME</label>
                             <div class="col-lg-3">
+                                <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="fas fa-user-plus"></i> NOME</label>
                                 <input class="form-control form-control-lg text-center" type="text" name="collaborator" placeholder="Primeiro nome:"/>
                             </div>
                         </div>
 
                         <div class="row justify-content-lg-center mb-3">
                             <div class="col-lg-3">
-                                <label for="inputSector" class="form-label-lg"><i class="fas fa-contact-card"></i>RAMAL</label>
+                                <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="fas fa-contact-card"></i>RAMAL</label>
                                 <input class="form-control form-control-lg text-center ramal" type="text" name="ramal" placeholder="3000:"/>
                             </div>
                         </div>

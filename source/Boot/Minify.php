@@ -50,7 +50,7 @@ if (strpos(url(), "localhost")) {
     $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/solid.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/brands.css");
     // CSS Typeahead Autocomplete
-    $minCSS->add(__DIR__ . "/../../shared/styles/typeahead.css");
+    $minCssApp->add(__DIR__ . "/../../shared/styles/typeahead.css");
 
     //CSS Theme App
     $cssDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/css");
@@ -87,7 +87,7 @@ if (strpos(url(), "localhost")) {
     $minJS->add(__DIR__ . "/../../shared/scripts/buttons.colVis.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/buttons.html5.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
-    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
+//    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
 
     //theme CSS
@@ -125,7 +125,7 @@ if (strpos(url(), "localhost")) {
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.colVis.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.html5.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
-    $minJsApp->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
+//    $minJsApp->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
     // JS Typeahead Autocomplete
     $minJsApp->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");

@@ -6,11 +6,9 @@ namespace Source\App;
 use Source\Core\Connect;
 use Source\Core\Controller;
 use Source\Models\Auth;
-use Source\Models\Category;
 use Source\Models\Contact;
 use Source\Models\Faq\Channel;
 use Source\Models\Faq\Question;
-use Source\Models\Post;
 use Source\Models\User;
 use Source\Support\Pager;
 
@@ -46,11 +44,7 @@ class Web extends Controller
         echo $this->view->render("home",
             [
                 "head" => $head,
-                "user_session" => Auth::user(),
-                "blog" => (new Post())
-                    ->find()
-                    ->order("post_at DESC")
-                    ->limit(6)->fetch(true)
+                "user_session" => Auth::user()
             ]);
     }
 
@@ -124,7 +118,7 @@ class Web extends Controller
             $login = $auth->login($data['email'], $data['password'], $save);
 
             if($login){
-                $json['redirect'] = url("/app");
+                $json['redirect'] = url("/ass");
             }else{
                 $json['message'] = $auth->message()->render();
             }

@@ -12,7 +12,6 @@
   </component>
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/vendor/rosell-dk/image-mime-type-guesser" />
       <path value="$PROJECT_DIR$/vendor/rosell-dk/webp-convert" />
       <path value="$PROJECT_DIR$/vendor/coffeecode/cropper" />
@@ -25,6 +24,7 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/matthiasmullie/path-converter" />
       <path value="$PROJECT_DIR$/vendor/league/plates" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
