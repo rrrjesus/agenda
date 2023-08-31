@@ -4,7 +4,7 @@ namespace Source\Models;
 
 use Source\Core\Model;
 
-class Dashboard extends Model
+class Panel extends Model
 {
     public function __construct()
     {

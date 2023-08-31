@@ -25,6 +25,7 @@ class Web extends Controller
         //Connect::getInstance();
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME . "/");
         // var_dump((new Post(true))->find()->fetch()); //Teste de Objeto sem filtro
+        //var_dump((new Auth())->user()->id);
     }
 
     /**
@@ -118,7 +119,7 @@ class Web extends Controller
             $login = $auth->login($data['email'], $data['password'], $save);
 
             if($login){
-                $json['redirect'] = url("/app");
+                $json['redirect'] = url("/dashboard");
             }else{
                 $json['message'] = $auth->message()->render();
             }

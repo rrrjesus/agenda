@@ -1,3 +1,7 @@
+<?php
+    $user = (new \Source\Models\Auth())->user();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,13 +36,17 @@
             <div class="main_header_nav_links j_menu_mobile_tab">
                 <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
                 <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Agenda</a>
+                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Contatos</a>
                 <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
                 <a class="link transition radius" title="Sobre" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
-                <?php if(!empty($user_session->id)):?>
-                    <button type="button" class="btn text-light btn-info" disabled><?=$user_session->functional_record?></button>
-                    <a class="btn btn-danger link-light icon-sign-in" title="Entrar"
-                       href="<?= url("/entrar"); ?>">Sair</a>
+                <?php if(!empty($user->id)):?>
+                        <a class="btn btn-success link-light icon-user dropdown-toggle" title="Entrar" data-bs-toggle="dropdown" aria-expanded="false"
+                           href="<?= url("/entrar"); ?>"><?=$user->functional_record?></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item icon-sign-out" href="<?= url("/dashboard/sair"); ?>">Sair</a></li>
+                        </ul>
                 <?php else:?>
                     <a class="link login transition radius icon-sign-in" title="Entrar"
                         href="<?= url("/entrar"); ?>">Entrar</a>

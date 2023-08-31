@@ -1,4 +1,4 @@
-<?= $this->layout("app", ["head" => $head]); ?>
+<?= $this->layout("dashboard", ["head" => $head]); ?>
 
 <div class="container-fluid">
     <div class="row mb-0">
@@ -16,7 +16,7 @@
         <div class="col-md-12 text-center">;
 
             <div class="ajax_response"><?=flash();?></div>
-            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-registers" action="<?=url("/app/contato/editar")?>" method="post" enctype="multipart/form-data">
+            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-registers" action="<?=url("/dashboard/editar-contato")?>" method="post" enctype="multipart/form-data">
 
                 <?=csrf_input();?>
 

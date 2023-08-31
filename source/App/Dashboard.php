@@ -2,11 +2,10 @@
 
 namespace Source\App;
 
-use Source\Core\Connect;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
-use Source\Models\Dashboard;
+use Source\Models\Panel;
 use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Message;
@@ -14,7 +13,7 @@ use Source\Support\Message;
 /**
  *
  */
-class App extends Controller
+class Dashboard extends Controller
 {
     /**
      *
@@ -22,7 +21,7 @@ class App extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        //var_dump([(new Dashboard())->completeSector("sector_name")]);
+        //var_dump([(new Panel())->completeSector("sector_name")]);
         //var_dump((new Contact())->register("24", "RODOLFO", "3354"));
        // var_dump((new Contact())->findByRamal("3424"));
         //var_dump((new Contact())->findByRamal(3005));
@@ -122,7 +121,7 @@ class App extends Controller
                 return;
             }
             $dataSector = (new Sector())->findyBySector($data["sector"])->id;
-            $dash = new Dashboard();
+            $dash = new Panel();
             $contact = new Contact();
             $contact->bootstrap(
                 $dataSector,
@@ -131,7 +130,7 @@ class App extends Controller
             );
 
             if($dash->register($contact)){
-                $json['redirect'] = url("/app/contato");
+                $json['redirect'] = url("/dashboard/contato");
             } else {
                 $json['message'] = $dash->message()->render();
             }
@@ -142,7 +141,7 @@ class App extends Controller
         $head = $this->seo->render(
             "Cadastro de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/app/contato"),
+            url("/dashboard/contato"),
             theme("/assets/images/share.jpg")
         );
 
@@ -169,7 +168,7 @@ class App extends Controller
                     return;
                 }
                 $dataSector = (new Sector())->findyBySector($data["sector"])->id;
-                $dash = new Dashboard();
+                $dash = new Panel();
                 $contact = new Contact();
                 $contact->bootstrapId(
                     $data["id"],
@@ -179,7 +178,7 @@ class App extends Controller
                 );
 
                 if($dash->updated($contact)){
-                    $json['redirect'] = url("/app/agenda");
+                    $json['redirect'] = url("/dashboard/agenda");
                 } else {
                     $json['message'] = $dash->message()->render();
                 }
@@ -194,7 +193,7 @@ class App extends Controller
         $head = $this->seo->render(
             "Edição de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/app/contato"),
+            url("/dashboard/contato"),
             theme("/assets/images/share.jpg")
         );
 
@@ -214,7 +213,7 @@ class App extends Controller
         $head = $this->seo->render(
             "Setores - " . CONF_SITE_NAME ,
             "Setores de SMSUB",
-            url("/app/setores/cadastrar"),
+            url("/dashboard/setores/cadastrar"),
             theme("/assets/images/share.jpg")
         );
 

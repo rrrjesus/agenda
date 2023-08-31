@@ -390,7 +390,7 @@ adn:
     pro:
       - family: classic
         style: brands
-  label: App.net
+  label: Dashboard.net
   search:
     terms: []
   unicode: f170
@@ -1131,7 +1131,7 @@ app-store:
     pro:
       - family: classic
         style: brands
-  label: App Store
+  label: Dashboard Store
   search:
     terms: []
   unicode: f36f
@@ -1146,7 +1146,7 @@ app-store-ios:
     pro:
       - family: classic
         style: brands
-  label: iOS App Store
+  label: iOS Dashboard Store
   search:
     terms: []
   unicode: f370
@@ -30340,7 +30340,7 @@ minus:
   label: Minus
   search:
     terms:
-      - En Dash
+      - En Panel
       - Minus Sign
       - collapse
       - delete
@@ -42314,7 +42314,7 @@ square-whatsapp:
     pro:
       - family: classic
         style: brands
-  label: What's App Square
+  label: What's Dashboard Square
   search:
     terms: []
   unicode: f40c
@@ -49901,7 +49901,7 @@ whatsapp:
     pro:
       - family: classic
         style: brands
-  label: What's App
+  label: What's Dashboard
   search:
     terms: []
   unicode: f232

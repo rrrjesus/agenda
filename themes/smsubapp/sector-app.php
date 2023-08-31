@@ -1,10 +1,10 @@
-<?= $this->layout("app", ["head" => $head]); ?>
+<?= $this->layout("dashboard", ["head" => $head]); ?>
 
 <section class="contact_page">
     <div class="contact_page_content content">
         <header class="contact_header text-center">
             <h1>Lista de Setores de SMSUB</h1>
-            <a class="btn btn-outline-success" href="<?=url("/app/cadastrar-setor")?>" role="button"><i class="fas fa-plus-circle"></i> NOVO</a>
+            <a class="btn btn-outline-success" href="<?=url("/dashboard/cadastrar-setor")?>" role="button"><i class="fas fa-plus-circle"></i> NOVO</a>
         </header>
 
             <table id="sector" class="table table-bordered border-danger table-striped" style="width:100%">

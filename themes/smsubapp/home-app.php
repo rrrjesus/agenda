@@ -1,4 +1,4 @@
-<?= $this->layout("app", ["head" => $head]); ?>
+<?= $this->layout("dashboard", ["head" => $head]); ?>
 
 <section class="contact_page">
     <div class="contact_page_content content">

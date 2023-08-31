@@ -1,3 +1,7 @@
+<?php
+$user = (new \Source\Models\Auth())->user();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,12 +34,17 @@
         <nav class="main_header_nav">
             <span class="main_header_nav_mobile j_menu_mobile_open icon-menu icon-notext radius transition"></span>
             <div class="main_header_nav_links j_menu_mobile_tab">
-                <a class="link transition radius" title="Site" href="<?= url("/agenda"); ?>"><i class="fas fa-contact-card"></i> Site</a>
-                <a class="link transition radius" title="Painel" href="<?= url("app"); ?>"><i class="fas fa-dashboard"></i> Painel</a>
-                <a class="link transition radius" title="Agenda" href="<?= url("app/agenda"); ?>"><i class="fas fa-comments"></i> Agenda</a>
-                <a class="link transition radius" title="Setores" href="<?= url("app/setores"); ?>"><i class="fas fa-address-card"></i> Setores</a>
-                <a class="link login transition radius icon-sign-out" title="Sair"
-                   href="<?= url("/app/sair"); ?>">Sair</a>
+                <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
+                <a class="link transition radius" title="Painel" href="<?= url("dashboard"); ?>"><i class="fas fa-user"></i> Usuarios</a>
+                <a class="link transition radius" title="Agenda" href="<?= url("dashboard/listar-contatos"); ?>"><i class="fas fa-comments"></i> Contatos</a>
+                <a class="link transition radius" title="Setores" href="<?= url("dashboard/listar-setores"); ?>"><i class="fas fa-address-card"></i> Setores</a>
+                <a class="link transition radius btn btn-success link-light icon-user dropdown-toggle" title="Entrar" data-bs-toggle="dropdown" aria-expanded="false"
+                   href="<?= url("/entrar"); ?>"><?=$user->functional_record?></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item icon-phone" title="Site" href="<?= url("/contatos"); ?>"> Agenda</a></li>
+                    <li><a class="dropdown-item icon-user" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item icon-sign-out" href="<?= url("/dashboard/sair"); ?>">Sair</a></li>
+                </ul>
             </div>
         </nav>
     </div>
@@ -69,8 +78,8 @@
 
             <article class="main_footer_content_item">
                 <h2>Mais:</h2>
-                <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/agenda"); ?>">Agenda</a>
+                <a class="link transition radius" data-to title="Site" href="<?= url(); ?>">Home</a>
+                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Contatos</a>
                 <a class="link transition radius" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
             </article>
 
@@ -108,14 +117,14 @@
     $(document).ready(function() {
         let sector = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\Dashboard())->completeSector("sector_name")?>
+            local: <?=(new \Source\Models\Panel())->completeSector("sector_name")?>
         });
         sector.initialize();
         $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
 
         let ramal = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\Dashboard())->completeRamal("ramal")?>
+            local: <?=(new \Source\Models\Panel())->completeRamal("ramal")?>
         });
         sector.initialize();
         $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});

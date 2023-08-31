@@ -35,24 +35,24 @@ if (strpos(url(), "localhost")) {
      * CSS APP
      */
     $minCssApp = new MatthiasMullie\Minify\CSS();
-    // CSS Padrão App
+    // CSS Padrão Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/styles.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/boot.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/bootstrap.min.css");
-    // CSS Datatables Bootstrap 5 App
+    // CSS Datatables Bootstrap 5 Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/dataTables.bootstrap5.min.css");
-    // CSS Buttons Datatables Bootstrap 5 App
+    // CSS Buttons Datatables Bootstrap 5 Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/buttons.bootstrap5.min.css");
-    // CSS Responsive Datatables Bootstrap 5 App
+    // CSS Responsive Datatables Bootstrap 5 Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/responsive.bootstrap5.min.css");
-    // CSS Fontawesome App
+    // CSS Fontawesome Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/fontawesome.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/solid.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/fontawesome/css/brands.css");
     // CSS Typeahead Autocomplete
     $minCssApp->add(__DIR__ . "/../../shared/styles/typeahead.css");
 
-    //CSS Theme App
+    //CSS Theme Dashboard
     $cssDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/css");
     foreach ($cssDir as $css) {
         $cssFile = __DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/css/{$css}";
@@ -106,19 +106,19 @@ if (strpos(url(), "localhost")) {
      * JS
      */
     $minJsApp = new MatthiasMullie\Minify\JS();
-    // JS Padrão Sistema App
+    // JS Padrão Sistema Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.form.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery-ui.js");
-    // JS Bootstrap 5 App
+    // JS Bootstrap 5 Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/bootstrap.bundle.min.js");
-    // JS Datatables Bootstrap 5 App
+    // JS Datatables Bootstrap 5 Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.dataTables.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.bootstrap5.min.js");
-    // JS Responsive Datatables Bootstrap 5 App
+    // JS Responsive Datatables Bootstrap 5 Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.responsive.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/responsive.bootstrap5.min.js");
-    // JS Buttons Datatables Bootstrap 5 App
+    // JS Buttons Datatables Bootstrap 5 Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.buttons.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.bootstrap5.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.print.min.js");
@@ -130,7 +130,7 @@ if (strpos(url(), "localhost")) {
     // JS Typeahead Autocomplete
     $minJsApp->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");
 
-    //theme CSS App
+    //theme CSS Dashboard
     $jsDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/js");
     foreach ($jsDir as $js) {
         $jsFile = __DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/js/{$js}";
@@ -139,6 +139,6 @@ if (strpos(url(), "localhost")) {
         }
     }
 
-    //Minify JS App
+    //Minify JS Dashboard
     $minJsApp->minify(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/scripts.js");
 }

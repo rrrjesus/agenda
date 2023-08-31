@@ -1,4 +1,4 @@
-<?= $this->layout("app", ["head" => $head]); ?>
+<?= $this->layout("dashboard", ["head" => $head]); ?>
 
 <article class="auth">
     <div class="auth_content container content">

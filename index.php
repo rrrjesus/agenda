@@ -43,19 +43,19 @@ $route->get("/obrigado/{email}", "Web:success");
 /**
  * APP
  */
-$route->group("/app");
-$route->get("/", "App:homeApp");
-$route->get("/agenda", "App:contactApp");
-$route->get("/contato", "App:register");
-$route->post("/contato/cadastrar", "App:register");
-$route->get("/contato/{ramal}", "App:updated");
-$route->post("/contato/editar", "App:updated");
-$route->get("/agenda/{id}", "App:editAg");
-$route->get("/setores", "App:sectorApp");
-$route->get("/cadastrar-setor", "App:registerSector");
-$route->get("/editar-setor/{id}", "App:registerSector");
-$route->get("/excluir-setor/{id}", "App:registerSector");
-$route->get("/sair", "App:logout");
+$route->group("/dashboard");
+$route->get("/", "Dashboard:homeApp");
+$route->get("/listar-contatos", "Dashboard:contactApp");
+$route->get("/cadastrar-contato", "Dashboard:register");
+$route->post("/cadastrar-contato", "Dashboard:register");
+$route->get("/editar-contato/{ramal}", "Dashboard:updated");
+$route->post("/editar-contato", "Dashboard:updated");
+$route->get("/agenda/{id}", "Dashboard:editAg");
+$route->get("/listar-setores", "Dashboard:sectorApp");
+$route->get("/cadastrar-setor", "Dashboard:registerSector");
+$route->get("/editar-setor/{id}", "Dashboard:registerSector");
+$route->get("/excluir-setor/{id}", "Dashboard:registerSector");
+$route->get("/sair", "Dashboard:logout");
 
 /**
  * ERROR ROUTES
