@@ -26,6 +26,7 @@ class App extends Controller
         //var_dump((new Contact())->register("24", "RODOLFO", "3354"));
        // var_dump((new Contact())->findByRamal("3424"));
         //var_dump((new Contact())->findByRamal(3005));
+        //var_dump((new Sector())->findyBySector("ABAST")->id);
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
@@ -120,11 +121,11 @@ class App extends Controller
                 echo json_encode($json);
                 return;
             }
-
+            $dataSector = (new Sector())->findyBySector($data["sector"])->id;
             $dash = new Dashboard();
             $contact = new Contact();
             $contact->bootstrap(
-                $data["sector"],
+                $dataSector,
                 $data["collaborator"],
                 $data["ramal"]
             );
@@ -151,7 +152,7 @@ class App extends Controller
             ]);
     }
 
-    public function updateContact(array $data):void
+    public function updated(array $data):void
     {
 
         if(!empty($data['csrf'])) {
@@ -167,17 +168,17 @@ class App extends Controller
                     echo json_encode($json);
                     return;
                 }
-
+                $dataSector = (new Sector())->findyBySector($data["sector"])->id;
                 $dash = new Dashboard();
                 $contact = new Contact();
                 $contact->bootstrapId(
                     $data["id"],
-                    $data["sector"],
+                    $dataSector,
                     $data["collaborator"],
                     $data["ramal"]
                 );
 
-                if($dash->register($contact)){
+                if($dash->updated($contact)){
                     $json['redirect'] = url("/app/agenda");
                 } else {
                     $json['message'] = $dash->message()->render();

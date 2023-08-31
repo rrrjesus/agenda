@@ -1,4 +1,7 @@
 $(function () {
+
+    $('[data-toggle="tooltip"]').tooltip();
+
     // mobile menu open
     $(".j_menu_mobile_open").click(function (e) {
         e.preventDefault();

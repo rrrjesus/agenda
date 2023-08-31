@@ -15,43 +15,36 @@
 
     <div class="col-md-12 text-center">;
 
-                <h6 class="card-title"><div class="ajax_response"><?=flash();?></div></h6>
-                    <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate action="<?=url("/app/contato/cadastrar")?>" method="post" enctype="multipart/form-data">
+                <div class="ajax_response"><?=flash();?></div>
+                    <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-registers" action="<?=url("/app/contato/cadastrar")?>" method="post" enctype="multipart/form-data">
 
                         <?=csrf_input();?>
-
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
 
                         <div class="row justify-content-lg-center mb-3">
                             <div class="col-lg-4">
                                 <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="icon-user-plus"></i>SETOR</label>
 
-                                <input class="form-control form-control-lg text-center sector" type="text" name="sector" placeholder="COTI"/>
+                                <input data-toggle="tooltip" title="DIGITE O SETOR" class="form-control form-control-lg sector" type="text" name="sector" placeholder="COTI"/>
                             </div>
                         </div>
 
                         <div class="row justify-content-lg-center mb-2">
                             <div class="col-lg-4">
                                 <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="fas fa-user-plus"></i> NOME</label>
-                                <input class="form-control form-control-lg text-center" type="text" name="collaborator" placeholder="Primeiro nome:"/>
+                                <input data-toggle="tooltip" title="DIGITE O NOME" class="form-control form-control-lg text-center" type="text" name="collaborator" placeholder="Primeiro nome:"/>
                             </div>
                         </div>
 
                         <div class="row justify-content-lg-center">
                             <div class="col-lg-4">
                                 <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="fas fa-contact-card"></i>RAMAL</label>
-                                <input class="form-control form-control-lg text-center ramal" type="text" name="ramal" placeholder="3000:"/>
+                                <input data-toggle="tooltip" title="DIGITE O RAMAL" class="form-control form-control-lg ramal" type="text" name="ramal" placeholder="3000:"/>
                             </div>
                         </div>
 
                         <div class="row justify-content-lg-center mb-3">
                             <div class="col-lg-6">
-                            <button class="auth_form_btn transition gradient gradient-red gradient-hover">Criar conta</button>
+                            <button data-toggle="tooltip" title="CRIAR CONTATO" class="auth_form_btn transition gradient gradient-red gradient-hover">Criar Contato</button>
                             </div>
                         </div>
                 </form>

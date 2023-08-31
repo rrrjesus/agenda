@@ -22,6 +22,14 @@ class Dashboard extends Model
         return null;
     }
 
+    public function idSector(): ?Sector
+    {
+        if($this->sector_name) {
+            return(new Sector())->findyBySector($this->sector_name);
+        }
+        return null;
+    }
+
     /**
      * @param Contact $contact
      * @return bool
@@ -31,10 +39,21 @@ class Dashboard extends Model
         if(!$contact->save()) {
             $this->message = $contact->message;
             return false;
-        }elseif(!empty($this->id)){
-            $this->message->success("Edição de {$this->collaborator} salva com sucesso!!!")->flash();
         }else{
-            $this->message->success("Cadastro de {$this->collaborator} salvo com sucesso!!!")->flash();
+            $this->message->success("Cadastro de {$contact->collaborator} salvo com sucesso!!!")->flash();
+        }
+
+
+        return true;
+    }
+
+    public function updated(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->warning("Edição de {$contact->collaborator} salva com sucesso!!!")->flash();
         }
 
 

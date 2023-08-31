@@ -1,31 +1,54 @@
 <?= $this->layout("app", ["head" => $head]); ?>
 
+<div class="container-fluid">
+    <div class="row mb-0">
+        <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+            <nav style="--bs-breadcrumb-divider: \'\';" aria-label="breadcrumb" id="nav-inicio">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><i class="fas fa-home-user me-2 text-primary"></i> <a class="text-uppercase" href="/">
+                            <strong>INÍCIO </strong></a> <i class="fas fa-arrow-right ms-1 me-1"></i>
+                    </li>
+                    <li class="breadcrumb-item text-uppercase active"><strong>AGENDA</strong> </li>
+                </ol>
+            </nav>
+        </div>
 
-<article class="auth">
-    <div class="auth_content container content">
-        <header class="auth_header">
-            <h1><i class="fas fa-comments"></i> Contato</h1>
-        </header>
-        <form class="auth_form" action="<?=url("/app/contato/editar")?>" method="post" enctype="multipart/form-data">
+        <div class="col-md-12 text-center">;
+
             <div class="ajax_response"><?=flash();?></div>
-            <?=csrf_input();?>
+            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-registers" action="<?=url("/app/contato/editar")?>" method="post" enctype="multipart/form-data">
 
-            <label>
-                <div><span class="icon-user-plus setor">Setor:</span></div>
-                    <input type="text" name="sector" value="<?=$edit->sector; ?>" placeholder="Último nome:"/>
-            </label>
+                <?=csrf_input();?>
 
-            <label>
-                <div><span class="icon-user">Nome:</span></div>
-                <input type="text" name="collaborator" value="<?=$edit->collaborator; ?>" placeholder="Primeiro nome:"/>
-            </label>
+                <div class="row justify-content-lg-center mb-3">
+                    <div class="col-lg-4">
+                        <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="icon-user-plus"></i>SETOR</label>
+                        <input data-toggle="tooltip" value="<?=$edit->sector()->sector_name?>" title="DIGITE O SETOR" class="form-control form-control-lg sector" type="text" name="sector" placeholder="COTI"/>
+                    </div>
+                </div>
 
-            <label>
-                <div><span class="icon-envelope">Ramal:</span></div>
-                <input type="text" name="ramal" value="<?=$edit->ramal; ?>" placeholder="3000:"/>
-            </label>
+                <div class="row justify-content-lg-center mb-2">
+                    <div class="col-lg-4">
+                        <label for="inputCollaborator" class="col-lg-3 col-form-label-lg"><i class="fas fa-user-plus"></i> NOME</label>
+                        <input data-toggle="tooltip" value="<?=$edit->collaborator?>" title="DIGITE O NOME" class="form-control form-control-lg" type="text" name="collaborator" placeholder="Primeiro nome:"/>
+                    </div>
+                </div>
 
-            <button class="auth_form_btn transition gradient gradient-red gradient-hover">Criar conta</button>
-        </form>
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-4">
+                        <label for="inputRamal" class="col-lg-3 col-form-label-lg"><i class="fas fa-contact-card"></i>RAMAL</label>
+                        <input data-toggle="tooltip" value="<?=$edit->ramal?>" title="DIGITE O RAMAL" class="form-control form-control-lg ramal" type="text" name="ramal" placeholder="3000:"/>
+                    </div>
+                </div>
+
+                <input type="hidden" name="id" value="<?=$edit->id?>">
+
+                <div class="row justify-content-lg-center mb-3">
+                    <div class="col-lg-6">
+                        <button data-toggle="tooltip" title="CRIAR CONTATO" class="auth_form_btn transition gradient gradient-red gradient-hover">Editar Contato</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</article>
+</div>

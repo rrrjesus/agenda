@@ -45,7 +45,7 @@ class Contact extends Model
      */
     public function bootstrapId(
         string $id,
-        string $sector,
+        int $sector,
         string $collaborator,
         string $ramal
     ): Contact
