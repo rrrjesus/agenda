@@ -130,7 +130,7 @@ class Dashboard extends Controller
             );
 
             if($dash->register($contact)){
-                $json['redirect'] = url("/dashboard/contato");
+                $json['redirect'] = url("/dashboard/cadastrar-contato");
             } else {
                 $json['message'] = $dash->message()->render();
             }
@@ -141,7 +141,7 @@ class Dashboard extends Controller
         $head = $this->seo->render(
             "Cadastro de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/dashboard/contato"),
+            url("/dashboard/cadastrar-contato"),
             theme("/assets/images/share.jpg")
         );
 
@@ -178,7 +178,7 @@ class Dashboard extends Controller
                 );
 
                 if($dash->updated($contact)){
-                    $json['redirect'] = url("/dashboard/agenda");
+                    $json['redirect'] = url("/dashboard/listar-contatos");
                 } else {
                     $json['message'] = $dash->message()->render();
                 }
@@ -193,7 +193,7 @@ class Dashboard extends Controller
         $head = $this->seo->render(
             "Edição de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/dashboard/contato"),
+            url("/dashboard/cadastrar-contato"),
             theme("/assets/images/share.jpg")
         );
 
