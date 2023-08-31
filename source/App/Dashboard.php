@@ -26,6 +26,7 @@ class Dashboard extends Controller
        // var_dump((new Contact())->findByRamal("3424"));
         //var_dump((new Contact())->findByRamal(3005));
         //var_dump((new Sector())->findyBySector("ABAST")->id);
+
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
