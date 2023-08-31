@@ -273,8 +273,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 0 0 auto;
-    width: 50%;
+    /*flex: 0 0 auto;*/
+    /*width: 50%;*/
 }
 
 /*logo*/
