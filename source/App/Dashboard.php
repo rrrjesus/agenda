@@ -179,6 +179,7 @@ class Dashboard extends Controller
                     $data["ramal"]
                 );
 
+                //
                 if($dash->updated($contact)){
                     $json['redirect'] = url("/dashboard/listar-contatos");
                 } else {
