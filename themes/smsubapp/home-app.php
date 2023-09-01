@@ -13,11 +13,11 @@
             <tr>
                 <th class="text-center">EDITAR</th>
                 <th class="text-center">NOME</th>
-                <th class="text-center">RAMAL</th>
-                <th class="text-center">EXCLUIR</th>
-                <th class="text-center">NOME</th>
-                <th class="text-center">RAMAL</th>
-                <th class="text-center">EXCLUIR</th>
+                <th class="text-center">E-MAIL</th>
+                <th class="text-center">STATUS</th>
+                <th class="text-center">FOTO</th>
+                <th class="text-center">CRIADO</th>
+                <th class="text-center">ALTERADO</th>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +27,14 @@
                     <td class="text-center"><?=$listausers->first_name." ".$listausers->last_name?></td>
                     <td class="text-center"><?=$listausers->email?></td>
                     <td class="text-center"><?=$listausers->status?></td>
-                    <td class="text-center"><?=$listausers->foto?></td>
+                    <td class="text-center">
+                        <?php
+                            if(!empty($listausers->foto)):
+                                echo $listausers->foto;
+                            else:
+                                echo $listausers->id;
+                            endif;
+                        ?></td>
                     <td class="text-center"><?=$listausers->created_at?></td>
                     <td class="text-center"><?=$listausers->updated_at?></td>
                 </tr>

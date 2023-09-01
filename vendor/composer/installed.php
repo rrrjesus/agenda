@@ -3,7 +3,7 @@
         'name' => 'rrrjesus/agenda',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'b28879bd07fd106c83b604d1e11614946cd9b700',
+        'reference' => '8d611d45ec2fc934e2b6816c1aaea490087f3a76',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -121,7 +121,7 @@
         'rrrjesus/agenda' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'b28879bd07fd106c83b604d1e11614946cd9b700',
+            'reference' => '8d611d45ec2fc934e2b6816c1aaea490087f3a76',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

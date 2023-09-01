@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/rodsmvc.iml" filepath="$PROJECT_DIR$/.idea/rodsmvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smsub.iml" filepath="$PROJECT_DIR$/.idea/smsub.iml" />
     </modules>
   </component>
 </project>

@@ -43,7 +43,7 @@
                         <a class="btn btn-success link-light icon-user dropdown-toggle" title="Entrar" data-bs-toggle="dropdown" aria-expanded="false"
                            href="<?= url("/entrar"); ?>"><?=$user->functional_record?></a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item icon-phone" title="Site" href="<?= url("/contatos"); ?>"> Agenda</a></li>
+                            <li><a class="dropdown-item icon-phone" title="Site" href="<?= url("/dashboard"); ?>"> Painel</a></li>
                             <li><a class="dropdown-item icon-user" href="#">Perfil</a></li>
                             <li><a class="dropdown-item icon-sign-out" href="<?= url("/dashboard/sair"); ?>">Sair</a></li>
                         </ul>

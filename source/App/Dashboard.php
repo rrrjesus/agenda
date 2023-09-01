@@ -121,6 +121,7 @@ class Dashboard extends Controller
                 echo json_encode($json);
                 return;
             }
+
             $dataSector = (new Sector())->findyBySector($data["sector"])->id;
             $dash = new Panel();
             $contact = new Contact();

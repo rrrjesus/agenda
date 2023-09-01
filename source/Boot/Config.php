@@ -6,7 +6,7 @@
 define("CONF_DB_HOST", "10.23.237.79");  //10.23.237.79
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
-define("CONF_DB_NAME", "agendav2");
+define("CONF_DB_NAME", "smsub");
 
 /**
  * PROJECT URLs

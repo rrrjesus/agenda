@@ -37,7 +37,7 @@
                 <div class="row justify-content-lg-center">
                     <div class="col-lg-4">
                         <label for="inputRamal" class="col-lg-3 col-form-label-lg"><i class="fas fa-contact-card"></i>RAMAL</label>
-                        <input data-toggle="tooltip" value="<?=$edit->ramal?>" title="DIGITE O RAMAL" class="form-control form-control-lg ramal" type="text" name="ramal" placeholder="3000:"/>
+                        <input data-toggle="tooltip" maxlength="4" value="<?=$edit->ramal?>" title="DIGITE O RAMAL" class="form-control form-control-lg ramal" type="number" name="ramal" placeholder="3000:"/>
                     </div>
                 </div>
 
