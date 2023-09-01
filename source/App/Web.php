@@ -56,7 +56,7 @@ class Web extends Controller
     public function about(): void
     {
         $head = $this->seo->render(
-            "Descubra o " . CONF_SITE_NAME . " - " . CONF_SITE_DESC ,
+            CONF_SITE_NAME . " - " . CONF_SITE_DESC ,
             CONF_SITE_DESC,
             url("/sobre"),
             theme("/assets/images/share.jpg")

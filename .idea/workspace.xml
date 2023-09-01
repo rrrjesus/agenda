@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd55b451-ac54-4362-b6a8-428243a6f1ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rodsmvc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/smsub.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/App/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/App/Web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/Boot/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Boot/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/smsubapp/contact-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/contact-edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/smsubapp/contact-register.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/contact-register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/smsubapp/home-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/home-app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/smsubweb/_theme.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/_theme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +157,7 @@
       <workItem from="1693542214270" duration="100000" />
       <workItem from="1693542315414" duration="150000" />
       <workItem from="1693560423970" duration="539000" />
-      <workItem from="1693561024781" duration="1169000" />
+      <workItem from="1693561024781" duration="1911000" />
     </task>
     <servers />
   </component>

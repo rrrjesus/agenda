@@ -20,7 +20,7 @@ define("CONF_URL_ADMIN", "/dashboard");
  */
 define("CONF_SITE_NAME", "SMSUB");
 define("CONF_SITE_TITLE", "AGENDA");
-define("CONF_SITE_DESC", "A Coordenação de Tecnologia da Informação – COTI ....");
+define("CONF_SITE_DESC", "Agenda SMSUB");
 define("CONF_SITE_LANG", "pt_BR");
 define("CONF_SITE_DOMAIN", "agenda");
 define("CONF_SITE_EMAIL", "cotisuporte@smsub.prefeitura.sp.gov.br");

@@ -1,7 +1,7 @@
 <?php
     $user = (new \Source\Models\Auth())->user();
 ?>
-
+<!-- SMSUB AGENDA -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,18 +39,16 @@
                 <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Contatos</a>
                 <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
                 <a class="link transition radius" title="Sobre" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
-                <?php if(!empty($user->id)):?>
-                        <a class="btn btn-success link-light icon-user dropdown-toggle" title="Entrar" data-bs-toggle="dropdown" aria-expanded="false"
-                           href="<?= url("/entrar"); ?>"><?=$user->functional_record?></a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item icon-phone" title="Site" href="<?= url("/dashboard"); ?>"> Painel</a></li>
-                            <li><a class="dropdown-item icon-user" href="#">Perfil</a></li>
-                            <li><a class="dropdown-item icon-sign-out" href="<?= url("/dashboard/sair"); ?>">Sair</a></li>
-                        </ul>
-                <?php else:?>
-                    <a class="link login transition radius icon-sign-in" title="Entrar"
-                        href="<?= url("/entrar"); ?>">Entrar</a>
-                <?php endif;?>
+            <?php if(!empty($user->id)):?>
+                <a class="btn btn-success link-light icon-user dropdown-toggle" title="Entrar" data-bs-toggle="dropdown" aria-expanded="false" href="<?= url("/entrar"); ?>"><?=$user->functional_record?></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item icon-phone" title="Site" href="<?= url("/dashboard"); ?>"> Painel</a></li>
+                    <li><a class="dropdown-item icon-user" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item icon-sign-out" href="<?= url("/dashboard/sair"); ?>">Sair</a></li>
+                </ul>
+            <?php else:?>
+                <a class="link login transition radius icon-sign-in" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
+            <?php endif;?>
             </div>
         </nav>
     </div>
@@ -84,16 +82,20 @@
 
             <article class="main_footer_content_item">
                 <h2>Mais:</h2>
-                <a class="link transition radius" title="Home" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Agenda</a>
-                <a class="link transition radius" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
-                <a class="link transition radius" title="Entrar" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Home" href="<?= url(); ?>">Home</a>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" href="<?= url("/contatos"); ?>">Contatos</a>
+            <?php if(!empty($user->id)):?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Painel" href="<?= url("/dashboard"); ?>">Painel</a>
+            <?php else: ?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
+            <?php endif;?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
             </article>
 
             <article class="main_footer_content_item">
                 <h2>Contato:</h2>
                 <p class="icon-phone"><b>Telefone:</b><br> +55 11 4934-3131</p>
-                <p class="icon-envelope pb-1"><b>Email:</b><a class="link transition radius" title="e-mail suporte"
+                <p class="icon-envelope pb-1"><b>Email:</b><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="e-mail do suporte"
                     href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a> </p>
                 <p class="icon-map-marker"><b>Endereço:</b><br>
                     <?=CONF_SITE_ADDR_STREET.", ".CONF_SITE_ADDR_NUMBER." - ".CONF_SITE_ADDR_COMPLEMENT." - ".CONF_SITE_ADDR_NEIGHBORHOOD." - ".CONF_SITE_ADDR_CITY?></p>
@@ -102,15 +104,15 @@
             <article class="main_footer_content_item social">
                 <h2>Social:</h2>
                 <a target="_blank" class="icon-facebook"
-                   href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" title="CafeControl no Facebook">/SMSUB</a>
+                   href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook">/SMSUB</a>
                 <a target="_blank" class="icon-instagram"
-                   href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" title="CafeControl no Instagram">@smsub</a>
+                   href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram">@smsub</a>
                 <a target="_blank" class="icon-youtube" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
-                   title="SMSUB no YouTube">/SMSUB</a>
+                   data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube">/SMSUB</a>
             </article>
         </section>
 
-        <p class="termos text-center p-3">
+        <p data-bs-toggle="tooltip" data-bs-placement="left" title=Termos da "<?=CONF_SITE_DESC?>" class="termos text-center p-3">
             &copy; 2023, SMSUB todos os direitos reservados
         </p>
     </div>
@@ -122,3 +124,5 @@
 
 </body>
 </html>
+
+<!-- Desenvolvido por Rodolfo R. R. de Jesus - rrrjesus@smsub.prefeitura.sp.gov.br -->

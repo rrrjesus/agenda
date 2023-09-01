@@ -78,15 +78,18 @@ $user = (new \Source\Models\Auth())->user();
 
             <article class="main_footer_content_item">
                 <h2>Mais:</h2>
-                <a class="link transition radius" data-to title="Site" href="<?= url(); ?>">Home</a>
-                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>">Contatos</a>
-                <a class="link transition radius" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Home" href="<?= url(); ?>">Home</a>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" href="<?= url("/contatos"); ?>">Contatos</a>
+                <?php if(empty($user->id)):?>
+                    <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Painel" href="<?= url("/dashboard"); ?>">Painel</a>
+                <?php endif;?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
             </article>
 
             <article class="main_footer_content_item">
                 <h2>Contato:</h2>
                 <p class="icon-phone"><b>Telefone:</b><br> +55 11 4934-3131</p>
-                <p class="icon-envelope pb-1"><b>Email:</b><a class="link transition radius" title="e-mail suporte"
+                <p class="icon-envelope pb-1"><b>Email:</b><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="e-mail do suporte"
                                                               href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a> </p>
                 <p class="icon-map-marker"><b>Endereço:</b><br>
                     <?=CONF_SITE_ADDR_STREET.", ".CONF_SITE_ADDR_NUMBER." - ".CONF_SITE_ADDR_COMPLEMENT." - ".CONF_SITE_ADDR_NEIGHBORHOOD." - ".CONF_SITE_ADDR_CITY?></p>
@@ -95,16 +98,16 @@ $user = (new \Source\Models\Auth())->user();
             <article class="main_footer_content_item social">
                 <h2>Social:</h2>
                 <a target="_blank" class="icon-facebook"
-                   href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" title="CafeControl no Facebook">/SMSUB</a>
+                   href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook">/SMSUB</a>
                 <a target="_blank" class="icon-instagram"
-                   href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" title="CafeControl no Instagram">@smsub</a>
+                   href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram">@smsub</a>
                 <a target="_blank" class="icon-youtube" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
-                   title="SMSUB no YouTube">/SMSUB</a>
+                   data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube">/SMSUB</a>
             </article>
         </section>
 
-        <p class="termos text-center p-3">
-            &copy; 2023, SMSUB todos os direitos reservados
+        <p data-bs-toggle="tooltip" data-bs-placement="left" title=Termos da "<?=CONF_SITE_DESC?>" class="termos text-center p-3">
+        &copy; 2023, SMSUB todos os direitos reservados
         </p>
     </div>
 </footer>
