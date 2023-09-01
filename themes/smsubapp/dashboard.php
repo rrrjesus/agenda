@@ -27,7 +27,7 @@ $user = (new \Source\Models\Auth())->user();
     <div class="container">
         <div class="main_header_logo">
             <div class="main_header_logo">
-                <h1><a class="icon icon-leanpub icon-notext transition" title="Painel" href="<?= url("app"); ?>"> <strong>PAINEL</strong> SMSUB</a></h1>
+                <h1><a class="icon icon-leanpub icon-notext transition" title="Painel" href="<?= url("dashboard"); ?>"> <strong>PAINEL</strong> SMSUB</a></h1>
             </div>
         </div>
 
