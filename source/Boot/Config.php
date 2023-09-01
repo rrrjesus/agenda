@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
-define("CONF_DB_HOST", "10.23.237.79");  //10.23.237.79
+define("CONF_DB_HOST", "10.23.237.79");
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
 define("CONF_DB_NAME", "agendav2");
@@ -20,7 +20,7 @@ define("CONF_URL_ADMIN", "/dashboard");
  */
 define("CONF_SITE_NAME", "SMSUB");
 define("CONF_SITE_TITLE", "AGENDA");
-define("CONF_SITE_DESC", "Secretaria Municipal das Subprefeituras");
+define("CONF_SITE_DESC", "A Coordenação de Tecnologia da Informação – COTI ....");
 define("CONF_SITE_LANG", "pt_BR");
 define("CONF_SITE_DOMAIN", "agenda");
 define("CONF_SITE_EMAIL", "cotisuporte@smsub.prefeitura.sp.gov.br");
@@ -91,17 +91,17 @@ define("CONF_IMAGE_QUALITY", ["jpg" => 75, "png" => 5]);
 /**
  * MAIL
  */
-//define("CONF_MAIL_HOST", "smtp.sendgrid.net");
-//define("CONF_MAIL_PORT", "587");
-//define("CONF_MAIL_USER", "apikey");
-//define("CONF_MAIL_PASS", "");
-//define("CONF_MAIL_SENDER", ["name" => "SMSUB - COTI", "address" => "@gmail.com"]);
-//define("CONF_MAIL_SUPORT", "@gmail.com");
-//define("CONF_MAIL_OPTION_LANG", "br");
-//define("CONF_MAIL_OPTION_HTML", true);
-//define("CONF_MAIL_OPTION_AUTH", true);
-//define("CONF_MAIL_OPTION_SECURE", "tls");
-//define("CONF_MAIL_OPTION_CHARSET", "utf-8");
+define("CONF_MAIL_HOST", "smtp.sendgrid.net");
+define("CONF_MAIL_PORT", "587");
+define("CONF_MAIL_USER", "apikey");
+define("CONF_MAIL_PASS", "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");
+define("CONF_MAIL_SENDER", ["name" => "SMSUB - COTI", "address" => "cidinha.romaioli@gmail.com"]);
+define("CONF_MAIL_SUPORT", "cidinha.romaioli@gmail.com");
+define("CONF_MAIL_OPTION_LANG", "br");
+define("CONF_MAIL_OPTION_HTML", true);
+define("CONF_MAIL_OPTION_AUTH", true);
+define("CONF_MAIL_OPTION_SECURE", "tls");
+define("CONF_MAIL_OPTION_CHARSET", "utf-8");
 
 /**
  * MESSAGE
