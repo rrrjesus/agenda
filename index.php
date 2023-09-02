@@ -44,6 +44,8 @@ $route->get("/obrigado/{email}", "Web:success");
  * APP
  */
 $route->group("/dashboard");
+$route->get("/icones","Dashboard:iconesBootstrap");
+$route->get("/navbars","Dashboard:navbarsBootstrap");
 $route->get("/", "Dashboard:homeApp");
 $route->get("/listar-contatos", "Dashboard:contactApp");
 $route->get("/cadastrar-contato", "Dashboard:register");

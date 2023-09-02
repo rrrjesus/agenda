@@ -1,12 +1,10 @@
 
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<section class="contact_page">
-    <div class="contact_page_content content">
-        <header class="contact_header text-center">
-            <h1>Agenda Inteligente SMSUB</h1>
-            <p>Na barra <strong>Pesquisar</strong> cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente</p>
-        </header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h6 class="display-6 fw-normal text-body-emphasis">Agenda Inteligente SMSUB</h6>
+            <p class="fs-6 text-body-secondary">Na barra <strong>Pesquisar</strong> cada espaço aplicado interliga as palavras digitadas para a pesquisa inteligente</p>
+        </div>
 
         <div class="container-fluid">
             <div class="d-flex justify-content-center">
@@ -32,6 +30,4 @@
             </div>
         </div>
         </div>
-
-</section>
 

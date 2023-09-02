@@ -58,6 +58,36 @@ class Dashboard extends Controller
             ]);
     }
 
+    public function iconesBootstrap()
+    {
+        $head = $this->seo->render(
+            "Icones - " . CONF_SITE_NAME ,
+            "Icones do Sistema",
+            url("/icones"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("icones",
+            [
+                "head" => $head
+            ]);
+    }
+
+    public function navbarsBootstrap()
+    {
+        $head = $this->seo->render(
+            "Navbars - " . CONF_SITE_NAME ,
+            "Navegador do Sistema",
+            url("/icones"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("navbar",
+            [
+                "head" => $head
+            ]);
+    }
+
 
     /**
      * SITE HOME

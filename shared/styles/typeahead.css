@@ -10,7 +10,7 @@
     white-space: nowrap;
     background: none;
     border: 0;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .tt-suggestion:focus, .dropdown-item:hover, span.twitter-typeahead .tt-suggestion:hover {
@@ -46,7 +46,7 @@ span.twitter-typeahead {
     top: 2.375rem !important; }
 
 .tt-hint {
-    font-size: 1.25rem;
+    font-size: 1rem;
     display: block;
     width: 100%;
     -moz-padding-start: calc(0.75rem - 3px);
@@ -64,7 +64,7 @@ span.twitter-typeahead {
     -moz-appearance: none;
     appearance: none;
     position: absolute;
-    min-height: calc(1.8rem + 1rem + 2px);
+    min-height: calc(1.3rem + 1rem + 2px);
 }
 
 .tt-hint:disabled, .tt-hint[readonly] {
@@ -74,7 +74,7 @@ span.twitter-typeahead {
 
 .tt-menu {
     text-align: left !important;
-    font-size: 1.25rem;
+    font-size: 1rem;
     display: block;
     width: 100%;
     -moz-padding-start: calc(0.75rem - 3px);
@@ -94,7 +94,7 @@ span.twitter-typeahead {
 }
 
 .tt-input {
-    font-size: 1.25rem;
+    font-size: 1rem;
     display: block;
     width: 100%;
     -moz-padding-start: calc(0.75rem - 3px);

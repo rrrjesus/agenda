@@ -15,36 +15,42 @@
 
     <div class="col-md-12 text-center">;
 
-                <div class="ajax_response"><?=flash();?></div>
                     <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-registers" action="<?=url("/dashboard/cadastrar-contato")?>" method="post" enctype="multipart/form-data">
 
                         <?=csrf_input();?>
 
-                        <div class="row justify-content-lg-center mb-3">
-                            <div class="col-lg-4">
-                                <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="icon-user-plus"></i>SETOR</label>
-
-                                <input data-toggle="tooltip" title="DIGITE O SETOR" class="form-control form-control-lg sector" type="text" name="sector" placeholder="COTI"/>
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-6">
+                                <?=flash();?>
                             </div>
                         </div>
 
-                        <div class="row justify-content-lg-center mb-2">
-                            <div class="col-lg-4">
-                                <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="fas fa-user-plus"></i> NOME</label>
-                                <input data-toggle="tooltip" title="DIGITE O NOME" class="form-control form-control-lg text-center" type="text" name="collaborator" placeholder="Primeiro nome:"/>
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-6">
+                                <strong><label for="inputSector" class="col-3 col-form-label"><i class="fas fa-table"></i> SETOR</label></strong>
+
+                                <input data-toggle="tooltip" title="DIGITE O SETOR" class="form-control form-control sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
                             </div>
                         </div>
 
-                        <div class="row justify-content-lg-center">
-                            <div class="col-lg-4">
-                                <label for="inputSector" class="col-lg-3 col-form-label-lg"><i class="fas fa-contact-card"></i>RAMAL</label>
-                                <input data-toggle="tooltip" title="DIGITE O RAMAL" maxlength="4" class="form-control form-control-lg ramal" type="number" name="ramal" placeholder="3000:"/>
+                        <div class="row justify-content-center mb-2">
+                            <div class="col-6">
+                                <strong><label for="inputSector" class="col-3 col-form-label"><i class="fas fa-user-plus"></i> NOME</label></strong>
+                                <input data-toggle="tooltip" title="DIGITE O NOME" class="form-control form-control" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
                             </div>
                         </div>
 
-                        <div class="row justify-content-lg-center mb-3">
-                            <div class="col-lg-6">
-                            <button data-toggle="tooltip" title="CRIAR CONTATO" class="auth_form_btn transition gradient gradient-red gradient-hover">Criar Contato</button>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <strong><label  for="inputSector" class="col-3 col-form-label"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
+                                <input data-toggle="tooltip" title="DIGITE O RAMAL" maxlength="4" class="form-control form-control ramal" type="number" name="ramal" placeholder="DIGITE O SETOR"/>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mb-3 mt-3">
+                            <div class="col-md-3">
+                                <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="SALVAR CONTATO" type="submit" class="btn btn-outline-success me-4"><strong><i class="fas fa-"></i> SALVAR</strong></button>
+                                <button data-bs-toggle="tooltip" title="CRIAR CONTATO" class="btn btn-outline-info">LISTA</button>
                             </div>
                         </div>
                 </form>
