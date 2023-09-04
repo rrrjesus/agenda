@@ -38,7 +38,7 @@ class Dashboard extends Controller
     /**
      * SITE HOME
      */
-    public function homeApp(): void
+    public function homeDash(): void
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
@@ -50,7 +50,7 @@ class Dashboard extends Controller
         $users = (new User())->find()->fetch(true);
         //$user_session = (new Auth())->user();
 
-        echo $this->view->render("home-app",
+        echo $this->view->render("home-dash",
             [
                 "head" => $head,
                 "user_session" => Auth::user(),
@@ -58,6 +58,7 @@ class Dashboard extends Controller
             ]);
     }
 
+<<<<<<< Updated upstream
     public function iconesBootstrap()
     {
         $head = $this->seo->render(
@@ -85,6 +86,17 @@ class Dashboard extends Controller
         echo $this->view->render("navbar",
             [
                 "head" => $head
+=======
+    public function userProfile()
+    {
+        $user = (new Auth())->user();
+
+        echo $this->view->render("user-profile",
+
+            [
+                "head" => $head,
+                "user" => $user
+>>>>>>> Stashed changes
             ]);
     }
 

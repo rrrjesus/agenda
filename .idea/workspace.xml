@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd55b451-ac54-4362-b6a8-428243a6f1ad" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/themes/smsubweb/theme.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -20,6 +21,15 @@
       <change beforePath="$PROJECT_DIR$/themes/smsubweb/about.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/about.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/smsubweb/assets/css/message.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/smsubweb/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/assets/css/style.css" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/themes/smsubapp/user-profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/App/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/assets/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/assets/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/assets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/smsubapp/home-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubapp/home-dash.php" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/themes/smsubweb/assets/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/assets/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/smsubweb/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/smsubweb/assets/style.css" afterDir="false" />
     </list>
@@ -90,7 +100,11 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+<<<<<<< Updated upstream
     "last_opened_file_path": "C:/xampp/htdocs/agenda/themes/smsubweb",
+=======
+    "last_opened_file_path": "C:/xampp/htdocs/agenda/themes/smsubapp",
+>>>>>>> Stashed changes
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -103,11 +117,19 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< Updated upstream
       <recent name="C:\xampp\htdocs\agenda\themes\smsubweb" />
       <recent name="C:\xampp\htdocs\smsubcoti\shared\styles" />
       <recent name="C:\xampp\htdocs\smsubcoti\shared\styles\bootstrap\bootstrap4" />
       <recent name="C:\xampp\htdocs\smsubcoti\shared\scripts\jquery" />
       <recent name="C:\xampp\htdocs\smsubcoti\shared\scripts" />
+=======
+      <recent name="C:\xampp\htdocs\agenda\themes\smsubapp" />
+      <recent name="C:\xampp\htdocs\agenda\shared\styles\fonts" />
+      <recent name="C:\xampp\htdocs\smsubcoti\shared\styles" />
+      <recent name="C:\xampp\htdocs\smsubcoti\shared\styles\bootstrap\bootstrap4" />
+      <recent name="C:\xampp\htdocs\smsubcoti\shared\scripts\jquery" />
+>>>>>>> Stashed changes
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\smsubcoti\shared\styles" />
