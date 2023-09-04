@@ -1,12 +1,15 @@
-<?php $user = (new \Source\Models\Auth())->user(); ?>
-
+<?php
+    $user = (new \Source\Models\Auth())->user();
+?>
 <!-- SMSUB AGENDA -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <?= $head;?> <!-- HEAD -->
+
+    <?= $head;?>
+
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
     <link rel="stylesheet" href="<?= theme("/assets/style.css"); ?>"/>
 </head>
@@ -24,16 +27,17 @@
     <div class="container">
         <div class="main_header_logo">
             <div class="main_header_logo">
-                <a class="navbar-brand text-light fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Agenda SMSUB" href="<?= url(); ?>"><i class="transition text-light bi bi-book"></i> <strong>SMSUB</strong> AGENDA</a>
+                <h1><a class="icon icon-leanpub icon-notext transition" title="Home" href="<?= url(); ?>"> <strong>SMSUB</strong> AGENDA</a></h1>
             </div>
         </div>
 
         <nav class="main_header_nav">
-            <i class="main_header_nav_mobile j_menu_mobile_open icon-menu radius transition bi bi-justify"></i>
+            <span class="main_header_nav_mobile j_menu_mobile_open icon-menu icon-notext radius transition"></span>
             <div class="main_header_nav_links j_menu_mobile_tab">
-                <i class="main_header_nav_mobile_close j_menu_mobile_close bi bi-x-lg icon-notext transition"></i>
-                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url(); ?>"><i class="bi bi-house-door"></i> Home</a>
-                <a class="link transition radius display-6" title="Contatos" href="<?= url("/contatos"); ?>"><i class="bi bi-telephone-x"></i> Contatos</a>
+
+                <span class="main_header_nav_mobile_close j_menu_mobile_close icon-error icon-notext transition"></span>
+                <a class="link transition radius" title="Home" href="<?= url(); ?>"><i class="bi bi-house-door"></i> Home</a>
+                <a class="link transition radius" title="Home" href="<?= url("/contatos"); ?>"><i class="bi bi-telephone-x"></i> Contatos</a>
                 <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
                 <a class="link transition radius" title="Sobre" target="_blank" href="http://<?=CONF_DB_HOST?>/agendav1/">Antiga</a>
             <?php if(!empty($user->id)):?>
@@ -50,6 +54,8 @@
         </nav>
     </div>
 </header>
+
+
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
@@ -110,69 +116,59 @@
 <?php if ($this->section("optout")): ?>
     <?= $this->section("optout"); ?>
 <?php else: ?>
-
-        <div class="row justify-content-center text-center mt-5 mb-5">
-            <div class="col-md-4">
-                <i class="icon-dark bi bi-book-half"></i>
-                <p class="fw-bolder fs-3" style="color: #555555">Comece a utilizar a agenda inteligente agora mesmo</p>
-                <p class="fs-5">É rápida, simples e funcional!</p>
-            </div>
+    <article class="footer_optout">
+        <div class="footer_optout_content content">
+            <span class="icon icon-leanpub icon-notext icon-notext"></span>
+            <h2>Comece a utilizar a agenda inteligente agora mesmo</h2>
+            <p>É rápida, simples e funcional!</p>
         </div>
+    </article>
 <?php endif; ?>
 
-<footer class="bd-footer py-5 mt-5 bg-light">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-3 mb-3">
-                <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
-                    <i class="icon bi bi-book py-1 me-3"></i>
-                    <span class="fw-bold fs-6">SMSUB AGENDA</span>
-                </a>
-                <ul class="list-unstyled small">
-                    <li class="mb-2">Desenvolvido com todo amor por Rodolfo R. R. de Jesus <i class="bi bi-github"></i><a href="https://github.com/rrrjesus/"> rrrjesus</a> e equipe SMSUB-COTI.</li>
-                    <li class="mb-2">Código licenciado <a href="https://github.com/rrrjesus/agenda/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a></li>
-                    <li class="mb-2">Versão Atual v2.0.2.</li>
-                    <li class="mb-2">Código Fonte <a href="https://github.com/rrrjesus/agenda" target="_blank" rel="noopener"><i class="bi bi-github"></i> rrrjesus/agenda</a>.</li>
-                </ul>
-            </div>
+<!--FOOTER-->
+<footer class="main_footer">
+    <div class="container content">
+        <section class="main_footer_content">
+            <article class="main_footer_content_item">
+                <h2>Sobre:</h2>
+                <a class="link transition radius" title="Sobre" href="<?= url("/sobre"); ?>">Sobre</a>
+            </article>
 
-            <div class="col-6 col-lg-2 mb-3">
-                <h5>Mais</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Home" href="<?= url(); ?>">Home</a></li>
-                    <li class="mb-2"><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" href="<?= url("/contatos"); ?>">Contatos</a></li>
-                    <?php if(!empty($user->id)):?>
-                        <li class="mb-2"><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Painel" href="<?= url("/dashboard"); ?>">Painel</a></li>
-                    <?php else: ?>
-                        <li class="mb-2"><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a></li>
-                    <?php endif;?>
-                </ul>
-            </div>
+            <article class="main_footer_content_item">
+                <h2>Mais:</h2>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Home" href="<?= url(); ?>">Home</a>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" href="<?= url("/contatos"); ?>">Contatos</a>
+            <?php if(!empty($user->id)):?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Painel" href="<?= url("/dashboard"); ?>">Painel</a>
+            <?php else: ?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a>
+            <?php endif;?>
+                <a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" target="_blank" href="http://10.23.237.79/agendav1/">Antiga</a>
+            </article>
 
-            <div class="col-12 col-lg-4 mb-3">
-                <h5>Contato:</h5>
-                <ul class="list-unstyled small">
-                    <li class="mb-2"><p><b>Telefone:</b><br> +55 11 4934-3131</p></li>
-                    <li class="mb-2"><p><b>E-mail:</b>
-                        <?=CONF_SITE_EMAIL?></p></li>
-                    <li class="mb-2"><p><b>Endereço:</b><br> Rua São Bento, 405 / Rua Líbero Badaró, 504 - Edifício Martinelli - 10º, 23º e 24º andar - Centro - São Paulo</p></li>
-                </ul>
-            </div>
+            <article class="main_footer_content_item">
+                <h2>Contato:</h2>
+                <p class="icon-phone"><b>Telefone:</b><br> +55 11 4934-3131</p>
+                <p class="icon-envelope pb-1"><b>Email:</b><a class="link transition radius" data-bs-toggle="tooltip" data-bs-placement="left" title="e-mail do suporte"
+                    href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a> </p>
+                <p class="icon-map-marker"><b>Endereço:</b><br>
+                    <?=CONF_SITE_ADDR_STREET.", ".CONF_SITE_ADDR_NUMBER." - ".CONF_SITE_ADDR_COMPLEMENT." - ".CONF_SITE_ADDR_NEIGHBORHOOD." - ".CONF_SITE_ADDR_CITY?></p>
+            </article>
 
-            <div class="col-6 col-lg-2 mb-3">
-                <h5>Social:</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a target="_blank" class="transition"
-                        href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook"><i class="icon-redes bi bi-facebook"></i> /SMSUB</a></li>
-                    <li class="mb-2"><a target="_blank" class="icon-instagram"
-                        href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram"><i class="icon-redes bi bi-instagram"></i> @smsub</a></li>
-                    <li class="mb-2"><a target="_blank" class="icon-youtube" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
-                        data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube"><i class="icon-redes bi bi-youtube"></i> /SMSUB</a></li>
-                </ul>
-            </div>
+            <article class="main_footer_content_item social">
+                <h2>Social:</h2>
+                <a target="_blank" class="icon-facebook"
+                   href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook">/SMSUB</a>
+                <a target="_blank" class="icon-instagram"
+                   href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram">@smsub</a>
+                <a target="_blank" class="icon-youtube" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
+                   data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube">/SMSUB</a>
+            </article>
+        </section>
 
-            <p data-bs-toggle="tooltip" data-bs-placement="left" title="Termos da <?=CONF_SITE_DESC?>" class="termos text-center p-3"> &copy; 2023, SMSUB todos os direitos reservados</p>
-        </div>
+        <p data-bs-toggle="tooltip" data-bs-placement="left" title=Termos da "<?=CONF_SITE_DESC?>" class="termos text-center p-3">
+            &copy; 2023, SMSUB todos os direitos reservados
+        </p>
     </div>
 </footer>
 

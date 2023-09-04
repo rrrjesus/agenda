@@ -38,7 +38,6 @@ if (strpos(url(), "localhost")) {
     $minCssApp->add(__DIR__ . "/../../shared/styles/styles.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/boot.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/bootstrap.min.css");
-    $minCssApp->add(__DIR__ . "/../../shared/styles/docs.css");
     // CSS Datatables Bootstrap 5 Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/dataTables.bootstrap5.min.css");
     // CSS Buttons Datatables Bootstrap 5 Dashboard
@@ -72,6 +71,7 @@ if (strpos(url(), "localhost")) {
     $minJS->add(__DIR__ . "/../../shared/scripts/jquery-ui.js");
     // JS Bootstrap 5
     $minJS->add(__DIR__ . "/../../shared/scripts/bootstrap.bundle.min.js");
+    $minJS->add(__DIR__ . "/../../shared/scripts/color-modes.js");
     // JS Datatables Bootstrap 5
     $minJS->add(__DIR__ . "/../../shared/scripts/jquery.dataTables.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/dataTables.bootstrap5.min.js");
@@ -87,7 +87,6 @@ if (strpos(url(), "localhost")) {
     $minJS->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
 //    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
-    $minJS->add(__DIR__ . "/../../shared/scripts/color-modes.js");
 
     //theme CSS
     $jsDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/assets/js");
@@ -128,7 +127,6 @@ if (strpos(url(), "localhost")) {
     $minJsApp->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
     // JS Typeahead Autocomplete
     $minJsApp->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");
-    $minJsApp->add(__DIR__ . "/../../shared/scripts/color-modes.js");
 
     //theme CSS Dashboard
     $jsDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/js");

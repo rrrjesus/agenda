@@ -273,8 +273,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /*flex: 0 0 auto;*/
-    /*width: 50%;*/
+    flex: 0 0 auto;
 }
 
 /*logo*/
@@ -298,12 +297,11 @@ body {
 .main_header_nav_links .link {
     display: inline-block;
     padding: 6px 12px;
-
     text-decoration: none;
     text-transform: uppercase;
     color: #ffffff;
     font-weight: var(--weight-bold);
-    font-size: var(--font-small);
+    font-size: .85rem;
 }
 
 .main_header_nav_links .link:hover {

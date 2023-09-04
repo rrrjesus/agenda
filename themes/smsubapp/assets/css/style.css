@@ -1,73 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900');
 
-body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.page-link {
-    color: #dc3545;
-}
-
-.pagination {
---bs-link-hover-color: #900c0c;;
-}
-
-.active>.page-link, .page-link.active {
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-
+body {font-family: 'Montserrat', sans-serif;}
+.page-link {color: #dc3545;}
+.pagination {--bs-link-hover-color: #900c0c;}
+.active>.page-link, .page-link.active {background-color: #dc3545;border-color: #dc3545;}
 
 /*DEFAULT LOAD*/
-.ajax_load {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: var(--index-modal);
-}
+.ajax_load {display: none;position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);z-index: var(--index-modal);}
+.ajax_load_box {margin: auto;text-align: center;color: #ffffff;font-weight: var(--weight-bold);text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);}
+.ajax_load_box_circle {border: 16px solid #e3e3e3;border-top: 16px solid var(--hover-color-red);border-radius: 50%;margin: auto;width: 80px;
+    height: 80px;-webkit-animation: spin 1.2s linear infinite;-o-animation: spin 1.2s linear infinite;animation: spin 1.2s linear infinite;}
 
-.ajax_load_box {
-    margin: auto;
-    text-align: center;
-    color: #ffffff;
-    font-weight: var(--weight-bold);
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-}
+@-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}}
 
-.ajax_load_box_circle {
-    border: 16px solid #e3e3e3;
-    border-top: 16px solid var(--hover-color-red);
-    border-radius: 50%;
-    margin: auto;
-    width: 80px;
-    height: 80px;
-
-    -webkit-animation: spin 1.2s linear infinite;
-    -o-animation: spin 1.2s linear infinite;
-    animation: spin 1.2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
+@keyframes spin {0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}}
 
 /*DEFAULT PAGINATOR*/
 .paginator {
@@ -643,7 +591,7 @@ body {
 
 /*opt out*/
 .footer_optout {
-    background: url("../images/footer-bg.jpg") top center no-repeat;
+    /*background: url("../images/footer-bg.jpg") top center no-repeat;*/
     background-size: cover;
     padding-top: 20px;
     margin-top: 40px;
