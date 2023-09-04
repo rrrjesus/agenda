@@ -113,15 +113,15 @@
 
         <div class="row justify-content-center text-center mt-5 mb-5">
             <div class="col-md-4">
-                <i class="icon-dark bi bi-book-half"></i>
-                <p class="fw-bolder fs-3" style="color: #555555">Comece a utilizar a agenda inteligente agora mesmo</p>
+                <i class="bi bi-book-half"></i>
+                <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
                 <p class="fs-5">É rápida, simples e funcional!</p>
             </div>
         </div>
 <?php endif; ?>
 
-<footer class="bd-footer py-5 mt-5 bg-light">
-    <div class="container py-5">
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <div class="row">
             <div class="col-lg-3 mb-3">
                 <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">

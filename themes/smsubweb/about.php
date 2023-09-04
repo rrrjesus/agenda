@@ -1,6 +1,6 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row justify-content-center col-md-12">
         <div class="col-md-8 text-center mt-5">
             <p class="fs-2">É rápida, simples e funcional!</p>

@@ -58,7 +58,6 @@ class Dashboard extends Controller
             ]);
     }
 
-<<<<<<< Updated upstream
     public function iconesBootstrap()
     {
         $head = $this->seo->render(
@@ -77,7 +76,7 @@ class Dashboard extends Controller
     public function navbarsBootstrap()
     {
         $head = $this->seo->render(
-            "Navbars - " . CONF_SITE_NAME ,
+            "Navbars - " . CONF_SITE_NAME,
             "Navegador do Sistema",
             url("/icones"),
             theme("/assets/images/share.jpg")
@@ -86,7 +85,9 @@ class Dashboard extends Controller
         echo $this->view->render("navbar",
             [
                 "head" => $head
-=======
+            ]);
+    }
+
     public function userProfile()
     {
         $user = (new Auth())->user();
@@ -96,7 +97,6 @@ class Dashboard extends Controller
             [
                 "head" => $head,
                 "user" => $user
->>>>>>> Stashed changes
             ]);
     }
 
