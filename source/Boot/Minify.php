@@ -110,6 +110,7 @@ if (strpos(url(), "localhost")) {
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery-ui.js");
     // JS Bootstrap 5 Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/bootstrap.bundle.min.js");
+    $minJsApp->add(__DIR__ . "/../../shared/scripts/color-modes.js");
     // JS Datatables Bootstrap 5 Dashboard
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.dataTables.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.bootstrap5.min.js");
