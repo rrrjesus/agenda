@@ -9,6 +9,7 @@
     <?= $head;?> <!-- HEAD -->
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
     <link rel="stylesheet" href="<?= theme("/assets/style.css"); ?>"/>
+
 </head>
 <body>
 
@@ -126,7 +127,7 @@
                 <hr class="d-lg-none">
                 <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url(); ?>" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Home');">Home</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url(); ?>" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Home');">Home</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/contatos")?>" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Contatos');">Contatos</a>
@@ -299,12 +300,12 @@
             <div class="col-6 col-lg-2">
                 <h5>Social:</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a target="_blank" class="transition"
-                        href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook"><i class="icon-redes bi bi-facebook"></i> /SMSUB</a></li>
-                    <li class="mb-2"><a target="_blank" class="icon-instagram"
-                        href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram"><i class="icon-redes bi bi-instagram"></i> @smsub</a></li>
-                    <li class="mb-2"><a target="_blank" class="icon-youtube" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
-                        data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube"><i class="icon-redes bi bi-youtube"></i> /SMSUB</a></li>
+                    <li class="mb-2"><a target="_blank" class="text-decoration-none text-info fw-bold"
+                        href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook"><i class="bi bi-facebook"></i> /SMSUB</a></li>
+                    <li class="mb-2"><a target="_blank" class="text-decoration-none text-info fw-bold"
+                        href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram"><i class="bi bi-instagram"></i> @SMSUB</a></li>
+                    <li class="mb-2"><a target="_blank" class="text-decoration-none text-info fw-bold" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
+                        data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube"><i class="bi bi-youtube"></i> /SMSUB</a></li>
                 </ul>
             </div>
 
