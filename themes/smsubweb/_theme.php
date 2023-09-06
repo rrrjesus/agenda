@@ -193,7 +193,7 @@
 
 
 <!--CONTENT-->
-<main class="container-xl" id="content">
+<main class="container-xl">
     <?= $this->section("content"); ?>
 </main>
 
@@ -210,7 +210,7 @@
         </div>
 <?php endif; ?>
 
-<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
     <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <div class="row">
             <div class="col-lg-3 mb-3">
@@ -226,7 +226,7 @@
                 </ul>
             </div>
 
-            <div class="col-6 col-lg-2 mb-3">
+            <div class="col-lg-2 mb-3">
                 <h5>Mais</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a class="text-decoration-none text-info fw-bold" data-bs-toggle="tooltip" data-bs-placement="left" title="Home" href="<?= url(); ?>">Home</a></li>
@@ -243,14 +243,14 @@
                 <h5>Contato:</h5>
                 <ul class="list-unstyled small">
                     <li class="mb-2"><p><b>Telefone:</b><br> +55 11 4934-3131</p></li>
-                    <li class="mb-2"><p><b>E-mail:</b>
+                    <li class="mb-2"><p><b>E-mail:</b><br>
                         <a class="text-decoration-none text-info fw-bold" href="mailto:<?=CONF_SITE_EMAIL?>" data-bs-toggle="tooltip" data-bs-placement="left" title="Entrar"><?=CONF_SITE_EMAIL?></a></p></li>
-                    <li class="mb-2"><p><b>Endereço:</b><br><a class="text-decoration-none text-info fw-bold" href="https://www.google.com/maps/place/Condom%C3%ADnio+do+Edif%C3%ADcio+Martinelli/@-23.5455906,-46.6350075,15z/data=!4m6!3m5!1s0x94ce5854575bec47:0xcff6dbd0a9dd6bac!8m2!3d-23.5455906!4d-46.6350075!16s%2Fm%2F047d5rn?entry=ttu">
+                    <li class="mb-2"><p><b>Endereço:</b><br><a class="text-decoration-none text-info fw-bold" target="_blank" href="https://www.google.com/maps/place/Condom%C3%ADnio+do+Edif%C3%ADcio+Martinelli/@-23.5455906,-46.6350075,15z/data=!4m6!3m5!1s0x94ce5854575bec47:0xcff6dbd0a9dd6bac!8m2!3d-23.5455906!4d-46.6350075!16s%2Fm%2F047d5rn?entry=ttu">
                         <i class="bi bi-pin-map-fill"></i> </a> Rua São Bento, 405 / Rua Líbero Badaró, 504 - Edifício Martinelli - 10º, 23º e 24º andar - Centro - São Paulo</p></li>
                 </ul>
             </div>
 
-            <div class="col-6 col-lg-2">
+            <div class="col-lg-2">
                 <h5>Social:</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a target="_blank" class="text-decoration-none text-info fw-bold"
