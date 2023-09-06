@@ -9,9 +9,9 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                <img src="<?=theme("/assets/images/carrossel_1.jpg")?>" width="100%" height="100%">
                 <div class="container">
-                    <div class="carousel-caption text-start">
+                    <div class="carousel-caption">
                         <h1>Example headline.</h1>
                         <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
                         <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>

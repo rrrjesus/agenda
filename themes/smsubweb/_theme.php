@@ -190,10 +190,8 @@
     </nav>
 </header>
 
-
-
 <!--CONTENT-->
-<main class="container-xl">
+<main class="container-xl" style="padding-right: 0;padding-left: 0">
     <?= $this->section("content"); ?>
 </main>
 
