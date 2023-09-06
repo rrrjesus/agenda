@@ -36,7 +36,7 @@
 <header class="navbar navbar-expand-lg bd-navbar sticky-top">
     <nav class="container-xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
         <a class="navbar-brand p-0 me-0 me-lg-2 fw-bold fs-4" href="/" aria-label="Agenda">
-            <i class="bi bi-book-half text-light display-6"></i> SMSUB
+            <img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
         </a>
 
         <div class="d-flex">

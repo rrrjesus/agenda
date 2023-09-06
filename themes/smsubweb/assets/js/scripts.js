@@ -1,5 +1,11 @@
 $(function () {
 
+    //  data-bs-toggle="tooltip" Bootstrap Title
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
     //ajax form
     $("form:not('.ajax_off')").submit(function (e) {
         e.preventDefault();
