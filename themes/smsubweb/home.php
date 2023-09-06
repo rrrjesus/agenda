@@ -50,7 +50,7 @@
     </div>
 
     <div class="container px-4 py-5" id="featured-3">
-        <h2 class="pb-2 border-bottom">Os três pilares do suporte de TI-COTI</h2>
+        <h2 class="pb-2 border-bottom">Os 3 pilares do Suporte de TI COTI</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-success bg-gradient fs-2 mb-3">
@@ -78,7 +78,7 @@
                     <i class="bi bi-telephone-forward mb-3 text-light"></i>
                 </div>
                 <h3 class="fs-2 text-body-emphasis">Ramais COTI</h3>
-                <p>Por fim e não menos importante, existem ramais de atendimento <strong>COTI</strong> na
+                <p>Por fim e não menos importante, os ramais de atendimento <strong>COTI</strong> na
                     <a href="<?=url("/contatos")?>" class="text-decoration-none fw-bold">agenda</a> de <strong>SMSUB</strong>. É só acessar e pesquisar na agenda por
                     <strong>COTI</strong> e aparecerão os ramais de contato com os nomes dos servidores que atenderão os mesmos.</p>
                 <a href="<?=url("/blog/ramais-coti")?>" class="btn btn-primary">Saiba Mais</a>
