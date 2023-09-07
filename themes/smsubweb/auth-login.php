@@ -1,33 +1,31 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<article class="auth">
-    <div class="auth_content container content">
-        <header class="auth_header">
-            <h1>Fazer Login</h1>
-        </header>
+        <div class="form-signin w-100 m-auto">
+            <form action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
+                <div class="ajax_response"><?=flash();?></div>
+                <?=csrf_input();?>
 
-        <form class="auth_form" action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
-            <div class="ajax_response"><?=flash();?></div>
-            <?=csrf_input();?>
-            <label>
-                <div><span class="icon-envelope">Email:</span></div>
-                <input type="email" name="email" value="<?=($cookie ?? null)?>" placeholder="Informe seu e-mail:" required/>
-            </label>
+                <img class="mb-4" width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>" alt="">
+                <h1 class="h3 mb-3 fw-normal">Fazer Login</h1>
 
-            <label>
-                <div class="unlock-alt">
-                    <span class="icon-unlock-alt">Senha:</span>
-                    <span><a title="Recuperar senha" href="<?= url("/recuperar"); ?>">Esqueceu a senha?</a></span>
+                <div class="form-floating">
+                    <input class="form-control" type="email" name="email" value="<?=($cookie ?? null)?>" id="floatingInput"
+                       placeholder="name@example.com" required>
+                    <label for="floatingInput"><i class="bi bi-at"></i> Informe Seu E-mail</label>
                 </div>
-                <input type="password" name="password" placeholder="Informe sua senha:" required/>
-            </label>
+                <div class="form-floating">
+                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <label for="floatingPassword"><i class="bi bi-lock-fill"></i> Informe sua senha</label>
+                </div>
 
-            <label class="check">
-                <input type="checkbox" <?=($cookie ? "checked" : "")?> name="save"/>
-                <span>Lembrar dados?</span>
-            </label>
+                <p><a class="fw-bold text-decoration-none text-info" title="Recuperar senha" href="<?= url("/recuperar"); ?>">Esqueceu a senha?</a></p>
 
-            <button class="auth_form_btn transition gradient gradient-<?=CONF_SITE_BASECOLOR?> gradient-hover">Entrar</button>
-        </form>
-    </div>
-</article>
+                <div class="form-check text-start my-3">
+                    <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" <?=($cookie ? "checked" : "")?> name="save">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Lembrar dados?
+                    </label>
+                </div>
+                <button class="btn w-100 py-2 fw-bold text-light transition gradient gradient-blue gradient-hover" type="submit">Entrar</button>
+            </form>
+        </div>
