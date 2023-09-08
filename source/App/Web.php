@@ -6,9 +6,11 @@ namespace Source\App;
 use Source\Core\Connect;
 use Source\Core\Controller;
 use Source\Models\Auth;
+use Source\Models\Category;
 use Source\Models\Contact;
 use Source\Models\Faq\Channel;
 use Source\Models\Faq\Question;
+use Source\Models\Post;
 use Source\Models\User;
 use Source\Support\Pager;
 
@@ -24,8 +26,6 @@ class Web extends Controller
     {
         //Connect::getInstance();
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME . "/");
-        // var_dump((new Post(true))->find()->fetch()); //Teste de Objeto sem filtro
-        //var_dump((new Auth())->user()->id);
     }
 
     /**
@@ -45,7 +45,11 @@ class Web extends Controller
         echo $this->view->render("home",
             [
                 "head" => $head,
-                "user_session" => Auth::user()
+                "video" => "lDZGl9Wdc7Y",
+                "blog" => (new Post())
+                    ->find()
+                    ->order("post_at DESC")
+                    ->limit(6)->fetch(true)
             ]);
     }
 
@@ -92,6 +96,202 @@ class Web extends Controller
             [
                 "head" => $head,
                 "contact" => $contact
+            ]);
+    }
+
+    /**
+     * SITE BLOG
+     * @param array|null $data
+     * @return void
+     */
+    public function blog(?array $data): void
+    {
+        $head = $this->seo->render(
+            "Blog - " . CONF_SITE_NAME ,
+            "Confira em nosso blog dicas e sacadas de como controlar melhor as suas contas. Vamos tomar um café?",
+            url("/blog"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $blog = (new Post())->find();
+        $pager = new Pager(url("/blog/p/"));
+        $pager->pager($blog->count(), 9, ($data['page'] ?? 1));
+
+        echo $this->view->render("blog",
+            [
+                "head" => $head,
+                "blog" => $blog->limit($pager->limit())->offset($pager->offset())->fetch(true),
+                "paginator" => $pager->render()
+            ]);
+    }
+
+    /**
+     * SITE BLOG CATEGORY
+     * @param array $data
+     * @return void
+     */
+    public function blogCategory(array $data): void
+    {
+        $filterCat = filter_var($data["category"]);
+        $categoryUri = htmlspecialchars($filterCat);
+        $category = (new Category())->findyByUri($categoryUri);
+
+        if(!$category){
+            redirect("/blog");
+        }
+
+        $blogCategory = (new Post())->find("category = :c", "c={$category->id}");
+//        var_dump($blogCategory->fetch(true)); Debugando o link de categorias
+        $page = (!empty($data['page']) && filter_var($data['page'], FILTER_VALIDATE_INT) >= 1 ? $data['page'] : 1);
+        $pager = new Pager(url("/blog/em/{$category->uri}/"));
+        $pager->pager($blogCategory->count(), 9, $page);
+
+        $head = $this->seo->render(
+            "Artigos em {$category->title} - ". CONF_SITE_NAME,
+            $category->description,
+            url("/blog/em/{$category->uri}/{$page}"),
+            ($category->cover ? image($category->cover, 1200, 628) : theme("/assets/images/share.jpg"))
+        );
+
+        echo $this->view->render("blog", [
+            "head" => $head,
+            "title" => "Artigos em {$category->title} - ",
+            "desc" => $category->description,
+            "blog" => $blogCategory
+                ->limit($pager->limit())
+                ->offset($pager->offset())
+                ->order("post_at DESC")
+                ->fetch(true),
+            "paginator" => $pager->render()
+        ]);
+    }
+
+    /**
+     * SITE BLOG CATEGORY
+     * @param array $data
+     * @return void
+     */
+    public function blogAuthor(array $data): void
+    {
+        $authorFilter = filter_var($data["author"]);
+        $authorName = htmlspecialchars($authorFilter);
+        $name = explode("-", $authorName);
+        $first = $name[0];
+        $last = $name[1];
+        $author = (new User())->findyByName($first, $last);
+
+        if(!$author){
+            redirect("/blog");
+        }
+
+        $blogAuthor = (new Post())->find("author = :a", "a={$author->id}");
+        //var_dump($blogAuthor->fetch(true)); // Debugando o link de categorias
+
+        $page = (!empty($data['page']) && filter_var($data['page'], FILTER_VALIDATE_INT) >= 1 ? $data['page'] : 1);
+        $pager = new Pager(url("/blog/por/{$author->first_name}-{$author->last_name}/"));
+        $pager->pager($blogAuthor->count(), 9, $page);
+
+        $head = $this->seo->render(
+            "Artigos por {$author->first_name} {$author->last_name} - ". CONF_SITE_NAME,
+            "Tudo sobre o autor {$author->first_name} {$author->last_name}",
+            url("/blog/por/{$author->first_name}-{$author->last_name}/{$page}"),
+            ($author->photo ? image($author->photo, 1200, 628) : image("/assets/images/share.jpg",200,100))
+        );
+
+        echo $this->view->render("blog", [
+            "head" => $head,
+            "title" => "{$author->first_name} {$author->last_name}",
+            "desc" => $author->about_user,
+            "foto" => ($author->photo ? image($author->photo, 200, 100) : ""),
+            "blog" => $blogAuthor
+                ->limit($pager->limit())
+                ->offset($pager->offset())
+                ->order("post_at DESC")
+                ->fetch(true),
+            "paginator" => $pager->render()
+        ]);
+
+
+    }
+
+    /**
+     * SITE BLOG SEARCH
+     * @return void
+     */
+    public function blogSearch(array $data): void
+    {
+        if (!empty($data['s'])){
+            // sleep(3); Se caso quiser aguardar 3 segundos
+            $search = htmlspecialchars($data['s']);
+            echo json_encode(["redirect" => url("/blog/buscar/{$search}/1")]);
+            return;
+        }
+
+        if(empty($data['terms'])){
+            redirect("/blog");
+        }
+
+        $search = htmlspecialchars($data['terms']);
+        $page = (filter_var($data['page'], FILTER_VALIDATE_INT) >= 1 ? $data['page'] : 1);
+
+        $head = $this->seo->render(
+            "Pesquisa por {$search} - " . CONF_SITE_NAME,
+            "Confira os resultados de sua pesquisa para {$search}",
+            url("/blog/buscar/{$search}/{$page}"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $blogSearch = (new Post())->find("MATCH(title, subtitle) AGAINST(:s)", "s={$search}");
+        //var_dump($post->fetch(true)); Teste de Filtro
+
+        if(!$blogSearch->count()){
+            echo $this->view->render("blog", [
+                "head" => $head,
+                "title" => "PESQUISAR POR: ",
+                "search" => $search
+            ]);
+            return;
+        }
+
+        $pager = new Pager(url("/blog/buscar/{$search}/"));
+        $pager->pager($blogSearch->count(), 9, $page);
+
+        echo $this->view->render("blog", [
+            "head" => $head,
+            "title" => "PESQUISAR POR ,",
+            "search" => $search,
+            "blog" => $blogSearch->limit($pager->limit())->offset($pager->offset())->fetch(true),
+            "paginator" => $pager->render()
+        ]);
+    }
+
+
+    /**
+     * SITE BLOG POST
+     * @param array $data
+     * @return void
+     */
+    public function blogPost(array $data): void
+    {
+        $post = (new Post())->findByUri($data['uri']);
+        if(!$post) {
+            redirect("/404");
+        }
+        $post->views += 1;
+        $post->save();
+
+        $head = $this->seo->render(
+            "{$post->title} - " . CONF_SITE_NAME ,
+            $post->subtitle,
+            url("/blog/{$post->uri}"),
+            image($post->cover, 1200, 628)
+        );
+
+        echo $this->view->render("blog-post",
+            [
+                "head" => $head,
+                "post" => $post,
+                "related" => (new Post())->find("category = :c AND id != :i", "c={$post->category}&i={$post->id}")->order("rand()")->limit(3)->fetch(true)
             ]);
     }
 

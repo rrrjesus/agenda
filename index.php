@@ -60,6 +60,18 @@ $route->get("/editar-setor/{id}", "Dashboard:registerSector");
 $route->get("/excluir-setor/{id}", "Dashboard:registerSector");
 $route->get("/sair", "Dashboard:logout");
 
+//blog
+$route->group("/blog");
+$route->get("/", "Web:blog");
+$route->get("/p/{page}", "Web:blog");
+$route->get("/{uri}", "Web:blogPost");
+$route->post("/buscar", "Web:blogSearch");
+$route->get("/buscar/{terms}/{page}", "Web:blogSearch");
+$route->get("/em/{category}", "Web:blogCategory");
+$route->get("/em/{category}/{page}", "Web:blogCategory");
+$route->get("/por/{author}", "Web:blogAuthor");
+$route->get("/por/{author}/{page}", "Web:blogAuthor");
+
 /**
  * ERROR ROUTES
  */
