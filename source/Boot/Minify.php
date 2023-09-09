@@ -38,11 +38,12 @@ if (strpos(url(), "localhost")) {
     $minCssApp->add(__DIR__ . "/../../shared/styles/styles.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/boot.css");
     $minCssApp->add(__DIR__ . "/../../shared/styles/bootstrap.min.css");
-    // CSS Datatables Bootstrap 5 Dashboard
+    $minCssApp->add(__DIR__ . "/../../shared/styles/docs.css");
+    // CSS Datatables Bootstrap 5
     $minCssApp->add(__DIR__ . "/../../shared/styles/dataTables.bootstrap5.min.css");
-    // CSS Buttons Datatables Bootstrap 5 Dashboard
+    // CSS Buttons Datatables Bootstrap 5
     $minCssApp->add(__DIR__ . "/../../shared/styles/buttons.bootstrap5.min.css");
-    // CSS Responsive Datatables Bootstrap 5 Dashboard
+    // CSS Responsive Datatables Bootstrap 5
     $minCssApp->add(__DIR__ . "/../../shared/styles/responsive.bootstrap5.min.css");
     // CSS Bootstrap Icons Dashboard
     $minCssApp->add(__DIR__ . "/../../shared/styles/bootstrap-icons.min.css");
@@ -87,6 +88,7 @@ if (strpos(url(), "localhost")) {
     $minJS->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
 //    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
+    $minJS->add(__DIR__ . "/../../shared/scripts/jquery.validate.min.js");
 
     //theme CSS
     $jsDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/assets/js");
@@ -108,23 +110,23 @@ if (strpos(url(), "localhost")) {
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.form.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery-ui.js");
-    // JS Bootstrap 5 Dashboard
+    // JS Bootstrap 5
     $minJsApp->add(__DIR__ . "/../../shared/scripts/bootstrap.bundle.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/color-modes.js");
-    // JS Datatables Bootstrap 5 Dashboard
+    // JS Datatables Bootstrap 5
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery.dataTables.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.bootstrap5.min.js");
-    // JS Responsive Datatables Bootstrap 5 Dashboard
+    // JS Responsive Datatables Bootstrap 5
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.responsive.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/responsive.bootstrap5.min.js");
-    // JS Buttons Datatables Bootstrap 5 Dashboard
+    // JS Buttons Datatables Bootstrap 5
     $minJsApp->add(__DIR__ . "/../../shared/scripts/dataTables.buttons.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.bootstrap5.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.print.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.colVis.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.html5.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
-//    $minJsApp->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
+//    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
     // JS Typeahead Autocomplete
     $minJsApp->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");

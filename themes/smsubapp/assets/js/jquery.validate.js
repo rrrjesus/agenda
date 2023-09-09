@@ -245,7 +245,8 @@
     } );
 
 // Constructor for validator
-    $.validator = function( options, form ) {
+    $.
+        validator = function( options, form ) {
         this.settings = $.extend( true, {}, $.validator.defaults, options );
         this.currentForm = form;
         this.init();

@@ -1,6 +1,6 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<!--FEATURED-->
+<!-- CARROUSSEL -->
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -49,6 +49,7 @@
         </button>
     </div>
 
+    <!-- CARDS -->
     <div class="container px-4 py-5" id="featured-3">
         <h2 class="pb-2 border-bottom">Os 3 pilares do Suporte de TI COTI</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
@@ -85,18 +86,3 @@
             </div>
         </div>
     </div>
-
-<!--BLOG-->
-    <?php if(!empty($blog)): ?>
-    <div class="container px-4 py-5" id="featured-3">
-        <div class="row text-center">
-            <h2>Nossos artigos</h2>
-            <p class="fs-5">Confira nossas dicas para faciltar seu suporte</p>
-        </div>
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-                <?php foreach ($blog as $post): ?>
-                    <?php $this->insert("blog-list", ["post" => $post]); ?>
-                <?php endforeach; ?>
-        </div>
-    </div>
-    <?php endif;?>

@@ -1,21 +1,19 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
         <div class="form-signin w-100 m-auto">
-            <form action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
+            <form class="needs-validation" novalidate id="login" action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
                 <div class="ajax_response"><?=flash();?></div>
                 <?=csrf_input();?>
 
                 <img class="mb-4" width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>" alt="">
                 <h1 class="h3 mb-3 fw-normal">Fazer Login</h1>
 
-                <div class="form-floating">
-                    <input class="form-control" type="email" name="email" value="<?=($cookie ?? null)?>" id="floatingInput"
-                       placeholder="name@example.com" required>
-                    <label for="floatingInput"><i class="bi bi-at"></i> Informe Seu E-mail</label>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="email" name="email" id="email" value="<?=($cookie ?? null)?>"
+                       placeholder="name@example.com">
                 </div>
                 <div class="form-floating">
-                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                    <label for="floatingPassword"><i class="bi bi-lock-fill"></i> Informe sua senha</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
 
                 <p><a class="fw-bold text-decoration-none text-info" title="Recuperar senha" href="<?= url("/recuperar"); ?>">Esqueceu a senha?</a></p>

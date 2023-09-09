@@ -1,70 +1,5 @@
 
-/*BLOG*/
-.blog_content {
-    padding-bottom: 0;
-}
-
-.blog_header {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #555555;
-}
-
-.blog_header h2 {
-    font-size: 2em;
-    font-weight: var(--weight-light);
-}
-
-.blog_header p {
-    margin-top: 10px;
-}
-
-.blog_articles {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.blog_article {
-    flex-basis: calc(33.33% - 40px);
-    margin: 20px;
-    color: #555555;
-}
-
-.blog_article img {
-    -webkit-border-radius: var(--radius-medium);
-    -moz-border-radius: var(--radius-medium);
-    border-radius: var(--radius-medium);
-    border-bottom: 3px solid #E9E9E9;
-}
-
-.blog_article:hover img {
-    border-color: var(--color-green);
-}
-
-.blog_article h2 {
-    font-size: var(--font-medium);
-    font-weight: var(--weight-bold);
-}
-
-.blog_article .meta {
-    font-size: var(--font-small);
-    font-weight: var(--weight-light);
-}
-
-.blog_article p {
-    font-size: var(--font-small);
-    margin: 20px 0;
-}
-
-.blog_article a {
-    text-decoration: none;
-    color: #555555;
-}
-
-.blog_article a:hover {
-    text-decoration: underline;
-}
-
+/* LOGIN */
 .form-signin {
     max-width: 330px;
     padding: 1rem;
@@ -86,12 +21,13 @@
     border-top-right-radius: 0;
 }
 
+/* AJUDA */
 .custom-tooltip {
     --bs-tooltip-bg: var(--bd-violet-bg);
     --bs-tooltip-color: var(--bs-white);
 }
 
-/* Paginação da Tabela*/
+/* DATATABLE PAGINATOR */
 .page-link {
     color: #0dcaf0;
 }
@@ -158,48 +94,7 @@
     }
 }
 
-/*DEFAULT PAGINATOR*/
-.paginator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.paginator a, .paginator span {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid #cccccc;
-    border-right: 0;
-    color: #555555;
-    font-weight: var(--weight-bold);
-    text-decoration: none;
-    transition-duration: 0.2s;
-}
-
-.paginator a:first-of-type {
-    -webkit-border-radius: var(--radius-normal) 0 0 var(--radius-normal);
-    -moz-border-radius: var(--radius-normal) 0 0 var(--radius-normal);
-    border-radius: var(--radius-normal) 0 0 var(--radius-normal);
-}
-
-.paginator a:last-of-type {
-    border-right: 1px solid #cccccc;
-    -webkit-border-radius: 0 var(--radius-normal) var(--radius-normal) 0;
-    -moz-border-radius: 0 var(--radius-normal) var(--radius-normal) 0;
-    border-radius: 0 var(--radius-normal) var(--radius-normal) 0;
-}
-
-.paginator a:hover {
-    background: var(--gradient-blue);
-    background-size: 200%;
-    color: #FBFBFB;
-}
-
-.paginator span {
-    background: #cccccc;
-}
-
+/* CARDS HOME */
 .feature-icon {
     width: 4rem;
     height: 4rem;
