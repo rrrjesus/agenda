@@ -59,16 +59,13 @@ $user = (new \Source\Models\Auth())->user();
                 <hr class="d-lg-none">
                 <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
                     <li class="nav-item nav col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url(); ?>">Home</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url("/dashboard"); ?>">Usuários</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/contatos")?>">Contatos</a>
+                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/dashboard/listar-contatos")?>">Contatos</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/sobre")?>">Sobre</a>
-                    </li>
-                    <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Antiga" href="http://<?=CONF_DB_HOST?>/agendav1/">Antiga</a>
+                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/dashboard/listar-setores")?>">Setores</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="<?=url("/blog")?>">Blog</a>
