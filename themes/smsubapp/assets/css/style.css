@@ -1,7 +1,7 @@
 
 /* AJUDA */
 .custom-tooltip {
-    --bs-tooltip-bg: var(--bd-violet-bg);
+    --bs-tooltip-bg: var(--bd-red-bg);
     --bs-tooltip-color: var(--bs-white);
 }
 
@@ -38,43 +38,4 @@
     100% {
         transform: rotate(360deg);
     }
-}
-
-
-/*NOT FOUND PAGE 404*/
-.not_found {
-    text-align: center;
-    color: #555555;
-}
-
-.not_found .error {
-    font-size: 8em;
-    font-weight: var(--weight-light);
-    color: #cccccc;
-    margin-bottom: 40px;
-}
-
-.not_found_header {
-    width: 500px;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.not_found p a {
-    color: var(--color-red);
-    text-decoration: none;
-    font-weight: var(--weight-bold);
-}
-
-.not_found p a:hover {
-    text-decoration: underline;
-}
-
-.not_found_btn {
-    display: inline-block;
-    margin-top: 60px;
-    padding: 20px 40px;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: var(--weight-bold);
 }

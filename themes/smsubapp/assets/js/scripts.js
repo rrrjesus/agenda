@@ -1,5 +1,70 @@
 $(function () {
 
+    $.validator.setDefaults({
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+            $(element).addClass('is-valid');
+        },
+
+        // errorElement: 'span',
+        errorClass: 'help-block',
+
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            }
+            else if (element.prop('type') === 'radio' && element.parent('.radio-inline').length) {
+                error.insertAfter(element.parent().parent());
+            }
+            else if (element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
+                error.appendTo(element.parent().parent());
+            }
+            else if (element.prop('type') === 'password') {
+                error.appendTo(element.parent());
+            }
+            else if (element.prop('type') === 'file') {
+                error.appendTo(element.parent());
+            }
+            if (element.parent('select').length) {
+                error.insertAfter(element.parent());
+            }
+            else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    $("#contact-edit").validate({
+        rules: {
+            sector: {
+                required: true
+                // remote: "remote/valida-email.php"
+            },
+            collaborator: {
+                required: true
+            },
+            ramal: {
+                required: true
+            }
+        },
+        messages: {
+            sector: {
+                required: "Digite o setor !!!"
+                // remote: "Email não encontrado !!!"
+            },
+            collaborator: {
+                required: "Digite o nome !!!"
+            },
+            ramal: {
+                required: "Digite o ramal !!!"
+            }
+        }
+    });
+
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

@@ -282,7 +282,7 @@ $user = (new \Source\Models\Auth())->user();
         });
         sector.initialize();
         $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});
-    });
+});
 </script>
 
 <?= $this->section("scripts"); ?>
