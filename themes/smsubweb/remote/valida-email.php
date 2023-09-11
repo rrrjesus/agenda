@@ -6,20 +6,27 @@
  * Time: 08:39
  */
 
-use Source\Models\User;
-require __DIR__."/../../../source/Core/Model.php";
-require __DIR__."/../../../source/Core/Connect.php";
-require __DIR__."/../../../source/Models/User.php";
+//Tratando erros ;
+error_reporting(0);
 
-$stm = (new User())->find("email =:e","e={$_GET['email']}",$columns);
+//Inclui a conexao ;
+include_once '../../conexao.php';
 
-if(empty($stm)) {
-    echo json_encode(false);
-} else {
+// Inicia a conexao
+$conexao = conexao::getInstance();
+
+// Inicia a consulta
+$sql = "SELECT id FROM usuarios WHERE email='" . $_GET['email'] . "'";
+$stm = $conexao->prepare($sql);
+$stm->execute();
+
+if ($stm->rowCount() != 0) {
     echo json_encode(true);
+} else {
+    echo json_encode(false);
 }
 
 //Encerra a conexão
-$smt = null;
-?>
+$stm = null;
 
+?>

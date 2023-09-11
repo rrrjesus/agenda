@@ -32,6 +32,16 @@ class Auth extends Model
         return (new User())->findById($session->authUser);
     }
 
+    static function remoteUser(): ?User
+    {
+        $stm = (new User())->find("email =:e", "e='{$_GET['email']}'", "");
+        if (!empty($stm)) {
+            echo json_encode(true);
+        } else {
+            echo json_encode(false);
+        }
+    }
+
     /**
      * log-out
      * @return void
@@ -115,8 +125,6 @@ class Auth extends Model
         (new Session())->set("authUser", $user->id);
         $this->message->success("Bem Vindo(a) ".$user->first_name)->flash();
         return true;
-
-        
     }
 
     /**

@@ -109,18 +109,18 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><h6 class="dropdown-header">Dashboard</h6></li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="<?=url("/dashboard")?>">
-                                    Usuários
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-contatos")?>">
+                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
                                     Contatos
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-setores")?>">
                                     Setores
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
+                                    Usuários
                                 </a>
                             </li>
                             <li>

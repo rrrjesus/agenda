@@ -28,6 +28,12 @@ class Sector extends Model
         return $find->fetch();
     }
 
+    public function findBySectorId(string $id, string $columns = "*"): ?Sector
+    {
+        $find = $this->find("id = :id", "id={$id}", $columns);
+        return $find->fetch();
+    }
+
     /**
      * @return bool
      */

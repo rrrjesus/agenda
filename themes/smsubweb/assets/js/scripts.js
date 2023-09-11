@@ -51,8 +51,8 @@ $(function () {
     $("#login").validate({
         rules: {
             email: {
-                required: true,
-                remote: "remote/valida-email.php"
+                required: true
+                // remote: "remote/valida-email.php"
             },
             password: {
                 required: true,
@@ -61,13 +61,12 @@ $(function () {
         },
         messages: {
             email: {
-                required: "Digite seu email !!!",
-                remote: "Email não encontrado !!!"
+                required: "Digite seu email !!!"
+                // remote: "Email não encontrado !!!"
             },
             password: {
                 required: "Digite sua senha !!!",
                 strongPassword: "Sua senha deve ter pelo menos 8 caracteres"
-                // remote: "Email não encontrado !!!"
             }
         }
     });

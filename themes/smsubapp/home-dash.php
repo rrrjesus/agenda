@@ -1,46 +1,61 @@
 <?= $this->layout("dashboard", ["head" => $head]); ?>
 
-<section class="contact_page">
-    <div class="contact_page_content content">
-        <header class="contact_header text-center">
-            <h1>Painel de Controle SMSUB-TI</h1>
-        </header>
+<div class="container-fluid">
+    <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+                <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("")?>"><i class="bi bi-house-door"></i> Dashboard</a></li>
+                <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard/contatos")?>"><i class="bi bi-telephone"></i> Contatos</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-list"></i> Lista de Contatos</li>
+            </ol>
+        </nav>
+    </div>
 
-        <div class="ajax_response"><?=flash();?></div>
+    <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
+        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de contatos SMSUB</p>
+    </div>
 
-        <table id="contact" class="table table-bordered border-danger table-striped" style="width:100%">
-            <thead class="table-danger">
-            <tr>
-                <th class="text-center">EDITAR</th>
-                <th class="text-center">NOME</th>
-                <th class="text-center">E-MAIL</th>
-                <th class="text-center">STATUS</th>
-                <th class="text-center">FOTO</th>
-                <th class="text-center">CRIADO</th>
-                <th class="text-center">ALTERADO</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($users as $listausers): ?>
+    <div class="row justify-content-center mb-0">
+        <div class="col-md-12 ml-auto mt-3 text-center">
+            <?=flash();?>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-12 ml-auto text-center">
+            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success" href="<?=url("/dashboard/cadastrar-contato")?>"
+               role="button"><i class="bi bi-telephone-plus"></i> Novo</a>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="col-12">
+            <table id="contactApp" class="table table-bordered border-danger table-striped" style="width:100%">
+                <thead class="table-danger">
                 <tr>
-                    <td class="text-center"><?=$listausers->id?></td>
-                    <td class="text-center"><?=$listausers->first_name." ".$listausers->last_name?></td>
-                    <td class="text-center"><?=$listausers->email?></td>
-                    <td class="text-center"><?=$listausers->status?></td>
-                    <td class="text-center">
-                        <?php
-                            if(!empty($listausers->foto)):
-                                echo $listausers->foto;
-                            else:
-                                echo $listausers->id;
-                            endif;
-                        ?></td>
-                    <td class="text-center"><?=$listausers->created_at?></td>
-                    <td class="text-center"><?=$listausers->updated_at?></td>
+                    <th class="text-center">EDITAR</th>
+                    <th class="text-center">SETOR</th>
+                    <th class="text-center">NOME</th>
+                    <th class="text-center">RAMAL</th>
+                    <th class="text-center">EXCLUIR</th>
                 </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <?php foreach ($contact as $lista): ?>
+                    <tr>
+                        <td class="text-center"><?=$lista->id?></td>
+                        <td class="text-center"><?=$lista->sector()->sector_name?></td>
+                        <td class="text-center"><?=$lista->collaborator?></td>
+                        <td class="text-center"><?=$lista->ramal?></td>
+                        <td class="text-center"><?=$lista->id?></td>
+                    </tr>
+                <?php endforeach; ?>
 
-</section>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 

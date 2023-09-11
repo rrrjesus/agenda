@@ -1,48 +1,59 @@
 <?= $this->layout("dashboard", ["head" => $head]); ?>
 
-    <div class="row mb-0">
-        <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none fw-bold text-danger" href="<?=url("/dashboard")?>"><i class="bi bi-house-door"></i> Painel</a></li>
-                    <li class="breadcrumb-item"><a class="text-decoration-none fw-bold text-danger" href="<?=url("/dashboard/listar-contatos")?>"><i class="bi bi-telephone"></i> Contatos</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-pencil"></i> Edição</li>
-                </ol>
-            </nav>
+
+<div class="container-fluid">
+    <div class="col-md-12 ml-auto mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+                <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard")?>"><i class="bi bi-house-door"></i> Dashboard</a></li>
+                <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard/")?>"><i class="bi bi-telephone"></i> Contatos</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-plus-circle"></i> Cadastrar Contato</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
+        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Edição de contatos SMSUB</p>
+    </div>
+
+    <div class="row justify-content-center mb-0">
+        <div class="col-md-12 ml-auto mt-1 text-center">
+            <?=flash();?>
         </div>
+    </div>
 
-        <div class="col-md-12 text-center">
-
-            <div class="ajax_response"><?=flash();?></div>
-
-            <form class="row gy-2 gx-3 align-items-center needs-validation mt-5" novalidate id="contact-edit" action="<?=url("/dashboard/editar-contato")?>" method="post" enctype="multipart/form-data">
-
+    <div class="d-flex justify-content-center">
+        <div class="col-12">
+            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-edit" action="<?=url("/dashboard/editar-contato")?>" method="post" enctype="multipart/form-data">
                 <?=csrf_input();?>
 
                 <div class="row justify-content-center mb-3">
-                    <div class="col-auto">
-                        <label for="inputSector" class="col-form-label"><i class="icon-user-plus"></i>SETOR</label>
-                    </div>
-                    <div class="col-8 col-sm-4">
-                        <input data-toggle="tooltip" value="<?=$edit->sector()->sector_name?>" title="DIGITE O SETOR" class="form-control sector" type="text" name="sector" placeholder="COTI"/>
+                    <div class="col-6">
+                        <?=flash();?>
                     </div>
                 </div>
 
                 <div class="row justify-content-center mb-3">
-                    <div class="col-auto">
-                        <label for="inputCollaborator" class="col-form-label"><i class="bi bi-user-plus"></i> NOME</label>
+                    <div class="col-6">
+                        <strong><label for="inputSector" class="col-3 col-form-label"><i class="fas fa-table"></i> SETOR</label></strong>
+                        <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->sector()->sector_name?>"
+                               data-bs-title="Digite o setor"  class="form-control sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
                     </div>
-                    <div class="col-8 col-sm-4">
-                        <input data-toggle="tooltip" value="<?=$edit->collaborator?>" title="DIGITE O NOME" class="form-control" type="text" name="collaborator" placeholder="Primeiro nome:"/>
+                </div>
+
+                <div class="row justify-content-center mb-2">
+                    <div class="col-6">
+                        <strong><label for="inputSector" class="col-3 col-form-label"><i class="fas fa-user-plus"></i> NOME</label></strong>
+                        <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->collaborator?>"
+                               data-bs-title="Digite o nome"  class="form-control" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
                     </div>
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-auto">
-                        <label for="inputRamal" class="col-form-label"><i class="bi bi-contact-card"></i>RAMAL</label>
-                    </div>
-                    <div class="col-8 col-sm-4">
-                        <input data-toggle="tooltip" maxlength="4" value="<?=$edit->ramal?>" title="DIGITE O RAMAL" class="form-control ramal" type="number" name="ramal" placeholder="3000:"/>
+                    <div class="col-6">
+                        <strong><label  for="inputSector" class="col-3 col-form-label"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
+                        <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->ramal?>"
+                               data-bs-title="Digite o ramal"  maxlength="4" class="form-control ramal" type="number" name="ramal" placeholder="DIGITE O SETOR"/>
                     </div>
                 </div>
 
@@ -52,10 +63,10 @@
                     <div class="col-auto">
                         <button data-bs-toggle="tooltip" data-bs-placement="bottom"
                                 data-bs-custom-class="custom-tooltip"
-                                data-bs-title="CLIQUE PARA GRAVAR" class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
-                        <button data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                data-bs-custom-class="custom-tooltip"
-                                data-bs-title="CLIQUE PARA LISTAR" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</button>
+                                data-bs-title="Clique para gravar o registro" class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
+                        <a href="<?=url("/dashboard")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
+                           data-bs-custom-class="custom-tooltip"
+                           data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                     </div>
                 </div>
             </form>

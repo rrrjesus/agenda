@@ -58,14 +58,14 @@ $user = (new \Source\Models\Auth())->user();
             <div class="offcanvas-body p-4 pt-0 p-lg-0">
                 <hr class="d-lg-none">
                 <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
-                    <li class="nav-item nav col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url("/dashboard"); ?>">Usuários</a>
-                    </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/dashboard/listar-contatos")?>">Contatos</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 active" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/dashboard")?>">Contatos</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/dashboard/listar-setores")?>">Setores</a>
+                    </li>
+                    <li class="nav-item nav col-6 col-lg-auto">
+                        <a class="nav-link py-2 px-0 px-lg-2" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url("/dashboard/listar-usuarios"); ?>">Usuários</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="<?=url("/blog")?>">Blog</a>
@@ -106,14 +106,12 @@ $user = (new \Source\Models\Auth())->user();
                                 <span class="d-lg-none" aria-hidden="true">Usuário: </span><i class="bi bi-person-check"></i> <?=$user->functional_record;?>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Usuário</h6></li>
+                                <li><a class="dropdown-item" href="<?=url("/dashboard/perfil")?>">Perfil</a></li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li><h6 class="dropdown-header">Dashboard</h6></li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="<?=url("/dashboard")?>">
-                                        Usuários
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-contatos")?>">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
                                         Contatos
                                     </a>
                                 </li>
@@ -123,15 +121,15 @@ $user = (new \Source\Models\Auth())->user();
                                     </a>
                                 </li>
                                 <li>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
+                                        Usuários
+                                    </a>
+                                </li>
+                                <li>
                                     <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/sair")?>">
                                         Sair
                                     </a>
                                 </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><h6 class="dropdown-header">Lançamentos anteriores</h6></li>
-                                <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav2/">v2.0</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="http://<?=CONF_DB_HOST?>/agendav1/">v1.0</a></li>
                             </ul>
                         <?php else:?>
                     <li class="nav-item col-6 col-lg-auto">

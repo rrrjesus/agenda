@@ -41,21 +41,22 @@ class Dashboard extends Controller
     public function homeDash(): void
     {
         $head = $this->seo->render(
-            "Usuários - " . CONF_SITE_NAME ,
-            "Listando usuários do sistema",
-            url("/agenda"),
+            "Contatos - " . CONF_SITE_NAME ,
+            "Lista de Contatos",
+            url("/dashboard"),
             theme("/assets/images/share.jpg")
         );
 
-        $users = (new User())->find()->fetch(true);
-        //$user_session = (new Auth())->user();
+        $contact = (new Contact())->find()->fetch(true);
+        $user = (new Auth())->user();
 
         echo $this->view->render("home-dash",
             [
                 "head" => $head,
-                "user_session" => Auth::user(),
-                "users" => $users
+                "contact" => $contact,
+                "user" => $user
             ]);
+
     }
 
     public function iconesBootstrap()
@@ -104,30 +105,29 @@ class Dashboard extends Controller
     /**
      * SITE HOME
      */
-    public function contactApp(): void
+    public function userDash(): void
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
-            "Agenda com dados dos colaboradores",
+            "Listando usuários do sistema",
             url("/agenda"),
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact())->find()->fetch(true);
-        $user = (new Auth())->user();
+        $users = (new User())->find()->fetch(true);
+        //$user_session = (new Auth())->user();
 
-        echo $this->view->render("contact-app",
+        echo $this->view->render("user-dash",
             [
                 "head" => $head,
-                "contact" => $contact,
-                "user" => $user
+                "users" => $users
             ]);
     }
 
     /**
      * @return void
      */
-    public function sectorApp(): void
+    public function sectorDash(): void
     {
         $head = $this->seo->render(
             "Usuários - " . CONF_SITE_NAME ,
@@ -138,7 +138,7 @@ class Dashboard extends Controller
 
         $sector = (new Sector())->find()->fetch(true);
 
-        echo $this->view->render("sector-app",
+        echo $this->view->render("sector-dash",
             [
                 "head" => $head,
                 "sector" => $sector
@@ -149,7 +149,7 @@ class Dashboard extends Controller
      * @return void
      * @param null|array $data
      */
-    public function register(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
+    public function registerContact(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
     {
         if(!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
@@ -168,8 +168,8 @@ class Dashboard extends Controller
             $dash = new Panel();
             $contact = new Contact();
             $contact->bootstrap(
-                $dataSector,
-                $data["collaborator"],
+                strtoupper($dataSector),
+                strtoupper($data["collaborator"]),
                 $data["ramal"]
             );
 
@@ -195,7 +195,7 @@ class Dashboard extends Controller
             ]);
     }
 
-    public function updated(array $data):void
+    public function updatedContact(array $data):void
     {
 
         if(!empty($data['csrf'])) {
@@ -223,7 +223,7 @@ class Dashboard extends Controller
 
                 //
                 if($dash->updated($contact)){
-                    $json['redirect'] = url("/dashboard/listar-contatos");
+                    $json['redirect'] = url("/dashboard");
                 } else {
                     $json['message'] = $dash->message()->render();
                 }

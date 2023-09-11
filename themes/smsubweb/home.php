@@ -14,30 +14,31 @@
                     <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #063cee">
                         <h1>Service Desk COTI.</h1>
                         <p>As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>
+                        <p><a class="btn btn-lg btn-info text-light" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                <img src="<?=theme("/assets/images/dark_mode_agenda.jpg")?>" width="100%" height="100%">
                 <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                    <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #06b8ee">
+                        <h1 class="text-light"><i class="bi bi-moon-stars-fill"></i> Modo escuro</h1>
+                        <p class="text-light">O estilo dark mode para trasformar a agenda SMSUB com apenas um clique.</p>
+                        <p><a class="btn btn-lg btn-info text-light" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
-                <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>One more for good measure.</h1>
-                        <p>Some representative placeholder content for the third slide of this carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="carousel-item">-->
+<!--                <img src="--><?php //=theme("/assets/images/dark_mode_agenda.jpg")?><!--" width="100%" height="100%">-->
+<!--                <div class="container">-->
+<!--                    <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #06b8ee">-->
+<!--                        <h1 class="text-light"><i class="bi bi-moon-stars-fill"></i> Modo escuro</h1>-->
+<!--                        <p class="text-light">O estilo dark mode para trasformar a agenda SMSUB com apenas um clique.</p>-->
+<!--                        <p><a class="btn btn-lg btn-primary" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
