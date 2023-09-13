@@ -35,6 +35,7 @@ class Auth extends Model
     static function remoteUser(): ?User
     {
         $stm = (new User())->find("email =:e", "e='{$_GET['email']}'", "");
+
         if (!empty($stm)) {
             echo json_encode(true);
         } else {

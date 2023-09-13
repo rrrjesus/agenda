@@ -69,7 +69,7 @@
                         <a class="nav-link py-2 px-0 px-lg-2" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Antiga" href="http://<?=CONF_DB_HOST?>/agendav1/">Antiga</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="<?=url("/blog")?>">Blog</a>
+                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="http://10.23.237.79/blog">Blog</a>
                     </li>
                 </ul>
 

@@ -96,7 +96,7 @@ $(document).ready(function() {
             {
                 "aTargets": [4], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir-contato/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="fas fa-trash"></i></a>';
+                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir-contato/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="bi bi-trash"></i></a>';
                 }
             }
         ],

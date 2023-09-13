@@ -130,7 +130,7 @@ class Dashboard extends Controller
     public function sectorDash(): void
     {
         $head = $this->seo->render(
-            "Usuários - " . CONF_SITE_NAME ,
+            "Setores - " . CONF_SITE_NAME ,
             "Setores de SMSUB",
             url("/agenda"),
             theme("/assets/images/share.jpg")

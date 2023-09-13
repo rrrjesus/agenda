@@ -56,7 +56,6 @@ class Panel extends Model
             $this->message->warning("Edição de {$contact->collaborator} salva com sucesso!!!")->flash();
         }
 
-
         return true;
     }
 
