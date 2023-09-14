@@ -6,13 +6,13 @@
             <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
                 <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("")?>"><i class="bi bi-house-door"></i> Dashboard</a></li>
                 <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard/listar-contatos")?>"><i class="bi bi-telephone"></i> Contatos</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-list"></i> Lista de Contatos</li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-list"></i> Lixeira de Contatos</li>
             </ol>
         </nav>
     </div>
 
     <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
-        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de contatos SMSUB</p>
+        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lixeira de contatos SMSUB</p>
     </div>
 
     <div class="row justify-content-center mb-0">
@@ -26,12 +26,10 @@
             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
                data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success me-3" href="<?=url("/dashboard/cadastrar-contato")?>"
                role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
-            <?php if(!empty($lixo)){ ?>
-            <a  role="button" href="<?=url("/dashboard/lixeira-contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para listar lixeira de contatos" class="btn btn-outline-secondary position-relative"><i class="bi bi-trash-fill text-danger me-2"></i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?>+
-                        <span class="visually-hidden">unread messages</span></span></a>
-            <?php } ?>
 
+            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+               data-bs-title="Clique para listar contatos" class="btn btn-outline-danger" href="<?=url("/dashboard/listar-contatos")?>"
+               role="button"><i class="bi bi-arrow-right-circle me-2"></i>Sair</a>
         </div>
     </div>
 

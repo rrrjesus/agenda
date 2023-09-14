@@ -66,9 +66,31 @@ class Dashboard extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact())->find()->fetch(true);
+        $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
+        $lixeira = (new Contact())->find("status = :s", "s=trash")->fetch(true);
+        $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
         echo $this->view->render("contact-dash",
+            [
+                "head" => $head,
+                "contact" => $contact,
+                "lixo" => $lixo
+            ]);
+
+    }
+
+    public function contactTrashDash(): void
+    {
+        $head = $this->seo->render(
+            "Lixeira de Contatos - " . CONF_SITE_NAME ,
+            "Lixeira de Contatos",
+            url("/dashboard/lixeira-contatos"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $contact = (new Contact())->find("status = :s", "s=trash")->fetch(true);
+
+        echo $this->view->render("contrash-dash",
             [
                 "head" => $head,
                 "contact" => $contact
@@ -257,9 +279,6 @@ class Dashboard extends Controller
             return;
         }
 
-        $id = $data['id'];
-        $edit = (new Contact())->findById($id);
-
         $head = $this->seo->render(
             "Exclusão de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
@@ -269,8 +288,7 @@ class Dashboard extends Controller
 
         echo $this->view->render("contact-dash",
             [
-                "head" => $head,
-                "edit" => $edit
+                "head" => $head
             ]);
     }
 

@@ -116,6 +116,6 @@ class Message
      */
     private function filter(string $message): string
     {
-        return filter_var($message, FILTER_SANITIZE_STRIPPED);
+        return $message;
     }
 }

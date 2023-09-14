@@ -46,6 +46,7 @@ $route->get("/obrigado/{email}", "Web:success");
 $route->group("/dashboard");
 $route->get("/", "Dashboard:homeDash");
 $route->get("/listar-contatos", "Dashboard:contactDash");
+$route->get("/lixeira-contatos", "Dashboard:contactTrashDash");
 $route->get("/dashboard/perfil", "Dashboard:userProfile");
 $route->get("/listar-usuarios", "Dashboard:userDash");
 $route->get("/cadastrar-contato", "Dashboard:registerContact");
