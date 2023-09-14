@@ -109,7 +109,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><h6 class="dropdown-header">Dashboard</h6></li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
+                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-contatos")?>">
                                     Contatos
                                 </a>
                             </li>

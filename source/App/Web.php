@@ -78,12 +78,12 @@ class Web extends Controller
     {
         $head = $this->seo->render(
             "Agenda - " . CONF_SITE_NAME ,
-            "Confira em nosso blog dicas e sacadas de como controlar melhor as suas contas. Vamos tomar um café?",
+            "Agenda de contatos SMSUB",
             url("/agenda"),
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact())->find()->fetch(true);
+        $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
 
         echo $this->view->render("contact",
             [
