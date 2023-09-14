@@ -65,7 +65,7 @@ class Panel extends Model
             $this->message = $contact->message;
             return false;
         }else {
-            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal}salva com sucesso!!!")->flash();
+            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
         }
 
         return true;
