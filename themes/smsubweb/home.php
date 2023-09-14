@@ -5,7 +5,7 @@
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<!--            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -63,7 +63,7 @@
                     <a href="<?=url("/blog/servicedesk")?>" class="text-decoration-none fw-bold">Service Desk COTI</a>.
                     Basta clicar no icone do aplicativo que fica na área de trabalho dos computadores de <strong>SMSUB</strong> e abrir um chamado. É possivel acompanhar
                     as tratativas do chamado no aplicativo.</p>
-                <a href="<?=url("/blog/servicedesk")?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="bottom" data-bs-title="Saiba Mais">Saiba Mais</a>
+<!--                <a href="--><?php //=url("/blog/servicedesk")?><!--" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="bottom" data-bs-title="Saiba Mais">Saiba Mais</a>-->
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-warning bg-gradient fs-2 mb-3">
@@ -73,7 +73,7 @@
                 <p>Existe um e-mail de contato para <strong>COTI</strong> caso necessário : <a class="text-decoration-none fw-bold" href="mailto:<?=CONF_SITE_EMAIL?>"><?=CONF_SITE_EMAIL?></a>,
                     mas os chamados de suporte técnico ainda assim devem ser realizados através do nosso
                     <a href="<?=url("/blog/servicedesk")?>" class="text-decoration-none fw-bold">Service Desk COTI</a> para que sejam devidamente tratados e solucionados.</p>
-                <a href="<?=url("/blog/e-mail-coti")?>" class="btn btn-primary">Saiba Mais</a>
+<!--                <a href="--><?php //=url("/blog/e-mail-coti")?><!--" class="btn btn-primary">Saiba Mais</a>-->
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-danger bg-gradient fs-2 mb-3">
@@ -83,7 +83,7 @@
                 <p>Por fim e não menos importante, os ramais de atendimento <strong>COTI</strong> na
                     <a href="<?=url("/contatos")?>" class="text-decoration-none fw-bold">agenda</a> de <strong>SMSUB</strong>. É só acessar e pesquisar na agenda por
                     <strong>COTI</strong> e aparecerão os ramais de contato com os nomes dos servidores que atenderão os mesmos.</p>
-                <a href="<?=url("/blog/ramais-coti")?>" class="btn btn-primary">Saiba Mais</a>
+<!--                <a href="--><?php //=url("/blog/ramais-coti")?><!--" class="btn btn-primary">Saiba Mais</a>-->
             </div>
         </div>
     </div>

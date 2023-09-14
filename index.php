@@ -57,6 +57,7 @@ $route->get("/excluir-contato/{id}", "Dashboard:deletedContact");
 $route->get("/reativar-contato/{id}", "Dashboard:reactivatedContact");
 $route->get("/agenda/{id}", "Dashboard:editAg");
 $route->get("/listar-setores", "Dashboard:sectorDash");
+$route->get("/lixeira-setores", "Dashboard:sectorTrashDash");
 $route->get("/cadastrar-setor", "Dashboard:registerSector");
 $route->get("/editar-setor/{id}", "Dashboard:registerSector");
 $route->get("/excluir-setor/{id}", "Dashboard:registerSector");

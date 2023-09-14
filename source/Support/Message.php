@@ -91,7 +91,7 @@ class Message
      */
     public function render(): string
     {
-        return "<div role='alert' class='text-center " . CONF_MESSAGE_CLASS . " {$this->getType()}'><strong>{$this->getText()}</strong></div>";
+        return "<div role='alert' class='text-center " . CONF_MESSAGE_CLASS . " {$this->getType()}'><i class='bi bi-book-half fs-4 me-2'></i> <strong>{$this->getText()}</strong></div>";
     }
 
     /**

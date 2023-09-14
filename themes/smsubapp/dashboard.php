@@ -209,6 +209,39 @@ $user = (new \Source\Models\Auth())->user();
 <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
 
 <script>
+        /* globals Chart:false */
+
+        (() => {
+        'use strict'
+        // Graphs
+        const ctx = document.getElementById('myChart')
+        // eslint-disable-next-line no-unused-vars
+        const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+        labels: ['Domingo', 'Segunda-feira', 'Terça-feira','Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado' ],
+        datasets: [{
+            data: [10000, 21345, 18483, 24003, 23489, 24092, 12034 ],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#861520',
+        borderWidth: 4,
+        pointBackgroundColor: '#dc2828'
+    }]
+    },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+        tooltip: {
+        boxPadding: 3
+    }
+    }
+    }
+    })
+    })()
+
     $(document).ready(function() {
         let sector = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,

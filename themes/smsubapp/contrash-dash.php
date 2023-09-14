@@ -41,14 +41,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($contact as $lista): ?>
+                <?php
+                    if(!empty($contact)):
+                        foreach ($contact as $lista):
+                ?>
                     <tr>
                         <td class="text-center"><?=$lista->sector()->sector_name?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
                         <td class="text-center"><?=$lista->id?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php
+                        endforeach;
+                            else:
+                                echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-book-half fs-5 me-2"></i> Não existem contatos na lixeira !!!</div>';
+                    endif;
+                ?>
 
                 </tbody>
             </table>

@@ -21,6 +21,20 @@
         </div>
     </div>
 
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-12 ml-auto text-center">
+            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-contato")?>"
+               role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
+            <?php if(!empty($lixo)){ ?>
+                <a role="button" href="<?=url("/dashboard/lixeira-setores")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Clique para listar lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-danger me-2">
+                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?></span></a>
+            <?php } ?>
+
+        </div>
+    </div>
+
     <div class="d-flex justify-content-center">
         <div class="col-12">
             <table id="sectorApp" class="table table-sm table-bordered border-danger table-striped" style="width:100%">
@@ -34,15 +48,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($sector as $lista_sector): ?>
-                <tr>
-                    <td class="text-center"><?=$lista_sector->id?></td>
-                    <td class="text-center"><?=$lista_sector->sector_name?></td>
-                    <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista_sector->created_at))?></td>
-                    <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista_sector->updated_at))?></td>
-                    <td class="text-center"><?=$lista_sector->id?></td>
-                </tr>
-                <?php endforeach; ?>
+                <?php
+                if(!empty($sector)):
+                    foreach ($sector as $lista_sector):
+                        ?>
+                        <tr>
+                            <td class="text-center"><?=$lista_sector->id?></td>
+                            <td class="text-center"><?=$lista_sector->sector_name?></td>
+                            <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista_sector->created_at))?></td>
+                            <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista_sector->updated_at))?></td>
+                            <td class="text-center"><?=$lista_sector->id?></td>
+                        </tr>
+                    <?php
+                    endforeach;
+                else:
+                    echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-book-half fs-5 me-2"></i> Não existem setores na lixeira !!!</div>';
+                endif;
+                ?>
+
                 </tbody>
             </table>
         </div>

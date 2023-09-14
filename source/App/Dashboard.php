@@ -232,7 +232,7 @@ class Dashboard extends Controller
 
                 //
                 if($dash->updated($contact)){
-                    $json['redirect'] = url("/dashboard");
+                    $json['redirect'] = url("/dashboard/listar-contatos");
                 } else {
                     $json['message'] = $dash->message()->render();
                 }
@@ -247,7 +247,7 @@ class Dashboard extends Controller
         $head = $this->seo->render(
             "Edição de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/dashboard/cadastrar-contato"),
+            url("/dashboard/editar-contato/{$ramal}"),
             theme("/assets/images/share.jpg")
         );
 
