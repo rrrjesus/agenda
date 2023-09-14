@@ -264,32 +264,26 @@ class Dashboard extends Controller
         if(!empty($data['id'])) {
             $dash = new Panel();
             $contact = new Contact();
-            $contact->bootstrapDeleted(
+            $contact->bootstrapTrash(
                 $data['id'],
                 "trash"
             );
-
-            //
-            if($dash->deleted($contact)){
-                $json['redirect'] = url("/dashboard/listar-contatos");
-            } else {
-                $json['message'] = $dash->message()->render();
-            }
-            echo json_encode($json);
-            return;
+            $dash->deleted($contact);
         }
+    }
 
-        $head = $this->seo->render(
-            "Exclusão de Contato - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
-            url("/dashboard/listar-contatos"),
-            theme("/assets/images/share.jpg")
-        );
+    public function reactivatedContact(array $data):void
+    {
 
-        echo $this->view->render("contact-dash",
-            [
-                "head" => $head
-            ]);
+        if(!empty($data['id'])) {
+            $dash = new Panel();
+            $contact = new Contact();
+            $contact->bootstrapTrash(
+                $data['id'],
+                "post"
+            );
+            $dash->reactivated($contact);
+        }
     }
 
     /**

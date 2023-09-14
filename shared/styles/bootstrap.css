@@ -11,6 +11,7 @@
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
   --bs-red: #dc3545;
+  --bs-darkred: #861520;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
   --bs-green: #198754;
@@ -5596,7 +5597,7 @@ textarea.form-control-lg {
 }
 
 .modal-footer {
-  display: flex;
+  display: block;
   flex-shrink: 0;
   flex-wrap: wrap;
   align-items: center;

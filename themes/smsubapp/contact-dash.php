@@ -24,12 +24,12 @@
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success me-3" href="<?=url("/dashboard/cadastrar-contato")?>"
+               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-contato")?>"
                role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
             <?php if(!empty($lixo)){ ?>
-            <a  role="button" href="<?=url("/dashboard/lixeira-contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para listar lixeira de contatos" class="btn btn-outline-secondary position-relative"><i class="bi bi-trash-fill text-danger me-2"></i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?>+
-                        <span class="visually-hidden">unread messages</span></span></a>
+            <a role="button" href="<?=url("/dashboard/lixeira-contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                data-bs-title="Clique para listar lixeira de contatos" class="btn btn-outline-secondary position-relative fw-semibold"><i class="bi bi-trash-fill text-danger me-2">
+                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?></span></a>
             <?php } ?>
 
         </div>

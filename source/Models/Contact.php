@@ -57,7 +57,7 @@ class Contact extends Model
         return $this;
     }
 
-    public function bootstrapDeleted(
+    public function bootstrapTrash(
         string $id,
         string $status
     ): Contact

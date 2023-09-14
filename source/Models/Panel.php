@@ -66,6 +66,20 @@ class Panel extends Model
             return false;
         }else {
             $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
+            redirect("/dashboard/listar-contatos");
+        }
+
+        return true;
+    }
+
+    public function reactivated(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
+            redirect("/dashboard/lixeira-contatos");
         }
 
         return true;
