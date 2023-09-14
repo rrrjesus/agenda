@@ -59,6 +59,18 @@ class Panel extends Model
         return true;
     }
 
+    public function deleted(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal}salva com sucesso!!!")->flash();
+        }
+
+        return true;
+    }
+
     static function completeSector($columns): ?Sector
     {
         $stm = (new Sector())->find("","",$columns);

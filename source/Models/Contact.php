@@ -57,6 +57,16 @@ class Contact extends Model
         return $this;
     }
 
+    public function bootstrapDeleted(
+        string $id,
+        string $status
+    ): Contact
+    {
+        $this->id = $id;
+        $this->status = $status;
+        return $this;
+    }
+
     /**
      * @param string $ramal
      * @param string $columns
@@ -67,6 +77,7 @@ class Contact extends Model
         $find = $this->find("ramal = :ramal", "ramal={$ramal}", $columns);
         return $find->fetch();
     }
+
 
     /**
      * @return Category|null

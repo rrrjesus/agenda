@@ -13,55 +13,21 @@ $user = (new \Source\Models\Auth())->user();
     <link rel="stylesheet" href="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/style.css"); ?>"/>
 
     <style>
-        .bi {
-            display: inline-block;
-            width: 1rem;
-            height: 1rem;
-        }
 
         /*
          * Sidebar
          */
-
-        @media (min-width: 768px) {
-            .sidebar .offcanvas-lg {
-                position: -webkit-sticky;
-                position: sticky;
-                top: 48px;
-            }
-            .navbar-search {
-                display: block;
-            }
-        }
 
         .sidebar .nav-link {
             font-size: .875rem;
             font-weight: 500;
         }
 
-        .sidebar .nav-link.active {
-            color: #2470dc;
-        }
-
         .sidebar-heading {
             font-size: .75rem;
         }
-
-        /*
-         * Navbar
-         */
-
-        .navbar-brand {
-            padding-top: .75rem;
-            padding-bottom: .75rem;
-            background-color: rgba(0, 0, 0, .25);
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-        }
-
-        .navbar .form-control {
-            padding: .75rem 1rem;
-        }
     </style>
+
 </head>
 <body>
 
@@ -137,179 +103,52 @@ $user = (new \Source\Models\Auth())->user();
             </button>
         </li>
     </ul>
-
-    <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-
-        <li class="nav-item dropdown">
-            <?php if(!empty($user)):?>
-                <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-                    <span class="d-lg-none" aria-hidden="true">Usuário: </span><i class="bi bi-person-check"></i> <?=$user->functional_record;?>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><h6 class="dropdown-header">Dashboard</h6></li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard")?>">
-                            Contatos
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-setores")?>">
-                            Setores
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
-                            Usuários
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/sair")?>">
-                            Sair
-                        </a>
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><h6 class="dropdown-header">Agenda</h6></li>
-                    <li><a class="dropdown-item" href="<?=url("/contatos")?>">Contatos</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><h6 class="dropdown-header">Usuário</h6></li>
-                    <li><a class="dropdown-item" href="<?=url("/dashboard/perfil")?>">Perfil</a></li>
-                </ul>
-
-            <?php else:?>
-        <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="<?=url("/entrar")?>">
-                <i class="bi bi-person-lock"></i> Entrar
-            </a>
-        </li>
-        <?php endif;?>
-
-        <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-            <hr class="d-lg-none my-2">
-        </li>
-      </ul>
 </header>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-            <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-danger">
+            <div class="offcanvas-md offcanvas-end bg-danger" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
+                    <h5 class="offcanvas-title text-light" id="sidebarMenuLabel"><i class="bi bi-book-half me-2"></i> Dashboard Agenda</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
-                                <i class="bi bi-house-fill"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#file-earmark"/></svg>
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#cart"/></svg>
-                                Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#people"/></svg>
-                                Customers
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#graph-up"/></svg>
-                                Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#puzzle"/></svg>
-                                Integrations
-                            </a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" aria-current="page" href="<?=url("/dashboard")?>"><i class="bi bi-house-fill mb-2"></i>Dashboard</a></li>
+                        <?php if(!empty($user)):?>
+                            <hr class="my-1">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"><span>Painel</span>
+                                <a class="link-secondary" href="<?=url("/dashboard")?>" aria-label="Add a new report"><i class="bi bi-house-fill"></i></a>
+                            </h6>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/listar-contatos")?>"><i class="bi bi-telephone mb-2"></i> Contatos</a></li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/listar-setores")?>"><i class="bi bi-globe-americas mb-2"></i> Setores</a></li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>"><i class="bi bi-people mb-2"></i> Usuários </a></li>
+                            <hr class="my-1">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"><span>Agenda</span>
+                                <a class="link-secondary" href="<?=url("/contatos")?>" aria-label="Add a new report"><i class="bi bi-book-half"></i></a>
+                            </h6>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/contatos")?>"> <i class="bi bi-book-half mb-2"></i> Contatos</a></li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/../blog")?>"><i class="bi bi-wordpress mb-2"></i> Blog</a></li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/../agendav1")?>"><i class="bi bi-book-half mb-2"></i> Antiga</a></li>
                     </ul>
-
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-                        <span>Saved reports</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <svg class="bi"><use xlink:href="#plus-circle"/></svg>
-                        </a>
-                    </h6>
+                        <hr class="my-3">
                     <ul class="nav flex-column mb-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                                Current month
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                                Last quarter
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                                Social engagement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
-                                Year-end sale
-                            </a>
-                        </li>
-                    </ul>
-
-                    <hr class="my-3">
-
-                    <ul class="nav flex-column mb-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-                                Settings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#door-closed"/></svg>
-                                Sign out
-                            </a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/sair")?>"><i class="bi bi-door-closed mb-2"></i> Sair</a></li>
+                        <?php else:?>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/entrar")?>"><i class="bi bi-person-lock mb-2"></i> Entrar</a></li>
+                        <?php endif;?>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!--CONTENT-->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-lg-10">
             <?= $this->section("content"); ?>
         </main>
 
-    <?php if ($this->section("optout")): ?>
-        <?= $this->section("optout"); ?>
-    <?php else: ?>
-
-        <div class="row justify-content-center text-center mt-5 mb-5">
-            <div class="col-md-4">
-                <i class="bi bi-book-half display-1"></i>
-                <p class="fw-bolder fs-3">Comece a utilizar a agenda inteligente agora mesmo</p>
-                <p class="fs-5">É rápida, simples e funcional!</p>
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
+    <footer class="bd-footer py-4 py-md-5 bg-body-tertiary text-center">
         <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
             <div class="row">
                 <div class="col-lg-3 mb-3">

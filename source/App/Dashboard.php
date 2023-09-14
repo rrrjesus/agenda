@@ -48,45 +48,32 @@ class Dashboard extends Controller
         );
 
         $contact = (new Contact())->find()->fetch(true);
-        $user = (new Auth())->user();
 
         echo $this->view->render("home-dash",
             [
                 "head" => $head,
-                "contact" => $contact,
-                "user" => $user
+                "contact" => $contact
             ]);
 
     }
 
-    public function iconesBootstrap()
+    public function contactDash(): void
     {
         $head = $this->seo->render(
-            "Icones - " . CONF_SITE_NAME ,
-            "Icones do Sistema",
-            url("/icones"),
+            "Contatos - " . CONF_SITE_NAME ,
+            "Lista de Contatos",
+            url("/dashboard"),
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("icones",
-            [
-                "head" => $head
-            ]);
-    }
+        $contact = (new Contact())->find()->fetch(true);
 
-    public function navbarsBootstrap()
-    {
-        $head = $this->seo->render(
-            "Navbars - " . CONF_SITE_NAME,
-            "Navegador do Sistema",
-            url("/icones"),
-            theme("/assets/images/share.jpg")
-        );
-
-        echo $this->view->render("navbar",
+        echo $this->view->render("contact-dash",
             [
-                "head" => $head
+                "head" => $head,
+                "contact" => $contact
             ]);
+
     }
 
     public function userProfile()
@@ -243,6 +230,44 @@ class Dashboard extends Controller
         );
 
         echo $this->view->render("contact-edit",
+            [
+                "head" => $head,
+                "edit" => $edit
+            ]);
+    }
+
+    public function deletedContact(array $data):void
+    {
+
+        if(!empty($data['id'])) {
+            $dash = new Panel();
+            $contact = new Contact();
+            $contact->bootstrapDeleted(
+                $data['id'],
+                "trash"
+            );
+
+            //
+            if($dash->deleted($contact)){
+                $json['redirect'] = url("/dashboard/listar-contatos");
+            } else {
+                $json['message'] = $dash->message()->render();
+            }
+            echo json_encode($json);
+            return;
+        }
+
+        $id = $data['id'];
+        $edit = (new Contact())->findById($id);
+
+        $head = $this->seo->render(
+            "Exclusão de Contato - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/dashboard/listar-contatos"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("contact-dash",
             [
                 "head" => $head,
                 "edit" => $edit

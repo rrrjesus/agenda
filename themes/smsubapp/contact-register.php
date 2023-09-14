@@ -63,7 +63,7 @@
                         <button data-bs-toggle="tooltip" data-bs-placement="bottom"
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="Clique para gravar o registro" class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
-                        <a href="<?=url("/dashboard")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
+                        <a href="<?=url("/dashboard/listar-contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
                            data-bs-custom-class="custom-tooltip"
                            data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                     </div>

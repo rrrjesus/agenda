@@ -28,7 +28,7 @@ $(document).ready(function() {
                 "aTargets": [0], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para editar" href="dashboard/editar-contato/' + full[3] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
+                        'data-bs-title="Clique para editar" href="editar-contato/' + full[3] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
                 }
             },
             {
@@ -96,7 +96,7 @@ $(document).ready(function() {
             {
                 "aTargets": [4], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir-contato/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="bi bi-trash"></i></a>';
+                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir-contato/' + full[0] + '" role="button" class="btn btn-outline-danger btn-sm rounded-circle text-center"><i class="bi bi-trash"></i></a>';
                 }
             }
         ],

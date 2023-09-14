@@ -23,7 +23,7 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="sectorApp" class="table table-bordered border-danger table-striped" style="width:100%">
+            <table id="sectorApp" class="table table-sm table-bordered border-danger table-striped" style="width:100%">
                 <thead class="table-danger">
                 <tr>
                     <th class="text-center">EDITAR</th>

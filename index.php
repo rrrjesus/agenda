@@ -44,15 +44,15 @@ $route->get("/obrigado/{email}", "Web:success");
  * APP
  */
 $route->group("/dashboard");
-$route->get("/icones","Dashboard:iconesBootstrap");
-$route->get("/navbars","Dashboard:navbarsBootstrap");
 $route->get("/", "Dashboard:homeDash");
+$route->get("/listar-contatos", "Dashboard:contactDash");
 $route->get("/dashboard/perfil", "Dashboard:userProfile");
 $route->get("/listar-usuarios", "Dashboard:userDash");
 $route->get("/cadastrar-contato", "Dashboard:registerContact");
 $route->post("/cadastrar-contato", "Dashboard:registerContact");
 $route->get("/editar-contato/{ramal}", "Dashboard:updatedContact");
 $route->post("/editar-contato", "Dashboard:updatedContact");
+$route->get("/excluir-contato/{id}", "Dashboard:deletedContact");
 $route->get("/agenda/{id}", "Dashboard:editAg");
 $route->get("/listar-setores", "Dashboard:sectorDash");
 $route->get("/cadastrar-setor", "Dashboard:registerSector");

@@ -11,49 +11,12 @@
         </nav>
     </div>
 
-    <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
-        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de contatos SMSUB</p>
-    </div>
-
-    <div class="row justify-content-center mb-0">
-        <div class="col-md-12 ml-auto mt-3 text-center">
-            <?=flash();?>
-        </div>
-    </div>
-
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-12 ml-auto text-center">
-            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success" href="<?=url("/dashboard/cadastrar-contato")?>"
-               role="button"><i class="bi bi-telephone-plus"></i> Novo</a>
-        </div>
-    </div>
-
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="contactApp" class="table table-bordered border-danger table-striped" style="width:100%">
-                <thead class="table-danger">
-                <tr>
-                    <th class="text-center">EDITAR</th>
-                    <th class="text-center">SETOR</th>
-                    <th class="text-center">NOME</th>
-                    <th class="text-center">RAMAL</th>
-                    <th class="text-center">EXCLUIR</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($contact as $lista): ?>
-                    <tr>
-                        <td class="text-center"><?=$lista->id?></td>
-                        <td class="text-center"><?=$lista->sector()->sector_name?></td>
-                        <td class="text-center"><?=$lista->collaborator?></td>
-                        <td class="text-center"><?=$lista->ramal?></td>
-                        <td class="text-center"><?=$lista->id?></td>
-                    </tr>
-                <?php endforeach; ?>
 
-                </tbody>
-            </table>
+
+            <!-- -GRAFICS -->
+
         </div>
     </div>
 </div>
