@@ -70,7 +70,7 @@ class Dashboard extends Controller
         $lixeira = (new Contact())->find("status = :s", "s=trash")->fetch(true);
         $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
-        echo $this->view->render("contact-dash",
+        echo $this->view->render("contact-list",
             [
                 "head" => $head,
                 "contact" => $contact,
@@ -90,7 +90,7 @@ class Dashboard extends Controller
 
         $contact = (new Contact())->find("status = :s", "s=trash")->fetch(true);
 
-        echo $this->view->render("contrash-dash",
+        echo $this->view->render("contact-list-trash",
             [
                 "head" => $head,
                 "contact" => $contact
@@ -174,6 +174,7 @@ class Dashboard extends Controller
             }
 
             $dataSector = (new Sector())->findyBySector($data["sector"])->id;
+
             $dash = new Panel();
             $contact = new Contact();
             $contact->bootstrap(
@@ -220,7 +221,16 @@ class Dashboard extends Controller
                     echo json_encode($json);
                     return;
                 }
-                $dataSector = (new Sector())->findyBySector($data["sector"])->id;
+
+                $sectorId = (new Sector());
+                if(!isset($sectorId->findyBySector($data["sector"])->id)){
+                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $dataSector = $sectorId->findyBySector($data["sector"])->id;
+
                 $dash = new Panel();
                 $contact = new Contact();
                 $contact->bootstrapId(

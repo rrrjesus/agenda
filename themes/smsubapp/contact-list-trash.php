@@ -24,7 +24,7 @@
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para listar contatos" class="btn btn-outline-danger fw-semibold" href="<?=url("/dashboard/listar-contatos")?>"
+               data-bs-title="Clique para listar contatos" class="btn btn-outline-danger btn-sm fw-semibold" href="<?=url("/dashboard/listar-contatos")?>"
                role="button"><i class="bi bi-arrow-right-circle me-2"></i>Sair</a>
         </div>
     </div>

@@ -37,7 +37,7 @@
                     <div class="col-6">
                         <strong><label for="inputSector" class="col-3 col-form-label"><i class="fas fa-table"></i> SETOR</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->sector()->sector_name?>"
-                               data-bs-title="Digite o setor"  class="form-control sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
+                               data-bs-title="Digite o setor"  class="form-control form-control-sm sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                     <div class="col-6">
                         <strong><label for="inputSector" class="col-3 col-form-label"><i class="fas fa-user-plus"></i> NOME</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->collaborator?>"
-                               data-bs-title="Digite o nome"  class="form-control" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
+                               data-bs-title="Digite o nome"  class="form-control form-control-sm" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
                     <div class="col-6">
                         <strong><label  for="inputSector" class="col-3 col-form-label"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->ramal?>"
-                               data-bs-title="Digite o ramal"  maxlength="4" class="form-control ramal" type="number" name="ramal" placeholder="DIGITE O SETOR"/>
+                               data-bs-title="Digite o ramal"  maxlength="4" class="form-control form-control-sm ramal" type="number" name="ramal" placeholder="DIGITE O SETOR"/>
                     </div>
                 </div>
 
@@ -63,10 +63,10 @@
                     <div class="col-auto">
                         <button data-bs-toggle="tooltip" data-bs-placement="bottom"
                                 data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Clique para gravar o registro" class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
+                                data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
                         <a href="<?=url("/dashboard/listar-contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
                            data-bs-custom-class="custom-tooltip"
-                           data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                           data-bs-title="Clique para listar os contatos" class="btn btn-outline-info btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                     </div>
                 </div>
             </form>

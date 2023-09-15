@@ -1,5 +1,20 @@
-.tt-suggestion {
-    color: #373a3c;
+[data-bs-theme=ligth] .tt-suggestion {
+    color: var(--bs-body-color);
+    display: block;
+    width: 100%;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.5;
+    text-align: inherit;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    border-radius: 5px;
+}
+
+[data-bs-theme=dark] .tt-suggestion {
+    color: var(--bs-body-color);
     display: block;
     width: 100%;
     padding: 3px 20px;
@@ -51,15 +66,15 @@ span.twitter-typeahead {
 .input-group span.twitter-typeahead .tt-menu {
     top: 2.375rem !important; }
 
-.tt-hint {
+[data-bs-theme=light] .tt-hint {
     font-size: 1rem;
     display: block;
     width: 100%;
     -moz-padding-start: calc(0.75rem - 3px);
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
@@ -73,17 +88,41 @@ span.twitter-typeahead {
     min-height: calc(1.3rem + 1rem + 2px);
 }
 
-.tt-hint:disabled, .tt-hint[readonly] {
-    background-color: #e9ecef;
+[data-bs-theme=dark] .tt-hint {
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    min-height: calc(1.3rem + 1rem + 2px);
+}
+
+[data-bs-theme=light] .tt-hint:disabled, .tt-hint[readonly] {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
     opacity: 1;
 }
 
-[data-bs-theme=dark] .tt-menu {
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    background-color: #212529;
+[data-bs-theme=dark] .tt-hint:disabled, .tt-hint[readonly] {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    opacity: 1;
 }
 
-.tt-menu {
+[data-bs-theme=light] .tt-menu {
     text-align: left !important;
     font-size: 1rem;
     display: block;
@@ -91,8 +130,29 @@ span.twitter-typeahead {
     -moz-padding-start: calc(0.75rem - 3px);
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+[data-bs-theme=dark] .tt-menu {
+    text-align: left !important;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
@@ -110,9 +170,9 @@ span.twitter-typeahead {
     width: 100%;
     -moz-padding-start: calc(0.75rem - 3px);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.7; <!-- Altura da linha input para alinhar as letras -->
     color: #212529;
-    background-color: #fff;
+    background-color: var(--bs-body-bg);
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
@@ -130,9 +190,9 @@ span.twitter-typeahead {
     width: 100%;
     -moz-padding-start: calc(0.75rem - 3px);
     font-weight: 400;
-    line-height: 1.5;
-    color: #fff;
-    background-color: #212529;
+    line-height: 1.7; <!-- Altura da linha input para alinhar as letras -->
+    color: #dee2e6;
+    background-color: var(--bs-body-bg);
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;a;
