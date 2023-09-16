@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="col-md-12 ml-auto mt-3">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+            <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
                 <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard")?>"><i class="bi bi-house-door"></i> Dashboard</a></li>
                 <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/setores/")?>"><i class="bi bi-telephone"></i> Setores</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-list"></i> Lista de Setores</li>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
-        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de setores SMSUB</p>
+        <p class="fs-3 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de setores SMSUB</p>
     </div>
 
     <div class="row justify-content-center mb-0">
@@ -24,7 +24,7 @@
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-contato")?>"
+               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-setor")?>"
                role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
             <?php if(!empty($lixo)){ ?>
                 <a role="button" href="<?=url("/dashboard/lixeira-setores")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"

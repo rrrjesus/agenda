@@ -4,7 +4,7 @@ namespace Source\Models;
 
 use Source\Core\Model;
 
-class Panel extends Model
+class ContactPanel extends Model
 {
     public function __construct()
     {
@@ -41,6 +41,19 @@ class Panel extends Model
             return false;
         }else{
             $this->message->success("Cadastro de {$contact->collaborator} salvo com sucesso!!!")->flash();
+        }
+
+
+        return true;
+    }
+
+    public function registerSector(Sector $sector): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$sector->save()) {
+            $this->message = $sector->message;
+            return false;
+        }else{
+            $this->message->success("Cadastro de {$sector->sector_name} salvo com sucesso!!!")->flash();
         }
 
 

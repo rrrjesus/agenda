@@ -48,7 +48,8 @@ $(document).ready(function() {
                 required: true
             },
             ramal: {
-                required: true
+                required: true,
+                maxlength: 4
             }
         },
         messages: {
@@ -60,7 +61,21 @@ $(document).ready(function() {
                 required: "Digite o nome !!!"
             },
             ramal: {
-                required: "Digite o ramal !!!"
+                required: "Digite o ramal !!!",
+                maxlength: "Ramais possuem apenas 4 dígitos !!!"
+            }
+        }
+    });
+
+    $("#sector-register").validate({
+        rules: {
+            sector: {
+                required: true
+            }
+        },
+        messages: {
+            sector: {
+                required: "Digite o setor !!!"
             }
         }
     });

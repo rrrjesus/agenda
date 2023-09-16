@@ -1,5 +1,29 @@
-[data-bs-theme=ligth] .tt-suggestion {
+span.twitter-typeahead .tt-menu {
+    cursor: pointer;
+}
+
+span.twitter-typeahead .tt-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    min-height: calc(1.5em + 0.5rem + calc(var(--bs-border-width) * 2));
+    padding: 0.25rem 0.5rem;
+    margin: 2px 0 0;
+    font-size: .875rem;
+    text-align: left;
+    list-style: none;
     color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius-sm);
+}
+
+span.twitter-typeahead .tt-suggestion {
     display: block;
     width: 100%;
     padding: 3px 20px;
@@ -8,198 +32,49 @@
     line-height: 1.5;
     text-align: inherit;
     white-space: nowrap;
-    background: none;
     border: 0;
-    border-radius: 5px;
 }
 
-[data-bs-theme=dark] .tt-suggestion {
-    color: var(--bs-body-color);
-    display: block;
-    width: 100%;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.5;
-    text-align: inherit;
-    white-space: nowrap;
-    background: none;
-    border: 0;
-    border-radius: 5px;
-}
-
-[data-bs-theme=dark] .tt-suggestion {
-    color: #fff;
-    background-color: #212529;
-
-}
-
-.tt-suggestion:focus, .dropdown-item:hover, span.twitter-typeahead .tt-suggestion:hover {
-    color: #fff;
+span.twitter-typeahead .tt-suggestion:focus,
+.dropdown-item:hover,
+span.twitter-typeahead .tt-suggestion:hover {
     text-decoration: none;
-    background-color: #0275d8;
+    background-color: var(--bs-red);
 }
 
-span.twitter-typeahead .active.tt-suggestion, span.twitter-typeahead .tt-suggestion.tt-cursor, span.twitter-typeahead .active.tt-suggestion:focus, span.twitter-typeahead .tt-suggestion.tt-cursor:focus, span.twitter-typeahead .active.tt-suggestion:hover, span.twitter-typeahead .tt-suggestion.tt-cursor:hover {
-    color: #fff;
+.dropdown-item.active, .dropdown-item:active {
     text-decoration: none;
-    background-color: #0275d8;
+    background-color: var(--bs-red);
+}
+
+span.twitter-typeahead .active.tt-suggestion,
+span.twitter-typeahead .tt-suggestion.tt-cursor,
+span.twitter-typeahead .active.tt-suggestion:focus,
+span.twitter-typeahead .tt-suggestion.tt-cursor:focus,
+span.twitter-typeahead .active.tt-suggestion:hover,
+span.twitter-typeahead .tt-suggestion.tt-cursor:hover {
+    text-decoration: none;
     outline: 0;
 }
 
-span.twitter-typeahead .disabled.tt-suggestion, span.twitter-typeahead .disabled.tt-suggestion:focus, span.twitter-typeahead .disabled.tt-suggestion:hover {
-    color: #818a91;
-}
-
-span.twitter-typeahead .disabled.tt-suggestion:focus, span.twitter-typeahead .disabled.tt-suggestion:hover {
+span.twitter-typeahead .disabled.tt-suggestion:focus,
+span.twitter-typeahead .disabled.tt-suggestion:hover {
     text-decoration: none;
     cursor: not-allowed;
-    background-color: transparent;
     background-image: none;
     filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
 }
 
 span.twitter-typeahead {
-    width: 100%; }
+    width: 100%;
+}
+
 .input-group span.twitter-typeahead {
-    display: block !important; }
+    display: block !important;
+}
+
 .input-group span.twitter-typeahead .tt-menu {
-    top: 2.375rem !important; }
-
-[data-bs-theme=light] .tt-hint {
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    -moz-padding-start: calc(0.75rem - 3px);
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    position: absolute;
-    min-height: calc(1.3rem + 1rem + 2px);
+    top: 2.375rem !important;
 }
 
-[data-bs-theme=dark] .tt-hint {
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    -moz-padding-start: calc(0.75rem - 3px);
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    position: absolute;
-    min-height: calc(1.3rem + 1rem + 2px);
-}
 
-[data-bs-theme=light] .tt-hint:disabled, .tt-hint[readonly] {
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    opacity: 1;
-}
-
-[data-bs-theme=dark] .tt-hint:disabled, .tt-hint[readonly] {
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    opacity: 1;
-}
-
-[data-bs-theme=light] .tt-menu {
-    text-align: left !important;
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    -moz-padding-start: calc(0.75rem - 3px);
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-[data-bs-theme=dark] .tt-menu {
-    text-align: left !important;
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    -moz-padding-start: calc(0.75rem - 3px);
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-[data-bs-theme=light] .tt-input {
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    -moz-padding-start: calc(0.75rem - 3px);
-    font-weight: 400;
-    line-height: 1.7; <!-- Altura da linha input para alinhar as letras -->
-    color: #212529;
-    background-color: var(--bs-body-bg);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-[data-bs-theme=dark] .tt-input {
-    font-size: 1rem;
-    display: block;
-    width: 100%;
-    -moz-padding-start: calc(0.75rem - 3px);
-    font-weight: 400;
-    line-height: 1.7; <!-- Altura da linha input para alinhar as letras -->
-    color: #dee2e6;
-    background-color: var(--bs-body-bg);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;a;
-    border: var(--bs-border-width) solid var(--bs-border-color);
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}

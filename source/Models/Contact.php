@@ -118,10 +118,16 @@ class Contact extends Model
                 $this->message->warning("O Ramal informado pertence a outro contato");
                 return false;
             }
+
+            if(is_ramal($this->ramal)){
+                $this->message->warning("O Ramal informado não é válido !!!");
+                return false;
+            }
+
             $contactId = $this->create($this->safe());
 
             if ($this->fail()) {
-                $this->message->error("Erro ao cadastrar, verifique os dadoss");
+                $this->message->error("Erro ao cadastrar, verifique os dados");
                 return false;
             }
         }

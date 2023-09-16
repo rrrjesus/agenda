@@ -324,6 +324,15 @@ function flash(): ?string
     return null;
 }
 
+function is_ramal(string $ramal): bool
+{
+    if (mb_strlen($ramal) > 4)
+    {
+        return true;
+    }
+    return false;
+}
+
 function filter_stripped($data){
     $data = strip_tags($data);
     $data = htmlspecialchars($data);

@@ -59,7 +59,9 @@ $route->get("/agenda/{id}", "Dashboard:editAg");
 $route->get("/listar-setores", "Dashboard:sectorDash");
 $route->get("/lixeira-setores", "Dashboard:sectorTrashDash");
 $route->get("/cadastrar-setor", "Dashboard:registerSector");
-$route->get("/editar-setor/{id}", "Dashboard:registerSector");
+$route->post("/cadastrar-setor", "Dashboard:registerSector");
+$route->get("/editar-setor/{id}", "Dashboard:updatedSector");
+$route->post("/editar-setor", "Dashboard:updatedSector");
 $route->get("/excluir-setor/{id}", "Dashboard:registerSector");
 $route->get("/sair", "Dashboard:logout");
 
