@@ -12,25 +12,6 @@ class ContactPanel extends Model
     }
 
     /**
-     * @return Category|null
-     */
-    public function sector(): ?Sector
-    {
-        if($this->sector) {
-            return(new Sector())->findById($this->sector);
-        }
-        return null;
-    }
-
-    public function idSector(): ?Sector
-    {
-        if($this->sector_name) {
-            return(new Sector())->findyBySector($this->sector_name);
-        }
-        return null;
-    }
-
-    /**
      * @param Contact $contact
      * @return bool
      */

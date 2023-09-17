@@ -37,11 +37,11 @@ class Contact extends Model
     }
 
     /**
-     * @param string $sector
+     * @param string $id
+     * @param int $sector
      * @param string $collaborator
      * @param string $ramal
-     * @param string|null $document
-     * @return Contact
+     * @return $this
      */
     public function bootstrapId(
         string $id,
@@ -57,6 +57,11 @@ class Contact extends Model
         return $this;
     }
 
+    /**
+     * @param string $id
+     * @param string $status
+     * @return $this
+     */
     public function bootstrapTrash(
         string $id,
         string $status
@@ -66,30 +71,6 @@ class Contact extends Model
         $this->status = $status;
         return $this;
     }
-
-    /**
-     * @param string $ramal
-     * @param string $columns
-     * @return null|Contact
-     */
-    public function findByRamal(string $ramal, string $columns = "*"): ?Contact
-    {
-        $find = $this->find("ramal = :ramal", "ramal={$ramal}", $columns);
-        return $find->fetch();
-    }
-
-
-    /**
-     * @return Category|null
-     */
-    public function sector(): ?Sector
-    {
-        if($this->sector) {
-            return(new Sector())->findById($this->sector);
-        }
-        return null;
-    }
-
 
     /**
      * @return bool
@@ -114,7 +95,7 @@ class Contact extends Model
 
         /** User Create */
         if (empty($this->id)) {
-            if ($this->findByRamal($this->ramal, "id")) {
+            if ($this->find("ramal = :r", "r={$this->ramal}", "id")->fetch()) {
                 $this->message->warning("O Ramal informado pertence a outro contato");
                 return false;
             }
@@ -136,31 +117,11 @@ class Contact extends Model
         return true;
     }
 
-    /**
-     * @param string $sector
-     * @param string $collaborator
-     * @param string $ramal
-     * @return bool
-     */
-    public function edit(string $sector, string $collaborator, string $ramal):bool
+    public function sector(): ?Sector
     {
-        $contact = (new Contact())->findByRamal($ramal);
-
-        if (!$contact){
-            $this->message->warning("O contato para editar não foi encontrado!");
-            return false;
+        if($this->sector) {
+            return(new Sector())->findById($this->sector);
         }
-
-        if ($contact->ramal != $ramal){
-            $this->message->error("Desculpe mas o contato não é válido");
-            return false;
-        }
-
-        $contact->sector = $sector;
-        $contact->collaborator = $collaborator;
-        $contact->ramal = $ramal;
-        $contact->save();
-        return true;
-
+        return null;
     }
 }

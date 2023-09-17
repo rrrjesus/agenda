@@ -23,17 +23,11 @@ class Dashboard extends Controller
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
         //var_dump([(new ContactPanel())->completeSector("sector_name")]);
-        //var_dump((new Contact())->register("24", "RODOLFO", "3354"));
-       // var_dump((new Contact())->findByRamal("3424"));
-        //var_dump((new Contact())->findByRamal(3005));
-        //var_dump((new Sector())->findyBySector("ABAST")->id);
 
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
         }
-        
-        //Restrição
     }
 
     /**
@@ -67,14 +61,15 @@ class Dashboard extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
-        $lixeira = (new Contact())->find("status = :s", "s=trash")->fetch(true);
+        $contact = (new Contact());
+        $contactlista = $contact->find("status = :s", "s=post")->fetch(true);
+        $lixeira = $contact->find("status = :s", "s=trash")->fetch(true);
         $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
         echo $this->view->render("contact-list",
             [
                 "head" => $head,
-                "contact" => $contact,
+                "contactlista" => $contactlista,
                 "lixo" => $lixo
             ]);
 
@@ -252,20 +247,22 @@ class Dashboard extends Controller
             }
         }
 
-        $ramal = $data['ramal'];
-        $edit = (new Contact())->findByRamal($ramal);
+        $id = $data['id'];
+        $edit = (new Contact())->findById($id);
+        $sector = (new Sector())->findById($edit->sector)->sector_name;
 
         $head = $this->seo->render(
             "Edição de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/dashboard/editar-contato/{$ramal}"),
+            url("/dashboard/editar-contato/{$id}"),
             theme("/assets/images/share.jpg")
         );
 
         echo $this->view->render("contact-edit",
             [
                 "head" => $head,
-                "edit" => $edit
+                "edit" => $edit,
+                "sector" => $sector
             ]);
     }
 

@@ -48,10 +48,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($contact as $lista): ?>
+                <?php foreach ($contactlista as $lista): ?>
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
-                        <td class="text-center"><?=$lista->sector()->sector_name?></td>
+                        <td class="text-center"><?=(!empty($lista->sector()->sector_name)) ? $lista->sector()->sector_name : 'NAO CADASTRADO'?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
                         <td class="text-center"><?=$lista->id?></td>

@@ -145,6 +145,17 @@ abstract class Model
     }
 
     /**
+     * @param string $colName
+     * @param string $columns
+     * @return Model|null
+     */
+    public function findByColum(string $colName, string $columns = "*"): ?Model
+    {
+        $find = $this->find("$colName = :c", "c={$colName}", $columns);
+        return $find->fetch();
+    }
+
+    /**
      * @param string $columnOrder
      * @return Model
      */

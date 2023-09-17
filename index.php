@@ -51,7 +51,7 @@ $route->get("/dashboard/perfil", "Dashboard:userProfile");
 $route->get("/listar-usuarios", "Dashboard:userDash");
 $route->get("/cadastrar-contato", "Dashboard:registerContact");
 $route->post("/cadastrar-contato", "Dashboard:registerContact");
-$route->get("/editar-contato/{ramal}", "Dashboard:updatedContact");
+$route->get("/editar-contato/{id}", "Dashboard:updatedContact");
 $route->post("/editar-contato", "Dashboard:updatedContact");
 $route->get("/excluir-contato/{id}", "Dashboard:deletedContact");
 $route->get("/reativar-contato/{id}", "Dashboard:reactivatedContact");

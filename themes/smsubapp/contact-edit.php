@@ -31,7 +31,7 @@
                 <div class="row justify-content-center mb-3">
                     <div class="col-6">
                         <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
-                        <input autofocus data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$edit->sector()->sector_name?>"
+                        <input autofocus data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" value="<?=$sector?>"
                                data-bs-title="Digite o setor"  class="form-control form-control-sm sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
                     </div>
                 </div>
