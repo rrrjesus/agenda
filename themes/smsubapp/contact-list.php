@@ -37,13 +37,14 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="contactApp" class="table table-sm table-bordered border-danger table-striped" style="width:100%">
+            <table id="contactApp" class="table table-hover table-striped table-sm table-bordered border-danger" style="width:100%">
                 <thead class="table-danger">
                 <tr>
                     <th class="text-center">EDITAR</th>
                     <th class="text-center">SETOR</th>
                     <th class="text-center">NOME</th>
                     <th class="text-center">RAMAL</th>
+                    <th class="text-center">EDITADO</th>
                     <th class="text-center">EXCLUIR</th>
                 </tr>
                 </thead>
@@ -54,6 +55,7 @@
                         <td class="text-center"><?=(!empty($lista->sector()->sector_name)) ? $lista->sector()->sector_name : 'NAO CADASTRADO'?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
+                        <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>
                         <td class="text-center"><?=$lista->id?></td>
                     </tr>
                 <?php endforeach; ?>

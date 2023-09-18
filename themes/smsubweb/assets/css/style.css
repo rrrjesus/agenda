@@ -23,7 +23,7 @@
 
 /* AJUDA */
 .custom-tooltip {
-    --bs-tooltip-bg: var(--bd-violet-bg);
+    --bs-tooltip-bg: var(--bd-info-bg);
     --bs-tooltip-color: var(--bs-white);
 }
 

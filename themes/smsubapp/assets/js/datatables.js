@@ -32,7 +32,7 @@ $(document).ready(function() {
                 }
             },
             {
-                "aTargets": [4], // o numero 6 é o nº da coluna
+                "aTargets": [5], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'">' +
                                 '<i class="bi bi-trash"></i></button>' +
