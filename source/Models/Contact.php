@@ -72,6 +72,73 @@ class Contact extends Model
         return $this;
     }
 
+    public function updated(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->warning("Edição de {$contact->collaborator} salva com sucesso!!!")->flash();
+        }
+
+        return true;
+    }
+
+    public function deleted(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
+            redirect("/dashboard/listar-contatos");
+        }
+
+        return true;
+    }
+
+    public function reactivated(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
+            redirect("/dashboard/lixeira-contatos");
+        }
+
+        return true;
+    }
+
+    static function completeRamal($columns): ?Contact
+    {
+        $stm = (new Contact())->find("","",$columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->ramal;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @param Contact $contact
+     * @return bool
+     */
+    public function register(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->save()) {
+            $this->message = $contact->message;
+            return false;
+        }else{
+            $this->message->success("Cadastro de {$contact->collaborator} salvo com sucesso!!!")->flash();
+        }
+        return true;
+    }
+
     /**
      * @return bool
      */

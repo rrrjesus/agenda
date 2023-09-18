@@ -13,19 +13,9 @@ $user = (new \Source\Models\Auth())->user();
     <link rel="stylesheet" href="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/style.css"); ?>"/>
 
     <style>
-
-        /*
-         * Sidebar
-         */
-
-        .sidebar .nav-link {
-            font-size: .875rem;
-            font-weight: 500;
-        }
-
-        .sidebar-heading {
-            font-size: .75rem;
-        }
+        /* Sidebar */
+        .sidebar .nav-link {font-size: .875rem; font-weight: 500;}
+        .sidebar-heading {font-size: .75rem;}
     </style>
 
 </head>
@@ -245,14 +235,14 @@ $user = (new \Source\Models\Auth())->user();
     $(document).ready(function() {
         let sector = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\ContactPanel())->completeSector("sector_name")?>
+            local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
         });
         sector.initialize();
         $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
 
         let ramal = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\ContactPanel())->completeRamal("ramal")?>
+            local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
         });
         sector.initialize();
         $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});

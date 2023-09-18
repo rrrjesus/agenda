@@ -24,7 +24,7 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="sector-edit" action="<?=url("/dashboard/editar-contato")?>" method="post" enctype="multipart/form-data">
+            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="sector-edit" action="<?=url("/dashboard/editar-setor")?>" method="post" enctype="multipart/form-data">
                 <?=csrf_input();?>
 
                 <div class="row justify-content-center mb-3">

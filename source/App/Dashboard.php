@@ -5,9 +5,7 @@ namespace Source\App;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
-use Source\Models\ContactPanel;
 use Source\Models\Sector;
-use Source\Models\SectorPanel;
 use Source\Models\User;
 use Source\Support\Message;
 
@@ -22,7 +20,7 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        //var_dump([(new ContactPanel())->completeSector("sector_name")]);
+        //var_dump([(new Contact())->completeSector("sector_name")]);
 
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
@@ -171,7 +169,6 @@ class Dashboard extends Controller
 
             $dataSector = (new Sector())->findyBySector($data["sector"])->id;
 
-            $dash = new ContactPanel();
             $contact = new Contact();
             $contact->bootstrap(
                 strtoupper($dataSector),
@@ -179,10 +176,10 @@ class Dashboard extends Controller
                 $data["ramal"]
             );
 
-            if($dash->register($contact)){
+            if($contact->register($contact)){
                 $json['redirect'] = url("/dashboard/cadastrar-contato");
             } else {
-                $json['message'] = $dash->message()->render();
+                $json['message'] = $contact->message()->render();
             }
             echo json_encode($json);
             return;
@@ -218,16 +215,15 @@ class Dashboard extends Controller
                     return;
                 }
 
-                $sectorId = (new Sector());
-                if(!isset($sectorId->findyBySector($data["sector"])->id)){
+                $sectors = (new Sector());
+                if(!isset($sectors->findyBySector($data["sector"])->id)){
                     $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->render();
                     echo json_encode($json);
                     return;
                 }
 
-                $dataSector = $sectorId->findyBySector($data["sector"])->id;
+                $dataSector = $sectors->findyBySector($data["sector"])->id;
 
-                $dash = new ContactPanel();
                 $contact = new Contact();
                 $contact->bootstrapId(
                     $data["id"],
@@ -237,10 +233,10 @@ class Dashboard extends Controller
                 );
 
                 //
-                if($dash->updated($contact)){
+                if($contact->updated($contact)){
                     $json['redirect'] = url("/dashboard/listar-contatos");
                 } else {
-                    $json['message'] = $dash->message()->render();
+                    $json['message'] = $contact->message()->render();
                 }
                 echo json_encode($json);
                 return;
@@ -270,13 +266,12 @@ class Dashboard extends Controller
     {
 
         if(!empty($data['id'])) {
-            $dash = new ContactPanel();
             $contact = new Contact();
             $contact->bootstrapTrash(
                 $data['id'],
                 "trash"
             );
-            $dash->deleted($contact);
+            $contact->deleted($contact);
         }
     }
 
@@ -284,13 +279,12 @@ class Dashboard extends Controller
     {
 
         if(!empty($data['id'])) {
-            $dash = new ContactPanel();
             $contact = new Contact();
             $contact->bootstrapTrash(
                 $data['id'],
                 "post"
             );
-            $dash->reactivated($contact);
+            $contact->reactivated($contact);
         }
     }
 
@@ -313,15 +307,14 @@ class Dashboard extends Controller
             }
 
             $sector = new Sector();
-            $dashSector = new SectorPanel();
             $sector->bootstrapSector(
                 strtoupper($data['sector'])
             );
 
-            if($dashSector->register($sector)){
+            if($sector->register($sector)){
                 $json['redirect'] = url("/dashboard/cadastrar-setor");
             } else {
-                $json['message'] = $dashSector->message()->render();
+                $json['message'] = $sector->message()->render();
             }
             echo json_encode($json);
             return;
@@ -356,27 +349,26 @@ class Dashboard extends Controller
                     return;
                 }
 
-                $sectorId = (new Sector());
-                if(!isset($sectorId->findyBySector($data["sector"])->id)){
+                $sectors = (new Sector());
+                if(!isset($sectors->findyBySector($data["sector"])->id)){
                     $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->render();
                     echo json_encode($json);
                     return;
                 }
 
-                $dataSector = $sectorId->findyBySector($data["sector"])->id;
+                $dataSector = $sectors->findyBySector($data["sector"])->id;
 
-                $dashSector = new SectorPanel();
                 $sector = new Sector();
-                $sector->bootstrapIdSector(
+                $sector->bootstrap(
                     $data["id"],
                     $dataSector
                 );
 
                 //
-                if($dashSector->updated($sector)){
+                if($sector->updated($sector)){
                     $json['redirect'] = url("/dashboard/listar-setores");
                 } else {
-                    $json['message'] = $dashSector->message()->render();
+                    $json['message'] = $sector->message()->render();
                 }
                 echo json_encode($json);
                 return;
@@ -404,13 +396,12 @@ class Dashboard extends Controller
     {
 
         if(!empty($data['id'])) {
-            $dashSector = new SectorPanel();
             $sector = new Sector();
             $sector->bootstrapTrashSector(
                 $data['id'],
                 "trash"
             );
-            $dashSector->deleted($sector);
+            $sector->deleted($sector);
         }
     }
 
@@ -418,13 +409,12 @@ class Dashboard extends Controller
     {
 
         if(!empty($data['id'])) {
-            $dashSector = new SectorPanel();
             $sector = new Sector();
             $sector->bootstrapTrashSector(
                 $data['id'],
                 "post"
             );
-            $dashSector->reactivated($sector);
+            $sector->reactivated($sector);
         }
     }
 

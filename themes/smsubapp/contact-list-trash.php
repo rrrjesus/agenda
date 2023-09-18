@@ -55,7 +55,7 @@
                         endforeach;
                             else:
                                 echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-book-half fs-5 me-2"></i> Não existem contatos na lixeira !!!</div>';
-                    endif;
+                            endif;
                 ?>
 
                 </tbody>
