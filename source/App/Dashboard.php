@@ -349,19 +349,10 @@ class Dashboard extends Controller
                     return;
                 }
 
-                $sectors = (new Sector());
-                if(!isset($sectors->findyBySector($data["sector"])->id)){
-                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $dataSector = $sectors->findyBySector($data["sector"])->id;
-
                 $sector = new Sector();
                 $sector->bootstrap(
                     $data["id"],
-                    $dataSector
+                    $data["sector"]
                 );
 
                 //

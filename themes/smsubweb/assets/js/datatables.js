@@ -45,9 +45,7 @@ $(document).ready(function() {
     });
     // table.buttons().container()
     //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
-});
 
-$(document).ready(function() {
     //var table =
     $('#contact').DataTable( {
         // lengthChange: false,
@@ -72,12 +70,5 @@ $(document).ready(function() {
         // dom: "lBftipr",
         "lengthMenu": [[7, 10, 25, 50, -1], [7, 10, 25, 50, "Todos"]],
         "aaSorting": [0, 'asc']
-        //buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
-        //buttons: [{extend:'excel',title:'<?php //=CONF_SITE_NAME?>// Agenda',header: '<?php //=CONF_SITE_NAME?>// Agenda',filename:'<?php //=CONF_SITE_NAME?>// Agenda',className: 'btn btn-outline-success',text:'<i class="fa fa-file-excel-o"></i>' },
-        //    {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'<?php //=CONF_SITE_NAME?>// Agenda',header: '<?php //=CONF_SITE_NAME?>// Agenda',filename:'<?php //=CONF_SITE_NAME?>// Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<span class="fa fa-file-pdf-o"></span>'},
-        //    {extend:'print', exportOptions: {columns: ':visible'},title:'<?php //=CONF_SITE_NAME?>// Agenda',header: '<?php //=CONF_SITE_NAME?>// Agenda',filename:'<?php //=CONF_SITE_NAME?>// Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary',text:'<span class="fa fa-print"></span>'},
-        //    {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info',text:'<span class="fa fa-list"></span>'}]
     });
-    // table.buttons().container()
-    //     .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 });

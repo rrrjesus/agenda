@@ -40,11 +40,11 @@ class Sector extends Model
 
     public function bootstrap(
         string $id,
-        int $sector
+        string $sector
     ): Sector
     {
         $this->id = $id;
-        $this->sector = $sector;
+        $this->sector_name = $sector;
         return $this;
     }
 
