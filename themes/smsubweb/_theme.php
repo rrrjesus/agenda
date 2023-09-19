@@ -33,8 +33,8 @@
     </symbol>
 </svg>
 
-<header class="navbar navbar-expand-lg bd-navbar sticky-top">
-    <nav class="container-xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+<header class="container-md navbar navbar-expand-md bd-navbar sticky-top">
+    <nav class="container-md bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
         <a class="navbar-brand p-0 me-0 me-lg-2 fw-bold fs-4" href="/" aria-label="Agenda">
             <img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
         </a>
@@ -208,7 +208,7 @@
         </div>
 <?php endif; ?>
 
-<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
+<footer class="container-md bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
     <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <div class="row">
             <div class="col-lg-3 mb-3">
@@ -237,7 +237,7 @@
                 </ul>
             </div>
 
-            <div class="col-12 col-lg-4 mb-3">
+            <div class="col-12 col-lg-5 mb-3">
                 <h5>Contato:</h5>
                 <ul class="list-unstyled small">
                     <li class="mb-2"><p><b>Telefone:</b><br> +55 11 4934-3131</p></li>

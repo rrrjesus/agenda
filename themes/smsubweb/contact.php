@@ -1,15 +1,17 @@
 
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<div class="container-fluid">
-    <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
-                <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-info" href="<?=url("")?>"><i class="bi bi-house-door"></i> Início</a></li>
-                <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-info" href="<?=url("/contatos")?>"><i class="bi bi-telephone"></i> Contatos</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-list"></i> Lista de Contatos</li>
-            </ol>
-        </nav>
+<div class="container-sm">
+    <div class="d-flex justify-content-center mt-3">
+        <div class="col-lg-12 col-sm-12 col-md-12"><!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-chevron p-3 mg-0 bg-body-tertiary rounded-3">
+                    <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-info" href="<?=url("")?>"><i class="bi bi-house-door"></i> Início</a></li>
+                    <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-info" href="<?=url("/contatos")?>"><i class="bi bi-telephone"></i> Contatos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-list"></i> Lista de Contatos</li>
+                </ol>
+            </nav>
+        </div>
     </div>
 
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
@@ -18,7 +20,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <div class="col-12">
+        <div class="col-lg-12 col-sm-12 col-md-12">
         <table id="contact" class="table table-hover table-bordered border-info" style="width:100%">
             <thead class="table-info">
             <tr>
@@ -30,9 +32,9 @@
             <tbody>
             <?php foreach ($contact as $lista): ?>
             <tr>
-                <td class="text-center"><?=$lista->collaborator?></td>
-                <td class="text-center"><?=$lista->sector()->sector_name?></td>
-                <td class="text-center"><?=$lista->ramal?></td>
+                <td class="text-center fw-semibold"><?=$lista->collaborator?></td>
+                <td class="text-center fw-semibold"><?=$lista->sector()->sector_name?></td>
+                <td class="text-center fw-semibold"><?=$lista->ramal?></td>
             </tr>
             <?php endforeach; ?>
             </tbody>

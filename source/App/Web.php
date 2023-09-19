@@ -3,14 +3,13 @@
 namespace Source\App;
 
 
-use Source\Core\Connect;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
-use Source\Models\Faq\Channel;
 use Source\Models\Faq\Question;
 use Source\Models\User;
-use Source\Support\Pager;
+use Source\Models\Post;
+
 
 /** Web Controler
  * @package Source\App
@@ -38,7 +37,9 @@ class Web extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $user_session = (new Auth())->user();
+        $post = (new Post())->findById(1);
+        $post->views += 1;
+        $post->save();
 
         echo $this->view->render("home",
             [
@@ -58,14 +59,14 @@ class Web extends Controller
             url("/sobre"),
             theme("/assets/images/share.jpg")
         );
+
+        $post = (new Post())->findById(3);
+        $post->views += 1;
+        $post->save();
+
         echo $this->view->render("about",
             [
-                "head" => $head,
-                "video" => "lDZGl9Wdc7Y",
-                "faq" => (new Question())
-                    ->find("channel_id = :id", "id=1", "question, response")
-                    ->order("order_by")
-                    ->fetch(true)
+                "head" => $head
             ]);
     }
 
@@ -82,6 +83,10 @@ class Web extends Controller
             url("/agenda"),
             theme("/assets/images/share.jpg")
         );
+
+        $post = (new Post())->findById(2);
+        $post->views += 1;
+        $post->save();
 
         $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
 

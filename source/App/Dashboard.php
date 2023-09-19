@@ -5,6 +5,7 @@ namespace Source\App;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
+use Source\Models\Post;
 use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Message;
@@ -20,7 +21,8 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        //var_dump([(new Contact())->completeSector("sector_name")]);
+        $views = "views";
+       // var_dump((new Post())->find()->fetch(true));
 
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
@@ -41,11 +43,18 @@ class Dashboard extends Controller
         );
 
         $contact = (new Contact())->find()->fetch(true);
+        $post = (new Post());
+        $post1 = $post->findById(1)->views;
+        $post2 = $post->findById(2)->views;
+        $post3 = $post->findById(3)->views;
 
         echo $this->view->render("home-dash",
             [
                 "head" => $head,
-                "contact" => $contact
+                "contact" => $contact,
+                "post1" => $post1,
+                "post2" => $post2,
+                "post3" => $post3,
             ]);
 
     }

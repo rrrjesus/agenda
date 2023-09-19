@@ -1,7 +1,5 @@
 <?= $this->layout("dashboard", ["head" => $head]); ?>
 
-
-
 <div class="container-fluid">
     <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
         <nav aria-label="breadcrumb">
@@ -20,12 +18,53 @@
     <div class="d-flex justify-content-center">
         <div class="col-12">
 
+
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
             <!-- -GRAFICS -->
 
         </div>
     </div>
+
+
+
+
 </div>
 
 
+
+
+<script>
+    /* globals Chart:false */
+
+    (() => {
+        'use strict'
+        // Graphs
+        const ctx = document.getElementById('myChart')
+        // eslint-disable-next-line no-unused-vars
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Home', 'Contatos', 'Sobre' ],
+                datasets: [{
+                    data: [<?=$post1?>, <?=$post2?>, <?=$post3?> ],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#861520',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#dc2828'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        boxPadding: 3
+                    }
+                }
+            }
+        })
+    })()
+</script>

@@ -67,3 +67,22 @@
             </form>
         </div>
     </div>
+
+    <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
+
+    <script>
+
+        let sector = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
+        });
+        sector.initialize();
+        $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
+
+        let ramal = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
+        });
+        sector.initialize();
+        $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});
+    </script>

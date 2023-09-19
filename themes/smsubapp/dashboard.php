@@ -135,121 +135,77 @@ $user = (new \Source\Models\Auth())->user();
 
         <!--CONTENT-->
         <main class="col-md-9 ms-sm-auto col-lg-10">
+
+            <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
+
             <?= $this->section("content"); ?>
+
+            <?= $this->section("scripts"); ?>
+
         </main>
 
-    <footer class="bd-footer py-4 py-md-5 bg-body-tertiary text-center">
-        <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
-            <div class="row">
-                <div class="col-lg-3 mb-3">
-                    <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="<?=url("/contatos")?>" aria-label=Contatos">
-                        <i class="bi bi-book fs-1 mb-3 me-2 text-danger fw-bold"></i>
-                        <span class="text-danger fw-bold fs-6">SMSUB AGENDA</span>
-                    </a>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2">Desenvolvido com todo amor pela equipe de <strong>SMSUB - COTI - Coordenação de Tecnologia da dangerrmação</strong>.</li>
-                        <li class="mb-2">Código licenciado <a class="text-danger fw-bold" href="https://github.com/rrrjesus/agenda/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a></li>
-                        <li class="mb-2">Versão Atual v2.0.2.</li>
-                        <li class="mb-2">Código Fonte <a class="text-danger fw-bold" href="https://github.com/rrrjesus/agenda" target="_blank" rel="noopener"><i class="bi bi-github"></i> @rrrjesus/agenda</a>.</li>
-                    </ul>
-                </div>
+        <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
+            <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+                <div class="row">
+                    <div class="col-lg-3 mb-3">
+                        <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                           data-bs-title="Agenda de Ramais" class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="<?=url("/contatos")?>" aria-label=Contatos">
+                            <i class="bi bi-book fs-1 mb-3 me-2 text-danger fw-bold"></i>
+                            <span class="text-danger fw-bold fs-6">SMSUB AGENDA</span>
+                        </a>
+                        <ul class="list-unstyled small">
+                            <li class="mb-2">Desenvolvido com todo amor pela equipe de <strong>SMSUB - COTI - Coordenação de Tecnologia da Informação</strong>.</li>
+                            <li class="mb-2">Código licenciado <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                                                  data-bs-title="Liçenca de Software" class="text-decoration-none text-danger fw-bold" href="https://github.com/rrrjesus/agenda/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a></li>
+                            <li class="mb-2">Versão Atual v2.0.2.</li>
+                            <li class="mb-2">Código Fonte <a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="GitHub do Desenvolvedor" class="text-decoration-none text-danger fw-bold" href="https://github.com/rrrjesus" target="_blank" rel="noopener"><i class="bi bi-github"></i> @rrrjesus/agenda</a>.</li>
+                        </ul>
+                    </div>
 
-                <div class="col-lg-2 mb-3">
-                    <h5>Mais</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a class="text-decoration-none text-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="left" title="Home" href="<?= url(); ?>">Home</a></li>
-                        <li class="mb-2"><a class="text-decoration-none text-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="left" title="Contatos" href="<?= url("/contatos"); ?>">Contatos</a></li>
-                        <?php if(!empty($user->id)):?>
-                            <li class="mb-2"><a class="text-decoration-none text-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="left" title="Painel" href="<?= url("/dashboard"); ?>">Painel</a></li>
-                        <?php else: ?>
-                            <li class="mb-2"><a class="text-decoration-none text-danger fw-bold" data-bs-toggle="tooltip" data-bs-placement="left" title="Entrar" href="<?= url("/entrar"); ?>">Entrar</a></li>
-                        <?php endif;?>
-                    </ul>
-                </div>
+                    <div class="col-lg-2 mb-3">
+                        <h5>Mais</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Home"  class="text-decoration-none text-danger fw-bold" href="<?= url(); ?>">Home</a></li>
+                            <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Contatos" class="text-decoration-none text-danger fw-bold" href="<?= url("/contatos"); ?>">Contatos</a></li>
+                            <?php if(!empty($user->id)):?>
+                                <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Painel" class="text-decoration-none text-danger fw-bold" href="<?= url("/dashboard"); ?>">Painel</a></li>
+                            <?php else: ?>
+                                <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Login no Painel" class="text-decoration-none text-danger fw-bold" href="<?= url("/entrar"); ?>">Entrar</a></li>
+                            <?php endif;?>
+                        </ul>
+                    </div>
 
-                <div class="col-12 col-lg-4 mb-3">
-                    <h5>Contato:</h5>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><p><b>Telefone:</b><br> +55 11 4934-3131</p></li>
-                        <li class="mb-2"><p><b>E-mail:</b><br>
-                                <a class="text-decoration-none text-danger fw-bold" href="mailto:<?=CONF_SITE_EMAIL?>" data-bs-toggle="tooltip" data-bs-placement="left" title="Entrar"><?=CONF_SITE_EMAIL?></a></p></li>
-                        <li class="mb-2"><p><b>Endereço:</b><br><a class="text-decoration-none text-danger fw-bold" target="_blank" href="https://www.google.com/maps/place/Condom%C3%ADnio+do+Edif%C3%ADcio+Martinelli/@-23.5455906,-46.6350075,15z/data=!4m6!3m5!1s0x94ce5854575bec47:0xcff6dbd0a9dd6bac!8m2!3d-23.5455906!4d-46.6350075!16s%2Fm%2F047d5rn?entry=ttu">
-                                    <i class="bi bi-pin-map-fill"></i> </a> Rua São Bento, 405 / Rua Líbero Badaró, 504 - Edifício Martinelli - 10º, 23º e 24º andar - Centro - São Paulo</p></li>
-                    </ul>
-                </div>
+                    <div class="col-12 col-lg-4 mb-3">
+                        <h5>Contato:</h5>
+                        <ul class="list-unstyled small">
+                            <li class="mb-2"><p><b>Telefone:</b><br> +55 11 4934-3131</p></li>
+                            <li class="mb-2"><p><b>E-mail:</b><br>
+                                    <a class="text-decoration-none text-danger fw-bold" href="mailto:<?=CONF_SITE_EMAIL?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="E-mail de COTI - Suporte"><?=CONF_SITE_EMAIL?></a></p></li>
+                            <li class="mb-2"><p><b>Endereço:</b><br><a class="text-decoration-none text-danger fw-bold" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Endereço no Google Maps de SMSUB"  target="_blank" href="https://www.google.com/maps/place/Condom%C3%ADnio+do+Edif%C3%ADcio+Martinelli/@-23.5455906,-46.6350075,15z/data=!4m6!3m5!1s0x94ce5854575bec47:0xcff6dbd0a9dd6bac!8m2!3d-23.5455906!4d-46.6350075!16s%2Fm%2F047d5rn?entry=ttu">
+                                        <i class="bi bi-pin-map-fill"></i> </a> Rua São Bento, 405 / Rua Líbero Badaró, 504 - Edifício Martinelli - 10º, 23º e 24º andar - Centro - São Paulo</p></li>
+                        </ul>
+                    </div>
 
-                <div class="col-lg-2">
-                    <h5>Social:</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a target="_blank" class="text-decoration-none text-danger fw-bold"
-                                            href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Facebook"><i class="bi bi-facebook"></i> /SMSUB</a></li>
-                        <li class="mb-2"><a target="_blank" class="text-decoration-none text-danger fw-bold"
-                                            href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no Instagram"><i class="bi bi-instagram"></i> @SMSUB</a></li>
-                        <li class="mb-2"><a target="_blank" class="text-decoration-none text-danger fw-bold" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="<?=CONF_SITE_NAME?> no YouTube"><i class="bi bi-youtube"></i> /SMSUB</a></li>
-                    </ul>
-                </div>
+                    <div class="col-lg-2">
+                        <h5>Social:</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a target="_blank" class="text-decoration-none text-danger fw-bold"
+                                                href="https://www.facebook.com/<?= CONF_SOCIAL_FACEBOOK_PAGE; ?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="<?=CONF_SITE_NAME?> no Facebook"><i class="bi bi-facebook"></i> /SMSUB</a></li>
+                            <li class="mb-2"><a target="_blank" class="text-decoration-none text-danger fw-bold"
+                                                href="https://www.instagram.com/<?= CONF_SOCIAL_INSTAGRAM_PAGE; ?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="<?=CONF_SITE_NAME?> no Instagram"><i class="bi bi-instagram"></i> @SMSUB</a></li>
+                            <li class="mb-2"><a target="_blank" class="text-decoration-none text-danger fw-bold" href="https://www.youtube.com/<?= CONF_SOCIAL_YOUTUBE_PAGE; ?>"
+                                                data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="<?=CONF_SITE_NAME?> no YouTube"><i class="bi bi-youtube"></i> /SMSUB</a></li>
+                        </ul>
+                    </div>
 
-                <p data-bs-toggle="tooltip" data-bs-placement="left" title="Termos da <?=CONF_SITE_DESC?>" class="termos text-center p-3"> &copy; 2023, SMSUB todos os direitos reservados</p>
+                    <p data-bs-toggle="tooltip" data-bs-placement="left" title="Termos da <?=CONF_SITE_DESC?>" class="termos text-center p-3"> &copy; 2023, SMSUB todos os direitos reservados</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 </div>
 
-<script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
 
-<script>
-        /* globals Chart:false */
 
-        (() => {
-        'use strict'
-        // Graphs
-        const ctx = document.getElementById('myChart')
-        // eslint-disable-next-line no-unused-vars
-        const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-        labels: ['Domingo', 'Segunda-feira', 'Terça-feira','Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado' ],
-        datasets: [{
-            data: [10000, 21345, 18483, 24003, 23489, 24092, 12034 ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: '#861520',
-        borderWidth: 4,
-        pointBackgroundColor: '#dc2828'
-    }]
-    },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                },
-        tooltip: {
-        boxPadding: 3
-    }
-    }
-    }
-    })
-    })()
-
-    $(document).ready(function() {
-        let sector = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
-        });
-        sector.initialize();
-        $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
-
-        let ramal = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
-        });
-        sector.initialize();
-        $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});
-});
-</script>
-
-<?= $this->section("scripts"); ?>
 
 </body>
 </html>
