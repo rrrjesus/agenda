@@ -1,30 +1,12 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="<?=theme("/assets/images/agendav1.jpg")?>" width="100%" height="100%">
         </div>
     </div>
 
-    <div class="row g-5 mt-2">
+    <div class="row g-5 mt-2 me-0 ms-0">
         <div class="col-md-8">
             <h3 class="pb-4 mb-4 fst-italic border-bottom">
                 Sobre a Agenda de SMSUB
@@ -155,12 +137,12 @@
         <div class="col-md-4">
             <div class="position-sticky" style="top: 2rem;">
                 <div class="p-4 mb-3 bg-light rounded">
-                    <h4 class="fst-italic">About</h4>
+                    <h4 class="fst-italic">Sobre</h4>
                     <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
                 </div>
 
                 <div class="p-4">
-                    <h4 class="fst-italic">Archives</h4>
+                    <h4 class="fst-italic">Versões da Agenda</h4>
                     <ol class="list-unstyled mb-0">
                         <li><a href="#">March 2021</a></li>
                         <li><a href="#">February 2021</a></li>
@@ -178,7 +160,7 @@
                 </div>
 
                 <div class="p-4">
-                    <h4 class="fst-italic">Elsewhere</h4>
+                    <h4 class="fst-italic">Redes Socias SMSUB</h4>
                     <ol class="list-unstyled">
                         <li><a href="#">GitHub</a></li>
                         <li><a href="#">Twitter</a></li>
