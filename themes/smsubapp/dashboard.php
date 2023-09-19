@@ -144,7 +144,7 @@ $user = (new \Source\Models\Auth())->user();
 
         </main>
 
-        <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
+        <footer class="bd-footer py-4 py-md-5 bg-body-tertiary text-center">
             <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
                 <div class="row">
                     <div class="col-lg-3 mb-3">
