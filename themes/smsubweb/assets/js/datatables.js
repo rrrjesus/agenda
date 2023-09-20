@@ -1,49 +1,4 @@
 $(document).ready(function() {
-    var table = $('#contactApp').DataTable({
-        lengthChange: false,
-        buttons: [{extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success',text:'<i class="bi bi-file-earmark-excel"></i>' },
-            {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
-            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary',text:'<i class="bi bi-printer"></i>'},
-            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info',text:'<i class="bi bi-list"></i>'}],
-        responsive:
-            {details:
-                {display: DataTable.Responsive.display.modal({
-                        header: function (row) {
-                            var data = row.data();
-                            return data[0] + ' ' + data[1];
-                },
-                update: true
-            }),
-            renderer: DataTable.Responsive.renderer.tableAll({})}},
-        "language": {
-            "sEmptyTable": "Nenhum registro encontrado","sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros","sInfoFiltered": "(Filtrados de _MAX_ registros)",
-            "sInfoThousands": ".","sLengthMenu": "_MENU_ Resultados por Página","sLoadingRecords": "Carregando...",
-            "sProcessing": "Processando...","sZeroRecords": "Nenhum registro encontrado","sSearch": "Pesquisar",
-            "oPaginate": {"sNext": "Próximo","sPrevious": "Anterior","sFirst": "Primeiro","sLast": "Último"},
-            "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
-        },
-        // dom: "lBftipr",
-        "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
-        "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
-        "aoColumnDefs": [
-            {
-                "aTargets": [0], // o numero 6 é o nº da coluna
-                "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="editar/' + full[0] + '" role="button" class="btn btn-outline-warning btn-md rounded-circle text-center"><i class="fa fa-pencil"></i> ' + full[0] + '</a>';
-                }
-            },
-            {
-                "aTargets": [4], // o numero 6 é o nº da coluna
-                "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir/' + full[0] + '" role="button" class="btn btn-outline-danger btn-md rounded-circle text-center"><i class="fa fa-pencil"></i> ' + full[0] + '</a>';
-                }
-            }
-        ]
-    });
-    table.buttons().container()
-        .appendTo( '#contactApp_wrapper .col-md-6:eq(0)' );
-
     var table = $('#contact').DataTable({
         drawCallback: function() {
             $('body').tooltip({
@@ -51,7 +6,7 @@ $(document).ready(function() {
             });
         },
         buttons: [{extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success',text:'<i class="bi bi-file-earmark-excel"></i>' },
-            {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
+            // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info',text:'<i class="bi bi-list"></i>'}],
         "dom": "<'row'<'col-sm-12 col-md-4 searchbar'f><'col-sm-12 col-md-4 text-center'B><'col-sm-12 col-md-4 numporpag'l>>" +
