@@ -1,7 +1,19 @@
 $(document).ready(function() {
     //var table =
     $('#contactApp').DataTable( {
-        // lengthChange: false,
+        drawCallback: function() {
+            $('body').tooltip({
+                selector: '[data-bs-togglee="tooltip"]'
+            });
+        },
+        buttons: [
+            {extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-sm btn-outline-success mb-2 mt-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
+            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-sm btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
+            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-sm btn-outline-info mb-2 mt-2',text:'<i class="bi bi-list"></i>'}],
+        "dom": "<'row'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         responsive:
             {details:
                 {display: DataTable.Responsive.display.modal({
@@ -89,7 +101,7 @@ $(document).ready(function() {
                                     '<div class="modal fade" id="trashModal' + full[3] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                                         '<div class="modal-dialog modal-sm">\n' +
                                             '<div class="modal-content">\n' +
-                                                '<div class="modal-header bg-warning">\n' +
+                                                '<div class="modal-header bg-warning text-secondary">\n' +
                                                     '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-book-half me-2"></i> Restaurar Ramal '+ full[2] +'</h6>\n' +
                                                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                                 '</div>\n' +
@@ -146,21 +158,21 @@ $(document).ready(function() {
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'">' +
                         '<i class="bi bi-trash"></i></button>' +
-                        '<div class="modal fade" id="trashModal' + full[0] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
-                        '<div class="modal-dialog modal-sm">\n' +
-                        '<div class="modal-content">\n' +
-                        '<div class="modal-header bg-danger text-light">\n' +
-                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-book-half me-2"></i> Excluir Ramal '+ full[3] +'</h6>\n' +
-                        '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                            '<div class="modal fade" id="trashModal' + full[0] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                                '<div class="modal-dialog modal-sm">\n' +
+                                    '<div class="modal-content">\n' +
+                                        '<div class="modal-header bg-danger text-light">\n' +
+                                            '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-book-half me-2"></i> Excluir Ramal '+ full[3] +'</h6>\n' +
+                                                '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                                        '</div>\n' +
+                                    '<div class="modal-body fw-semibold">Deseja excluir o ramal : ' + full[3] + ' ?</div>\n' +
+                                '<div class="modal-footer">\n' +
+                                    '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+                                    '<a href="excluir-contato/' + full[0] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                '</div>\n' +
+                            '</div>\n' +
                         '</div>\n' +
-                        '<div class="modal-body fw-semibold">Deseja excluir o ramal : ' + full[3] + ' ?</div>\n' +
-                        '<div class="modal-footer">\n' +
-                        '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                        '<a href="excluir-contato/' + full[0] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
-                        '</div>\n' +
-                        '</div>\n' +
-                        '</div>\n' +
-                        '</div>';
+                    '</div>';
                 }
             },
         ]

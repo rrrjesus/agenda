@@ -234,6 +234,7 @@ class Dashboard extends Controller
                 $dataSector = $sectors->findyBySector($data["sector"])->id;
 
                 $contact = new Contact();
+
                 $contact->bootstrapId(
                     $data["id"],
                     $dataSector,
@@ -241,9 +242,8 @@ class Dashboard extends Controller
                     $data["ramal"]
                 );
 
-                //
                 if($contact->updated($contact)){
-                    $json['redirect'] = url("/dashboard/listar-contatos");
+                    $json['redirect'] = url("/dashboard/listar-contatos");0
                 } else {
                     $json['message'] = $contact->message()->render();
                 }

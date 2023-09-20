@@ -89,7 +89,7 @@
                         <li><i class="bi bi-book-half me-2 fs-5 text-info"></i><a class="text-decoration-none text-info fw-semibold"
                             href="<?=url("/../agendav2")?>" target="_blank">Agenda 2.0 - Agosto de 2023</a></li>
                         <li><i class="bi bi-book-half me-2 fs-5 text-info"></i><a class="text-decoration-none text-info fw-semibold"
-                            href="<?=url("/agenda")?>" target="_blank">Agenda 2.1 - Versão Atual</a></li>
+                            href="<?=url("/contatos")?>">Agenda 2.1 - Versão Atual</a></li>
 
                     </ol>
                 </div>
