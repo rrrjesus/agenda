@@ -86,7 +86,7 @@ if (strpos(url(), "localhost")) {
     $minJS->add(__DIR__ . "/../../shared/scripts/buttons.colVis.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/buttons.html5.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
-//    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
+    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/jquery.validate.min.js");
 
@@ -126,7 +126,7 @@ if (strpos(url(), "localhost")) {
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.colVis.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/buttons.html5.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
-//    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
+    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJsApp->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
     // JS Typeahead Autocomplete
     $minJsApp->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");

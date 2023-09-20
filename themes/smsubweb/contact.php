@@ -24,16 +24,16 @@
         <table id="contact" class="table table-hover table-bordered border-info" style="width:100%">
             <thead class="table-info">
             <tr>
-                <th class="text-center">NOME</th>
                 <th class="text-center">SETOR</th>
+                <th class="text-center">NOME</th>
                 <th class="text-center">RAMAL</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($contact as $lista): ?>
             <tr>
+                <td class="text-center fw-semibold"><?=(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?></td>
                 <td class="text-center fw-semibold"><?=$lista->collaborator?></td>
-                <td class="text-center fw-semibold"><?=$lista->sector()->sector_name?></td>
                 <td class="text-center fw-semibold"><?=$lista->ramal?></td>
             </tr>
             <?php endforeach; ?>

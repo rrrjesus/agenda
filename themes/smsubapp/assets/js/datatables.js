@@ -106,9 +106,13 @@ $(document).ready(function() {
         ]
     });
 
-    $('#sectorApp').DataTable( {
-        // lengthChange: false,
-        responsive:
+    var table = $('#sectorApp').DataTable({
+        lengthChange: false,
+    buttons: [{extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success',text:'<i class="bi bi-file-earmark-excel"></i>' },
+       {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
+       {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary',text:'<i class="bi bi-printer"></i>'},
+       {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info',text:'<i class="bi bi-list"></i>'}],
+       responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
                             header: function (row) {
@@ -140,14 +144,27 @@ $(document).ready(function() {
             {
                 "aTargets": [4], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<a title="EDITAR" data-toggle="tooltip" href="excluir-contato/' + full[0] + '" role="button" class="btn btn-outline-danger btn-sm rounded-circle text-center"><i class="bi bi-trash"></i></a>';
+                    return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'">' +
+                        '<i class="bi bi-trash"></i></button>' +
+                        '<div class="modal fade" id="trashModal' + full[0] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal-dialog modal-sm">\n' +
+                        '<div class="modal-content">\n' +
+                        '<div class="modal-header bg-danger text-light">\n' +
+                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-book-half me-2"></i> Excluir Ramal '+ full[3] +'</h6>\n' +
+                        '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                        '</div>\n' +
+                        '<div class="modal-body fw-semibold">Deseja excluir o ramal : ' + full[3] + ' ?</div>\n' +
+                        '<div class="modal-footer">\n' +
+                        '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+                        '<a href="excluir-contato/' + full[0] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                        '</div>\n' +
+                        '</div>\n' +
+                        '</div>\n' +
+                        '</div>';
                 }
-            }
-        ],
-        //buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
-        //buttons: [{extend:'excel',title:'<?php //=CONF_SITE_NAME?>// Agenda',header: '<?php //=CONF_SITE_NAME?>// Agenda',filename:'<?php //=CONF_SITE_NAME?>// Agenda',className: 'btn btn-outline-success',text:'<i class="fa fa-file-excel-o"></i>' },
-        //    {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'<?php //=CONF_SITE_NAME?>// Agenda',header: '<?php //=CONF_SITE_NAME?>// Agenda',filename:'<?php //=CONF_SITE_NAME?>// Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<span class="fa fa-file-pdf-o"></span>'},
-        //    {extend:'print', exportOptions: {columns: ':visible'},title:'<?php //=CONF_SITE_NAME?>// Agenda',header: '<?php //=CONF_SITE_NAME?>// Agenda',filename:'<?php //=CONF_SITE_NAME?>// Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary',text:'<span class="fa fa-print"></span>'},
-        //    {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info',text:'<span class="fa fa-list"></span>'}]
+            },
+        ]
     });
+    table.buttons().container()
+        .appendTo( '#sectorApp_wrapper .col-md-6:eq(0)' );
 });

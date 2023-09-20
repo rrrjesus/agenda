@@ -49,7 +49,7 @@
 
         <div class="offcanvas-lg offcanvas-end flex-grow-1 navbar-collapse justify-content-md-center" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
             <div class="offcanvas-header px-4 pb-0">
-                <h5 class="offcanvas-title text-light" id="bdNavbarOffcanvasLabel"><i class="bi bi-book-half text-light display-6 me-3"></i> SMSUB AGENDA</h5>
+                <div class="offcanvas-title text-light" id="bdNavbarOffcanvasLabel"><img width="130" height="40" src="<?=theme("/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>"></div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
 
