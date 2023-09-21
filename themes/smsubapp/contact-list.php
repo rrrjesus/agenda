@@ -52,13 +52,12 @@
                 <?php foreach ($contactlista as $lista): ?>
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
-                        <td class="text-center">
                         <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
-                                echo $lista->sector()->sector_name;
+                            echo '<td class="text-center">'.$lista->sector()->sector_name;
                                else:
-                                echo '';
+                            echo '<td class="text-center text-danger"><del>'.$lista->sector()->sector_name.'<del>';
                             endif;
-                       ?></td>
+                        ?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
                         <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>

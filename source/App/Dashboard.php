@@ -245,6 +245,15 @@ class Dashboard extends Controller
                     return;
                 }
 
+                $id = $data['id'];
+                $contacts = (new Contact());
+
+                if($contacts->findById($id)->status == "trash"){
+                    $json['message'] = $this->message->warning("O contato informado está na lixeira !!!")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
                 $sectors = (new Sector());
                 if(!isset($sectors->findyBySector($data["sector"])->id)){
                     $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->render();
@@ -281,7 +290,7 @@ class Dashboard extends Controller
 
         $id = $data['id'];
         $edit = (new Contact())->findById($id);
-        $sector = (new Sector())->findById($edit->sector)->sector_name;
+        $sector = (new Sector())->findById($edit->sector);
 
         $head = $this->seo->render(
             "Edição de Contato - " . CONF_SITE_TITLE,

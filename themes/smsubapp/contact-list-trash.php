@@ -46,7 +46,12 @@
                         foreach ($contact as $lista):
                 ?>
                     <tr>
-                        <td class="text-center"><?=$lista->sector()->sector_name?></td>
+                        <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
+                            echo '<td class="text-center">'.$lista->sector()->sector_name;
+                        else:
+                            echo '<td class="text-center text-danger"><del>'.$lista->sector()->sector_name.'<del>';
+                        endif;
+                        ?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
                         <td class="text-center"><?=$lista->id?></td>
