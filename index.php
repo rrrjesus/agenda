@@ -62,7 +62,8 @@ $route->get("/cadastrar-setor", "Dashboard:registerSector");
 $route->post("/cadastrar-setor", "Dashboard:registerSector");
 $route->get("/editar-setor/{id}", "Dashboard:updatedSector");
 $route->post("/editar-setor", "Dashboard:updatedSector");
-$route->get("/excluir-setor/{id}", "Dashboard:registerSector");
+$route->get("/excluir-setor/{id}", "Dashboard:deletedSector");
+$route->get("/reativar-setor/{id}", "Dashboard:reactivatedSector");
 $route->get("/sair", "Dashboard:logout");
 
 //blog

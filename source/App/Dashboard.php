@@ -21,7 +21,6 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        $views = "views";
        // var_dump((new Post())->find()->fetch(true));
 
         if(!Auth::user()){
@@ -148,13 +147,35 @@ class Dashboard extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $sector = (new Sector())->find()->fetch(true);
+        $sector = (new Sector());
+        $sectorlista = $sector->find("status = :s", "s=post")->fetch(true);
+        $lixeira = $sector->find("status = :s", "s=trash")->fetch(true);
+        $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
         echo $this->view->render("sector-list",
             [
                 "head" => $head,
-                "sector" => $sector
+                "sectorlista" => $sectorlista,
+                "lixo" => $lixo
             ]);
+    }
+
+    public function sectorTrashDash(): void
+    {
+        $head = $this->seo->render(
+            "Lixeira de Setores - " . CONF_SITE_NAME ,
+            "Lixeira de Setores",
+            url("/dashboard/lixeira-setores"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $sectorlist = (new Sector())->find("status = :s", "s=trash")->fetch(true);
+        echo $this->view->render("sector-list-trash",
+            [
+                "head" => $head,
+                "sectorlist" => $sectorlist
+            ]);
+
     }
 
     /**
@@ -231,6 +252,12 @@ class Dashboard extends Controller
                     return;
                 }
 
+                if($sectors->findyBySector($data["sector"])->status == "trash"){
+                    $json['message'] = $this->message->warning("O setor informado está na lixeira !!!")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
                 $dataSector = $sectors->findyBySector($data["sector"])->id;
 
                 $contact = new Contact();
@@ -243,7 +270,7 @@ class Dashboard extends Controller
                 );
 
                 if($contact->updated($contact)){
-                    $json['redirect'] = url("/dashboard/listar-contatos");0
+                    $json['redirect'] = url("/dashboard/listar-contatos");
                 } else {
                     $json['message'] = $contact->message()->render();
                 }
@@ -273,7 +300,6 @@ class Dashboard extends Controller
 
     public function deletedContact(array $data):void
     {
-
         if(!empty($data['id'])) {
             $contact = new Contact();
             $contact->bootstrapTrash(
@@ -394,12 +420,13 @@ class Dashboard extends Controller
 
     public function deletedSector(array $data):void
     {
-
+        date_default_timezone_set('America/Sao_Paulo');
         if(!empty($data['id'])) {
             $sector = new Sector();
-            $sector->bootstrapTrashSector(
+            $sector->bootstrapTrash(
                 $data['id'],
-                "trash"
+                "trash",
+                (new \DateTime())->format("Y-m-d H:i:s")
             );
             $sector->deleted($sector);
         }
@@ -407,12 +434,12 @@ class Dashboard extends Controller
 
     public function reactivatedSector(array $data):void
     {
-
         if(!empty($data['id'])) {
             $sector = new Sector();
-            $sector->bootstrapTrashSector(
+            $sector->bootstrapTrash(
                 $data['id'],
-                "post"
+                "post",
+                ""
             );
             $sector->reactivated($sector);
         }

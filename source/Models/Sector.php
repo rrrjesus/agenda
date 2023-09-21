@@ -48,13 +48,15 @@ class Sector extends Model
         return $this;
     }
 
-    public function bootstrapTrashSector(
+    public function bootstrapTrash(
         string $id,
-        string $status
+        string $status,
+        string $deleted_at
     ): Sector
     {
         $this->id = $id;
         $this->status = $status;
+        $this->deleted_at = $deleted_at;
         return $this;
     }
 
@@ -95,7 +97,7 @@ class Sector extends Model
             return false;
         }else {
             $this->message->error("Exclusão de setor : {$sector->sector_name} feita com sucesso!!!")->flash();
-            redirect("/dashboard/listar-contatos");
+            redirect("/dashboard/listar-setores");
         }
 
         return true;
@@ -108,7 +110,7 @@ class Sector extends Model
             return false;
         }else {
             $this->message->success("Reativação de : {$sector->sector_name} feita com sucesso!!!")->flash();
-            redirect("/dashboard/lixeira-contatos");
+            redirect("/dashboard/lixeira-setores");
         }
 
         return true;
@@ -116,7 +118,7 @@ class Sector extends Model
 
     static function completeSector($columns): ?Sector
     {
-        $stm = (new Sector())->find("","",$columns);
+        $stm = (new Sector())->find("status=:s","s=post",$columns);
         $array = array();
 
         if(!empty($stm)):

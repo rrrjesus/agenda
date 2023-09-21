@@ -12,7 +12,7 @@
     </div>
 
     <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
-        <p class="fs-3 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de setores SMSUB</p>
+        <p class="fs-3 fw-normal text-secondary"><i class="bi bi-trash text-secondary fw-semibold"></i> Lixeira de Setores SMSUB</p>
     </div>
 
     <div class="row justify-content-center mb-0">
@@ -24,42 +24,40 @@
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-setor")?>"
-               role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
-            <?php if(!empty($lixo)){ ?>
-                <a role="button" href="<?=url("/dashboard/lixeira-setores")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Clique para listar lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-danger me-2">
-                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?></span></a>
-            <?php } ?>
-
+               data-bs-title="Clique para listar contatos" class="btn btn-outline-danger btn-sm fw-semibold" href="<?=url("/dashboard/listar-setores")?>"
+               role="button"><i class="bi bi-arrow-right-circle me-2"></i>Sair</a>
         </div>
     </div>
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="sectorApp" class="table table-sm table-bordered border-danger table-striped" style="width:100%">
-                <thead class="table-danger">
+            <table id="sectorAppTrash" class="table table-sm table-bordered border-secondary table-striped" style="width:100%">
+                <thead class="table-secondary">
                 <tr>
-                    <th class="text-center">EDITAR</th>
                     <th class="text-center">SETOR</th>
-                    <th class="text-center">CRIADO</th>
-                    <th class="text-center">EDITADO</th>
+                    <th class="text-center">CRIADO EM</th>
+                    <th class="text-center">EDITADO EM</th>
+                    <th class="text-center">EXCLUIDO EM</th>
                     <th class="text-center">EXCLUIR</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($sectorlista as $lista):
+                if(!empty($sectorlist)):
+                    foreach ($sectorlist as $lista):
                         ?>
                         <tr>
-                            <td class="text-center"><?=$lista->id?></td>
                             <td class="text-center"><?=$lista->sector_name?></td>
                             <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->created_at))?></td>
                             <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>
+                            <td class="text-center"><?=(!empty($lista->deleted_at) ? date('d/m/Y H\hi', strtotime($lista->deleted_at)) : "")?></td>
                             <td class="text-center"><?=$lista->id?></td>
                         </tr>
                     <?php
                     endforeach;
+                else:
+                    echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-book-half fs-5 me-2"></i> Não existem setores na lixeira !!!</div>';
+                endif;
                 ?>
 
                 </tbody>

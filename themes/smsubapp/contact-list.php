@@ -52,7 +52,13 @@
                 <?php foreach ($contactlista as $lista): ?>
                     <tr>
                         <td class="text-center"><?=$lista->id?></td>
-                        <td class="text-center"><?=(!empty($lista->sector()->sector_name)) ? $lista->sector()->sector_name : 'NAO CADASTRADO'?></td>
+                        <td class="text-center">
+                        <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
+                                echo $lista->sector()->sector_name;
+                               else:
+                                echo '';
+                            endif;
+                       ?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
                         <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>

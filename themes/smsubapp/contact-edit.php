@@ -68,8 +68,6 @@
         </div>
     </div>
 
-    <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
-
     <script>
 
         let sector = new Bloodhound({
