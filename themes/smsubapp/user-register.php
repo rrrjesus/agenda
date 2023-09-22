@@ -29,26 +29,34 @@
 
                 <div class="row justify-content-center mb-3">
                     <div class="col-6">
-                        <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
+                        <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-person me-2"></i> NOME</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom"
                                data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Digite o setor"  class="form-control form-control-sm sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
+                               data-bs-title="Digite o setor"  class="form-control form-control-sm" type="text" name="first_name" placeholder="DIGITE O NOME"/>
                     </div>
                 </div>
 
                 <div class="row justify-content-center mb-2">
                     <div class="col-6">
-                        <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME</label></strong>
+                        <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-person me-2"></i>SOBRENOME</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Digite o nome" class="form-control form-control-sm" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
+                               data-bs-title="Digite o nome" class="form-control form-control-sm" type="text" name="last_name" placeholder="DIGITE O SOBRENOME"/>
                     </div>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-6">
-                        <strong><label  for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
+                        <strong><label  for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-mailbox me-2"></i> EMAIL</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Digite o ramal"  maxlength="4" class="form-control form-control-sm ramal" type="number" name="ramal" placeholder="DIGITE O SETOR"/>
+                               data-bs-title="Digite o email" class="form-control form-control-sm" type="number" name="ramal" placeholder="DIGITE O E-MAIL"/>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <strong><label  for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-pass me-2"></i> SENHA</label></strong>
+                        <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                               data-bs-title="Digite o email" class="form-control form-control-sm" type="number" name="ramal" placeholder="DIGITE A SENHA"/>
                     </div>
                 </div>
 
@@ -65,22 +73,3 @@
         </form>
     </div>
 </div>
-
-    <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
-
-    <script>
-
-        let sector = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
-        });
-        sector.initialize();
-        $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
-
-        let ramal = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
-        });
-        sector.initialize();
-        $('.ramal').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramal});
-    </script>
