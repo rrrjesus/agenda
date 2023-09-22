@@ -15,13 +15,14 @@ use Source\Support\Message;
  */
 class Dashboard extends Controller
 {
-    /**
-     *
-     */
+
+    /** Contrutor */
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
        // var_dump((new Post())->find()->fetch(true));
+
+        date_default_timezone_set('America/Sao_Paulo');
 
         if(!Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
@@ -29,9 +30,11 @@ class Dashboard extends Controller
         }
     }
 
-    /**
-     * SITE HOME
+
+    /*
+     * AGENDA HOME
      */
+    /** @return void */
     public function homeDash(): void
     {
         $head = $this->seo->render(
@@ -58,6 +61,18 @@ class Dashboard extends Controller
 
     }
 
+    /** @return void */
+    public function logout()
+    {
+        (new Message())->info("Você saiu com sucesso " . Auth::user()->first_name . " Volta logo :)")->flash();
+        Auth::logout();
+        redirect("/entrar");
+    }
+
+    /*
+     * AGENDA CONTATOS
+     */
+    /** @return void */
     public function contactDash(): void
     {
         $head = $this->seo->render(
@@ -81,6 +96,7 @@ class Dashboard extends Controller
 
     }
 
+    /** @return void */
     public function contactTrashDash(): void
     {
         $head = $this->seo->render(
@@ -100,86 +116,7 @@ class Dashboard extends Controller
 
     }
 
-    public function userProfile()
-    {
-        $user = (new Auth())->user();
-
-        echo $this->view->render("user-profile",
-
-            [
-                "head" => $head,
-                "user" => $user
-            ]);
-    }
-
-
-    /**
-     * SITE HOME
-     */
-    public function userDash(): void
-    {
-        $head = $this->seo->render(
-            "Usuários - " . CONF_SITE_NAME ,
-            "Listando usuários do sistema",
-            url("/agenda"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $users = (new User())->find()->fetch(true);
-        //$user_session = (new Auth())->user();
-
-        echo $this->view->render("user-dash",
-            [
-                "head" => $head,
-                "users" => $users
-            ]);
-    }
-
-    /**
-     * @return void
-     */
-    public function sectorDash(): void
-    {
-        $head = $this->seo->render(
-            "Setores - " . CONF_SITE_NAME ,
-            "Setores de SMSUB",
-            url("/agenda"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $sector = (new Sector());
-        $sectorlista = $sector->find("status = :s", "s=post")->fetch(true);
-        $lixeira = $sector->find("status = :s", "s=trash")->fetch(true);
-        $lixo = (!empty($lixeira) ? count($lixeira) : '');
-
-        echo $this->view->render("sector-list",
-            [
-                "head" => $head,
-                "sectorlista" => $sectorlista,
-                "lixo" => $lixo
-            ]);
-    }
-
-    public function sectorTrashDash(): void
-    {
-        $head = $this->seo->render(
-            "Lixeira de Setores - " . CONF_SITE_NAME ,
-            "Lixeira de Setores",
-            url("/dashboard/lixeira-setores"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $sectorlist = (new Sector())->find("status = :s", "s=trash")->fetch(true);
-        echo $this->view->render("sector-list-trash",
-            [
-                "head" => $head,
-                "sectorlist" => $sectorlist
-            ]);
-
-    }
-
-    /**
-     * @return void
+    /** @return void
      * @param null|array $data
      */
     public function registerContact(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
@@ -228,6 +165,8 @@ class Dashboard extends Controller
             ]);
     }
 
+    /** @param array $data
+     * @return void */
     public function updatedContact(array $data):void
     {
 
@@ -307,18 +246,23 @@ class Dashboard extends Controller
             ]);
     }
 
+    /** @param array $data
+     * @return void */
     public function deletedContact(array $data):void
     {
         if(!empty($data['id'])) {
             $contact = new Contact();
             $contact->bootstrapTrash(
                 $data['id'],
-                "trash"
+                "trash",
+                (new \DateTime())->format("Y-m-d H:i:s")
             );
             $contact->deleted($contact);
         }
     }
 
+    /** @param array $data
+     * @return void */
     public function reactivatedContact(array $data):void
     {
 
@@ -326,15 +270,59 @@ class Dashboard extends Controller
             $contact = new Contact();
             $contact->bootstrapTrash(
                 $data['id'],
-                "post"
+                "post",
+                ""
             );
             $contact->reactivated($contact);
         }
     }
 
-    /**
-     * @return void
+    /*
+     * AGENDA SETORES
      */
+    /** @return void */
+    public function sectorDash(): void
+    {
+    $head = $this->seo->render(
+        "Setores - " . CONF_SITE_NAME ,
+        "Setores de SMSUB",
+        url("/agenda"),
+        theme("/assets/images/share.jpg")
+    );
+
+    $sector = (new Sector());
+    $sectorlista = $sector->find("status = :s", "s=post")->fetch(true);
+    $lixeira = $sector->find("status = :s", "s=trash")->fetch(true);
+    $lixo = (!empty($lixeira) ? count($lixeira) : '');
+
+    echo $this->view->render("sector-list",
+        [
+            "head" => $head,
+            "sectorlista" => $sectorlista,
+            "lixo" => $lixo
+        ]);
+    }
+
+    /** @return void */
+    public function sectorTrashDash(): void
+    {
+    $head = $this->seo->render(
+        "Lixeira de Setores - " . CONF_SITE_NAME ,
+        "Lixeira de Setores",
+        url("/dashboard/lixeira-setores"),
+        theme("/assets/images/share.jpg")
+    );
+
+    $sectorlist = (new Sector())->find("status = :s", "s=trash")->fetch(true);
+    echo $this->view->render("sector-list-trash",
+        [
+            "head" => $head,
+            "sectorlist" => $sectorlist
+        ]);
+
+}
+
+    /** @return void */
     public function registerSector(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
     {
         if(!empty($data['csrf'])) {
@@ -352,7 +340,7 @@ class Dashboard extends Controller
 
             $sector = new Sector();
             $sector->bootstrapSector(
-                strtoupper($data['sector'])
+                strtoupper($data["sector"])
             );
 
             if($sector->register($sector)){
@@ -377,6 +365,8 @@ class Dashboard extends Controller
             ]);
     }
 
+    /** @param array $data
+     * @return void */
     public function updatedSector(array $data):void
     {
         if(!empty($data['csrf'])) {
@@ -427,9 +417,10 @@ class Dashboard extends Controller
             ]);
     }
 
+    /** @param array $data
+     * @return void */
     public function deletedSector(array $data):void
     {
-        date_default_timezone_set('America/Sao_Paulo');
         if(!empty($data['id'])) {
             $sector = new Sector();
             $sector->bootstrapTrash(
@@ -441,6 +432,8 @@ class Dashboard extends Controller
         }
     }
 
+    /** @param array $data
+     * @return void */
     public function reactivatedSector(array $data):void
     {
         if(!empty($data['id'])) {
@@ -454,13 +447,105 @@ class Dashboard extends Controller
         }
     }
 
+    /** @param array $data
+     * @return void */
+    public function deleteSector(array $data):void
+    {
+        if(!empty($data['id'])) {
+            $sector = new Sector();
+            $sector->bootstrapTrash(
+                $data['id'],
+                "trash",
+                (new \DateTime())->format("Y-m-d H:i:s")
+            );
+            $sector->delet($sector);
+        }
+    }
+
+    /** AGENDA USUARIOS
+     */
+    public function userDash(): void
+    {
+        $head = $this->seo->render(
+            "Usuários - " . CONF_SITE_NAME ,
+            "Listando usuários do sistema",
+            url("/agenda"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $users = (new User())->find()->fetch(true);
+        //$user_session = (new Auth())->user();
+
+        echo $this->view->render("user-list",
+            [
+                "head" => $head,
+                "users" => $users
+            ]);
+    }
+
     /**
      * @return void
+     * @param null|array $data
      */
-    public function logout()
+    public function registerUser(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
     {
-        (new Message())->info("Você saiu com sucesso " . Auth::user()->first_name . " Volta logo :)")->flash();
-        Auth::logout();
-        redirect("/entrar");
+        if(!empty($data['csrf'])) {
+            if (!csrf_verify($data)) {
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if(in_array("", $data)){
+                $json['message'] = $this->message->info("Informe seus dados para criar sua conta")->render();
+                echo json_encode($json);
+                return;
+            }
+            $auth = new Auth();
+            $user = new User();
+            $user->bootstrap(
+                $data['first_name'],
+                $data['last_name'],
+                $data['email'],
+                $data['password']
+            );
+
+            if($auth->register($user)){
+                $json['redirect'] = url("/confirma");
+            } else {
+                $json['message'] = $auth->message()->render();
+            }
+            echo json_encode($json);
+            return;
+        }
+
+        $head = $this->seo->render(
+            "Cadastrar Conta - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/cadastrar"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("user-register",
+            [
+                "head" => $head
+            ]);
     }
+
+    /** @return void */
+    public function userProfile()
+    {
+    $user = (new Auth())->user();
+
+    echo $this->view->render("user-profile",
+
+        [
+            "head" => $head,
+            "user" => $user
+        ]);
+    }
+
+
+
+
 }

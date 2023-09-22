@@ -103,6 +103,19 @@ class Sector extends Model
         return true;
     }
 
+    public function delet(Sector $sector): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$sector->delete("id", $sector->id)) {
+            $this->message = $sector->message;
+            return false;
+        }else {
+            $this->message->error("Exclusão definitiva de setor : {$sector->sector_name} feita com sucesso!!!")->flash();
+            redirect("/dashboard/lixeira-setores");
+        }
+
+        return true;
+    }
+
     public function reactivated(Sector $sector): bool // Só aceita um objeto da Classe User e bool só retorna true e false
     {
         if(!$sector->save()) {
@@ -165,7 +178,7 @@ class Sector extends Model
 
         /** User Create */
         if (empty($this->id)) {
-            if ($this->find("setor_name = :s", "s={$this->sector_name}", "id")->fetch()) {
+            if ($this->find("sector_name = :s", "s={$this->sector_name}", "id")->fetch()) {
                 $this->message->warning("O Setor informado já está cadastrado !!!");
                 return false;
             }
@@ -174,6 +187,24 @@ class Sector extends Model
 
             if ($this->fail()) {
                 $this->message->error("Erro ao cadastrar, verifique os dados");
+                return false;
+            }
+        }
+
+        $this->data = ($this->findById($sectorId))->data();
+        return true;
+    }
+
+    public function delect(): bool
+    {
+        /** Sector Delete */
+        if (!empty($this->id)) {
+            $sectorId = $this->id;
+
+            $this->delete($this->safe(), $sectorId);
+
+            if ($this->fail()) {
+                $this->message->error("Erro ao deletar, verifique os dados");
                 return false;
             }
         }

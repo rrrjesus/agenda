@@ -36,9 +36,8 @@
                 <tr>
                     <th class="text-center">SETOR</th>
                     <th class="text-center">CRIADO EM</th>
-                    <th class="text-center">EDITADO EM</th>
                     <th class="text-center">EXCLUIDO EM</th>
-                    <th class="text-center">EXCLUIR</th>
+                    <th class="text-center">REATIVAR</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,9 +46,9 @@
                     foreach ($sectorlist as $lista):
                         ?>
                         <tr>
-                            <td class="text-center"><?=$lista->sector_name?></td>
+                            <td class="text-center"><span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">
+                                    <?=(!empty($lista->sector_name) ? $lista->sector_name : '');?></span></td>
                             <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->created_at))?></td>
-                            <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>
                             <td class="text-center"><?=(!empty($lista->deleted_at) ? date('d/m/Y H\hi', strtotime($lista->deleted_at)) : "")?></td>
                             <td class="text-center"><?=$lista->id?></td>
                         </tr>

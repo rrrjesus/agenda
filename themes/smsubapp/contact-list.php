@@ -23,12 +23,12 @@
 
     <div class="row justify-content-center mb-4">
         <div class="col-md-12 ml-auto text-center">
-            <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
                data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-contato")?>"
                role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
             <?php if(!empty($lixo)){ ?>
-            <a role="button" href="<?=url("/dashboard/lixeira-contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                data-bs-title="Clique para listar lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-danger me-2">
+            <a role="button" href="<?=url("/dashboard/lixeira-contatos")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-danger me-2">
                     </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?></span></a>
             <?php } ?>
 
@@ -44,7 +44,7 @@
                     <th class="text-center">SETOR</th>
                     <th class="text-center">NOME</th>
                     <th class="text-center">RAMAL</th>
-                    <th class="text-center">EDITADO</th>
+                    <th class="text-center">EDITADO EM:</th>
                     <th class="text-center">EXCLUIR</th>
                 </tr>
                 </thead>
@@ -55,8 +55,26 @@
                         <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
                             echo '<td class="text-center">'.$lista->sector()->sector_name;
                                else:
-                            echo '<td class="text-center text-danger"><del>'.$lista->sector()->sector_name.'<del>';
-                            endif;
+                            echo '<td class="text-center text-danger">
+                                    <button type="button" class="btn btn-outline-success btn-sm rounded-circle me-2" data-bs-toggle="modal" data-bs-target="#trashModal">
+                                        <i class="bi bi-arrow-counterclockwise"></i></button>
+                                        <div class="modal fade" id="trashModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-secondary text-light">
+                                                        <h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Setor '.$lista->sector()->sector_name.'</h6>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body fw-semibold">Deseja reativar o setor : '.$lista->sector()->sector_name.' ?</div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>
+                                                        <a href="reativar-setor/'.$lista->sector.'" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <del>'.$lista->sector()->sector_name.'<del>';
+                        endif;
                         ?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>

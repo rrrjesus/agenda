@@ -1,9 +1,9 @@
 
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<div class="container-sm">
+<div class="container-fluid">
     <div class="d-flex justify-content-center mt-3">
-        <div class="col-lg-12 col-sm-12 col-md-12"><!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+        <div class="col-lg-8 col-sm-12 col-md-12"><!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-chevron p-3 mg-0 bg-body-tertiary rounded-3">
                     <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-info" href="<?=url("")?>"><i class="bi bi-house-door"></i> Início</a></li>
@@ -20,26 +20,31 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <div class="col-lg-12 col-sm-12 col-md-12">
-        <table id="contact" class="table table-hover table-bordered border-info" style="width:100%">
-            <thead class="table-info">
-            <tr>
-                <th class="text-center">NOME</th>
-                <th class="text-center">SETOR</th>
-                <th class="text-center">RAMAL</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($contact as $lista): ?>
-            <tr>
-                <td class="text-center fw-semibold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="O ramal <?=$lista->ramal." é de ".
-                    $lista->collaborator.' '.(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?>"><?=(!empty($lista->collaborator) ? $lista->collaborator : "")?></td>
-                <td class="text-center fw-semibold"><?=(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "")?></td>
-                <td class="text-center fw-semibold"><?=(!empty($lista->ramal )? $lista->ramal : "")?></td>
-            </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+            <table id="contact" class="table table-hover table-bordered border-info p-2" style="width:100%">
+                <thead class="table-info">
+                <tr>
+                    <th class="text-center">NOME</th>
+                    <th class="text-center">SETOR</th>
+                    <th class="text-center">RAMAL</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($contact as $lista): ?>
+                <tr>
+                    <td class="text-center fw-semibold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="O ramal <?=$lista->ramal." é de ".
+                        $lista->collaborator.' '.(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?>"><?=(!empty($lista->collaborator) ? $lista->collaborator : "")?></td>
+                    <td class="text-center fw-semibold">
+                    <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
+                        echo $lista->sector()->sector_name;
+                    else:
+                        '';
+                    endif;
+                    ?>
+                    </td>
+                    <td class="text-center fw-semibold"><?=(!empty($lista->ramal )? $lista->ramal : "")?></td>
+                </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-

@@ -45,17 +45,29 @@ $route->get("/obrigado/{email}", "Web:success");
  */
 $route->group("/dashboard");
 $route->get("/", "Dashboard:homeDash");
+$route->get("/sair", "Dashboard:logout");
+
+// Users
+$route->get("/cadastrar-usuario", "Dashboard:registerUser");
+$route->post("/cadastrar-usuario", "Dashboard:registerUser");
+$route->get("/dashboard/perfil", "Dashboard:userProfile");
+$route->get("/editar-usuario/{id}", "Dashboard:updatedUser");
+$route->post("/editar-usuario", "Dashboard:updatedUser");
+$route->get("/excluir-usuario/{id}", "Dashboard:deletedUser");
+$route->get("/reativar-usuario/{id}", "Dashboard:reactivatedUser");
+$route->get("/listar-usuarios", "Dashboard:userDash");
+
+// Contacts
 $route->get("/listar-contatos", "Dashboard:contactDash");
 $route->get("/lixeira-contatos", "Dashboard:contactTrashDash");
-$route->get("/dashboard/perfil", "Dashboard:userProfile");
-$route->get("/listar-usuarios", "Dashboard:userDash");
 $route->get("/cadastrar-contato", "Dashboard:registerContact");
 $route->post("/cadastrar-contato", "Dashboard:registerContact");
 $route->get("/editar-contato/{id}", "Dashboard:updatedContact");
 $route->post("/editar-contato", "Dashboard:updatedContact");
 $route->get("/excluir-contato/{id}", "Dashboard:deletedContact");
 $route->get("/reativar-contato/{id}", "Dashboard:reactivatedContact");
-$route->get("/agenda/{id}", "Dashboard:editAg");
+
+// Sectors
 $route->get("/listar-setores", "Dashboard:sectorDash");
 $route->get("/lixeira-setores", "Dashboard:sectorTrashDash");
 $route->get("/cadastrar-setor", "Dashboard:registerSector");
@@ -63,8 +75,9 @@ $route->post("/cadastrar-setor", "Dashboard:registerSector");
 $route->get("/editar-setor/{id}", "Dashboard:updatedSector");
 $route->post("/editar-setor", "Dashboard:updatedSector");
 $route->get("/excluir-setor/{id}", "Dashboard:deletedSector");
+$route->get("/excluir-definitivo-setor/{id}", "Dashboard:deleteSector");
 $route->get("/reativar-setor/{id}", "Dashboard:reactivatedSector");
-$route->get("/sair", "Dashboard:logout");
+$route->get("/reativar-setor-contact/{id}", "Dashboard:reactivatedSectorContact");
 
 //blog
 $route->group("/blog");

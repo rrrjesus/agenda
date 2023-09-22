@@ -64,11 +64,13 @@ class Contact extends Model
      */
     public function bootstrapTrash(
         string $id,
-        string $status
+        string $status,
+        string $deleted_at
     ): Contact
     {
         $this->id = $id;
         $this->status = $status;
+        $this->deleted_at = $deleted_at;
         return $this;
     }
 

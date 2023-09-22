@@ -12,12 +12,26 @@
     </div>
 
     <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
-        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de usuários SMSUB</p>
+        <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de Usuários SMSUB</p>
     </div>
 
-    <div class="row justify-content-center mb-0">
-        <div class="col-md-12 ml-auto mt-3 text-center">
+    <div class="row justify-content-center">
+        <div class="col-12 ajax_response">
             <?=flash();?>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-12 ml-auto text-center">
+            <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+               data-bs-title="Clique para cadastrar novo usuario" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/dashboard/cadastrar-usuario")?>"
+               role="button"><i class="bi bi-telephone-plus me-2"></i>Novo</a>
+            <?php if(!empty($lixo)){ ?>
+                <a role="button" href="<?=url("/dashboard/lixeira-usuarios")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-danger me-2">
+                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$lixo?></span></a>
+            <?php } ?>
+
         </div>
     </div>
 
@@ -33,6 +47,7 @@
                     <th class="text-center">FOTO</th>
                     <th class="text-center">CRIADO</th>
                     <th class="text-center">ALTERADO</th>
+                    <th class="text-center">EXCLUIR?</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,6 +68,7 @@
                         </td>
                         <td class="text-center"><?=$listausers->created_at?></td>
                         <td class="text-center"><?=$listausers->updated_at?></td>
+                        <td class="text-center"><?=$listausers->id?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

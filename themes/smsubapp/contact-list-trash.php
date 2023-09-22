@@ -37,6 +37,7 @@
                     <th class="text-center">SETOR</th>
                     <th class="text-center">NOME</th>
                     <th class="text-center">RAMAL</th>
+                    <th class="text-center">EXCLUIDO EM:</th>
                     <th class="text-center">EXCLUIR</th>
                 </tr>
                 </thead>
@@ -53,7 +54,8 @@
                         endif;
                         ?></td>
                         <td class="text-center"><?=$lista->collaborator?></td>
-                        <td class="text-center"><?=$lista->ramal?></td>
+                        <td class="text-center"><span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill"><?=$lista->ramal?></span></td>
+                        <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->deleted_at))?></td>
                         <td class="text-center"><?=$lista->id?></td>
                     </tr>
                 <?php

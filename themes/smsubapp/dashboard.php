@@ -100,17 +100,17 @@ $user = (new \Source\Models\Auth())->user();
         <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-danger">
             <div class="offcanvas-md offcanvas-end bg-danger" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title text-light" id="sidebarMenuLabel"><i class="bi bi-book-half me-2"></i> Dashboard Agenda</h5>
+                    <img width="130" height="40" src="<?=theme("/../".CONF_VIEW_THEME_APP."/assets/images/smsub_logo/SUBPREFEITURAS_HORIZONTAL_FUNDO_ESCURO.png")?>">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" aria-current="page" href="<?=url("/dashboard")?>"><i class="bi bi-house-fill mb-2"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2 fs-6" aria-current="page" href="<?=url("/dashboard")?>"><i class="bi bi-house-fill mb-2"></i>Dashboard</a></li>
                         <?php if(!empty($user)):?>
                             <hr class="my-1">
-                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"><span>Painel</span>
+                            <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"><span>Painel</span>
                                 <a class="link-secondary" href="<?=url("/dashboard")?>" aria-label="Add a new report"><i class="bi bi-house-fill"></i></a>
-                            </h6>
+                            </h5>
                         <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/listar-contatos")?>"><i class="bi bi-telephone mb-2"></i> Contatos</a></li>
                         <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/listar-setores")?>"><i class="bi bi-globe-americas mb-2"></i> Setores</a></li>
                         <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>"><i class="bi bi-people mb-2"></i> Usuários </a></li>
@@ -134,7 +134,7 @@ $user = (new \Source\Models\Auth())->user();
         </div>
 
         <!--CONTENT-->
-        <main class="col-md-9 ms-sm-auto col-lg-10">
+        <main class="col-lg-10 col-md-10 col-sm-10 ">
 
             <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
 
@@ -203,9 +203,7 @@ $user = (new \Source\Models\Auth())->user();
             </div>
         </footer>
 </div>
-
-
-
+</div>
 
 </body>
 </html>
