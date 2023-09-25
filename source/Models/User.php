@@ -17,7 +17,7 @@ class User extends Model
      */
     public function __construct()
     {
-        parent::__construct("users", ["id"], ["first_name", "last_name", "email", "password"]);
+        parent::__construct("users", ["id"], ["first_name", "last_name", "email", "functional_record", "password"]);
     }
 
     /**
@@ -32,14 +32,38 @@ class User extends Model
         string $firstName,
         string $lastName,
         string $email,
+        string $functional_record,
         string $password,
         string $document = null
     ): User {
         $this->first_name = $firstName;
         $this->last_name = $lastName;
         $this->email = $email;
+        $this->functional_record;
         $this->password = $password;
         $this->document = $document;
+        return $this;
+    }
+
+    /**
+     * @param string $id
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $email
+     * @return User
+     */
+    public function bootstrapId(
+        int $id,
+        string $firstName,
+        string $lastName,
+        string $email,
+        string $functional_record
+    ): User {
+        $this->id = $id;
+        $this->first_name = $firstName;
+        $this->last_name = $lastName;
+        $this->email = $email;
+        $this->functional_record = $functional_record;
         return $this;
     }
 

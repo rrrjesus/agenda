@@ -213,7 +213,7 @@
         </div>
 <?php endif; ?>
 
-<footer class="bd-footer py-4 py-md-5 bg-body-tertiary text-center">
+<footer class="bd-footer py-4 py-md-5 bg-body-tertiary text-center container-sm">
     <div class="container-xl py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <div class="row">
             <div class="col-lg-3 mb-3">

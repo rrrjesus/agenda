@@ -497,7 +497,7 @@ class Dashboard extends Controller
             }
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe seus dados para criar sua conta")->render();
+                $json['message'] = $this->message->info("Informe todos os dados para criar o usuário !!!")->render();
                 echo json_encode($json);
                 return;
             }
@@ -507,11 +507,12 @@ class Dashboard extends Controller
                 $data['first_name'],
                 $data['last_name'],
                 $data['email'],
+                $data['functional_record'],
                 $data['password']
             );
 
             if($auth->register($user)){
-                $json['redirect'] = url("/confirma");
+                $json['redirect'] = url("/dashboard/cadastrar-usuario");
             } else {
                 $json['message'] = $auth->message()->render();
             }
@@ -520,7 +521,7 @@ class Dashboard extends Controller
         }
 
         $head = $this->seo->render(
-            "Cadastrar Conta - " . CONF_SITE_TITLE,
+            "Criar Conta - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
             url("/cadastrar"),
             theme("/assets/images/share.jpg")
@@ -529,6 +530,70 @@ class Dashboard extends Controller
         echo $this->view->render("user-register",
             [
                 "head" => $head
+            ]);
+    }
+
+    /** @param array $data
+     * @return void */
+    public function updatedUser(array $data):void
+    {
+        if(!empty($data['csrf'])) {
+            if(!empty($data['csrf'])) {
+                if (!csrf_verify($data)) {
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if(in_array("", $data)){
+                    $json['message'] = $this->message->info("Informe o nome, sobrenome e email para criar usuário")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $id = $data['id'];
+                $users = (new User());
+
+                if($users->findById($id)->status == "trash"){
+                    $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $users = new User();
+
+                $user->bootstrapId(
+                    $data["id"],
+                    $data['first_name'],
+                    $data['last_name'],
+                    $data['email'],
+                    $data['functional_record']
+                );
+
+                if($contact->updated($contact)){
+                    $json['redirect'] = url("/dashboard/listar-usuarios");
+                } else {
+                    $json['message'] = $contact->message()->render();
+                }
+                echo json_encode($json);
+                return;
+            }
+        }
+
+        $id = $data['id'];
+        $edit = (new User())->findById($id);
+
+        $head = $this->seo->render(
+            "Edição de Usuário - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/dashboard/editar-usuario/{$id}"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("user-edit",
+            [
+                "head" => $head,
+                "edit" => $edit
             ]);
     }
 

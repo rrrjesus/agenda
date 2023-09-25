@@ -52,7 +52,8 @@ class Auth extends Model
         $session = new Session();
         $session->unset("authUser");
     }
-    /**
+
+     /**
      * @param User $user
      * @return bool
      */
@@ -61,21 +62,9 @@ class Auth extends Model
         if(!$user->save()) {
             $this->message = $user->message;
             return false;
+        }else{
+            $this->message->success("Cadastro de {$user->first_name} salvo com sucesso!!!")->flash();
         }
-
-        $view = new View(__DIR__."/../../shared/views/email");
-        $message = $view->render("confirm", [
-            "first_name" => $user->first_name,
-            "confirm_link" => url("/obrigado/" . base64_encode($user->email))
-        ]);
-
-        (new Email())->bootstrap(
-            "Ative sua conta no " . CONF_SITE_NAME,
-            $message,
-            $user->email,
-            "{$user->first_name} {$user->last_name}"
-        )->send();
-
         return true;
     }
 
@@ -197,13 +186,4 @@ class Auth extends Model
 
     }
 
-    public function registerContact(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
-    {
-        if(!$contact->save()) {
-            $this->message = $contact->message;
-            return false;
-        }
-
-        return true;
-    }
 }
