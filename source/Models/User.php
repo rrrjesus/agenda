@@ -68,6 +68,23 @@ class User extends Model
     }
 
     /**
+     * @param string $id
+     * @param string $status
+     * @return $this
+     */
+    public function bootstrapTrash(
+        string $id,
+        string $status,
+        string $deleted_at
+    ): User
+    {
+        $this->id = $id;
+        $this->status = $status;
+        $this->deleted_at = $deleted_at;
+        return $this;
+    }
+
+    /**
      * @param string $email
      * @param string $columns
      * @return null|User
@@ -96,19 +113,37 @@ class User extends Model
         return true;
     }
 
+    public function deleted(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$user->save()) {
+            $this->message = $user->message;
+            return false;
+        }else {
+            $this->message->error("Exclusão de : {$user->first_name} {$user->last_name} feita com sucesso!!!")->flash();
+            redirect("/dashboard/listar-usuarios");
+        }
+
+        return true;
+    }
+
+    public function reactivated(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$user->save()) {
+            $this->message = $user->message;
+            return false;
+        }else {
+            $this->message->success("Reativação de : {$user->first_name} {$user->last_name} feita com sucesso!!!")->flash();
+            redirect("/dashboard/lixeira-usuarios");
+        }
+
+        return true;
+    }
 
     /**
      * @return bool
      */
     public function save(): bool
     {
-
-
-        if (!is_email($this->email)) {
-            $this->message->warning("O e-mail informado não tem um formato válido");
-            return false;
-        }
-
         /** User Update */
         if (!empty($this->id)) {
             $userId = $this->id;
@@ -117,6 +152,11 @@ class User extends Model
                 $this->message->warning("O e-mail informado já está cadastrado");
                 return false;
             }
+//
+//            if (!is_email($this->email)) {
+//                $this->message->warning("O e-mail informado não tem um formato válido");
+//                return false;
+//            }
 
             $this->update($this->safe(), "id = :id", "id={$userId}");
             if ($this->fail()) {
@@ -140,6 +180,11 @@ class User extends Model
                 return false;
             } else {
                 $this->password = passwd($this->password);
+            }
+
+            if (!is_email($this->email)) {
+                $this->message->warning("O e-mail informado não tem um formato válido");
+                return false;
             }
 
             if ($this->findByEmail($this->email, "id")) {

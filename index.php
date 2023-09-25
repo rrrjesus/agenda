@@ -56,6 +56,7 @@ $route->post("/editar-usuario", "Dashboard:updatedUser");
 $route->get("/excluir-usuario/{id}", "Dashboard:deletedUser");
 $route->get("/reativar-usuario/{id}", "Dashboard:reactivatedUser");
 $route->get("/listar-usuarios", "Dashboard:userDash");
+$route->get("/lixeira-usuarios", "Dashboard:userTrashDash");
 
 // Contacts
 $route->get("/listar-contatos", "Dashboard:contactDash");

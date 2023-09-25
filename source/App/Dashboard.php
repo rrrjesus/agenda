@@ -473,15 +473,40 @@ class Dashboard extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $users = (new User())->find()->fetch(true);
-        //$user_session = (new Auth())->user();
+        $user = (new User());
+        $userlista = $user->find("status = :s", "s=confirmed")->fetch(true);
+        $lixeira = $user->find("status = :s", "s=trash")->fetch(true);
+        $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
         echo $this->view->render("user-list",
             [
                 "head" => $head,
-                "users" => $users
+                "userlista" => $userlista,
+                "lixo" => $lixo
             ]);
+
     }
+
+    /** @return void */
+    public function userTrashDash(): void
+    {
+        $head = $this->seo->render(
+            "Lixeira de Usuarios - " . CONF_SITE_NAME ,
+            "Lixeira de Usuários",
+            url("/dashboard/lixeira-usuarios"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $userlista = (new User())->find("status = :s", "s=trash")->fetch(true);
+
+        echo $this->view->render("user-list-trash",
+            [
+                "head" => $head,
+                "userlista" => $userlista
+            ]);
+
+    }
+
 
     /**
      * @return void
@@ -594,6 +619,37 @@ class Dashboard extends Controller
                 "edit" => $edit
             ]);
     }
+
+    /** @param array $data
+     * @return void */
+    public function deletedUser(array $data):void
+    {
+        if(!empty($data['id'])) {
+            $user = new User();
+            $user->bootstrapTrash(
+                $data['id'],
+                "trash",
+                (new \DateTime())->format("Y-m-d H:i:s")
+            );
+            $user->deleted($user);
+        }
+    }
+
+    /** @param array $data
+     * @return void */
+    public function reactivatedUser(array $data):void
+    {
+        if(!empty($data['id'])) {
+            $user = new User();
+            $user->bootstrapTrash(
+                $data['id'],
+                "confirmed",
+                ""
+            );
+            $user->reactivated($user);
+        }
+    }
+
 
     /** @return void */
     public function userProfile()

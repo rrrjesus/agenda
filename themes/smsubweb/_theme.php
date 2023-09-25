@@ -101,7 +101,13 @@
                     <li class="nav-item dropdown">
                         <?php if(!empty($user)):?>
                         <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-                            <span class="d-lg-none" aria-hidden="true">Usuário: </span><i class="bi bi-person-check"></i> <?=$user->functional_record;?>
+                            <span class="d-lg-none" aria-hidden="true"><?=$user->functional_record?> : </span>
+                            <?php if(!empty($user->photo)):
+                                echo '<img src="'.theme("/assets/images/$user->photo").'" width="30" height="30" class="img-fluid rounded-circle"/>';
+                            else:
+                                echo '<img src="'.theme("/assets/images/logo_menu.png").'" width="30" height="30" class="img-fluid rounded-circle"/>';
+                            endif;
+                            ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><h6 class="dropdown-header">Dashboard</h6></li>
@@ -121,7 +127,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
+                                <a class="dropdown-item d-flex align-items-center justify-content-between" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>">
                                     Usuários
                                 </a>
                             </li>
