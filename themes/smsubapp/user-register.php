@@ -62,12 +62,6 @@
                         <input data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Digite o login D123456" class="form-control form-control-sm" type="text" name="functional_record" placeholder="DIGITE O LOGIN : D123456"/>
                     </div>
-
-                    <div class="col-3">
-                        <strong><label  for="inputStatus" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-pass me-2"></i> STATUS</label></strong>
-                        <input data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Digite o status" class="form-control form-control-sm" type="text" name="status" placeholder="registred"/>
-                    </div>
                 </div>
 
                 <div class="row justify-content-center mt-3 mb-3">

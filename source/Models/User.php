@@ -39,7 +39,7 @@ class User extends Model
         $this->first_name = $firstName;
         $this->last_name = $lastName;
         $this->email = $email;
-        $this->functional_record;
+        $this->functional_record = $functional_record;
         $this->password = $password;
         $this->document = $document;
         return $this;
@@ -53,7 +53,7 @@ class User extends Model
      * @return User
      */
     public function bootstrapId(
-        int $id,
+        string $id,
         string $firstName,
         string $lastName,
         string $email,
@@ -84,28 +84,29 @@ class User extends Model
         return $find->fetch();
     }
 
+    public function updated(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$user->save()) {
+            $this->message = $user->message;
+            return false;
+        }else {
+            $this->message->warning("Edição de {$user->first_name} salva com sucesso!!!")->flash();
+        }
+
+        return true;
+    }
+
+
     /**
      * @return bool
      */
     public function save(): bool
     {
-        if (!$this->required()) {
-            $this->message->warning("Nome, sobrenome, email e senha são obrigatórios");
-            return false;
-        }
+
 
         if (!is_email($this->email)) {
             $this->message->warning("O e-mail informado não tem um formato válido");
             return false;
-        }
-
-        if (!is_passwd($this->password)) {
-            $min = CONF_PASSWD_MIN_LEN;
-            $max = CONF_PASSWD_MAX_LEN;
-            $this->message->warning("A senha deve ter entre {$min} e {$max} caracteres");
-            return false;
-        } else {
-            $this->password = passwd($this->password);
         }
 
         /** User Update */
@@ -126,6 +127,21 @@ class User extends Model
 
         /** User Create */
         if (empty($this->id)) {
+
+            if (!$this->required()) {
+                $this->message->warning("Nome, sobrenome, email e senha são obrigatórios");
+                return false;
+            }
+
+            if (!is_passwd($this->password)) {
+                $min = CONF_PASSWD_MIN_LEN;
+                $max = CONF_PASSWD_MAX_LEN;
+                $this->message->warning("A senha deve ter entre {$min} e {$max} caracteres");
+                return false;
+            } else {
+                $this->password = passwd($this->password);
+            }
+
             if ($this->findByEmail($this->email, "id")) {
                 $this->message->warning("O e-mail informado já está cadastrado");
                 return false;

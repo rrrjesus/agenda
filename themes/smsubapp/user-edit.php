@@ -52,6 +52,16 @@
                     </div>
                 </div>
 
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <strong><label  for="inputLogin" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-mailbox me-2"></i> LOGIN</label></strong>
+                        <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                               data-bs-title="Digite o login" class="form-control form-control-sm" type="text" name="functional_record" value="<?=$edit->functional_record?>" placeholder="DIGITE O E-MAIL"/>
+                    </div>
+                </div>
+
+                <input type="hidden" name="id" value="<?=$edit->id?>">
+
                 <div class="row justify-content-center mt-3 mb-3">
                     <div class="col-auto">
                         <button data-bs-toggle="tooltip" data-bs-placement="bottom"

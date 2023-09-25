@@ -552,28 +552,26 @@ class Dashboard extends Controller
                 }
 
                 $id = $data['id'];
-                $users = (new User());
+                $user = (new User());
 
-                if($users->findById($id)->status == "trash"){
+                if($user->findById($id)->status == "trash"){
                     $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->render();
                     echo json_encode($json);
                     return;
                 }
 
-                $users = new User();
-
                 $user->bootstrapId(
-                    $data["id"],
+                    $data['id'],
                     $data['first_name'],
                     $data['last_name'],
                     $data['email'],
                     $data['functional_record']
                 );
 
-                if($contact->updated($contact)){
+                if($user->updated($user)){
                     $json['redirect'] = url("/dashboard/listar-usuarios");
                 } else {
-                    $json['message'] = $contact->message()->render();
+                    $json['message'] = $user->message()->render();
                 }
                 echo json_encode($json);
                 return;
