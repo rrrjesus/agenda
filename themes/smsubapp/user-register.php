@@ -48,7 +48,7 @@
                     <div class="col-6">
                         <strong><label  for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-mailbox me-2"></i> EMAIL</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Digite o email" class="form-control form-control-sm" type="number" name="ramal" placeholder="DIGITE O E-MAIL"/>
+                               data-bs-title="Digite o email" class="form-control form-control-sm" type="number" name="email" placeholder="DIGITE O E-MAIL"/>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                     <div class="col-6">
                         <strong><label  for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-pass me-2"></i> SENHA</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Digite o email" class="form-control form-control-sm" type="number" name="ramal" placeholder="DIGITE A SENHA"/>
+                               data-bs-title="Digite o email" class="form-control form-control-sm" type="number" name="password" placeholder="DIGITE A SENHA"/>
                     </div>
                 </div>
 
