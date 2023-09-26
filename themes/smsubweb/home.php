@@ -14,7 +14,7 @@
                     <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #063cee">
                         <h1>Service Desk COTI.</h1>
                         <p>As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>
-<!--                        <p><a class="btn btn-lg btn-info text-light" href="http://10.23.237.79/blog" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>-->
+                        <p><a class="btn btn-lg btn-info text-light" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos">Agenda de Contatos</a></p>
                     </div>
                 </div>
             </div>
