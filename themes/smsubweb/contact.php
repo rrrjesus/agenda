@@ -36,12 +36,12 @@
                     else:
                         '';
                     endif;
-                    ?>
-                    </td>
-                    <td class="text-center fw-semibold"><?=(!empty($lista->ramal )? $lista->ramal : "")?></td>
-                </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                        ?>
+                        </td>
+                        <td class="text-center fw-semibold"><?=(!empty($lista->ramal )? $lista->ramal : "")?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
     </div>
+</div>

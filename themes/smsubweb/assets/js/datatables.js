@@ -10,9 +10,9 @@ $(document).ready(function() {
             // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
             {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2 mt-2',text:'<i class="bi bi-printer"></i>'},
             {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info mb-2 mt-2',text:'<i class="bi bi-list"></i>'}],
-        "dom": "<'row '<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
-            "<'row'<'col-12'tr>>" +
-            "<'row'<'col-lg-6 col-md-6 col-sm-6'i><'col-lg-6 col-md-6 col-sm-6'p>>",
+        "dom": "<'row justify-content-center'<'col-lg-4 col-sm-4 col-md-4 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-4 col-sm-4 col-md-4 searchbar'f>>" +
+            "<'row justify-content-center'<'col-10'tr>>" +
+            "<'row justify-content-center'<'col-lg-5 col-md-5 col-sm-5'i><'col-lg-5 col-md-5 col-sm-5'p>>",
         responsive:
             {details:
                     {display: DataTable.Responsive.display.modal({
@@ -32,7 +32,7 @@ $(document).ready(function() {
             "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
         },
         // dom: "lBftipr",
-        "lengthMenu": [[5, 7, 10, 25, 50, -1], [5, 7, 10, 25, 50, "Todos"]],
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
         "aaSorting": [0, 'asc']
     });
 });

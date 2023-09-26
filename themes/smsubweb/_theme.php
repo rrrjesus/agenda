@@ -65,9 +65,9 @@
                     <li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/sobre")?>">Sobre</a>
                     </li>
-                    <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="http://10.23.237.79/blog">Blog</a>
-                    </li>
+<!--                    <li class="nav-item col-6 col-lg-auto">-->
+<!--                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="http://10.23.237.79/blog">Blog</a>-->
+<!--                    </li>-->
                 </ul>
 
                 <hr class="d-lg-none">
@@ -240,7 +240,7 @@
                     <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Home"  class="text-decoration-none text-info fw-bold" href="<?= url(); ?>">Home</a></li>
                     <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Contatos" class="text-decoration-none text-info fw-bold" href="<?= url("/contatos"); ?>">Contatos</a></li>
                     <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Sobre" class="text-decoration-none text-info fw-bold" href="<?= url("/sobre"); ?>">Sobre</a></li>
-                    <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Blog" class="text-decoration-none text-info fw-bold" href="http://10.23.237.79/blog">Blog</a></li>
+<!--                    <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Blog" class="text-decoration-none text-info fw-bold" href="http://10.23.237.79/blog">Blog</a></li>-->
                     <?php if(!empty($user->id)):?>
                         <li class="mb-2"><a data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="Acessar Painel" class="text-decoration-none text-info fw-bold" href="<?= url("/dashboard"); ?>">Painel</a></li>
                     <?php else: ?>

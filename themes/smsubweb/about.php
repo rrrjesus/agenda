@@ -8,7 +8,7 @@
             </h2>
 
             <article class="blog-post">
-                <h2 class="blog-post-title">Agenda na versão 1.0</h2>
+                <h2 class="blog-post-title" id="agendav1">Agenda na versão 1.0</h2>
                 <p class="fs-6">Por <a href="https://github.com/rrrjesus" class="text-decoration-none fw-semibold text-info"><i class="bi bi-github"></i> rrrjesus</a> em 19/09/2023</p>
                 <p class="fw-medium">A agenda de contatos SMSUB na versão 1.0 veio para iniciar o processo de inovação na área de desenvolvimento web.</p>
                 <img class="img-fluid" src="<?=theme("/assets/images/agendav1.jpg")?>">
@@ -22,7 +22,7 @@
                     filtro. A primeira versão da agenda de contatos foi desenvolvida por <strong>Julio N. Sales</strong> e foi utilizada durante aproximadamente 4 anos.</p>
                 <hr>
 
-                <h2 class="blog-post-title">Agenda na versão 2.0</h2>
+                <h2 class="blog-post-title" id="agendav2">Agenda na versão 2.0</h2>
                 <p class="fs-6">Por <a href="https://github.com/rrrjesus" class="text-decoration-none fw-semibold text-info"><i class="bi bi-github"></i> rrrjesus</a> em 19/09/2023</p>
                 <p class="fw-medium">A versão 2.0 veio trazendo o plugin jquery Datatables, o PHP orientado a objetos e uma CSS customizada.</p>
                 <img class="img-fluid" src="<?=theme("/assets/images/agendav2.jpg")?>">
@@ -85,9 +85,9 @@
                     <h4 class="fst-italic">Versões da Agenda</h4>
                     <ol class="list-unstyled mb-0">
                         <li><i class="bi bi-book-half me-2 fs-5 text-info"></i><a class="text-decoration-none text-info fw-semibold"
-                            href="<?=url("/../agendav1")?>" target="_blank">Agenda 1.0 - Janeiro de 2019</a></li>
+                            href="#agendav1">Agenda 1.0 - Janeiro de 2019</a></li>
                         <li><i class="bi bi-book-half me-2 fs-5 text-info"></i><a class="text-decoration-none text-info fw-semibold"
-                            href="<?=url("/../agendav2")?>" target="_blank">Agenda 2.0 - Agosto de 2023</a></li>
+                            href="#agendav2">Agenda 2.0 - Agosto de 2023</a></li>
                         <li><i class="bi bi-book-half me-2 fs-5 text-info"></i><a class="text-decoration-none text-info fw-semibold"
                             href="<?=url("/contatos")?>">Agenda 2.1 - Versão Atual</a></li>
 
