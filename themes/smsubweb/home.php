@@ -8,26 +8,26 @@
 <!--        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
 <!--       </div>-->
         <div class="carousel-inner">
-<!--            <div class="carousel-item active">-->
-<!--                <img src="--><?php //=theme("/assets/images/help_desk_coti.jpg")?><!--" width="100%" height="100%">-->
-<!--                <div class="container">-->
-<!--                    <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #063cee">-->
-<!--                        <h1>Service Desk COTI.</h1>-->
-<!--                        <p>As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>-->
-<!--                        <p><a class="btn btn-lg btn-info text-light" href="http://10.23.237.79/blog" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
             <div class="carousel-item active">
-                <img src="<?=theme("/assets/images/dark_mode_agenda.jpg")?>" width="100%" height="100%">
+                <img src="<?=theme("/assets/images/help_desk_coti.jpg")?>" width="100%" height="100%">
                 <div class="container">
-                    <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #06b8ee">
-                        <h1 class="text-light"><i class="bi bi-moon-stars-fill"></i> Modo escuro</h1>
-                        <p class="text-light">O estilo dark mode para trasformar a agenda SMSUB com apenas um clique.</p>
-<!--                        <p><a class="btn btn-lg btn-info text-light" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>-->
+                    <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #063cee">
+                        <h1>Service Desk COTI.</h1>
+                        <p>As vantagens e agilidade que o serviço de suporte traz para seu dia dia na SMSUB.</p>
+<!--                        <p><a class="btn btn-lg btn-info text-light" href="http://10.23.237.79/blog" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>-->
                     </div>
                 </div>
             </div>
+<!--            <div class="carousel-item active">-->
+<!--                <img src="--><?php //=theme("/assets/images/dark_mode_agenda.jpg")?><!--" width="100%" height="100%">-->
+<!--                <div class="container">-->
+<!--                    <div class="carousel-caption" style="text-shadow: 0.1em 0.1em 0.2em #06b8ee">-->
+<!--                        <h1 class="text-light"><i class="bi bi-moon-stars-fill"></i> Modo escuro</h1>-->
+<!--                        <p class="text-light">O estilo dark mode para trasformar a agenda SMSUB com apenas um clique.</p>-->
+<!--                        <p><a class="btn btn-lg btn-info text-light" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Saiba Mais">Saiba Mais</a></p>-->-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 <!--            <div class="carousel-item">-->
 <!--                <img src="--><?php //=theme("/assets/images/dark_mode_agenda.jpg")?><!--" width="100%" height="100%">-->
 <!--                <div class="container">-->
