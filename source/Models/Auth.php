@@ -17,7 +17,7 @@ class Auth extends Model
      */
     public function __construct()
     {
-        parent::__construct("user", ["id"], ["email", "password"]);
+        parent::__construct("user", ["id"], ["email", "password", "status"]);
     }
 
     /**

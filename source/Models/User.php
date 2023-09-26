@@ -126,6 +126,19 @@ class User extends Model
         return true;
     }
 
+    public function delet(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$user->delete("id", $user->id)) {
+            $this->message = $user->message;
+            return false;
+        }else {
+            $this->message->error("Exclusão definitiva de usuário : {$user->first_name} feita com sucesso!!!")->flash();
+            redirect("/dashboard/lixeira-usuarios");
+        }
+
+        return true;
+    }
+
     public function reactivated(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
     {
         if(!$user->save()) {

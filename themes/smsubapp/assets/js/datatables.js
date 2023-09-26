@@ -363,11 +363,11 @@ $(document).ready(function() {
         "aaSorting": [0, 'asc'], /* 'desc' Carregar table decrescente e asc crescente*/
         "aoColumnDefs": [
             {
-                "aTargets": [6], // o numero 6 é o nº da coluna
+                "aTargets": [4], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" class="btn btn-outline-warning btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[6]+'">' +
+                    return '<button type="button" class="btn btn-outline-warning btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[4]+'">' +
                         '<i class="bi bi-arrow-up-circle"></i></button>' +
-                        '<div class="modal fade" id="trashModal' + full[6] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="trashModal' + full[4] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                         '<div class="modal-dialog modal-sm">\n' +
                         '<div class="modal-content">\n' +
                         '<div class="modal-header bg-danger text-light">\n' +
@@ -377,7 +377,29 @@ $(document).ready(function() {
                         '<div class="modal-body fw-semibold">Deseja reativar o usuário : ' + full[1] + ' ?</div>\n' +
                         '<div class="modal-footer">\n' +
                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                        '<a href="reativar-usuario/' + full[6] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                        '<a href="reativar-usuario/' + full[4] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                        '</div>\n' +
+                        '</div>\n' +
+                        '</div>\n' +
+                        '</div>';
+                }
+            },
+            {
+                "aTargets": [5], // o numero 6 é o nº da coluna
+                "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
+                    return '<button type="button" class="btn btn-outline-secondary btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[5]+'">' +
+                        '<i class="bi bi-trash"></i></button>' +
+                        '<div class="modal fade" id="trashModalFim' + full[5] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal-dialog modal-sm">\n' +
+                        '<div class="modal-content">\n' +
+                        '<div class="modal-header bg-danger text-light">\n' +
+                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-book-half me-2"></i> Excluir Usuário</h6>\n' +
+                        '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+                        '</div>\n' +
+                        '<div class="modal-body fw-semibold">Deseja excluir definitivo o usuário : ' + full[0] + ' ?</div>\n' +
+                        '<div class="modal-footer">\n' +
+                        '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
+                        '<a href="excluir-definitivo-usuario/' + full[5] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                         '</div>\n' +
                         '</div>\n' +
                         '</div>\n' +

@@ -114,6 +114,7 @@ $user = (new \Source\Models\Auth())->user();
                         <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/listar-contatos")?>"><i class="bi bi-telephone mb-2"></i> Contatos</a></li>
                         <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" href="<?=url("/dashboard/listar-setores")?>"><i class="bi bi-globe-americas mb-2"></i> Setores</a></li>
                         <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" aria-current="true" href="<?=url("/dashboard/listar-usuarios")?>"><i class="bi bi-people mb-2"></i> Usuários </a></li>
+                        <li class="nav-item"><a class="nav-link link-light d-flex align-items-center gap-2" aria-current="true" href="<?=url("/dashboard/perfil")?>"><i class="bi bi-person mb-2"></i> Perfil </a></li>
                             <hr class="my-1">
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"><span>Agenda</span>
                                 <a class="link-secondary" href="<?=url("/contatos")?>" aria-label="Add a new report"><i class="bi bi-book-half"></i></a>

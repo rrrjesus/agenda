@@ -51,7 +51,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($userlista as $user): ?>
+                <?php
+                    if(!empty($userlista)):
+                        foreach ($userlista as $user):
+                    ?>
                     <tr>
                         <td class="text-center"><?=$user->id?></td>
                         <td class="text-center"><?=$user->first_name." ".$user->last_name?></td>
@@ -70,7 +73,12 @@
                         <td class="text-center"><?=date('d/m/Y H\hi', strtotime($user->updated_at))?></td>
                         <td class="text-center"><?=$user->id?></td>
                     </tr>
-                <?php endforeach; ?>
+                        <?php
+                        endforeach;
+                    else:
+                        echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-book-half fs-5 me-2"></i> Não existem usuários na lista !!!</div>';
+                    endif;
+                ?>
                 </tbody>
             </table>
         </div>

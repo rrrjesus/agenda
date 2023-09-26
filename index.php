@@ -50,10 +50,12 @@ $route->get("/sair", "Dashboard:logout");
 // Users
 $route->get("/cadastrar-usuario", "Dashboard:registerUser");
 $route->post("/cadastrar-usuario", "Dashboard:registerUser");
-$route->get("/dashboard/perfil", "Dashboard:userProfile");
+$route->get("/perfil", "Dashboard:userProfile");
+$route->post("/perfil", "Dashboard:userProfile");
 $route->get("/editar-usuario/{id}", "Dashboard:updatedUser");
 $route->post("/editar-usuario", "Dashboard:updatedUser");
 $route->get("/excluir-usuario/{id}", "Dashboard:deletedUser");
+$route->get("/excluir-definitivo-usuario/{id}", "Dashboard:deleteUser");
 $route->get("/reativar-usuario/{id}", "Dashboard:reactivatedUser");
 $route->get("/listar-usuarios", "Dashboard:userDash");
 $route->get("/lixeira-usuarios", "Dashboard:userTrashDash");

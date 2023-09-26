@@ -474,7 +474,8 @@ class Dashboard extends Controller
         );
 
         $user = (new User());
-        $userlista = $user->find("status = :s", "s=confirmed")->fetch(true);
+        $userId = (new Auth())->user();
+        $userlista = $user->find("status = :s AND id != :i", "s=confirmed&i={$userId->id}")->fetch(true);
         $lixeira = $user->find("status = :s", "s=trash")->fetch(true);
         $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
@@ -637,6 +638,21 @@ class Dashboard extends Controller
 
     /** @param array $data
      * @return void */
+    public function deleteUser(array $data):void
+    {
+        if(!empty($data['id'])) {
+            $user = new User();
+            $user->bootstrapTrash(
+                $data['id'],
+                "trash",
+                (new \DateTime())->format("Y-m-d H:i:s")
+            );
+            $user->delet($user);
+        }
+    }
+
+    /** @param array $data
+     * @return void */
     public function reactivatedUser(array $data):void
     {
         if(!empty($data['id'])) {
@@ -652,15 +668,61 @@ class Dashboard extends Controller
 
 
     /** @return void */
-    public function userProfile()
+    public function userProfile(array $data):void
     {
-    $user = (new Auth())->user();
+        if(!empty($data['csrf'])) {
+            if(!empty($data['csrf'])) {
+                if (!csrf_verify($data)) {
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if(in_array("", $data)){
+                    $json['message'] = $this->message->info("Informe o nome, sobrenome e email para criar usuário")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $id = $data['id'];
+                $user = (new User());
+
+                if($user->findById($id)->status == "trash"){
+                    $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $user->bootstrapId(
+                    $data['id'],
+                    $data['first_name'],
+                    $data['last_name'],
+                    $data['email'],
+                    $data['functional_record']
+                );
+
+                if($user->updated($user)){
+                    $json['redirect'] = url("/dashboard/perfil");
+                } else {
+                    $json['message'] = $user->message()->render();
+                }
+                echo json_encode($json);
+                return;
+            }
+        }
+        $head = $this->seo->render(
+            "Edição de Usuário - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/dashboard/perfil"),
+            theme("/assets/images/share.jpg")
+        );
+
+    $edit = (new Auth())->user();
 
     echo $this->view->render("user-profile",
-
         [
             "head" => $head,
-            "user" => $user
+            "edit" => $edit
         ]);
     }
 

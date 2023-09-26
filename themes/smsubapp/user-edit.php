@@ -6,7 +6,7 @@
             <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
                 <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard")?>"><i class="bi bi-house-door"></i> Dashboard</a></li>
                 <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-danger" href="<?=url("/dashboard/listar-usuarios")?>"><i class="bi bi-person-add"></i> Usuários</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-plus-circle"></i> Cadastrar Usuário</li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-plus-circle"></i> Editar Usuário</li>
             </ol>
         </nav>
     </div>
