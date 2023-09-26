@@ -20,7 +20,7 @@
             <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="user-updated" action="<?=url("/dashboard/editar-usuario")?>" method="post" enctype="multipart/form-data">
 
                 <div class="row justify-content-center mb-3">
-                    <div class="col-6 ajax_response">
+                    <div class="col-9 ajax_response">
                         <?=flash();?>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <?=csrf_input();?>
 
                 <div class="row justify-content-center mb-3">
-                    <div class="col-6">
+                    <div class="col-9">
                         <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-person me-2"></i> NOME</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom"
                                data-bs-custom-class="custom-tooltip"
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="row justify-content-center mb-2">
-                    <div class="col-6">
+                    <div class="col-9">
                         <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-person me-2"></i>SOBRENOME</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Digite o nome" class="form-control form-control-sm" type="text" name="last_name" value="<?=$edit->last_name?>" placeholder="DIGITE O SOBRENOME"/>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-6">
+                    <div class="col-9">
                         <strong><label  for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-mailbox me-2"></i> EMAIL</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Digite o email" class="form-control form-control-sm" type="email" name="email" value="<?=$edit->email?>" placeholder="DIGITE O E-MAIL"/>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-6">
+                    <div class="col-9">
                         <strong><label  for="inputLogin" class="col-3 col-form-label col-form-label-sm"><i class="bi bi-mailbox me-2"></i> LOGIN</label></strong>
                         <input data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Digite o login" class="form-control form-control-sm" type="text" name="functional_record" value="<?=$edit->functional_record?>" placeholder="DIGITE O E-MAIL"/>
