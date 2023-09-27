@@ -91,7 +91,7 @@ class User extends Model
      */
     public function findByEmail(string $email, string $columns = "*"): ?User
     {
-        $find = $this->find("email = :email", "email={$email}", $columns);
+        $find = $this->find("email = :email AND status = :status", "email={$email}&status=confirmed", $columns);
         return $find->fetch();
     }
 
@@ -107,7 +107,7 @@ class User extends Model
             $this->message = $user->message;
             return false;
         }else {
-            $this->message->warning("Edição de {$user->first_name} salva com sucesso!!!")->flash();
+            $this->message->warning("Edição de {$user->first_name} salva com sucesso!!!")->icon()->flash();
         }
 
         return true;
@@ -119,7 +119,7 @@ class User extends Model
             $this->message = $user->message;
             return false;
         }else {
-            $this->message->error("Exclusão de : {$user->first_name} {$user->last_name} feita com sucesso!!!")->flash();
+            $this->message->error("Exclusão de : {$user->first_name} {$user->last_name} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/listar-usuarios");
         }
 
@@ -132,7 +132,7 @@ class User extends Model
             $this->message = $user->message;
             return false;
         }else {
-            $this->message->error("Exclusão definitiva de usuário : {$user->first_name} feita com sucesso!!!")->flash();
+            $this->message->error("Exclusão definitiva de usuário : {$user->first_name} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/lixeira-usuarios");
         }
 
@@ -145,7 +145,7 @@ class User extends Model
             $this->message = $user->message;
             return false;
         }else {
-            $this->message->success("Reativação de : {$user->first_name} {$user->last_name} feita com sucesso!!!")->flash();
+            $this->message->success("Reativação de : {$user->first_name} {$user->last_name} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/lixeira-usuarios");
         }
 

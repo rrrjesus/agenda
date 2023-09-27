@@ -5,9 +5,9 @@ namespace Source\Support;
 use Source\Core\Session;
 
 /**
- * FSPHP | Class Message
+ * Class Message
  *
- * @author Robson V. Leite <cursos@upinside.com.br>
+ * @authores Robson V. Leite  & Rodolfo Romaioli R. de Jesus
  * @package Source\Core
  */
 class Message
@@ -18,6 +18,15 @@ class Message
     /** @var string */
     private $type;
 
+    /** @var */
+    private $after;
+
+    /** @var */
+    private $before;
+
+    /** @var */
+    private $icon;
+
     /**
      * @return string
      */
@@ -27,11 +36,49 @@ class Message
     }
 
     /**
+     * @param string $text
+     * @return $this
+     */
+    public function after(string $text): Message
+    {
+        $this->after = $text;
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return $this
+     */
+    public function before(string $text): Message
+    {
+        $this->before = $text;
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return $this|null
+     */
+    public function icon(string $text = "book-half"): ?Message
+    {
+        $this->icon = $text;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+
+    }
+    /**
      * @return string
      */
     public function getText(): ?string
     {
-        return $this->text;
+        return $this->after.$this->text.$this->before;
     }
 
     /**
@@ -48,7 +95,7 @@ class Message
      */
     public function info(string $message): Message
     {
-        $this->type = CONF_MESSAGE_INFO;
+        $this->type = "alert-info";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -59,7 +106,7 @@ class Message
      */
     public function success(string $message): Message
     {
-        $this->type = CONF_MESSAGE_SUCCESS;
+        $this->type = "alert-success";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -70,7 +117,7 @@ class Message
      */
     public function warning(string $message): Message
     {
-        $this->type = CONF_MESSAGE_WARNING;
+        $this->type = "alert-warning";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -81,7 +128,7 @@ class Message
      */
     public function error(string $message): Message
     {
-        $this->type = CONF_MESSAGE_ERROR;
+        $this->type = "alert-danger";
         $this->text = $this->filter($message);
         return $this;
     }
@@ -91,7 +138,7 @@ class Message
      */
     public function render(): string
     {
-        return "<div role='alert' class='alert fw-semibold text-center " . CONF_MESSAGE_CLASS . " {$this->getType()}'><i class='bi bi-book-half fs-5 me-2'></i> {$this->getText()}</div>";
+        return "<div role='alert' class='alert fw-semibold text-center message" . " {$this->getType()}'><i class='bi bi-{$this->getIcon()} fs-5 me-2'></i> {$this->getText()}</div>";
     }
 
     /**

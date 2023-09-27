@@ -63,7 +63,7 @@ class Auth extends Model
             $this->message = $user->message;
             return false;
         }else{
-            $this->message->success("Cadastro de {$user->first_name} salvo com sucesso!!!")->flash();
+            $this->message->success("Cadastro de {$user->first_name} salvo com sucesso!!!")->icon()->flash();
         }
         return true;
     }
@@ -110,7 +110,7 @@ class Auth extends Model
 
         //LOGIN
         (new Session())->set("authUser", $user->id);
-        $this->message->success("Bem Vindo(a) ".$user->first_name)->flash();
+        $this->message->success("Bem Vindo(a) ".$user->first_name)->icon()->flash();
         return true;
     }
 

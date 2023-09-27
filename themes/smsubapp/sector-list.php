@@ -44,7 +44,7 @@
                     <th class="text-center">SETOR</th>
                     <th class="text-center">CRIADO</th>
                     <th class="text-center">EDITADO</th>
-                    <th class="text-center">EXCLUIR</th>
+                    <th class="text-center">LIXEIRA</th>
                 </tr>
                 </thead>
                 <tbody>

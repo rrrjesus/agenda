@@ -80,7 +80,7 @@ class Contact extends Model
             $this->message = $contact->message;
             return false;
         }else {
-            $this->message->warning("Edição de {$contact->collaborator} salva com sucesso!!!")->flash();
+            $this->message->warning("Edição de {$contact->collaborator} salva com sucesso!!!")->icon()->flash();
         }
 
         return true;
@@ -92,7 +92,7 @@ class Contact extends Model
             $this->message = $contact->message;
             return false;
         }else {
-            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
+            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/listar-contatos");
         }
 
@@ -105,8 +105,21 @@ class Contact extends Model
             $this->message = $contact->message;
             return false;
         }else {
-            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->flash();
+            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/lixeira-contatos");
+        }
+
+        return true;
+    }
+
+    public function delet(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    {
+        if(!$contact->delete("id", $contact->id)) {
+            $this->message = $contact->message;
+            return false;
+        }else {
+            $this->message->error("Exclusão definitiva de contato feita com sucesso!!!")->icon("trash")->flash();
+            redirect("/dashboard/listar-contatos");
         }
 
         return true;
@@ -136,7 +149,7 @@ class Contact extends Model
             $this->message = $contact->message;
             return false;
         }else{
-            $this->message->success("Cadastro de {$contact->collaborator} salvo com sucesso!!!")->flash();
+            $this->message->success("Cadastro de {$contact->collaborator} salvo com sucesso!!!")->icon()->flash();
         }
         return true;
     }

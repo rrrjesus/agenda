@@ -45,7 +45,8 @@
                     <th class="text-center">NOME</th>
                     <th class="text-center">RAMAL</th>
                     <th class="text-center">EDITADO EM:</th>
-                    <th class="text-center">EXCLUIR</th>
+                    <th class="text-center">LIXEIRA</th>
+                    <th class="text-center">DEFINITIVO?</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -79,6 +80,7 @@
                         <td class="text-center"><?=$lista->collaborator?></td>
                         <td class="text-center"><?=$lista->ramal?></td>
                         <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>
+                        <td class="text-center"><?=$lista->id?></td>
                         <td class="text-center"><?=$lista->id?></td>
                     </tr>
                 <?php endforeach; ?>

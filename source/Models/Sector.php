@@ -16,7 +16,7 @@ class Sector extends Model
 
     /** @param string $uri
      * @param string $columns
-     * @return Category|null
+     * @return Sector|null
      */
     public function findyBySector(string $sector, string $columns = "*"): ?Sector
     {
@@ -60,11 +60,11 @@ class Sector extends Model
         return $this;
     }
 
-    /** @return Category|null
+    /** @return Sector|null
      */
     public function sector(): ?Sector
     {
-        if($this->sector) {
+        if(!empty($this->sector)) {
             return(new Sector())->findById($this->sector);
         }
         return null;
@@ -84,7 +84,7 @@ class Sector extends Model
             $this->message = $sector->message;
             return false;
         }else {
-            $this->message->warning("Edição de {$sector->sector_name} salva com sucesso!!!")->flash();
+            $this->message->warning("Edição de {$sector->sector_name} salva com sucesso!!!")->icon()->flash();
         }
 
         return true;
@@ -92,11 +92,11 @@ class Sector extends Model
 
     public function deleted(Sector $sector): bool // Só aceita um objeto da Classe User e bool só retorna true e false
     {
-        if(!$sector->save()) {
+        if (!$sector->save()) {
             $this->message = $sector->message;
             return false;
         }else {
-            $this->message->error("Exclusão de setor : {$sector->sector_name} feita com sucesso!!!")->flash();
+            $this->message->error("Exclusão de setor : {$sector->sector_name} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/listar-setores");
         }
 
@@ -109,10 +109,9 @@ class Sector extends Model
             $this->message = $sector->message;
             return false;
         }else {
-            $this->message->error("Exclusão definitiva de setor : {$sector->sector_name} feita com sucesso!!!")->flash();
+            $this->message->error("Exclusão definitiva de setor : {$sector->sector_name} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/lixeira-setores");
         }
-
         return true;
     }
 
@@ -122,7 +121,7 @@ class Sector extends Model
             $this->message = $sector->message;
             return false;
         }else {
-            $this->message->success("Reativação de : {$sector->sector_name} feita com sucesso!!!")->flash();
+            $this->message->success("Reativação de : {$sector->sector_name} feita com sucesso!!!")->icon()->flash();
             redirect("/dashboard/lixeira-setores");
         }
 
@@ -149,7 +148,7 @@ class Sector extends Model
             $this->message = $sector->message;
             return false;
         }else{
-            $this->message->success("Cadastro de {$sector->sector_name} salvo com sucesso!!!")->flash();
+            $this->message->success("Cadastro de {$sector->sector_name} salvo com sucesso!!!")->icon()->flash();
         }
 
         return true;

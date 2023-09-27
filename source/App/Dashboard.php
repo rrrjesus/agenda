@@ -21,6 +21,7 @@ class Dashboard extends Controller
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
        // var_dump((new Post())->find()->fetch(true));
+       // var_dump((new Contact())->find("sector=:s", "s=1"));
 
         date_default_timezone_set('America/Sao_Paulo');
 
@@ -123,13 +124,13 @@ class Dashboard extends Controller
     {
         if(!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->render();
+                $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -146,7 +147,7 @@ class Dashboard extends Controller
             if($contact->register($contact)){
                 $json['redirect'] = url("/dashboard/cadastrar-contato");
             } else {
-                $json['message'] = $contact->message()->render();
+                $json['message'] = $contact->message()->icon()->render();
             }
             echo json_encode($json);
             return;
@@ -173,13 +174,13 @@ class Dashboard extends Controller
         if(!empty($data['csrf'])) {
             if(!empty($data['csrf'])) {
                 if (!csrf_verify($data)) {
-                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 if(in_array("", $data)){
-                    $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->render();
+                    $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -188,20 +189,20 @@ class Dashboard extends Controller
                 $contacts = (new Contact());
 
                 if($contacts->findById($id)->status == "trash"){
-                    $json['message'] = $this->message->warning("O contato informado está na lixeira !!!")->render();
+                    $json['message'] = $this->message->warning("O contato informado está na lixeira !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 $sectors = (new Sector());
                 if(!isset($sectors->findyBySector($data["sector"])->id)){
-                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->render();
+                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 if($sectors->findyBySector($data["sector"])->status == "trash"){
-                    $json['message'] = $this->message->warning("O setor informado está na lixeira !!!")->render();
+                    $json['message'] = $this->message->warning("O setor informado está na lixeira !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -220,7 +221,7 @@ class Dashboard extends Controller
                 if($contact->updated($contact)){
                     $json['redirect'] = url("/dashboard/listar-contatos");
                 } else {
-                    $json['message'] = $contact->message()->render();
+                    $json['message'] = $contact->message()->icon()->render();
                 }
                 echo json_encode($json);
                 return;
@@ -277,6 +278,19 @@ class Dashboard extends Controller
         }
     }
 
+    public function deleteContact(array $data):void
+    {
+        if(!empty($data['id'])) {
+            $contact = new Contact();
+            $contact->bootstrapTrash(
+                $data['id'],
+                "trash",
+                (new \DateTime())->format("Y-m-d H:i:s")
+            );
+            $contact->delet($contact);
+        }
+    }
+
     /*
      * AGENDA SETORES
      */
@@ -327,13 +341,13 @@ class Dashboard extends Controller
     {
         if(!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o setor !!!")->render();
+                $json['message'] = $this->message->info("Informe o setor !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -346,7 +360,7 @@ class Dashboard extends Controller
             if($sector->register($sector)){
                 $json['redirect'] = url("/dashboard/cadastrar-setor");
             } else {
-                $json['message'] = $sector->message()->render();
+                $json['message'] = $sector->message()->icon()->render();
             }
             echo json_encode($json);
             return;
@@ -372,13 +386,13 @@ class Dashboard extends Controller
         if(!empty($data['csrf'])) {
             if(!empty($data['csrf'])) {
                 if (!csrf_verify($data)) {
-                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 if(in_array("", $data)){
-                    $json['message'] = $this->message->info("Informe o setor !!!")->render();
+                    $json['message'] = $this->message->info("Informe o setor !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -393,7 +407,7 @@ class Dashboard extends Controller
                 if($sector->updated($sector)){
                     $json['redirect'] = url("/dashboard/listar-setores");
                 } else {
-                    $json['message'] = $sector->message()->render();
+                    $json['message'] = $sector->message()->icon()->render();
                 }
                 echo json_encode($json);
                 return;
@@ -422,6 +436,15 @@ class Dashboard extends Controller
     public function deletedSector(array $data):void
     {
         if(!empty($data['id'])) {
+
+            $id = $data['id'];
+            $cont = (new Contact())->find("sector=:s", "s=$id")->fetch();
+
+            if($cont) {
+                $this->message->warning("Exclusão não realizada, existem contatos na agenda vinculados ao setor !!!")->icon("exclamation-octagon")->flash();
+                redirect("/dashboard/listar-setores");
+            }
+
             $sector = new Sector();
             $sector->bootstrapTrash(
                 $data['id'],
@@ -517,13 +540,13 @@ class Dashboard extends Controller
     {
         if(!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
             if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe todos os dados para criar o usuário !!!")->render();
+                $json['message'] = $this->message->info("Informe todos os dados para criar o usuário !!!")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -540,7 +563,7 @@ class Dashboard extends Controller
             if($auth->register($user)){
                 $json['redirect'] = url("/dashboard/cadastrar-usuario");
             } else {
-                $json['message'] = $auth->message()->render();
+                $json['message'] = $auth->message()->icon()->render();
             }
             echo json_encode($json);
             return;
@@ -566,13 +589,13 @@ class Dashboard extends Controller
         if(!empty($data['csrf'])) {
             if(!empty($data['csrf'])) {
                 if (!csrf_verify($data)) {
-                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 if(in_array("", $data)){
-                    $json['message'] = $this->message->info("Informe o nome, sobrenome e email para criar usuário")->render();
+                    $json['message'] = $this->message->icon("exclamation-triangle")->info("Informe todos os campos para criar usuário")->after("Ooops !!! ")->render();
                     echo json_encode($json);
                     return;
                 }
@@ -581,7 +604,7 @@ class Dashboard extends Controller
                 $user = (new User());
 
                 if($user->findById($id)->status == "trash"){
-                    $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->render();
+                    $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -597,7 +620,7 @@ class Dashboard extends Controller
                 if($user->updated($user)){
                     $json['redirect'] = url("/dashboard/listar-usuarios");
                 } else {
-                    $json['message'] = $user->message()->render();
+                    $json['message'] = $user->message()->icon()->render();
                 }
                 echo json_encode($json);
                 return;
@@ -673,13 +696,13 @@ class Dashboard extends Controller
         if(!empty($data['csrf'])) {
             if(!empty($data['csrf'])) {
                 if (!csrf_verify($data)) {
-                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 if(in_array("", $data)){
-                    $json['message'] = $this->message->info("Informe o nome, sobrenome e email para criar usuário")->render();
+                    $json['message'] = $this->message->after("Ooops, ")->info("Preencha todos os campos !!!")->icon("exclamation-octagon")->render();
                     echo json_encode($json);
                     return;
                 }
@@ -688,7 +711,7 @@ class Dashboard extends Controller
                 $user = (new User());
 
                 if($user->findById($id)->status == "trash"){
-                    $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->render();
+                    $json['message'] = $this->message->warning("O usuário informado está na lixeira !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -704,7 +727,7 @@ class Dashboard extends Controller
                 if($user->updated($user)){
                     $json['redirect'] = url("/dashboard/perfil");
                 } else {
-                    $json['message'] = $user->message()->render();
+                    $json['message'] = $user->message()->icon()->render();
                 }
                 echo json_encode($json);
                 return;

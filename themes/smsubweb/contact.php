@@ -28,13 +28,13 @@
                 <tbody>
                 <?php foreach ($contact as $lista): ?>
                 <tr>
-                    <td class="text-center fw-semibold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="O ramal <?=$lista->ramal." é de ".
-                        $lista->collaborator.' '.(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?>"><?=(!empty($lista->collaborator) ? $lista->collaborator : "")?></td>
+                    <td class="text-center fw-semibold" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                        data-bs-title="O ramal <?=$lista->ramal." é de ".$lista->collaborator.' '.(!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO")?>"><?=(!empty($lista->collaborator) ? $lista->collaborator : "")?></td>
                     <td class="text-center fw-semibold">
-                    <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
-                        echo $lista->sector()->sector_name;
+                    <?php if(!empty($lista->sector()->sector_name) && !empty($lista->sector()->status == "post")):
+                        echo (!empty($lista->sector()->sector_name) ? $lista->sector()->sector_name : "NÃO CADASTRADO");
                     else:
-                        '';
+                        echo "EXCLUÍDO";
                     endif;
                         ?>
                         </td>

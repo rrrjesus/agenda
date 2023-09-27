@@ -107,6 +107,72 @@ $(document).ready(function() {
         }
     });
 
+    $("#user-updated").validate({
+        rules: {
+            first_name: {
+                required: true
+                // remote: "remote/valida-email.php"
+            },
+            last_name: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            functional_record: {
+                required: true
+            }
+        },
+        messages: {
+            first_name: {
+                required: "Digite o nome !!!"
+                // remote: "Email não encontrado !!!"
+            },
+            last_name: {
+                required: "Digite o sobrenome !!!"
+            },
+            email: {
+                required: "Digite o e-mail !!!"
+            },
+            functional_record: {
+                required: "Digite o RF !!!"
+            }
+        }
+    });
+
+    $("#user-profile").validate({
+        rules: {
+            first_name: {
+                required: true
+                // remote: "remote/valida-email.php"
+            },
+            last_name: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            functional_record: {
+                required: true
+            }
+        },
+        messages: {
+            first_name: {
+                required: "Digite o nome !!!"
+                // remote: "Email não encontrado !!!"
+            },
+            last_name: {
+                required: "Digite o sobrenome !!!"
+            },
+            email: {
+                required: "Digite o e-mail !!!"
+            },
+            functional_record: {
+                required: "Digite o RF !!!"
+            }
+        }
+    });
+
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

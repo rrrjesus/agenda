@@ -102,12 +102,3 @@ define("CONF_MAIL_OPTION_HTML", true);
 define("CONF_MAIL_OPTION_AUTH", true);
 define("CONF_MAIL_OPTION_SECURE", "tls");
 define("CONF_MAIL_OPTION_CHARSET", "utf-8");
-
-/**
- * MESSAGE
- */
-define("CONF_MESSAGE_CLASS", "message");
-define("CONF_MESSAGE_INFO", "alert alert-info icon-info");
-define("CONF_MESSAGE_SUCCESS", "alert alert-success icon-check-square-o ");
-define("CONF_MESSAGE_WARNING", "alert alert-warning icon-warning");
-define("CONF_MESSAGE_ERROR", "alert alert-danger icon-warning");
