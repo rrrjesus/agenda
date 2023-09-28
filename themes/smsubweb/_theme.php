@@ -63,6 +63,9 @@
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/contatos")?>">Contatos</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
+                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="E-mail" href="<?=url("/email")?>">E-mail</a>
+                    </li>
+                    <li class="nav-item col-6 col-lg-auto">
                         <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/sobre")?>">Sobre</a>
                     </li>
 <!--                    <li class="nav-item col-6 col-lg-auto">-->
@@ -278,6 +281,15 @@
 </footer>
 
 <script src="<?= theme("/assets/scripts.js"); ?>"></script>
+
+<script>
+    let sector = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
+    });
+    sector.initialize();
+    $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
+</script>
 
 <?= $this->section("scripts"); ?>
 

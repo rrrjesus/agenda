@@ -17,6 +17,8 @@ if (strpos(url(), "localhost")) {
     $minCSS->add(__DIR__ . "/../../shared/styles/responsive.bootstrap5.min.css");
     // CSS Bootstrap Icons Dashboard
     $minCSS->add(__DIR__ . "/../../shared/styles/bootstrap-icons.min.css");
+    // CSS Typeahead Autocomplete
+    $minCSS->add(__DIR__ . "/../../shared/styles/typeahead.css");
 
     //CSS Theme
     $cssDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME . "/assets/css");
@@ -88,6 +90,8 @@ if (strpos(url(), "localhost")) {
     $minJS->add(__DIR__ . "/../../shared/scripts/jszip.min.js");
 //    $minJS->add(__DIR__ . "/../../shared/scripts/pdfmake.min.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
+    // JS Typeahead Autocomplete
+    $minJS->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");
     $minJS->add(__DIR__ . "/../../shared/scripts/jquery.validate.min.js");
 
     //theme CSS

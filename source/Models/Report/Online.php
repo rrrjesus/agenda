@@ -4,6 +4,7 @@ namespace Source\Models\Report;
 
 use Source\Core\Model;
 use Source\Core\Session;
+use Source\Models\User;
 
 /**
  * Class Online

@@ -194,103 +194,33 @@ class Web extends Controller
     }
 
     /**
-     * SITE FORGET RESET
-     * @param array $data
-     * @return void
+     *  SITE ASSINATURA DE EMAIL
      */
-    public function reset(array $data): void
-    {
-
-        if(!empty($data['csrf'])) {
-            if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
-                echo json_encode($json);
-                return;
-            }
-
-
-            if(empty($data["password"]) || empty($data["password_re"])){
-                $json["message"] = $this->message->info("Informe e repita a senha para continuar")->render();
-                echo json_encode($json);
-                return;
-            }
-
-            list($email, $code) = explode("|", $data["code"]);
-            $auth = new Auth();
-
-            if ($auth->reset($email, $code, $data["password"], $data["password_re"])){
-                $this->message->success("Senha alterada com sucesso. Vamos controlar")->flash();
-                $json["redirect"] = url("/entrar");
-            }else{
-                $json["message"] = $auth->message()->render();
-            }
-
-            echo json_encode($json);
-            return;
-        }
-
-        $head = $this->seo->render(
-            "Crie sua nova senha no - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
-            url("/recuperar"),
-            theme("/assets/images/share.jpg")
-        );
-
-        echo $this->view->render("auth-reset",
-            [
-                "head" => $head,
-                "code" => $data["code"]
-            ]);
-    }
 
     /**
      * @return void
      * @param null|array $data
      */
-    public function register(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
-    {
-        if(!empty($data['csrf'])) {
-            if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
-                echo json_encode($json);
-                return;
-            }
+      public function creatorCard(): void
+      {
+          $head = $this->seo->render(
+              CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+              CONF_SITE_DESC,
+              url(),
+              theme("/assets/images/share.jpg")
+          );
 
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe seus dados para criar sua conta")->render();
-                echo json_encode($json);
-                return;
-            }
-            $auth = new Auth();
-            $user = new User();
-            $user->bootstrap(
-                $data['first_name'],
-                $data['last_name'],
-                $data['email'],
-                $data['password']
-            );
+          $post = (new Post())->findById(1);
+          $post->views += 1;
+          $post->save();
 
-            if($auth->register($user)){
-                $json['redirect'] = url("/confirma");
-            } else {
-                $json['message'] = $auth->message()->render();
-            }
-            echo json_encode($json);
-            return;
-        }
+          echo $this->view->render("email",
+              [
+                  "head" => $head
+              ]);
+      }
 
-        $head = $this->seo->render(
-            "Criar Conta - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
-            url("/cadastrar"),
-            theme("/assets/images/share.jpg")
-        );
 
-        echo $this->view->render("auth-register",
-            [
-                "head" => $head
-            ]);
-    }
 
     /**
      * SITE OPTIN CONFIRM

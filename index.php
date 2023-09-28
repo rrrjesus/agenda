@@ -36,6 +36,10 @@ $route->post("/recuperar", "Web:forget");
 $route->get("/recuperar/{code}", "Web:reset");
 $route->post("/recuperar/resetar", "Web:reset");
 
+//assinatura de email
+$route->get("/email", "Web:creatorCard");
+$route->post("/email", "Web:creatorCard");
+
 //optin
 $route->get("/confirma", "Web:confirm");
 $route->get("/obrigado/{email}", "Web:success");
@@ -94,6 +98,8 @@ $route->get("/em/{category}", "Web:blogCategory");
 $route->get("/em/{category}/{page}", "Web:blogCategory");
 $route->get("/por/{author}", "Web:blogAuthor");
 $route->get("/por/{author}/{page}", "Web:blogAuthor");
+
+
 
 /**
  * ERROR ROUTES

@@ -16,8 +16,6 @@
                     <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
 
-                <p><a class="fw-bold text-decoration-none text-info" title="Recuperar senha" href="<?= url("/recuperar"); ?>">Esqueceu a senha?</a></p>
-
                 <div class="form-check text-start my-3">
                     <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" <?=($cookie ? "checked" : "")?> name="save">
                     <label class="form-check-label" for="flexCheckDefault">
