@@ -11,7 +11,8 @@
                 </ol>
             </nav>
 
-            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <div class="pricing-header mx-auto text-center">
+<!--                <img src="--><?php //=theme("/assets/images/smsub_logo/SUBPREFEITURAS_CETRALIZADO_FUNDO_CLARO.png")?><!--" class="img-fluid" width="100" height="100">-->
                 <p class="fs-2 fw-normal text-body-emphasis pb-0"><i class="bi bi-credit-card-2-front me-2"></i> Assinatura de E-mail SMSUB</p>
                 <p class="fs-6 text-body-secondary pt-0">Gerador de assinatura de e-mail no padrão estabelecido no Manual de Identidade Visual da
                     <a class="text-decoration-none text-info fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
@@ -20,7 +21,7 @@
 
             <div class="d-flex justify-content-center">
                 <div class="col-12">
-                    <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/email")?>" method="post" enctype="multipart/form-data">
+                    <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="email" action="<?=url("/email")?>" method="post" enctype="multipart/form-data">
 
                         <div class="row justify-content-center mb-3">
                             <div class="col-6 ajax_response">

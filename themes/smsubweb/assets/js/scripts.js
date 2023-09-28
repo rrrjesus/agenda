@@ -70,6 +70,44 @@ $(function () {
             }
         }
     });
+
+    $("#email").validate({
+        rules: {
+            collaborator: {
+                required: true
+            },
+            cargo: {
+                required: true
+            },
+            sector: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            telefone: {
+                required: true
+            }
+        },
+        messages: {
+            collaborator: {
+                required: "Digite seu nome !!!"
+            },
+            cargo: {
+                required: "Digite seu cargo !!!"
+            },
+            sector: {
+                required: "Digite o setor !!!"
+            },
+            email: {
+                required: "Digite seu e-mail !!!"
+            },
+            telefone: {
+                required: "Digite seu telefone !!!"
+            }
+        }
+    });
+
     //  data-bs-toggle="tooltip" Bootstrap Title
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
