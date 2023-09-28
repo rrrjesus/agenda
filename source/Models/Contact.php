@@ -74,7 +74,7 @@ class Contact extends Model
         return $this;
     }
 
-    public function updated(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    public function updated(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
         if(!$contact->save()) {
             $this->message = $contact->message;
@@ -86,33 +86,33 @@ class Contact extends Model
         return true;
     }
 
-    public function deleted(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    public function deleted(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
         if(!$contact->save()) {
             $this->message = $contact->message;
             return false;
         }else {
-            $this->message->error("Exclusão de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon()->flash();
+            $this->message->warning("Envio a lixeira de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon("trash")->flash();
             redirect("/dashboard/listar-contatos");
         }
 
         return true;
     }
 
-    public function reactivated(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    public function reactivated(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
         if(!$contact->save()) {
             $this->message = $contact->message;
             return false;
         }else {
-            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon()->flash();
+            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon("award")->flash();
             redirect("/dashboard/lixeira-contatos");
         }
 
         return true;
     }
 
-    public function delet(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    public function delet(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
         if(!$contact->delete("id", $contact->id)) {
             $this->message = $contact->message;
@@ -143,7 +143,7 @@ class Contact extends Model
      * @param Contact $contact
      * @return bool
      */
-    public function register(Contact $contact): bool // Só aceita um objeto da Classe User e bool só retorna true e false
+    public function register(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
         if(!$contact->save()) {
             $this->message = $contact->message;

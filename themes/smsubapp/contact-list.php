@@ -12,7 +12,7 @@
     </div>
 
     <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
-        <p class="fs-3 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Lista de contatos SMSUB</p>
+        <p class="fs-3 fw-normal text-body-emphasis"><i class="bi bi-book-half me-2"></i> Lista de contatos SMSUB</p>
     </div>
 
     <div class="row justify-content-center">

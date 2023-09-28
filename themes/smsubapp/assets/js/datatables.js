@@ -137,7 +137,7 @@ $(document).ready(function() {
                                         '<div class="modal-dialog modal-sm">\n' +
                                             '<div class="modal-content">\n' +
                                                 '<div class="modal-header bg-warning text-secondary">\n' +
-                                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-book-half me-2"></i> Restaurar Ramal '+ full[2] +'</h6>\n' +
+                                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-arrow-up-circle me-2"></i> Restaurar Ramal '+ full[2] +'</h6>\n' +
                                                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                                 '</div>\n' +
                                             '<div class="modal-body fw-semibold">Deseja restaurar o ramal : ' + full[2] + ' ?</div>\n' +
@@ -153,12 +153,12 @@ $(document).ready(function() {
             {
                 "aTargets": [5], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" class="btn btn-outline-secondary btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[5]+'">' +
+                    return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[5]+'">' +
                         '<i class="bi bi-trash"></i></button>' +
                         '<div class="modal fade" id="trashModalFim' + full[5] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                         '<div class="modal-dialog modal-sm">\n' +
                         '<div class="modal-content">\n' +
-                        '<div class="modal-header bg-secondary text-light">\n' +
+                        '<div class="modal-header bg-danger text-light">\n' +
                         '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir Contato ' + full[1] + '</h6>\n' +
                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                         '</div>\n' +
