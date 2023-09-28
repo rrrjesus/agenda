@@ -7,6 +7,7 @@ use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Contact;
 use Source\Models\Faq\Question;
+use Source\Models\Report\Access;
 use Source\Models\User;
 use Source\Models\Post;
 
@@ -23,6 +24,8 @@ class Web extends Controller
     {
         //Connect::getInstance();
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME . "/");
+
+        (new Access())->report();
     }
 
     /**
