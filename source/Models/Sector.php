@@ -105,7 +105,7 @@ class Sector extends Model
 
     public function delet(Sector $sector): bool // Só aceita um objeto da Classe User e bool só retorna true e false
     {
-        if(!$sector->delete("id", $sector->id)) {
+        if(!$sector->delete("id = :id", "id={$this->id}")) {
             $this->message = $sector->message;
             return false;
         }else {

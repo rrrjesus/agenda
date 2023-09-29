@@ -145,17 +145,6 @@ abstract class Model
     }
 
     /**
-     * @param string $colName
-     * @param string $columns
-     * @return Model|null
-     */
-    public function findByColum(string $colName, string $columns = "*"): ?Model
-    {
-        $find = $this->find("$colName = :c", "c={$colName}", $columns);
-        return $find->fetch();
-    }
-
-    /**
      * @param string $columnOrder
      * @return Model
      */
@@ -189,7 +178,7 @@ abstract class Model
      * @param bool $all
      * @return null|array|mixed|Model
      */
-   public function fetch(bool $all = false)
+    public function fetch(bool $all = false)
     {
         try {
             $stmt = Connect::getInstance()->prepare($this->query.$this->order.$this->limit.$this->offset);
@@ -268,17 +257,30 @@ abstract class Model
      * @param string $value
      * @return bool|null
      */
-    public function delete(string $key, string $value): bool
+    public function delete(string $terms, ?string $params): bool
     {
         try {
-            $stmt = Connect::getInstance()->prepare("DELETE FROM " . static::$entity . " WHERE {$key} = :key");
-            $stmt->bindValue("key", $value, \PDO::PARAM_STR);
+            $stmt = Connect::getInstance()->prepare("DELETE FROM " . static::$entity . " WHERE {$terms}");
+            if($params) {
+                parse_str($params, $params);
+                $stmt->execute($params);
+                return true;
+            }
             $stmt->execute();
             return true;
         } catch (\PDOException $exception) {
             $this->fail = $exception;
             return false;
         }
+    }
+
+    public function destroy(): bool
+    {
+        if(empty($this->id)) {
+            return false;
+        }
+        $destroy = $this->delete("id = :id", "id={$this->id}");
+        return $destroy;
     }
 
     /**

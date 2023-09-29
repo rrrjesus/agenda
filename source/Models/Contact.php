@@ -114,7 +114,7 @@ class Contact extends Model
 
     public function delet(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
-        if(!$contact->delete("id", $contact->id)) {
+        if(!$contact->delete("id = :id", "id={$this->id}")) {
             $this->message = $contact->message;
             return false;
         }else {

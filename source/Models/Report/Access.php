@@ -6,17 +6,17 @@ use Source\Core\Model;
 use Source\Core\Session;
 
 /**
- *
+ * Class Access
+ * @package Source\Models\Report
  */
 class Access extends Model
 {
     /**
-     *
+     * Access constructor.
      */
     public function __construct()
     {
         parent::__construct("report_access", ["id"], ["users", "views", "pages"]);
-        
     }
 
     /**
@@ -60,19 +60,19 @@ class Access extends Model
     public function save(): bool
     {
         /** Update Access */
-        if(!empty($this->id)) {
+        if (!empty($this->id)) {
             $accessId = $this->id;
             $this->update($this->safe(), "id = :id", "id={$accessId}");
-            if($this->fail()){
+            if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
                 return false;
             }
         }
 
         /** Create Access */
-        if(empty($this->id)){
+        if (empty($this->id)) {
             $accessId = $this->create($this->safe());
-            if($this->fail()){
+            if ($this->fail()) {
                 $this->message->error("Erro ao cadastrar, verifique os dados");
                 return false;
             }

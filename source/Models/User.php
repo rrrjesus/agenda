@@ -128,7 +128,7 @@ class User extends Model
 
     public function delet(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
     {
-        if(!$user->delete("id", $user->id)) {
+        if(!$user->delete("id = :id", "id={$this->id}")) {
             $this->message = $user->message;
             return false;
         }else {

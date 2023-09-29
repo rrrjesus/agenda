@@ -4,7 +4,6 @@ namespace Source\Models\Report;
 
 use Source\Core\Model;
 use Source\Core\Session;
-use Source\Models\User;
 
 /**
  * Class Online
@@ -36,7 +35,6 @@ class Online extends Model
             return $find->count();
         }
 
-        $find->order("updated_at DESC");
         return $find->fetch(true);
     }
 
@@ -50,7 +48,7 @@ class Online extends Model
 
         if (!$session->has("online")) {
             $this->user = ($session->authUser ?? null);
-            $this->url = (filter_input(INPUT_GET, "route", FILTER_SANITIZE_SPECIAL_CHARS) ?? "/");
+            $this->url = (filter_input(INPUT_GET, "route", FILTER_SANITIZE_STRIPPED) ?? "/");
             $this->ip = filter_input(INPUT_SERVER, "REMOTE_ADDR");
             $this->agent = filter_input(INPUT_SERVER, "HTTP_USER_AGENT");
 
@@ -66,9 +64,13 @@ class Online extends Model
         }
 
         $find->user = ($session->authUser ?? null);
-        $find->url = (filter_input(INPUT_GET, "route", FILTER_SANITIZE_SPECIAL_CHARS) ?? "/");
+        $find->url = (filter_input(INPUT_GET, "route", FILTER_SANITIZE_STRIPPED) ?? "/");
         $find->pages += 1;
         $find->save();
+
+        if ($clear) {
+            $this->clear();
+        }
 
         return $this;
     }
@@ -82,32 +84,24 @@ class Online extends Model
     }
 
     /**
-     * @return mixed|Model|null
-     */
-    public function user()
-    {
-        return (new User())->findById($this->user);
-    }
-
-    /**
      * @return bool
      */
     public function save(): bool
     {
         /** Update Access */
-        if(!empty($this->id)) {
+        if (!empty($this->id)) {
             $onlineId = $this->id;
             $this->update($this->safe(), "id = :id", "id={$onlineId}");
-            if($this->fail()){
+            if ($this->fail()) {
                 $this->message->error("Erro ao atualizar, verifique os dados");
                 return false;
             }
         }
 
         /** Create Access */
-        if(empty($this->id)){
+        if (empty($this->id)) {
             $onlineId = $this->create($this->safe());
-            if($this->fail()){
+            if ($this->fail()) {
                 $this->message->error("Erro ao cadastrar, verifique os dados");
                 return false;
             }
