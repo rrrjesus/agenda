@@ -35,6 +35,10 @@ function dynamictext(){
         document.getElementById('telass').innerHTML = '(11) 4934-'.concat(e.target.value);
     })
 
+    document.getElementById('endinput').addEventListener('input', function(e){
+        document.getElementById('endass').innerHTML = 'Rua São Bento, 405 | '.concat(e.target.value);
+    })
+
     document.getElementById('compinput').addEventListener('input', function(e){
         if(e.target.value.length > 0){
             document.getElementById('compass').innerHTML = " | " + e.target.value;

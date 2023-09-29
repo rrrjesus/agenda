@@ -40,11 +40,7 @@
                     target="_blank">SECOM</a></p>
             </div>
 
-<!--            <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="endinput" maxlength="35" placeholder="Endereço"></div></div>-->
-<!--            <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="compinput" maxlength="35" placeholder="Complemento"></div></div>-->
-<!--            <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="cepinput" maxlength="9" placeholder="CEP"></div></div>-->
-<!--            <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="cidadeinput" maxlength="30" placeholder="Cidade"></div></div>-->
-<!--            <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="estadoinput" maxlength="2" placeholder="Estado"></div></div>-->
+
             <br>
 
 
@@ -108,6 +104,12 @@
                                 </div>
                             </div>
                         </div>
+
+                                    <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="endinput" maxlength="35" placeholder="Endereço"></div></div>
+                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="compinput" maxlength="35" placeholder="Complemento"></div></div>
+                                    <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="cepinput" maxlength="9" placeholder="CEP"></div></div>
+                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="cidadeinput" maxlength="30" placeholder="Cidade"></div></div>
+                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="estadoinput" maxlength="2" placeholder="Estado"></div></div>
 
                         <div class="table-back">
                             <div id="down-img" class="content down-img">
