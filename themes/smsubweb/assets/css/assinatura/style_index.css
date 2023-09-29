@@ -1,93 +1,3 @@
-@charset "UTF-8";
-@font-face{
-    font-family: Flexo Light;
-    src: url(../fonts/Flexo-Light.otf);
-}
-
-body {
-    background-color: rgba(185, 183, 183, 0.548);
-}
-
-.back-all {
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 3px 3px 3px rgba(150, 150, 150, 1);
-    width: 1160px;
-    margin: 0 auto;
-}
-
-#logo {
-    max-width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 3.5rem;
-    align-items: center;
-}
-
-#corporation {
-    text-align: center;
-    padding-top: 5px;
-    display: flex;
-    flex-direction: column;
-}
-
-#name {
-    color: rgba(13, 71, 161, 1);
-    font: bold 23pt "Cambria";
-}
-
-#sub-name {
-    color: rgba(0, 0, 0, 1);
-    font: normal 11pt "Arial";
-}
-
-#user-pass {
-    padding-top: 5px;
-    color: rgba(0, 0, 0, 0.8);
-    font: normal 11pt "Arial";
-    text-align: right;
-    font-style: italic;
-}
-
-#logout {
-    color: rgba(186, 10, 15, 1);
-    padding-left: 10px;
-}
-
-#img-cruz {
-    height: 70px;
-    margin: 0px 0px 10px 10px;
-}
-
-#img-dtic {
-    height: 75px;
-}
-
-#img-sp {
-    height: 85px;
-}
-
-#back-input {
-    text-align: center;
-    margin-top: 40px;
-}
-
-#row-input {
-    margin: 0px 300px 5px 300px;
-}
-
-#row-btn {
-    text-align: center;
-}
-
-hr {
-    width: 90%;
-    border: solid 1px rgb(196, 196, 196) !important;
-}
-
 /* -------------- TABELA ASSINATURA -------------- */
 
 .table-back{
@@ -208,56 +118,7 @@ hr {
     min-height: 180px;
 }
 
-#logo-assinatura {
-    /* height: 90%; */
-    /* width: 150px */
-}
-
-/*     LOGO INPUT == ""    */
-.img {
-    width: auto;
-    height: auto;
-    max-width: 150px;
-    min-height: 150px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    /* padding: 0rem 20px !important; */
-}
-
-/*  FOOTER  */
-#ctic-team{
-    font: normal 12px "Century Gothic";
-    float: left;
-    margin: 1rem 0rem;
-    text-align: center;
-    width: 100%;
-}
-#created{
-    font: normal 12px "Century Gothic";
-    float: right;
-}
-
 @media (max-width: 450px) {
-
-    body {
-        min-width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 0.5rem;
-        padding-bottom: 2rem;
-        box-sizing: border-box;
-    }
-
-    .back-all {
-        /* margin: 0.5rem; */
-        max-width: 412px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-sizing: content-box;
-        width: 100%;
-    }
 
     .table-back{
         width: 100%;
@@ -267,20 +128,6 @@ hr {
         display: flex;
         align-items: center;
         padding: 0;
-    }
-
-    .container {
-        margin: 2rem;
-        /* padding: 2 !important; */
-        margin-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #row-input {
-        margin: 1rem;
-        min-width: 90% !important;
     }
 
     .col-assinatura {
@@ -317,35 +164,14 @@ hr {
         flex-wrap: nowrap;
     }
 
-    #logo {
-        gap: 1rem;
-    }
-
-    #img-cruz {
-        height: 45px;
-        margin: 0px 0px 10px 10px;
-    }
-
-    #img-dtic {
-        height: 45px;
-    }
-
-    #img-sp {
-        height: 45px;
-    }
-
     #logo-assinatura {
-
+        align-items: center;
+        margin: 0 auto;
         width: auto;
         height: fit-content;
         max-width: 100%;
 
     }
-
-    .img {
-        max-height: 105px !important;
-    }
-
 
 
 }

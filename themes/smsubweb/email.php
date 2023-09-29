@@ -16,118 +16,10 @@
 
 </head>
 
-<body id="body" style="background-color: rgba(185, 183, 183, 0.548);">
-<div id="back-all" class="back-all">
-    <div id="logo" class="align-center">
 <!--        <img id="img-cruz" src="--><?php //=theme("/assets/images/assinatura/cruz-png.png")?><!--"> <img id="img-dtic" class="img-fluid" src="--><?php //=theme("/assets/images/assinatura/logo_fundo-transp.png")?><!--"> <img id="img-sp" class="img-fluid" src="--><?php //=theme("/assets/images/assinatura/spt3.jpg")?><!--">-->
-    </div>
-    <hr>
 
-    <div id="back-input" class="container">
-        <form id="myForm">
-
-        <div id="row-input" >
-            <div class="col-sm">
-                <h4> Preencha os campos para gerar sua assinatura</h4>
-                <br>
-                <input type="text" class="form-control" id="nomeinput" maxlength="26" placeholder="Nome do Profissional">
-            </div>
-        </div>
-
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="text" class="form-control" id="unidadeinput" maxlength="46" placeholder="Unidade">
-            </div>
-        </div>
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="text" class="form-control" id="cargoinput" maxlength="35" placeholder="Cargo">
-            </div>
-        </div>
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="text" class="form-control" id="setorinput" maxlength="35" placeholder="Setor">
-            </div>
-        </div>
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="email" class="form-control" id="emailinput" maxlength="47" placeholder="E-mail">
-            </div>
-        </div>
-        <div id="row-input" class="row">
-            <div class="col-sm">
-                <input type="text" id="phone1" class="form-control" placeholder="RAMAL (11) 4934-0000">
-            </div>
-        </div>
-        <div id="row-input" class="row">
-            <div class="col-sm">
-                <input type="text" class="form-control" id="endinput" maxlength="35" placeholder="Endereço">
-            </div>
-        </div>
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="text" class="form-control" id="compinput" maxlength="35" placeholder="Complemento">
-            </div>
-        </div>
-        <div id="row-input" class="row">
-            <div class="col-sm">
-                <input type="text" class="form-control" id="cepinput" maxlength="9" placeholder="CEP">
-            </div>
-        </div>
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="text" class="form-control" id="cidadeinput" maxlength="30" placeholder="Cidade">
-            </div>
-        </div>
-        <div id="row-input" >
-            <div class="col-sm">
-                <input type="text" class="form-control" id="estadoinput" maxlength="2" placeholder="Estado">
-            </div>
-        </div>
-        <br>
-        <div id="row-btn" >
-            <div class="col-sm">
-                <button class="btn btn-danger" onclick="limpar()"> Apagar </button>
-            </div>
-        </div>
-        <div class="container" id="teste">
-            <div class="table-back">
-                <div id="down-img" class="content down-img">
-                    <div class="col-assinatura">
-                        <p class="img" id="logo-assinatura">
-                            <img id="logo-assinatura" src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>">
-                        </p>
-                    </div>
-                    <div class="col-dados-prof">
-                        <div></div>
-                        <p><h1 class="name-style" id="nomeass"></h1></p>
-                        <h4 class="unidade-style" id="unidadeass"></h4>
-
-                        <p class="cargo-setor"><span id="cargoass"></span> / <span id="setorass"></span> </p>
-                        <span class="dados">
-                                <p id="emailass"></p>
-                                <p>Tel.: <span id="telass"></span></p>
-                                <p > <span id="endass"></span> <span id="compass"></span> <br> <span id="cepass"></span> | <span id="cidadeass"></span> | <span id="estadoass"></span></p>
-                                <p>www.prefeitura.sp.gov.br</p>
-                                <script> dynamictext(); </script>
-                            </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="row-btn" class="row">
-            <div class="col-sm">
                 <button class="btn btn-success" onclick="downloadimg()">Baixar</button>
-            </div>
-        </div>
-        <div class="row">
-            <span id="ctic-team">&copy;<i> Desenvolvido por:  </i></span>
-        </div>
-        </form>
-    </div>
-</div>
-</body>
-</html>
+
 
 <div class="container-fluid">
     <div class="d-flex justify-content-center mt-3">
@@ -148,6 +40,15 @@
                     target="_blank">SECOM</a></p>
             </div>
 
+<!--            <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="endinput" maxlength="35" placeholder="Endereço"></div></div>-->
+<!--            <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="compinput" maxlength="35" placeholder="Complemento"></div></div>-->
+<!--            <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="cepinput" maxlength="9" placeholder="CEP"></div></div>-->
+<!--            <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="cidadeinput" maxlength="30" placeholder="Cidade"></div></div>-->
+<!--            <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="estadoinput" maxlength="2" placeholder="Estado"></div></div>-->
+            <br>
+
+
+
             <div class="d-flex justify-content-center">
                 <div class="col-12">
                     <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="email" action="<?=url("/email")?>" method="post" enctype="multipart/form-data">
@@ -163,7 +64,7 @@
                         <div class="row justify-content-center mb-2">
                             <div class="col-6">
                                 <strong><label for="inputNome" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                                <input data-bs-togglee="tooltip" data-bs-placement="left" id="nomeinput" maxlength="26" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite o nome" class="form-control form-control-sm" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
                             </div>
                         </div>
@@ -172,7 +73,7 @@
                             <div class="col-6">
                                 <strong><label for="inputCargo" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite o cargo" class="form-control form-control-sm" type="text" name="cargo" placeholder="DIGITE O CARGO"/>
+                                       data-bs-title="Digite o cargo" class="form-control form-control-sm" type="text" id="cargoinput" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
                             </div>
                         </div>
 
@@ -181,7 +82,7 @@
                                 <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left"
                                        data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite o setor"  class="form-control form-control-sm sector" type="text" name="sector" placeholder="DIGITE O SETOR"/>
+                                       data-bs-title="Digite o setor"  class="form-control form-control-sm sector" type="text" id="setorinput" maxlength="35" name="sector" placeholder="DIGITE O SETOR"/>
                             </div>
                         </div>
 
@@ -190,7 +91,7 @@
                                 <strong><label for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> E-MAIL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o início do e-mail" class="form-control form-control-sm" name="email" placeholder="DIGITE APENAS O INÍCIO DO EMAIL">
+                                           data-bs-title="Digite apenas o início do e-mail" class="form-control form-control-sm" id="emailinput" maxlength="47" name="email" placeholder="DIGITE APENAS O INÍCIO DO EMAIL">
                                     <span class="input-group-text">@smsub.prefeitura.sp.gov.br</span>
                                 </div>
                             </div>
@@ -198,12 +99,35 @@
 
                         <div class="row justify-content-center">
                             <div class="col-6">
-                                <strong><label for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> TELEFONE</label></strong>
+                                <strong><label for="inputTelefone" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
-                                    <span class="input-group-text">+55 11</span>
-                                    <input type="number" maxlength="9" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o telefone sem o DDD" class="form-control form-control-sm" name="telefone" placeholder="DIGITE APENAS O TELEFONE SEM DDD">
+                                    <span class="input-group-text">(11) 4934-</span>
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Digite apenas o telefone sem o DDD" class="form-control form-control-sm" id="phone1" maxlength="4" placeholder="DIGITE O RAMAL DE 4 DÍGITOS" name="telefone">
 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-back">
+                            <div id="down-img" class="content down-img">
+                                <div class="col-assinatura">
+                                    <p class="img" id="logo-assinatura">
+                                        <img id="logo-assinatura" src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>">
+                                    </p>
+                                </div>
+                                <div class="col-dados-prof">
+                                    <div></div>
+                                    <p><h1 class="name-style" id="nomeass"></h1></p>
+
+                                    <p class="cargo-setor"><span id="cargoass"></span> / <span id="setorass"></span> </p>
+                                    <span class="dados">
+                                <p id="emailass"></p>
+                                <p>Tel.: <span id="telass"></span></p>
+                                <p > <span id="endass"></span> <span id="compass"></span> <br> <span id="cepass"></span> | <span id="cidadeass"></span> | <span id="estadoass"></span></p>
+                                <p>www.prefeitura.sp.gov.br</p>
+                                <script> dynamictext(); </script>
+                            </span>
                                 </div>
                             </div>
                         </div>
@@ -212,14 +136,15 @@
                             <div class="col-auto">
                                 <button data-bs-togglee="tooltip" data-bs-placement="bottom"
                                         data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
-                                <a href="<?=url("/dashboard/listar-contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button"
-                                   data-bs-custom-class="custom-tooltip"
-                                   data-bs-title="Clique para listar as assinaturas" class="btn btn-outline-info btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3" onclick="downloadimg()"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
+                                <a href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Clique para listar as assinaturas" class="btn btn-outline-danger btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>APAGAR</a>
                             </div>
                         </div>
 
                     </form>
                 </div>
             </div>
+
+
 
