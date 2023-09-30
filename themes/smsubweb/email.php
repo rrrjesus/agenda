@@ -36,76 +36,89 @@
                         <?=csrf_input();?>
 
                         <div class="row justify-content-center mb-2">
-                            <div class="col-6">
-                                <strong><label for="inputNome" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME COMPLETO</label></strong>
+                            <div class="col-4">
+                                <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="26" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu nome completo" class="form-control form-control-sm" type="text" name="nome" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
-                            <p class="nome">RODOLFO</p>
-                        </div>
 
-                        <div class="row justify-content-center mb-2">
-                            <div class="col-3">
-                                <strong><label for="inputCargo" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                            <div class="col-4">
+                                <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu cargo" class="form-control form-control-sm" type="text" id="cargo" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
                             </div>
 
-                            <div class="col-3">
-                                <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="left"
+                            <div class="col-4">
+                                <strong><label for="inputSector" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite o setor"  class="form-control form-control-sm sector" type="text" id="setorinput" maxlength="35" name="sector" placeholder="DIGITE O SETOR"/>
+                                       data-bs-title="Digite seu setor"  class="form-control form-control-sm sector" type="text" maxlength="35" name="sector" placeholder="DIGITE O SETOR"/>
                             </div>
                         </div>
 
                         <div class="row justify-content-center">
-                            <div class="col-6">
-                                <strong><label for="inputEmail" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> E-MAIL</label></strong>
-                                <div class="input-group  input-group-sm mb-3">
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o início do e-mail" class="form-control form-control-sm" id="emailinput" maxlength="47" name="email" placeholder="DIGITE APENAS O INÍCIO DO EMAIL">
+                            <div class="col-5">
+                                <strong><label for="inputEmail" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> E-MAIL</label></strong>
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Digite apenas o início do e-mail" class="form-control form-control-sm" maxlength="47" name="email" placeholder="DIGITE APENAS O INÍCIO DO EMAIL">
                                     <span class="input-group-text">@smsub.prefeitura.sp.gov.br</span>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row justify-content-center">
-                            <div class="col-6">
-                                <strong><label for="inputTelefone" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
+                            <div class="col-3">
+                                <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <span class="input-group-text">(11) 4934-</span>
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o telefone sem o DDD" class="form-control form-control-sm" id="phone1" maxlength="4" placeholder="DIGITE O RAMAL DE 4 DÍGITOS" name="telefone">
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Digite apenas o ramal do telefone" class="form-control form-control-sm" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS" name="ramal">
 
                                 </div>
                             </div>
+
+                            <div class="col-2">
+                                <strong><label for="inputEmail" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> ANDAR</label></strong>
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Digite apenas o número do andar" class="form-control form-control-sm" maxlength="2" placeholder="10, 23 ou 24" name="andar">
+                                    <span class="input-group-text">º Andar</span>
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> SALA</label></strong>
+                                <div class="input-group  input-group-sm mb-3">
+                                    <span class="input-group-text">Sala</span>
+                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Digite apenas o número e letra da sala" class="form-control form-control-sm" maxlength="4" placeholder="Nº e LETRA" name="sala">
+
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="row justify-content-center">
-                            <div class="col-6">
-                                <div class="card mb-3" style="max-width: 540px;">
+                            <div class="col-12">
+                                <div class="card mb-3" style="max-width: 480px;margin: 43px 330px 20px 330px;border: 1px solid;display: flex;justify-content: center; align-items: start;">
                                     <div class="row g-0">
-                                        <div class="col-md-4">
+                                        <div class="col-3">
                                             <img src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>" class="img-fluid rounded-start" alt="...">
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-9">
                                             <div class="card-body">
-                                                <h4 class="card-title cardnome"> ROMAIOLI</h4>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                                <h4 class="card-title fw-bold asnome"></h4>
+                                                <p class="card-text m-0"><span class="ascargo"></span> / <span class="assetor"></span></p>
+                                                <p class="card-text m-0"><small><a class="asemail" href=""></a></small></p>
+                                                <p class="card-text m-0">Tel: <small class="astelefone"></small></p>
+                                                <p class="card-text m-0"><small class="asendereco"></small><small class="asandar"></small>º Andar - Sala <small class="assala"></small></p>
+                                                <p class="card-text m-0"><small>01011 000 | São Paulo | SP</small></p>
+                                                <p class="card-text m-0"><small><a href="www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</a></small></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-<!--                                    <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="endinput" maxlength="35" placeholder="Endereço"></div></div>-->
-<!--                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="compinput" maxlength="35" placeholder="Complemento"></div></div>-->
-<!--                                    <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="cepinput" maxlength="9" placeholder="CEP"></div></div>-->
-<!--                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="cidadeinput" maxlength="30" placeholder="Cidade"></div></div>-->
-<!--                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="estadoinput" maxlength="2" placeholder="Estado"></div></div>-->
 
                         <div class="row justify-content-center mt-3 mb-3">
                             <div class="col-auto">

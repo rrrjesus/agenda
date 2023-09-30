@@ -16,6 +16,7 @@
 }
 
 .down-img{
+    flex-wrap: nowrap;
     width: 100%;
     margin: 0 auto !important;
     padding: 24px 0px 24px 0px !important;
@@ -157,13 +158,6 @@
         line-height: 1;
     }
 
-    .down-img{
-        width: 100%;
-        display: flex;
-        justify-content: start;
-        flex-wrap: nowrap;
-    }
-
     #logo-assinatura {
         align-items: center;
         margin: 0 auto;
@@ -172,6 +166,5 @@
         max-width: 100%;
 
     }
-
 
 }

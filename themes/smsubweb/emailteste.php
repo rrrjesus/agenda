@@ -124,12 +124,12 @@
 
                                     <p class="cargo-setor"><span id="cargoass"></span> / <span id="setorass"></span> </p>
                                     <span class="dados">
-                                <p id="emailass"></p>
-                                <p>Tel.: <span id="telass"></span></p>
-                                <p > <span id="endass"></span> <span id="compass"></span> <br> <span id="cepass"></span> | <span id="cidadeass"></span> | <span id="estadoass"></span></p>
-                                <p>www.prefeitura.sp.gov.br</p>
-                                <script> dynamictext(); </script>
-                            </span>
+                                        <p id="emailass"></p>
+                                        <p>Tel.: <span id="telass"></span></p>
+                                        <p > <span id="endass"></span> <span id="compass"></span> <br> <span id="cepass"></span> | <span id="cidadeass"></span> | <span id="estadoass"></span></p>
+                                        <p>www.prefeitura.sp.gov.br</p>
+                                        <script> dynamictext(); </script>
+                                    </span>
                                 </div>
                             </div>
                         </div>
