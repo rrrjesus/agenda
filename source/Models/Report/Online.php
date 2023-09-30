@@ -38,6 +38,14 @@ class Online extends Model
         return $find->fetch(true);
     }
 
+    public function linkActive(?string $link): bool
+    {
+        if($link == '/contatos'){
+            return 'active';
+        }
+        return true;
+    }
+
     /**
      * @param bool $clear
      * @return Online

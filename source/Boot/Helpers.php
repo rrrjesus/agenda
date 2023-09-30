@@ -149,6 +149,22 @@ function url(string $path = null): string
 /**
  * @return string
  */
+function lnk($var): ?string
+{
+    if(!empty($_GET['route'])) {
+        if(strip_tags($_GET['route']) == $var) {
+            return 'active';
+        }
+    } else {
+        if($var == '/')
+        return 'active';
+    }
+    return true;
+}
+
+/**
+ * @return string
+ */
 function url_back(): string
 {
     return ($_SERVER['HTTP_REFERER'] ?? url());

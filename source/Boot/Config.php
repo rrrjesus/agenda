@@ -3,7 +3,7 @@
 /**
  * DATABASE
  */
-define("CONF_DB_HOST", "10.23.237.21");
+define("CONF_DB_HOST", "192.168.15.59");
 define("CONF_DB_USER", "smsubcoti");
 define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
 define("CONF_DB_NAME", "smsub");
@@ -11,7 +11,7 @@ define("CONF_DB_NAME", "smsub");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://10.23.237.21/agenda");
+define("CONF_URL_BASE", "https://192.168.15.59/agenda");
 define("CONF_URL_TESTE", "https://www.localhost/agenda");
 define("CONF_URL_ADMIN", "/dashboard");
 

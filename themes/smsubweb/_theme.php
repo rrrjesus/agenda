@@ -57,16 +57,16 @@
                 <hr class="d-lg-none">
                 <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
                     <li class="nav-item nav col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url(); ?>">Home</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 <?=lnk("/")?>" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home" href="<?= url(); ?>">Home</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/contatos")?>">Contatos</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 <?=lnk("/contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contatos" href="<?=url("/contatos")?>">Contatos</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="E-mail" href="<?=url("/email")?>">E-mail</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 <?=lnk("/email")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="E-mail" href="<?=url("/email")?>">E-mail</a>
                     </li>
                     <li class="nav-item col-6 col-lg-auto">
-                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/sobre")?>">Sobre</a>
+                        <a class="nav-link py-2 px-0 px-lg-2 <?=lnk("/sobre")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sobre" href="<?=url("/sobre")?>">Sobre</a>
                     </li>
 <!--                    <li class="nav-item col-6 col-lg-auto">-->
 <!--                        <a class="nav-link py-2 px-0 px-lg-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Blog" href="http://10.23.237.79/blog">Blog</a>-->
@@ -147,7 +147,7 @@
                         </ul>
                         <?php else:?>
                             <li class="nav-item col-6 col-lg-auto">
-                                <a class="nav-link py-2 px-0 px-lg-2" href="<?=url("/entrar")?>">
+                                <a class="nav-link py-2 px-0 px-lg-2 <?=lnk("/entrar")?>" href="<?=url("/entrar")?>">
                                     <i class="bi bi-person-lock"></i> Entrar
                                 </a>
                             </li>

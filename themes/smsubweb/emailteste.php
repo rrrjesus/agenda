@@ -4,6 +4,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<head>
+    <meta charset="UTF-8">
+    <title> Assinatura Digital </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?=theme("/assets/css/assinatura/style_index.css")?>">
+    <script src="<?=theme("/assets/js/assinatura/script-down.js")?>"></script>
+    <script src="<?=theme("/assets/js/assinatura/dom-to-image.js")?>"></script>
+    <script src="<?=theme("/assets/js/assinatura/dynamic.js")?>"></script>
+    <script src="<?=theme("/assets/js/assinatura/fileSaver2.js")?>"></script>
+
+</head>
+
+<!--        <img id="img-cruz" src="--><?php //=theme("/assets/images/assinatura/cruz-png.png")?><!--"> <img id="img-dtic" class="img-fluid" src="--><?php //=theme("/assets/images/assinatura/logo_fundo-transp.png")?><!--"> <img id="img-sp" class="img-fluid" src="--><?php //=theme("/assets/images/assinatura/spt3.jpg")?><!--">-->
+
+                <button class="btn btn-success" onclick="downloadimg()">Baixar</button>
+
+
 <div class="container-fluid">
     <div class="d-flex justify-content-center mt-3">
         <div class="col-lg-12 col-sm-12 col-md-12"><!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
@@ -23,6 +40,11 @@
                     target="_blank">SECOM</a></p>
             </div>
 
+
+            <br>
+
+
+
             <div class="d-flex justify-content-center">
                 <div class="col-12">
                     <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="email" action="<?=url("/email")?>" method="post" enctype="multipart/form-data">
@@ -37,21 +59,22 @@
 
                         <div class="row justify-content-center mb-2">
                             <div class="col-6">
-                                <strong><label for="inputNome" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME COMPLETO</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="26" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm" type="text" name="nome" placeholder="DIGITE O NOME COMPLETO"/>
+                                <strong><label for="inputNome" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="left" id="nomeinput" maxlength="26" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite o nome" class="form-control form-control-sm" type="text" name="collaborator" placeholder="DIGITE O NOME"/>
                             </div>
-                            <p class="nome">RODOLFO</p>
                         </div>
 
                         <div class="row justify-content-center mb-2">
-                            <div class="col-3">
+                            <div class="col-6">
                                 <strong><label for="inputCargo" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm" type="text" id="cargo" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
+                                       data-bs-title="Digite o cargo" class="form-control form-control-sm" type="text" id="cargoinput" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
                             </div>
+                        </div>
 
-                            <div class="col-3">
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-6">
                                 <strong><label for="inputSector" class="col-3 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left"
                                        data-bs-custom-class="custom-tooltip"
@@ -82,30 +105,34 @@
                             </div>
                         </div>
 
-                        <div class="row justify-content-center">
-                            <div class="col-6">
-                                <div class="card mb-3" style="max-width: 540px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h4 class="card-title cardnome"> ROMAIOLI</h4>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
 <!--                                    <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="endinput" maxlength="35" placeholder="Endereço"></div></div>-->
 <!--                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="compinput" maxlength="35" placeholder="Complemento"></div></div>-->
 <!--                                    <div id="row-input" class="row"><div class="col-sm"><input type="text" class="form-control" id="cepinput" maxlength="9" placeholder="CEP"></div></div>-->
 <!--                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="cidadeinput" maxlength="30" placeholder="Cidade"></div></div>-->
 <!--                                    <div id="row-input" ><div class="col-sm"><input type="text" class="form-control" id="estadoinput" maxlength="2" placeholder="Estado"></div></div>-->
+
+                        <div class="table-back">
+                            <div id="down-img" class="content down-img">
+                                <div class="col-assinatura">
+                                    <p class="img" id="logo-assinatura">
+                                        <img id="logo-assinatura" src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>">
+                                    </p>
+                                </div>
+                                <div class="col-dados-prof">
+                                    <div></div>
+                                    <p><h1 class="name-style" id="nomeass"></h1></p>
+
+                                    <p class="cargo-setor"><span id="cargoass"></span> / <span id="setorass"></span> </p>
+                                    <span class="dados">
+                                <p id="emailass"></p>
+                                <p>Tel.: <span id="telass"></span></p>
+                                <p > <span id="endass"></span> <span id="compass"></span> <br> <span id="cepass"></span> | <span id="cidadeass"></span> | <span id="estadoass"></span></p>
+                                <p>www.prefeitura.sp.gov.br</p>
+                                <script> dynamictext(); </script>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row justify-content-center mt-3 mb-3">
                             <div class="col-auto">
