@@ -1,8 +1,13 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="<?=theme("/assets/css/assinatura/style_index.css")?>">
+
+    <script src="<?=theme("/assets/js/assinatura/script-down.js")?>"></script>
+    <script src="<?=theme("/assets/js/assinatura/dom-to-image.js")?>"></script>
+    <script src="<?=theme("/assets/js/assinatura/fileSaver2.js")?>"></script>
+</head>
 
 <div class="container-fluid">
     <div class="d-flex justify-content-center mt-3">
@@ -39,13 +44,13 @@
                             <div class="col-4">
                                 <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="26" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm" type="text" name="nome" placeholder="DIGITE O NOME COMPLETO"/>
+                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
 
                             <div class="col-4">
                                 <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm" type="text" id="cargo" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
+                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" id="cargo" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
                             </div>
 
                             <div class="col-4">
@@ -98,23 +103,24 @@
                         </div>
 
                         <div class="row justify-content-center">
-                            <div class="col-12">
-                                <div class="card mb-3" style="max-width: 480px;margin: 43px 330px 20px 330px;border: 1px solid;display: flex;justify-content: center; align-items: start;">
-                                    <div class="row g-0">
-                                        <div class="col-3">
-                                            <img src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="card-body">
-                                                <h4 class="card-title fw-bold asnome"></h4>
-                                                <p class="card-text m-0"><span class="ascargo"></span> / <span class="assetor"></span></p>
-                                                <p class="card-text m-0"><small><a class="asemail" href=""></a></small></p>
-                                                <p class="card-text m-0">Tel: <small class="astelefone"></small></p>
-                                                <p class="card-text m-0"><small class="asendereco"></small><small class="asandar"></small>º Andar - Sala <small class="assala"></small></p>
-                                                <p class="card-text m-0"><small>01011 000 | São Paulo | SP</small></p>
-                                                <p class="card-text m-0"><small><a href="www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</a></small></p>
-                                            </div>
-                                        </div>
+                            <div class="card-assinatura-email">
+                                <div id="card-download" class="content card-download">
+                                    <div class="col-assinatura">
+                                        <p class="img" id="logo-assinatura">
+                                            <img id="logo-assinatura" src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>">
+                                        </p>
+                                    </div>
+                                    <div class="col-dados-prof">
+                                        <div></div>
+                                        <h1 class="name-style asnome" id="asnome"></h1>
+                                        <p class="cargo-setor"><span class="ascargo"></span> / <span id="setorass"></span> </p>
+                                        <span class="dados">
+                                            <p class="card-text m-0"><small><a class="asemail" href=""></a></small></p>
+                                            <p class="card-text m-0">Tel: <small class="astelefone"></small></p>
+                                            <p class="card-text m-0"><small class="asendereco"></small><small class="asandar"></small>º Andar - Sala <small class="assala"></small></p>
+                                            <p class="card-text m-0"><small>01011 000 | São Paulo | SP</small></p>
+                                            <p class="card-text m-0"><small><a href="www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</a></small></p>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

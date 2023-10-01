@@ -114,7 +114,7 @@ $(function () {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
-    //ajax form
+    //ajax form jquery
     $("form:not('.ajax_off')").submit(function (e) {
         e.preventDefault();
         var form = $(this);
