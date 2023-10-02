@@ -134,6 +134,7 @@ if (strpos(url(), "localhost")) {
     $minJsApp->add(__DIR__ . "/../../shared/scripts/vfs_fonts.js");
     // JS Typeahead Autocomplete
     $minJsApp->add(__DIR__ . "/../../shared/scripts/typeahead.bundle.js");
+//    $minJsApp->add(__DIR__ . "/../../shared/scripts/jquery-mask.js");
 
     //theme CSS Dashboard
     $jsDir = scandir(__DIR__ . "/../../themes/" . CONF_VIEW_THEME_APP . "/assets/js");

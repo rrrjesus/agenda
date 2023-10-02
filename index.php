@@ -38,7 +38,6 @@ $route->post("/recuperar/resetar", "Web:reset");
 
 //assinatura de email
 $route->get("/email", "Web:creatorCard");
-$route->post("/email", "Web:creatorCard");
 
 //optin
 $route->get("/confirma", "Web:confirm");

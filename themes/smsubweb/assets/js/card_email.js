@@ -2,9 +2,9 @@ function dounloadAss() {
     var node = document.getElementById('assinatura-download');
     var nome = document.getElementById('asnome').innerText;
 
-    domtoimage.toJpeg(node)
+    domtoimage.toPng(node)
         .then(function (dataUrl) {
-            window.saveAs(dataUrl, nome + ".jpg");
+            window.saveAs(dataUrl, nome + ".png");
         }).catch(function (error) {
         console.error('Desculpe, algo deu errado !!!!', error);
     });
@@ -16,8 +16,8 @@ $(function () {
     $('.assector').html("SETOR");
     $('.aslogotitle').html("SUBPREFEITURAS");
     $('.aslogosubtitle').html("");
-    $('.asendereco').html("Rua São Bento, 405 / Rua Líbero Badaró, 504 - Centro ");
-    $('.ascep').html("01011-000");
+    $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ");
+    $('.ascep').html("01008-906");
     $('.asemail').html("email@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
 
@@ -63,7 +63,7 @@ $(function () {
             return a.toUpperCase();
         });
         if(asendereco==='') {
-            $('.asendereco').html("Rua São Bento, 405 / Rua Líbero Badaró, 504 - Centro ");
+            $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ");
         } else {
             $('.asendereco').html(asendereco);
         }
@@ -72,7 +72,7 @@ $(function () {
     $('.cepinp').on( "keyup", function() {
         var ascep = $('.cepinp').val().toUpperCase();
         if(ascep==='') {
-            $('.ascep').html("01011-000");
+            $('.ascep').html("01008-906");
         } else {
             $('.ascep').html(ascep);
         }

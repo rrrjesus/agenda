@@ -73,37 +73,43 @@ $(function () {
 
     $("#email").validate({
         rules: {
-            collaborator: {
+            nomeinp: {
                 required: true
             },
-            cargo: {
+            cargoinp: {
                 required: true
             },
             sector: {
                 required: true
             },
-            email: {
+            emailinp: {
                 required: true
             },
-            telefone: {
+            andarinp: {
+                required: true
+            },
+            salainp: {
                 required: true
             }
         },
         messages: {
-            collaborator: {
+            nomeinp: {
                 required: "Digite seu nome !!!"
             },
-            cargo: {
+            cargoinp: {
                 required: "Digite seu cargo !!!"
             },
             sector: {
                 required: "Digite o setor !!!"
             },
-            email: {
+            emailinp: {
                 required: "Digite seu e-mail !!!"
             },
-            telefone: {
-                required: "Digite seu telefone !!!"
+            andarinp: {
+                required: "Digite seu andar !!!"
+            },
+            salainp: {
+                required: "Digite a sala !!!"
             }
         }
     });
