@@ -16,9 +16,10 @@ $(function () {
     $('.assector').html("SETOR");
     $('.aslogotitle').html("SUBPREFEITURAS");
     $('.aslogosubtitle').html("");
+    $('.asendereco').html("Rua São Bento, 405 / Rua Líbero Badaró, 504 - Centro ");
+    $('.ascep').html("01011-000");
     $('.asemail').html("email@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
-    $('.asendereco').html("Rua São Bento, 405 / Rua Líbero Badaró, 504 - Centro ");
 
     $('.logotitleinp').on('focusout',function(){
         var aslogotitle = $('#logotitleinp').val().toUpperCase();
@@ -56,6 +57,27 @@ $(function () {
             $('.assector').html(sector);
         }
     });
+
+    $('.enderecoinp').on( "keyup", function() {
+        var asendereco = $('.enderecoinp').val().toLowerCase().replace(/(?:^|\s)\S/g, function(a) {
+            return a.toUpperCase();
+        });
+        if(asendereco==='') {
+            $('.asendereco').html("Rua São Bento, 405 / Rua Líbero Badaró, 504 - Centro ");
+        } else {
+            $('.asendereco').html(asendereco);
+        }
+    });
+
+    $('.cepinp').on( "keyup", function() {
+        var ascep = $('.cepinp').val().toUpperCase();
+        if(ascep==='') {
+            $('.ascep').html("01011-000");
+        } else {
+            $('.ascep').html(ascep);
+        }
+    });
+
     $('.emailinp').on('keyup',function() {
         $(this).val($(this).val().toLowerCase());
         var asemail = $('.emailinp').val().toLowerCase();
@@ -95,3 +117,26 @@ $(function () {
         }
     });
 });
+
+// $(function (){
+//     $("input[name='logotitleinp']").blur(function(){
+//         var $enderecoinp = $("input[name='enderecoinp']");
+//         var $telefoneinp = $("input[name='telefoneinp']");
+//         var $cepinp = $("input[name='cepinp']");
+//
+//         $enderecoinp.val('Carregando...');
+//         $telefoneinp.val('Carregando...');
+//         $cepinp.val('Carregando...');
+//
+//         $.getJSON(
+//             'sistema/autocomplete-end.php',
+//             { logotitleinp: $( this ).val() },
+//             function( json )
+//             {
+//                 $enderecoinp.val( json.enderecoinp );
+//                 $telefoneinp.val( json.telefoneinp );
+//                 $cepinp.val( json.cepinp );
+//             }
+//         );
+//     });
+// });

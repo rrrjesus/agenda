@@ -39,14 +39,6 @@
 
                         <div class="row justify-content-center mb-2">
                             <div class="col-4">
-                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> SUBPREFEITURA/S</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="30" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite sua secretaria" class="form-control form-control-sm logotitleinp" name="logotitleinp" id="logotitleinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-center mb-2">
-                            <div class="col-4">
                                 <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> NOME</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="30" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" name="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
@@ -63,6 +55,26 @@
                                 <input data-bs-togglee="tooltip" data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu setor"  class="form-control form-control-sm sector" type="text" maxlength="35" id="sector" name="sector" placeholder="DIGITE O SETOR"/>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mb-2">
+                            <div class="col-5">
+                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> SUBPREFEITURA/S</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="30" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite sua secretaria" class="form-control form-control-sm logotitleinp" name="logotitleinp" id="logotitleinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                            </div>
+
+                            <div class="col-5">
+                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> ENDEREÇO</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="top" maxlength="30" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite o endereço" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text" placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
+                            </div>
+
+                            <div class="col-2">
+                                <strong><label for="inputCep" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> CEP</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="top" maxlength="9" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite o cep : 00000-000" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
                             </div>
                         </div>
 
@@ -122,11 +134,12 @@
                                         <h4 class="asnome fw-bold m-0" id="asnome"></h4>
                                         <p class="cargo-setor m-0"><span class="ascargo"></span> / <span class="assector"></span> </p>
                                         <span class="informacoes">
-                                            <p class="asemail m-0"></p>
+                                            <p class="m-0"><a class="link-primary asemail"></a></p>
                                             <p class="asramal m-0"></p>
-                                            <p class="m-0"><small class="asendereco"></small><small class="asandar"></small><small class="assala"></small></p>
-                                            <p class="m-0">01011 000 | São Paulo | SP</p>
-                                            <p class="m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</small></p>
+                                            <p class="m-0"><small class="asendereco"></small></p>
+                                             <p class="m-0"><small class="asandar"></small><small class="assala"></small></p>
+                                            <p class="m-0"><small class="ascep"></small> | São Paulo | SP</p>
+                                            <p class="m-0"><a class="link-primary">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</a></p>
                                         </span>
                                     </div>
                                 </div>
