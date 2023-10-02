@@ -2,9 +2,6 @@
 
 
 <head>
-    <link rel="stylesheet" href="<?=theme("/assets/css/assinatura/style_index.css")?>">
-
-    <script src="<?=theme("/assets/js/assinatura/script-down.js")?>"></script>
     <script src="<?=theme("/assets/js/assinatura/dom-to-image.js")?>"></script>
     <script src="<?=theme("/assets/js/assinatura/fileSaver2.js")?>"></script>
 </head>
@@ -42,22 +39,30 @@
 
                         <div class="row justify-content-center mb-2">
                             <div class="col-4">
-                                <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> NOME</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="26" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
+                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> SUBPREFEITURA/S</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="30" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite sua secretaria" class="form-control form-control-sm logotitleinp" name="logotitleinp" id="logotitleinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center mb-2">
+                            <div class="col-4">
+                                <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> NOME</label></strong>
+                                <input data-bs-togglee="tooltip" data-bs-placement="left" maxlength="30" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" name="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
 
                             <div class="col-4">
                                 <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" id="cargo" maxlength="35" name="cargo" placeholder="DIGITE O CARGO"/>
+                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" maxlength="42" name="cargoainp" placeholder="DIGITE O CARGO"/>
                             </div>
 
                             <div class="col-4">
                                 <strong><label for="inputSector" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu setor"  class="form-control form-control-sm sector" type="text" maxlength="35" name="sector" placeholder="DIGITE O SETOR"/>
+                                       data-bs-title="Digite seu setor"  class="form-control form-control-sm sector" type="text" maxlength="35" id="sector" name="sector" placeholder="DIGITE O SETOR"/>
                             </div>
                         </div>
 
@@ -66,7 +71,7 @@
                                 <strong><label for="inputEmail" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> E-MAIL</label></strong>
                                 <div class="input-group input-group-sm mb-3">
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o início do e-mail" class="form-control form-control-sm" maxlength="47" name="email" placeholder="DIGITE APENAS O INÍCIO DO EMAIL">
+                                           data-bs-title="Digite apenas o início do e-mail" class="form-control form-control-sm emailinp" maxlength="47" placeholder="DIGITE APENAS O INÍCIO DO EMAIL">
                                     <span class="input-group-text">@smsub.prefeitura.sp.gov.br</span>
                                 </div>
                             </div>
@@ -76,7 +81,7 @@
                                 <div class="input-group  input-group-sm mb-3">
                                     <span class="input-group-text">(11) 4934-</span>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o ramal do telefone" class="form-control form-control-sm" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS" name="ramal">
+                                           data-bs-title="Digite apenas o ramal do telefone" class="form-control form-control-sm ramalinp" name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
 
                                 </div>
                             </div>
@@ -85,7 +90,7 @@
                                 <strong><label for="inputEmail" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> ANDAR</label></strong>
                                 <div class="input-group input-group-sm mb-3">
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o número do andar" class="form-control form-control-sm" maxlength="2" placeholder="10, 23 ou 24" name="andar">
+                                           data-bs-title="Digite apenas o número do andar" class="form-control form-control-sm andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
                                     <span class="input-group-text">º Andar</span>
                                 </div>
                             </div>
@@ -95,7 +100,7 @@
                                 <div class="input-group  input-group-sm mb-3">
                                     <span class="input-group-text">Sala</span>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o número e letra da sala" class="form-control form-control-sm" maxlength="4" placeholder="Nº e LETRA" name="sala">
+                                           data-bs-title="Digite apenas o número e letra da sala" class="form-control form-control-sm salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
 
                                 </div>
                             </div>
@@ -103,23 +108,25 @@
                         </div>
 
                         <div class="row justify-content-center">
-                            <div class="card-assinatura-email">
-                                <div id="card-download" class="content card-download">
-                                    <div class="col-assinatura">
-                                        <p class="img" id="logo-assinatura">
-                                            <img id="logo-assinatura" src="<?=theme("/assets/images/assinatura/new_logo_assinatura.png")?>">
-                                        </p>
+                            <div class="assinatura-email">
+                                <div id="assinatura-download" class="assinatura-download">
+                                    <div class="assinatura-logo p-3">
+                                        <span class="me-0">
+                                            <img id="logo-assinatura mb-0" src="<?=theme("/assets/images/assinatura/logo_assinatura_smsub.png")?>">
+                                            <p class="aslogosubtitle fw-bold m-0 text-center"></p>
+                                            <p class="aslogotitle fw-bold m-0 text-center"></p>
+                                        </span>
                                     </div>
-                                    <div class="col-dados-prof">
+                                    <div class="assinatura-escrita">
                                         <div></div>
-                                        <h1 class="name-style asnome" id="asnome"></h1>
-                                        <p class="cargo-setor"><span class="ascargo"></span> / <span id="setorass"></span> </p>
-                                        <span class="dados">
-                                            <p class="card-text m-0"><small><a class="asemail" href=""></a></small></p>
-                                            <p class="card-text m-0">Tel: <small class="astelefone"></small></p>
-                                            <p class="card-text m-0"><small class="asendereco"></small><small class="asandar"></small>º Andar - Sala <small class="assala"></small></p>
-                                            <p class="card-text m-0"><small>01011 000 | São Paulo | SP</small></p>
-                                            <p class="card-text m-0"><small><a href="www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</a></small></p>
+                                        <h4 class="asnome fw-bold m-0" id="asnome"></h4>
+                                        <p class="cargo-setor m-0"><span class="ascargo"></span> / <span class="assector"></span> </p>
+                                        <span class="informacoes">
+                                            <p class="asemail m-0"></p>
+                                            <p class="asramal m-0"></p>
+                                            <p class="m-0"><small class="asendereco"></small><small class="asandar"></small><small class="assala"></small></p>
+                                            <p class="m-0">01011 000 | São Paulo | SP</p>
+                                            <p class="m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</small></p>
                                         </span>
                                     </div>
                                 </div>
@@ -130,7 +137,7 @@
                             <div class="col-auto">
                                 <button data-bs-togglee="tooltip" data-bs-placement="bottom"
                                         data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3" onclick="downloadimg()"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
+                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3" onclick="dounloadAss()"><i class="bi bi-card-text me-1"></i> GERAR</button>
                                 <a href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
                                    data-bs-title="Clique para listar as assinaturas" class="btn btn-outline-danger btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>APAGAR</a>
                             </div>
@@ -139,6 +146,4 @@
                     </form>
                 </div>
             </div>
-
-
 
