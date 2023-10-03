@@ -27,7 +27,7 @@ https://reeddesign.co.uk/test/points-pixels.html
     background-color: white !important;
     display: flex;
     justify-content: start;
-    height: 180px;
+    height: 200px;
 }
 
 .asnome{
@@ -87,7 +87,7 @@ https://reeddesign.co.uk/test/points-pixels.html
     display: flex !important;
     align-items: center !important;
     width: fit-content;
-    /*min-height: 180px;*/
+    min-height: 150px;
 }
 
 @media (max-width: 450px) {

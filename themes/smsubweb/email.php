@@ -29,14 +29,14 @@
 
                             <div class="col-4">
                                 <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> NOME</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="top" maxlength="30" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" name="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
+                                <input data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
 
                             <div class="col-4">
                                 <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" maxlength="42" name="cargoinp" placeholder="DIGITE O CARGO"/>
+                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" maxlength="42" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
                             </div>
 
                             <div class="col-4">
@@ -82,7 +82,7 @@
                                 <div class="input-group  input-group-sm mb-3">
                                     <span class="input-group-text">(11) 4934-</span>
                                     <input type="text" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Digite apenas o ramal do telefone" class="form-control form-control-sm ramalinp" name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
+                                           data-bs-title="Digite apenas o ramal do telefone" class="form-control form-control-sm ramalinp" id="ramalinp" name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
 
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 <div id="assinatura-download" class="assinatura-download">
                                     <div class="assinatura-logo p-3">
                                         <span class="me-0">
-                                            <img id="logo-assinatura mb-0" src="<?=theme("/assets/images/assinatura/logo_assinatura_smsubs.png")?>">
+                                            <img id="logo-assinatura mb-0" src="<?=theme("/assets/images/assinatura/logo_assinatura_smsub.png")?>">
 <!--                                            <p class="aslogosubtitle fw-bold m-0 text-center"></p> talvez -->
 <!--                                            <p class="aslogotitle fw-bold m-0 text-center"></p> talvez -->
                                         </span>
@@ -147,4 +147,54 @@
                     </form>
                 </div>
             </div>
+
+            <script>
+                let ramalinp = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
+                });
+                ramalinp.initialize();
+                $('.ramalinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramalinp});
+
+                let sector = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
+                });
+                sector.initialize();
+                $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
+
+                let nomeinp = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: <?=(new \Source\Models\Signature())->completeName("name")?>
+                });
+                nomeinp.initialize();
+                $('.nomeinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: nomeinp});
+
+
+
+                let cargoinp = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: ['ANALISTA (NQ)' , 'ANALISTA DE ORDENAMENTO TERRITORIAL (NQ)NIVEL I' , 'ANALISTA DE ORDENAMENTO TERRITORIAL (NQ)NIVEL IV' , 'ANALISTA FISCAL DE SERVICOS (NQ)NIVEL I' ,
+                        'ANALISTA PLANEJAMENTO DESENV ORGANIZACIONAL (NQ)NIVEL III' , 'ANALISTA PLANEJAMENTO DESENV ORGANIZACIONAL (NQ)NIVEL IV' , 'ASSESSOR I' , 'ASSESSOR II' , 'ASSESSOR III' ,
+                        'ASSESSOR IV' , 'ASSESSOR V' , 'ASSESSOR VI' , 'ASSISTENTE ADMINISTRATIVO DE GESTAO' , 'ASSISTENTE ADMINISTRATIVO DE GESTAO NIVEL I' , 'ASSISTENTE ADMINISTRATIVO DE GESTAO NIVEL II' ,
+                        'ASSISTENTE DE GESTAO DE POLITICAS PUBLICAS NIVEL II' , 'ASSISTENTE DE SUPORTE OPERACIONAL NIVEL I' , 'ASSISTENTE DE SUPORTE OPERACIONAL NIVEL II' , 'CHEFE DE ASSESSORIA II' , 'CHEFE DE GABINETE' ,
+                        'COORDENADOR I' , 'DIRETOR I' , 'DIRETOR II' , 'ESP DESENVOLVIMENTO URBANO NÍVEL II' , 'FISCAL DE POSTURAS MUNICIPAIS NIVEL I' , 'FISCAL DE POSTURAS MUNICIPAIS NIVEL II' ,
+                        'FISCAL DE POSTURAS MUNICIPAIS NIVEL III' , 'PROCURADOR DO MUNICIPIO I' , 'PROCURADOR DO MUNICIPIO II' , 'PROCURADOR DO MUNICIPIO III' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA NIVEL I' ,
+                        'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA NIVEL II' , 'PROFISSIONAL ENG, ARQ, AGRONOMIA,GEOLOGIA NIVEL IV' , 'SECRETARIO EXECUTIVO' , 'SECRETARIO EXECUTIVO ADJUNTO' , 'SECRETARIO MUNICIPAL' ,
+                        'SECRETARIO-ADJUNTO']
+                });
+                cargoinp.initialize();
+                $('.cargoinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: cargoinp});
+
+                let logotitleinp = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: ['ARICANDUVA / FORMOSA / CARRÃO', 'BUTANTÃ', 'CAMPO LIMPO', 'CAPELA DO SOCORRO', 'CASA VERDE', 'CIDADE ADEMAR',
+                        'CIDADE TIRADENTES', 'ERMELINO MATARAZZO', 'FREGUESIA / BRASILÂNDIA', 'GUAIANASES', 'IPIRANGA', 'ITAIM PAULISTA',
+                        'ITAQUERA', 'JABAQUARA', 'JAÇANÃ / TREMEMBÉ', 'LAPA', 'MBOI MIRIM', 'MOOCA', 'PARELHEIROS', 'PENHA', 'PERUS',
+                        'PINHEIROS', 'PIRITUBA / JARAGUÁ', 'SANTANA / TUCURUVI', 'SANTO AMARO', 'SÃO MATEUS', 'SÃO MIGUEL PAULISTA',
+                        'SAPOPEMBA', 'SÉ', 'VILA MARIA / VILA GUILHERME', 'VILA MARIANA', 'VILA PRUDENTE']
+                });
+                logotitleinp.initialize();
+                $('.logotitleinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: logotitleinp});
+            </script>
 

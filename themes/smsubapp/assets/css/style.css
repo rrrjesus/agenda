@@ -1,3 +1,15 @@
+/* Typeahead Color*/
+span.twitter-typeahead .tt-suggestion:focus,
+.dropdown-item:hover,
+span.twitter-typeahead .tt-suggestion:hover {
+    text-decoration: none;
+    background-color: var(--bs-red);
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    text-decoration: none;
+    background-color: var(--bs-red);
+}
 
 /* AJUDA */
 .custom-tooltip {

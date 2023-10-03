@@ -31,18 +31,16 @@ $(function () {
             $('.aslogotitle').html(aslogotitle);
         }
     });
-    $('.nomeinp').on('keyup',function(){
-        $(this).val($(this).val().toUpperCase());
-        var asnome = $('.nomeinp').val().toUpperCase();
+    $('.nomeinp').on('focusout',function(){
+        var asnome = $('#nomeinp').val().toUpperCase();
         if(asnome==='') {
             $('.asnome').html("NOME COMPLETO");
         } else {
             $('.asnome').html(asnome);
         }
     });
-    $('.cargoinp').on('keyup',function() {
-        $(this).val($(this).val().toUpperCase());
-        var ascargo = $('.cargoinp').val().toUpperCase();
+    $('.cargoinp').on('focusout',function() {
+        var ascargo = $('#cargoinp').val().toUpperCase();
         if(ascargo==='') {
             $('.ascargo').html("CARGO");
         } else {
@@ -88,9 +86,9 @@ $(function () {
             $('.asemail').html(asemail + alias);
         }
     });
-    $('.ramalinp').on('keyup',function() {
+    $('.ramalinp').on('focusout',function() {
         var astelefone = 'Tel : +55 (11) 4934-';
-        var asramal = $('.ramalinp').val();
+        var asramal = $('#ramalinp').val();
         if(asramal==='') {
             $('.asramal').html("Tel : +55 (11) 4934-3000");
         } else {
@@ -118,25 +116,4 @@ $(function () {
     });
 });
 
-// $(function (){
-//     $("input[name='logotitleinp']").blur(function(){
-//         var $enderecoinp = $("input[name='enderecoinp']");
-//         var $telefoneinp = $("input[name='telefoneinp']");
-//         var $cepinp = $("input[name='cepinp']");
-//
-//         $enderecoinp.val('Carregando...');
-//         $telefoneinp.val('Carregando...');
-//         $cepinp.val('Carregando...');
-//
-//         $.getJSON(
-//             'sistema/autocomplete-end.php',
-//             { logotitleinp: $( this ).val() },
-//             function( json )
-//             {
-//                 $enderecoinp.val( json.enderecoinp );
-//                 $telefoneinp.val( json.telefoneinp );
-//                 $cepinp.val( json.cepinp );
-//             }
-//         );
-//     });
-// });
+

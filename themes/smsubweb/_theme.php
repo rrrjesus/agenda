@@ -203,7 +203,13 @@
 
 <!--CONTENT-->
 <main class="container-sm" style="padding-right: 0;padding-left: 0">
+
+    <script src="<?= theme("/../".CONF_VIEW_THEME."/assets/scripts.js"); ?>"></script>
+
     <?= $this->section("content"); ?>
+
+    <?= $this->section("scripts"); ?>
+
 </main>
 
 <?php if ($this->section("optout")): ?>
@@ -279,30 +285,6 @@
         </div>
     </div>
 </footer>
-
-<script src="<?= theme("/assets/scripts.js"); ?>"></script>
-
-<script>
-    let sector = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: <?=(new \Source\Models\Sector())->completeSector("sector_name")?>
-    });
-    sector.initialize();
-    $('.sector').typeahead({hint: true, highlight: true, minLength: 1}, {source: sector});
-
-    let logotitleinp = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: ['ARICANDUVA / FORMOSA / CARRÃO', 'BUTANTÃ', 'CAMPO LIMPO', 'CAPELA DO SOCORRO', 'CASA VERDE', 'CIDADE ADEMAR',
-            'CIDADE TIRADENTES', 'ERMELINO MATARAZZO', 'FREGUESIA / BRASILÂNDIA', 'GUAIANASES', 'IPIRANGA', 'ITAIM PAULISTA',
-            'ITAQUERA', 'JABAQUARA', 'JAÇANÃ / TREMEMBÉ', 'LAPA', 'MBOI MIRIM', 'MOOCA', 'PARELHEIROS', 'PENHA', 'PERUS',
-            'PINHEIROS', 'PIRITUBA / JARAGUÁ', 'SANTANA / TUCURUVI', 'SANTO AMARO', 'SÃO MATEUS', 'SÃO MIGUEL PAULISTA',
-            'SAPOPEMBA', 'SÉ', 'VILA MARIA / VILA GUILHERME', 'VILA MARIANA', 'VILA PRUDENTE']
-    });
-    logotitleinp.initialize();
-    $('.logotitleinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: logotitleinp});
-</script>
-
-<?= $this->section("scripts"); ?>
 
 </body>
 </html>
