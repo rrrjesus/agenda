@@ -8,7 +8,7 @@ class Signature extends Model
 {
     public function __construct()
     {
-        parent::__construct("signature", ["id"], ["name"]);
+        parent::__construct("signatures", ["id"], ["first_name", "last_name", "email"]);
     }
 
     static function completeName($columns): ?Signature
@@ -18,7 +18,7 @@ class Signature extends Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->name;
+                $array[] = $row->first_name.' '.$row->last_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;

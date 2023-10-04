@@ -18,12 +18,12 @@ use Source\Core\Connect;
 
 function retorna($nome) {
 
-    $stmt = Connect::getInstance()->query("SELECT `id`, `name`, `status` FROM signature WHERE name = '{$nome}'");
+    $stmt = Connect::getInstance()->query("SELECT `id`, `first_name`, `last_name`, `email` FROM signatures WHERE CONCAT(first_name, ' ', last_name) = '{$nome}'");
 
     $arr = Array();
     if ($stmt->rowCount()) {
         while ($dados = $stmt->fetch()) {
-            $arr['emailinp'] = $dados->id;
+            $arr['emailinp'] = $dados->email;
 
         }
     } else

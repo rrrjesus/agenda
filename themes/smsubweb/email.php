@@ -165,7 +165,7 @@
 
                 let nomeinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Signature())->completeName("name")?>
+                    local: <?=(new \Source\Models\Signature())->completeName("first_name, last_name")?>
                 });
                 nomeinp.initialize();
                 $('.nomeinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: nomeinp});
