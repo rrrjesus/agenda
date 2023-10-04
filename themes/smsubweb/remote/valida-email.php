@@ -9,9 +9,6 @@
 //Tratando erros ;
 error_reporting(0);
 
-//Inclui a conexao ;
-include_once '../../conexao.php';
-
 // Inicia a conexao
 $conexao = conexao::getInstance();
 

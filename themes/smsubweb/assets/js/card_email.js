@@ -10,22 +10,22 @@ function dounloadAss() {
     });
 }
 
-// $(function(){
-//     $("input[name='nomeinp']").blur(function(){
-//         var $emailinp = $("input[name='emailinp']");
-//
-//         $emailinp.val('Carregando...');
-//
-//         $.getJSON(
-//             'source/Models/Signature.php',
-//             { nomeinp: $( this ).val() },
-//             function( json )
-//             {
-//                 $emailinp.val( json.emailinp );
-//             }
-//         );
-//     });
-// });
+$(function(){
+    $("input[name='nomeinp']").blur(function(){
+        var $emailinp = $("input[name='emailinp']");
+
+        $emailinp.val('Carregando...');
+
+        $.getJSON(
+            'themes/smsubweb/complete.php',
+            { nomeinp: $( this ).val() },
+            function( json )
+            {
+                $emailinp.val( json.emailinp );
+            }
+        );
+    });
+});
 
 $(function () {
     $('.asnome').html("NOME COMPLETO");
