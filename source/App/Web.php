@@ -9,6 +9,7 @@ use Source\Models\Contact;
 use Source\Models\Faq\Question;
 use Source\Models\Report\Access;
 use Source\Models\Report\Online;
+use Source\Models\Signature;
 use Source\Models\User;
 use Source\Models\Post;
 
@@ -28,6 +29,7 @@ class Web extends Controller
 
         (new Access())->report();
         (new Online())->report();
+//        (new Signature())->completeCampos("ABDEL", "FARACHE");
     }
 
     /**

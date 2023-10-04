@@ -8,35 +8,37 @@ class Signature extends Model
 {
     public function __construct()
     {
-        parent::__construct("signature", ["id"], ["name"]);
+        parent::__construct("signatures", ["id"], ["first_name", "last_name", "email"]);
     }
 
     static function completeName($columns): ?Signature
     {
-        $stm = (new Signature())->find("status=:s","s=post",$columns);
+        $stm = (new Signature())->find("","",$columns);
         $array = array();
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $array[] = $row->name;
+                $array[] = $row->first_name.' '.$row->last_name;
             endforeach;
             echo json_encode($array); //Return the JSON Array
         endif;
         return null;
     }
 
-    function retorna($columns) : ?Signature
+    static function complete($columns): ?Signature
     {
-        $stm = (new Signature())->find("status=:s","s=post",$columns);
+        $stm = (new Signature())->find("","",$columns);
         $array = array();
 
-        if (!empty($stm)):
-            foreach ($stm->fetch() as $row):
-                $array['cargoinp'] = $row->office;
-                $array['andarinp'] = $row->floor;
-                $array['salainp'] = $row->room;
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = array(
+                    'id' => $row->id,
+                    'nomeinp' => $row->first_name.' '.$row->last_name,
+                    'emailinp' => $row->email
+                );
             endforeach;
-            echo json_encode($array);
+            echo json_encode($array); //Return the JSON Array
         endif;
         return null;
     }

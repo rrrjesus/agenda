@@ -74,10 +74,12 @@ $(function () {
     $("#email").validate({
         rules: {
             nomeinp: {
-                required: true
+                required: true,
+                maxlength: 49
             },
             cargoinp: {
-                required: true
+                required: true,
+                maxlength: 57
             },
             sector: {
                 required: true
@@ -94,10 +96,12 @@ $(function () {
         },
         messages: {
             nomeinp: {
-                required: "Digite seu nome !!!"
+                required: "Digite seu nome !!!",
+                maxlength: "Por favor insira no máximo 50 caracteres"
             },
             cargoinp: {
-                required: "Digite seu cargo !!!"
+                required: "Digite seu cargo !!!",
+                maxlength: "Por favor insira no máximo 58 caracteres"
             },
             sector: {
                 required: "Digite o setor !!!"

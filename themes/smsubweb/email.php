@@ -36,7 +36,7 @@
                             <div class="col-4">
                                 <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
                                 <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" maxlength="42" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
+                                       data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" maxlength="58" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
                             </div>
 
                             <div class="col-4">
@@ -165,7 +165,7 @@
 
                 let nomeinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Signature())->completeName("name")?>
+                    local: <?=(new \Source\Models\Signature())->completeName("first_name, last_name")?>
                 });
                 nomeinp.initialize();
                 $('.nomeinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: nomeinp});
