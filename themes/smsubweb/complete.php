@@ -8,11 +8,7 @@
  */
 
 require __DIR__.'/../../source/Core/Connect.php';
-
-define("CONF_DB_HOST", "10.23.237.27");
-define("CONF_DB_USER", "smsubcoti");
-define("CONF_DB_PASS", "yvTjF3VLK)RktC7W");
-define("CONF_DB_NAME", "smsub");
+require __DIR__.'/../../source/Boot/Config.php';
 
 use Source\Core\Connect;
 
@@ -23,7 +19,7 @@ function retorna($nome) {
     $arr = Array();
     if ($stmt->rowCount()) {
         while ($dados = $stmt->fetch()) {
-            $arr['emailinp'] = $dados->email;
+            $arr['emailinp'] = substr($dados->email, 0, -27); ;
 
         }
     } else

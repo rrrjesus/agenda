@@ -1,33 +1,44 @@
-function dounloadAss() {
-    var node = document.getElementById('assinatura-download');
-    var nome = document.getElementById('asnome').innerText;
+function dounloadAssinatura() {
 
-    domtoimage.toPng(node)
-        .then(function (dataUrl) {
-            window.saveAs(dataUrl, nome + ".png");
-        }).catch(function (error) {
-        console.error('Desculpe, algo deu errado !!!!', error);
-    });
+    var asspng = $('.assinatura-download')[0]; //returns a HTML DOM Object
+    var assnome = $('.asnome').text();
+
+    var inpNome = $('#nomeinp').val();
+    var inpCargo = $('#cargoinp').val();
+    var inpSector = $('#sector').val();
+    var inpEmail = $('#emailinp').val();
+    var tempDate = new Date();
+    var dataAtual = [tempDate.getDate(), tempDate.getMonth() + 1, tempDate.getFullYear(), tempDate.getHours(),tempDate.getMinutes(), tempDate.getSeconds()].join('/');
+
+    if(inpNome !=='' && inpCargo!=='' && inpSector!=='' && inpEmail!==''){
+        domtoimage.toPng(asspng)
+            .then(function (dataUrl) {
+                window.saveAs(dataUrl, assnome + '_' + dataAtual + ".png");
+            }).catch(function (error) {
+            console.error('Desculpe, algo deu errado !!!!', error);
+        });
+    }
+
 }
 
-$(function(){
+$(function () {
     $("input[name='nomeinp']").blur(function(){
-        var $emailinp = $("input[name='emailinp']");
+        var emailinp = $("input[name='emailinp']");
 
-        $emailinp.val('Carregando...');
+        emailinp.val('Carregando...');
 
         $.getJSON(
             'themes/smsubweb/complete.php',
             { nomeinp: $( this ).val() },
             function( json )
             {
-                $emailinp.val( json.emailinp );
+                emailinp.val( json.emailinp );
+                var alias = '@smsub.prefeitura.sp.gov.br';
+                $('.asemail').html(json.emailinp + alias);
             }
         );
     });
-});
 
-$(function () {
     $('.asnome').html("NOME COMPLETO");
     $('.ascargo').html("CARGO");
     $('.assector').html("SETOR");
@@ -49,6 +60,14 @@ $(function () {
         }
     });
     $('.nomeinp').on('focusout',function(){
+        var asnome = $('#nomeinp').val().toUpperCase();
+        if(asnome==='') {
+            $('.asnome').html("NOME COMPLETO");
+        } else {
+            $('.asnome').html(asnome);
+        }
+    });
+    $('.nomeinp').on('keyup',function(){
         var asnome = $('#nomeinp').val().toUpperCase();
         if(asnome==='') {
             $('.asnome').html("NOME COMPLETO");

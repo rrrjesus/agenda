@@ -9,7 +9,7 @@ $(function () {
             $(element).addClass('is-valid');
         },
 
-        // errorElement: 'span',
+        errorElement: 'label',
         errorClass: 'help-block',
 
         errorPlacement: function (error, element) {
@@ -86,12 +86,6 @@ $(function () {
             },
             emailinp: {
                 required: true
-            },
-            andarinp: {
-                required: true
-            },
-            salainp: {
-                required: true
             }
         },
         messages: {
@@ -108,12 +102,6 @@ $(function () {
             },
             emailinp: {
                 required: "Digite seu e-mail !!!"
-            },
-            andarinp: {
-                required: "Digite seu andar !!!"
-            },
-            salainp: {
-                required: "Digite a sala !!!"
             }
         }
     });

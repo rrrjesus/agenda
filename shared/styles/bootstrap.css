@@ -2700,7 +2700,7 @@ textarea.form-control-lg {
 .input-group {
   position: relative;
   display: flex;
-  /*flex-wrap: wrap; O Typeahead desalinha no span input-group */
+  flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
 }
