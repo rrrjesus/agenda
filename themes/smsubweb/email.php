@@ -29,19 +29,19 @@
 
                             <div class="col-4">
                                 <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> NOME</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
+                                <input tabindex="1" autofocus data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu nome completo" class="form-control form-control-sm nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
 
                             <div class="col-4">
                                 <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                <input tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu cargo" class="form-control form-control-sm cargoinp" type="text" maxlength="58" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
                             </div>
 
                             <div class="col-4">
                                 <strong><label for="inputSector" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
-                                <input data-bs-togglee="tooltip" data-bs-placement="top"
+                                <input tabindex="3" data-bs-togglee="tooltip" data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite seu setor"  class="form-control form-control-sm sector" type="text" maxlength="35" id="sector" name="sector" placeholder="DIGITE O SETOR"/>
                             </div>
@@ -72,7 +72,7 @@
                                 <strong><label for="inputEmail" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> E-MAIL</label></strong>
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text" id="inputGroupPrepend">@smsub.prefeitura.sp.gov.br</span>
-                                    <input type="text" aria-describedby="inputGroupPrepend" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                    <input tabindex="7" type="text" aria-describedby="inputGroupPrepend" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Somente o início, não digite @smsub.prefeitura.sp.gov.br !!!" class="form-control form-control-sm emailinp" id="emailinp" maxlength="47" name="emailinp" placeholder="DIGITE O INÍCIO">
 
                                 </div>
@@ -81,7 +81,7 @@
                             <div class="col-4">
                                 <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                    <input tabindex="4" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Se tiver, digite apenas o ramal do telefone" class="form-control form-control-sm ramalinp" id="ramalinp" name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                 <strong><label for="inputEmail" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> ANDAR</label></strong>
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text">º Andar</span>
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                    <input tabindex="5" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Digite apenas o número do andar" class="form-control form-control-sm andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> SALA</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <span class="input-group-text">Sala</span>
-                                    <input type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                    <input tabindex="6" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Digite apenas o número e letra da sala" class="form-control form-control-sm salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
 
                                 </div>
@@ -136,10 +136,10 @@
 
                         <div class="row justify-content-center mt-3 mb-3">
                             <div class="col-auto">
-                                <button type="submit" data-bs-togglee="tooltip" data-bs-placement="bottom"
+                                <button tabindex="8" type="submit" data-bs-togglee="tooltip" data-bs-placement="bottom"
                                         data-bs-custom-class="custom-tooltip"
                                         data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3" onclick="dounloadAssinatura()"><i class="bi bi-card-text me-1"></i> GERAR</button>
-                                <a href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
+                                <a href="<?=url("/email")?>" tabindex="9" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
                                    data-bs-title="Clique para apagar os campos" class="btn btn-outline-danger btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>APAGAR</a>
                             </div>
                         </div>
