@@ -75,14 +75,15 @@ $(function () {
         rules: {
             nomeinp: {
                 required: true,
-                maxlength: 49
+                maxlength: 50
             },
             cargoinp: {
                 required: true,
-                maxlength: 57
+                maxlength: 62
             },
             sector: {
-                required: true
+                required: true,
+                maxlength: 54
             },
             emailinp: {
                 required: true
@@ -95,10 +96,11 @@ $(function () {
             },
             cargoinp: {
                 required: "Digite seu cargo !!!",
-                maxlength: "Por favor insira no máximo 58 caracteres"
+                maxlength: "Por favor insira no máximo 62 caracteres"
             },
             sector: {
-                required: "Digite o setor !!!"
+                required: "Digite o setor !!!",
+                maxlength: "Por favor insira no máximo 54 caracteres"
             },
             emailinp: {
                 required: "Digite seu e-mail !!!"

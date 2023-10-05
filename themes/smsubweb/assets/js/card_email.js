@@ -2,7 +2,6 @@ function dounloadAssinatura() {
 
     var asspng = $('.assinatura-download')[0]; //returns a HTML DOM Object
     var assnome = $('.asnome').text();
-
     var inpNome = $('#nomeinp').val();
     var inpCargo = $('#cargoinp').val();
     var inpSector = $('#sector').val();
@@ -22,19 +21,63 @@ function dounloadAssinatura() {
 }
 
 $(function () {
-    $("input[name='nomeinp']").blur(function(){
+    $("input[name='nomeinp']").on('focusout',function() {
         var emailinp = $("input[name='emailinp']");
 
-        emailinp.val('Carregando...');
+        emailinp.val('');
 
         $.getJSON(
-            'themes/smsubweb/complete.php',
+            'themes/smsubweb/autocomplete/complete-email.php',
             { nomeinp: $( this ).val() },
             function( json )
             {
-                emailinp.val( json.emailinp );
-                var alias = '@smsub.prefeitura.sp.gov.br';
-                $('.asemail').html(json.emailinp + alias);
+                var jsonnome = json.nomeinp;
+                var jsonemail = json.emailinp;
+                if(jsonemail!==''){
+                    $('.asnome').html(jsonnome);
+                    emailinp.val(jsonemail);
+                    var alias = '@smsub.prefeitura.sp.gov.br';
+                    $('.asemail').html(jsonemail + alias);
+                    $("#emailinp").prop('disabled',true);
+                }else{
+                    $("#emailinp").prop('disabled',false);
+                }
+            }
+        );
+    });
+
+    $("input[name='secsubinp']").on('focusout',function() {
+        var enderecoinp = $("input[name='enderecoinp']");
+        var cepinp = $("input[name='cepinp']");
+
+        enderecoinp.val('');
+        cepinp.val('');
+
+        $.getJSON(
+            'themes/smsubweb/autocomplete/complete-secsub.php',
+            { secsubinp: $( this ).val() },
+            function( json )
+            {
+                var jsonendereco = json.enderecoinp;
+                var jsoncep = json.cepinp;
+                var jsonlogo = json.aslogo
+
+                if(jsonendereco!=='') {
+                    enderecoinp.val(jsonendereco);
+                    cepinp.val(jsoncep);
+                    $('.aslogo').html(jsonlogo);
+                    $('.asendereco').html(jsonendereco)
+                    $('.ascep').html(jsoncep)
+                    $(".enderecoinp").prop('disabled',true);
+                    $(".cepinp").prop('disabled',true);
+                } else {
+                    $('.aslogo').html(jsonlogo);
+                    $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ")
+                    $('.ascep').html("01008-906");
+                    $(".enderecoinp").prop('disabled',false);
+                    $(".cepinp").prop('disabled',false);
+                }
+
             }
         );
     });
@@ -42,31 +85,14 @@ $(function () {
     $('.asnome').html("NOME COMPLETO");
     $('.ascargo').html("CARGO");
     $('.assector').html("SETOR");
-    $('.aslogotitle').html("SUBPREFEITURAS");
-    $('.aslogosubtitle').html("");
+    $('.aslogo').html("<img src='themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub.png'>");
     $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ");
     $('.ascep').html("01008-906");
-    $('.asemail').html("email@smsub.prefeitura.sp.gov.br");
+    $('.asemail').html("@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
+    $(".enderecoinp").prop('disabled',true);
+    $(".cepinp").prop('disabled',true);
 
-    $('.logotitleinp').on('focusout',function(){
-        var aslogotitle = $('#logotitleinp').val().toUpperCase();
-        if(aslogotitle==='') {
-            $('.aslogosubtitle').html("");
-            $('.aslogotitle').html("SUBPREFEITURAS");
-        } else {
-            $('.aslogosubtitle').html("SUBPREFEITURA");
-            $('.aslogotitle').html(aslogotitle);
-        }
-    });
-    $('.nomeinp').on('focusout',function(){
-        var asnome = $('#nomeinp').val().toUpperCase();
-        if(asnome==='') {
-            $('.asnome').html("NOME COMPLETO");
-        } else {
-            $('.asnome').html(asnome);
-        }
-    });
     $('.nomeinp').on('keyup',function(){
         var asnome = $('#nomeinp').val().toUpperCase();
         if(asnome==='') {
@@ -117,7 +143,7 @@ $(function () {
         var asemail = $('.emailinp').val().toLowerCase();
         var alias = '@smsub.prefeitura.sp.gov.br';
         if(asemail==='') {
-            $('.asemail').html("email@smsub.prefeitura.sp.gov.br");
+            $('.asemail').html("@smsub.prefeitura.sp.gov.br");
         } else {
             $('.asemail').html(asemail + alias);
         }

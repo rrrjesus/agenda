@@ -23,11 +23,11 @@ https://reeddesign.co.uk/test/points-pixels.html
     flex-wrap: nowrap;
     width: 100%;
     margin: 0 auto !important;
-    padding: 24px 0px 24px 0px !important;
+    /*padding: 24px 0px 24px 0px !important;*/
     background-color: white !important;
     display: flex;
     justify-content: start;
-    height: 200px;
+    /*height: 225px;*/
 }
 
 .asnome{
@@ -46,7 +46,7 @@ https://reeddesign.co.uk/test/points-pixels.html
     line-height: 100%;
     font-family: "Arial", sans-serif !important;
     border-left: solid 2px black;
-    padding: 0rem 20px !important;
+    /*padding: 0rem 20px !important;*/
     min-width: 60%;
 }
 

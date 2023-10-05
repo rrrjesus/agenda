@@ -7,8 +7,8 @@
  * Time: 08:39
  */
 
-require __DIR__.'/../../source/Core/Connect.php';
-require __DIR__.'/../../source/Boot/Config.php';
+require __DIR__ . '/../../../source/Core/Connect.php';
+require __DIR__ . '/../../../source/Boot/Config.php';
 
 use Source\Core\Connect;
 
@@ -19,11 +19,14 @@ function retorna($nome) {
     $arr = Array();
     if ($stmt->rowCount()) {
         while ($dados = $stmt->fetch()) {
-            $arr['emailinp'] = substr($dados->email, 0, -27); ;
-
+            $arr['nomeinp'] = $dados->first_name.' '.$dados->last_name;
+            $arr['emailinp'] = substr($dados->email, 0, -27);
         }
-    } else
-        $arr['nomelinp'] = 'não encontrado';
+    }
+    else {
+        $arr['nomeinp'] = '';
+        $arr['emailinp'] = '';
+    }
     return json_encode($arr);
 
 }
