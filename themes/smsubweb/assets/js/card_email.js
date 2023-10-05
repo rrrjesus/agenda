@@ -1,3 +1,10 @@
+/**
+ * Função para gerar DOM de image .PNG
+ *
+ * @param {Object} asspng obrigatório Parametro obrigatório
+ * @param {Text} assnome obrigatório Parametro obrigatório
+ * @return {VoidFunction}
+ */
 function dounloadAssinatura() {
 
     var asspng = $('.assinatura-download')[0]; //returns a HTML DOM Object
@@ -14,11 +21,17 @@ function dounloadAssinatura() {
             .then(function (dataUrl) {
                 window.saveAs(dataUrl, assnome + '_' + dataAtual + ".png");
             }).catch(function (error) {
-            console.error('Desculpe, algo deu errado !!!!', error);
+            console.error('Não foi possivel gerar a imagem ...', error);
         });
     }
 
 }
+
+/**
+ * Função para tratativas e preenchimentos automáticos de campos
+ *
+ * @return {VoidFunction}
+ */
 
 $(function () {
     $("input[name='nomeinp']").on('focusout',function() {
@@ -38,9 +51,9 @@ $(function () {
                     emailinp.val(jsonemail);
                     var alias = '@smsub.prefeitura.sp.gov.br';
                     $('.asemail').html(jsonemail + alias);
-                    $("#emailinp").prop('disabled',true);
+                    $("#emailinp").prop('readonly',true);
                 }else{
-                    $("#emailinp").prop('disabled',false);
+                    $("#emailinp").prop('readonly',false);
                 }
             }
         );
@@ -68,14 +81,14 @@ $(function () {
                     $('.aslogo').html(jsonlogo);
                     $('.asendereco').html(jsonendereco)
                     $('.ascep').html(jsoncep)
-                    $(".enderecoinp").prop('disabled',true);
-                    $(".cepinp").prop('disabled',true);
+                    $(".enderecoinp").prop('readonly',true);
+                    $(".cepinp").prop('readonly',true);
                 } else {
                     $('.aslogo').html(jsonlogo);
                     $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ")
                     $('.ascep').html("01008-906");
-                    $(".enderecoinp").prop('disabled',false);
-                    $(".cepinp").prop('disabled',false);
+                    $(".enderecoinp").prop('readonly',false);
+                    $(".cepinp").prop('readonly',false);
                 }
 
             }
@@ -90,8 +103,8 @@ $(function () {
     $('.ascep').html("01008-906");
     $('.asemail').html("@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
-    $(".enderecoinp").prop('disabled',true);
-    $(".cepinp").prop('disabled',true);
+    $(".enderecoinp").prop('readonly',true);
+    $(".cepinp").prop('readonly',true);
 
     $('.nomeinp').on('keyup',function(){
         var asnome = $('#nomeinp').val().toUpperCase();
