@@ -53,7 +53,7 @@
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text" id="inputGroupPrepend">@smsub.prefeitura.sp.gov.br</span>
                                     <input tabindex="4" type="text" aria-describedby="inputGroupPrepend" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Preenchimento automático !!! Edite apenas se o e-mail não estiver preenchido !!!" class="form-control form-control-sm emailinp" id="emailinp" maxlength="47" name="emailinp" placeholder="DIGITE O INÍCIO">
+                                           data-bs-title="Preenchimento automático !!! Editável apenas se o e-mail não estiver preenchido !!!" class="form-control form-control-sm emailinp" id="emailinp" maxlength="47" name="emailinp" placeholder="DIGITE O INÍCIO">
 
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text">º Andar</span>
                                     <input tabindex="6" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Se houver, digite apenas o número do andar" class="form-control form-control-sm andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
+                                           data-bs-title="Apenas se tiver, digite apenas o número do andar" class="form-control form-control-sm andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
                                 </div>
                             </div>
 
@@ -79,8 +79,8 @@
                                 <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> SALA</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <span class="input-group-text">Sala</span>
-                                    <input tabindex="7" ype="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Se houver, digite apenas o número e letra da sala" class="form-control form-control-sm salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
+                                    <input tabindex="7" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Apenas se tiver, digite apenas o número e letra da sala" class="form-control form-control-sm salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
 
                                 </div>
                             </div>
@@ -97,14 +97,14 @@
                             <div class="col-5">
                                 <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> ENDEREÇO</label></strong>
                                 <input tabindex="9" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="55" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Preenchimento automático !!! Edite apenas se o endereço não estiver preenchido !!!" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
+                                       data-bs-title="Preenchimento automático !!! Editável apenas se o endereço não estiver preenchido !!!" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
                                        value="Rua Líbero Badaró, 504 - Edifício Martinelli - Centro " placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-2">
                                 <strong><label for="inputCep" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> CEP</label></strong>
                                 <input tabindex="10" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="9" data-bs-custom-class="custom-tooltip"
-                                       value="01008-906" data-bs-title="Preenchimento automático !!! Edite apenas se o cep não estiver preenchido !!!" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
+                                       value="01008-906" data-bs-title="Preenchimento automático !!! Editável apenas se o cep não estiver preenchido !!!" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
                             </div>
                         </div>
 
