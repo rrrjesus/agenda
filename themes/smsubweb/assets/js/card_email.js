@@ -77,24 +77,23 @@ $(function () {
                 var jsonendereco = json.enderecoinp;
                 var jsoncep = json.cepinp;
                 var jsonlogo = json.aslogo;
-                // var ligth = '.png';
-                // var dark = '_dark.png';
+                var logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/';
                 var mode = $('body').css("background-color");
                 if(mode==='rgb(255, 255, 255)') {
-                    //
+                    logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonlogo + '.png">';
                 } else {
-                    //
+                    logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonlogo + '_dark.png">';
                 }
                 if(jsonendereco!=='') {
                     enderecoinp.val(jsonendereco);
                     cepinp.val(jsoncep);
-                    $('.aslogo').html(jsonlogo);
+                    $('.aslogo').html(logo);
                     $('.asendereco').html(jsonendereco)
                     $('.ascep').html(jsoncep)
                     $(".enderecoinp").prop('readonly',true);
                     $(".cepinp").prop('readonly',true);
                 } else {
-                    $('.aslogo').html(jsonlogo);
+                    $('.aslogo').html(logo);
                     $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ")
                     $('.ascep').html("01008-906");
                     $(".enderecoinp").prop('readonly',false);

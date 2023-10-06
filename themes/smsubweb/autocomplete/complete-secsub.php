@@ -21,7 +21,7 @@ function retorna($name) {
         while ($dados = $stmt->fetch()) {
             $arr['enderecoinp'] = $dados->street;
             $arr['cepinp'] = $dados->zip_code;
-            $arr['aslogo'] = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/'.$dados->logo.'">';
+            $arr['aslogo'] = $dados->logo;
         }
     } else {
         $arr['secsubinp'] = '';
