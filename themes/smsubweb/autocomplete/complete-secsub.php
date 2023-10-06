@@ -27,7 +27,7 @@ function retorna($name) {
         $arr['secsubinp'] = '';
         $arr['enderecoinp'] = '';
         $arr['cepinp'] = '';
-        $arr['aslogo'] = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub.png">';
+        $arr['aslogo'] = 'logo_assinatura_smsub';
     }
     return json_encode($arr);
 

@@ -77,7 +77,7 @@ $(function () {
                 var jsonendereco = json.enderecoinp;
                 var jsoncep = json.cepinp;
                 var jsonlogo = json.aslogo;
-                var logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/';
+                var logo;
                 var mode = $('body').css("background-color");
                 if(mode==='rgb(255, 255, 255)') {
                     logo = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/' + jsonlogo + '.png">';
@@ -104,10 +104,19 @@ $(function () {
         );
     });
 
+    var logoinicial;
+    var modeinicial = $('body').css("background-color");
+
+    if(modeinicial==='rgb(255, 255, 255)') {
+        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub.png">';
+    } else {
+        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub_dark.png">';
+    }
+
     $('.asnome').html("NOME COMPLETO");
     $('.ascargo').html("CARGO");
     $('.assector').html("SETOR");
-    $('.aslogo').html("<img src='themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub.png'>");
+    $('.aslogo').html(logoinicial);
     $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ");
     $('.ascep').html("01008-906");
     $('.asemail').html("@smsub.prefeitura.sp.gov.br");
