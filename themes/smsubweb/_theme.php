@@ -13,12 +13,12 @@
 </head>
 <body>
 
-<!--<div class="ajax_load">-->
-<!--    <div class="ajax_load_box">-->
-<!--        <div class="ajax_load_box_circle"></div>-->
-<!--            <p class="ajax_load_box_title">Aguarde, carregando ...</p>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="ajax_load">
+    <div class="ajax_load_box">
+        <div class="ajax_load_box_circle"></div>
+            <p class="ajax_load_box_title">Aguarde, carregando ...</p>
+    </div>
+</div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="circle-half" viewBox="0 0 16 16">

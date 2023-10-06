@@ -5,27 +5,30 @@
  * @param {Text} assnome obrigatório Parametro obrigatório
  * @return {VoidFunction}
  */
-function dounloadAssinatura() {
 
-    var asspng = $('.assinatura-download')[0]; //returns a HTML DOM Object
-    var assnome = $('.asnome').text();
-    var inpNome = $('#nomeinp').val();
-    var inpCargo = $('#cargoinp').val();
-    var inpSector = $('#sector').val();
-    var inpEmail = $('#emailinp').val();
-    var tempDate = new Date();
-    var dataAtual = [tempDate.getDate(), tempDate.getMonth() + 1, tempDate.getFullYear(), tempDate.getHours(),tempDate.getMinutes(), tempDate.getSeconds()].join('/');
+$(function () {
+    $("#gerarpng").on("click", function () {
+        var asspng = $('.assinatura-download')[0]; //returns a HTML DOM Object
+        var assnome = $('.asnome').text();
+        var inpNome = $('#nomeinp').val();
+        var inpCargo = $('#cargoinp').val();
+        var inpSector = $('#sector').val();
+        var inpEmail = $('#emailinp').val();
+        var tempDate = new Date();
+        var dataAtual = [tempDate.getDate(), tempDate.getMonth() + 1, tempDate.getFullYear(), tempDate.getHours(), tempDate.getMinutes(), tempDate.getSeconds()].join('/');
 
-    if(inpNome !=='' && inpCargo!=='' && inpSector!=='' && inpEmail!==''){
-        domtoimage.toPng(asspng)
-            .then(function (dataUrl) {
-                window.saveAs(dataUrl, assnome + '_' + dataAtual + ".png");
-            }).catch(function (error) {
-            console.error('Não foi possivel gerar a imagem ...', error);
-        });
-    }
+        if (inpNome !== '' && inpCargo !== '' && inpSector !== '' && inpEmail !== '') {
+            // Obtendo um blob de imagem PNG e baixando (usando FileSaver):
+            domtoimage.toBlob(asspng)
+                .then(function (blob) {
+                    window.saveAs(blob, assnome + '_' + dataAtual + '.png');
+                }).catch(function (error) {
+                console.error('Não foi possivel gerar a imagem ...', error);
+            });
+        }
 
-}
+    });
+});
 
 /**
  * Função para tratativas e preenchimentos automáticos de campos
@@ -73,8 +76,15 @@ $(function () {
             {
                 var jsonendereco = json.enderecoinp;
                 var jsoncep = json.cepinp;
-                var jsonlogo = json.aslogo
-
+                var jsonlogo = json.aslogo;
+                // var ligth = '.png';
+                // var dark = '_dark.png';
+                var mode = $('body').css("background-color");
+                if(mode==='rgb(255, 255, 255)') {
+                    //
+                } else {
+                    //
+                }
                 if(jsonendereco!=='') {
                     enderecoinp.val(jsonendereco);
                     cepinp.val(jsoncep);

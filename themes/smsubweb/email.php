@@ -1,7 +1,9 @@
 <?= $this->layout("_theme", ["head" => $head]); ?>
 
-<script src="<?=theme("/assets/js/assinatura/dom-to-image.js")?>"></script>
-<script src="<?=theme("/assets/js/assinatura/fileSaver2.js")?>"></script>
+<!-- https://github.com/tsayen/dom-to-image version: 2.6.0 -->
+<script src="<?=theme("/assets/js/email/dom-to-image.min.js")?>"></script>
+<!-- https://github.com/eligrey/FileSaver.js version: 2.0.5 -->
+<script src="<?=theme("/assets/js/email/FileSaver.min.js")?>"></script>
 
 <div class="container-fluid">
     <div class="d-flex justify-content-center mt-3">
@@ -90,8 +92,8 @@
                         <div class="row justify-content-center mb-2">
                             <div class="col-5">
                                 <strong><label for="inputLogoTitle" e class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> SMSUB/SUBS</label></strong>
-                                <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="30" data-bs-custom-class="custom-tooltip"
-                                       value="SMSUB" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                                <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
+                                       value="SECRETARIA DAS SUBPREFEITURAS I" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-5">
@@ -118,12 +120,12 @@
                                         <h4 class="asnome fw-bold m-0" id="asnome"></h4>
                                         <p class="cargo-setor mt-0 mb-2"><span class="ascargo"></span> / <span class="assector"></span> </p>
                                         <span class="informacoes">
-                                            <p class="asemail m-0"></p>
+                                            <p class="asemail fw-semibold m-0"></p>
                                             <p class="asramal m-0"></p>
                                             <p class="m-0"><small class="asendereco"></small></p>
                                              <p class="m-0"><small class="asandar"></small><small class="assala"></small></p>
                                             <p class="m-0"><small class="ascep"></small> | São Paulo | SP</p>
-                                            <p class="m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</a></p>
+                                            <p class="fw-semibold m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</p>
                                         </span>
                                     </div>
                                 </div>
@@ -132,9 +134,9 @@
 
                         <div class="row justify-content-center mt-3 mb-3">
                             <div class="col-auto">
-                                <button tabindex="11" type="submit" data-bs-togglee="tooltip" data-bs-placement="bottom"
+                                <button tabindex="11" id="gerarpng" data-bs-togglee="tooltip" data-bs-placement="bottom"
                                         data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3" onclick="dounloadAssinatura()"><i class="bi bi-card-text me-1"></i> GERAR</button>
+                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-card-text me-1"></i> GERAR</button>
                                 <a href="<?=url("/email")?>" tabindex="12" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
                                    data-bs-title="Clique para apagar os campos" class="btn btn-outline-danger btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>APAGAR</a>
                             </div>
@@ -181,7 +183,7 @@
 
                 let secsubinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: ['SMSUB' , 'ARICANDUVA / FORMOSA / CARRÃO', 'BUTANTÃ', 'CAMPO LIMPO', 'CAPELA DO SOCORRO', 'CASA VERDE', 'CIDADE ADEMAR',
+                    local: ['SECRETARIA DAS SUBPREFEITURAS I' , 'SECRETARIA DAS SUBPREFEITURAS II', 'ARICANDUVA / FORMOSA / CARRÃO', 'BUTANTÃ', 'CAMPO LIMPO', 'CAPELA DO SOCORRO', 'CASA VERDE', 'CIDADE ADEMAR',
                         'CIDADE TIRADENTES', 'ERMELINO MATARAZZO', 'FREGUESIA / BRASILÂNDIA', 'GUAIANASES', 'IPIRANGA', 'ITAIM PAULISTA',
                         'ITAQUERA', 'JABAQUARA', 'JAÇANÃ / TREMEMBÉ', 'LAPA', 'MBOI MIRIM', 'MOOCA', 'PARELHEIROS', 'PENHA', 'PERUS',
                         'PINHEIROS', 'PIRITUBA / JARAGUÁ', 'SANTANA / TUCURUVI', 'SANTO AMARO', 'SÃO MATEUS', 'SÃO MIGUEL PAULISTA',

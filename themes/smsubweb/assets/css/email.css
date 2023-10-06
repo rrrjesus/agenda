@@ -24,7 +24,7 @@ https://reeddesign.co.uk/test/points-pixels.html
     width: 100%;
     margin: 0 auto !important;
     /*padding: 24px 0px 24px 0px !important;*/
-    background-color: white !important;
+    background-color: var(--bs-body-bg) !important;
     display: flex;
     justify-content: start;
     /*height: 225px;*/
@@ -45,7 +45,7 @@ https://reeddesign.co.uk/test/points-pixels.html
     text-align: start;
     line-height: 100%;
     font-family: "Arial", sans-serif !important;
-    border-left: solid 2px black;
+    border-left: solid 2px var(--bs-body-color);
     /*padding: 0rem 20px !important;*/
     min-width: 60%;
 }
