@@ -64,7 +64,7 @@
                                 <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <input tabindex="5" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm ramalinp" id="ramalinp" name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
+                                           data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm ramalinp" id="ramalinp" name="ramalinp" maxlength="25" placeholder="DIGITE OS 4 DÍGITOS">
                                 </div>
                             </div>
 
@@ -93,7 +93,7 @@
                             <div class="col-5">
                                 <strong><label for="inputLogoTitle" e class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> SMSUB/SUBS</label></strong>
                                 <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
-                                       value="SECRETARIA DAS SUBPREFEITURAS I" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                                       value="SMSUB LIBERO BADARO" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-5">
@@ -118,14 +118,14 @@
                                     </div>
                                     <div class="assinatura-escrita ps-4">
                                         <h4 class="asnome fw-bold m-0" id="asnome"></h4>
-                                        <p class="cargo-setor mt-0 mb-2"><span class="ascargo"></span> / <span class="assector"></span> </p>
-                                        <span class="informacoes">
-                                            <p class="asemail fw-semibold m-0"></p>
+                                        <p class="cargo-setor fw-bold mt-0 mb-2"><span class="ascargo"></span> / <span class="assector"></span> </p>
+                                        <span class="informacoes fw-bold">
+                                            <p class="asemail m-0"></p>
                                             <p class="asramal m-0"></p>
                                             <p class="m-0"><small class="asendereco"></small></p>
                                              <p class="m-0"><small class="asandar"></small><small class="assala"></small></p>
                                             <p class="m-0"><small class="ascep"></small> | São Paulo | SP</p>
-                                            <p class="fw-semibold m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</p>
+                                            <p class="m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</p>
                                         </span>
                                     </div>
                                 </div>
@@ -148,10 +148,10 @@
             <script>
                 let ramalinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
+                    local: <?=(new \Source\Models\Contact())->completeFone("telefone, ramal")?>
                 });
                 ramalinp.initialize();
-                $('.ramalinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: ramalinp});
+                $('.ramalinp').typeahead({hint: true, highlight: true, minLength: 1, limit: 8}, {source: ramalinp});
 
                 let sector = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -183,11 +183,7 @@
 
                 let secsubinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: ['SECRETARIA DAS SUBPREFEITURAS I' , 'SECRETARIA DAS SUBPREFEITURAS II', 'ARICANDUVA / FORMOSA / CARRÃO', 'BUTANTÃ', 'CAMPO LIMPO', 'CAPELA DO SOCORRO', 'CASA VERDE', 'CIDADE ADEMAR',
-                        'CIDADE TIRADENTES', 'ERMELINO MATARAZZO', 'FREGUESIA / BRASILÂNDIA', 'GUAIANASES', 'IPIRANGA', 'ITAIM PAULISTA',
-                        'ITAQUERA', 'JABAQUARA', 'JAÇANÃ / TREMEMBÉ', 'LAPA', 'MBOI MIRIM', 'MOOCA', 'PARELHEIROS', 'PENHA', 'PERUS',
-                        'PINHEIROS', 'PIRITUBA / JARAGUÁ', 'SANTANA / TUCURUVI', 'SANTO AMARO', 'SÃO MATEUS', 'SÃO MIGUEL PAULISTA',
-                        'SAPOPEMBA', 'SÉ', 'VILA MARIA / VILA GUILHERME', 'VILA MARIANA', 'VILA PRUDENTE']
+                    local: <?=(new \Source\Models\Unit())->completeName("sigla, name")?>
                 });
                 secsubinp.initialize();
                 $('.secsubinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: secsubinp});

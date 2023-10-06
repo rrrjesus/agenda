@@ -101,6 +101,20 @@ class User extends Model
         return $find->fetch();
     }
 
+    static function completeName($columns): ?User
+    {
+        $stm = (new User())->find("","",$columns);
+        $array = array();
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = $row->first_name.' '.$row->last_name;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
     public function updated(User $user): bool // Só aceita um objeto da Classe User e bool só retorna true e false
     {
         if(!$user->save()) {

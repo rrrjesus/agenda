@@ -139,6 +139,20 @@ class Contact extends Model
         return null;
     }
 
+    static function completeFone($columns): ?Contact
+    {
+        $stm = (new Contact())->find("","",$columns);
+
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $array[] = '4934 '.$row->ramal;
+            endforeach;
+            echo json_encode($array); //Return the JSON Array
+        endif;
+        return null;
+    }
+
     /**
      * @param Contact $contact
      * @return bool

@@ -108,9 +108,9 @@ $(function () {
     var modeinicial = $('body').css("background-color");
 
     if(modeinicial==='rgb(255, 255, 255)') {
-        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub.png">';
+        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub.png">';
     } else {
-        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_assinatura_smsub_dark.png">';
+        logoinicial = '<img id="logo-assinatura mb-0" src="themes/smsubweb/assets/images/assinatura/logo_ass_smsub_dark.png">';
     }
 
     $('.asnome').html("NOME COMPLETO");
@@ -180,7 +180,7 @@ $(function () {
         }
     });
     $('.ramalinp').on('focusout',function() {
-        var astelefone = 'Tel : +55 (11) 4934-';
+        var astelefone = 'Tel : +55 (11) ';
         var asramal = $('#ramalinp').val();
         if(asramal==='') {
             $('.asramal').html("Tel : +55 (11) 4934-3000");
@@ -188,6 +188,7 @@ $(function () {
             $('.asramal').html(astelefone + asramal);
         }
     });
+
     $('.andarinp').on('keyup',function() {
         var asandar = $('.andarinp').val().toUpperCase();
         var nomeAndar = 'º Andar';
