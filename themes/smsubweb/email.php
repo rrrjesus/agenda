@@ -98,7 +98,7 @@
 
                             <div class="col-5">
                                 <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> ENDEREÇO</label></strong>
-                                <input tabindex="9" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="55" data-bs-custom-class="custom-tooltip"
+                                <input tabindex="9" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="64" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Preenchimento automático !!! Editável apenas se o endereço não estiver preenchido !!!" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
                                        value="Rua Líbero Badaró, 504 - Edifício Martinelli - Centro " placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
                             </div>
@@ -138,7 +138,7 @@
                                         data-bs-custom-class="custom-tooltip"
                                         data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-card-text me-1"></i> GERAR</button>
                                 <a href="<?=url("/email")?>" tabindex="12" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
-                                   data-bs-title="Clique para apagar os campos" class="btn btn-outline-danger btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>APAGAR</a>
+                                   data-bs-title="Clique para apagar os campos" class="btn btn-outline-secondary btn-sm fw-bold"><i class="bi bi-eraser me-1"></i>APAGAR</a>
                             </div>
                         </div>
                     </form>
@@ -148,7 +148,7 @@
             <script>
                 let ramalinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Contact())->completeFone("telefone, ramal")?>
+                    local: <?=(new \Source\Models\Contact())->completeFone("ramal")?>
                 });
                 ramalinp.initialize();
                 $('.ramalinp').typeahead({hint: true, highlight: true, minLength: 1, limit: 8}, {source: ramalinp});
