@@ -96,7 +96,7 @@ define("CONF_MAIL_PORT", "587");
 define("CONF_MAIL_USER", "apikey");
 define("CONF_MAIL_PASS", "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");
 define("CONF_MAIL_SENDER", ["name" => "SMSUB - COTI", "address" => "cidinha.romaioli@gmail.com"]);
-define("CONF_MAIL_SUPORT", "cidinha.romaioli@gmail.com");
+define("CONF_MAIL_SUPORT", "cotisuporte@smsub.prefeitura.sp.gov.br");
 define("CONF_MAIL_OPTION_LANG", "br");
 define("CONF_MAIL_OPTION_HTML", true);
 define("CONF_MAIL_OPTION_AUTH", true);
