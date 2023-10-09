@@ -118,8 +118,8 @@
                                     </div>
                                     <div class="assinatura-escrita ps-4">
                                         <h4 class="asnome fw-bold m-0" id="asnome"></h4>
-                                        <p class="cargo-setor fw-bold mt-0 mb-2"><span class="ascargo"></span> / <span class="assector"></span> </p>
-                                        <span class="informacoes fw-bold">
+                                        <p class="cargo-setor mt-0 mb-2"><span class="ascargo"></span> / <span class="assector"></span> </p>
+                                        <span class="informacoes">
                                             <p class="asemail m-0"></p>
                                             <p class="asramal m-0"></p>
                                             <p class="m-0"><small class="asendereco"></small></p>

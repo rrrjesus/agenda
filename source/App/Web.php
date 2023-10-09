@@ -212,7 +212,7 @@ class Web extends Controller
               theme("/assets/images/share.jpg")
           );
 
-          $post = (new Post())->findById(1);
+          $post = (new Post())->findById(4);
           $post->views += 1;
           $post->save();
 
