@@ -148,7 +148,7 @@
             <script>
                 let ramalinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: <?=(new \Source\Models\Contact())->completeFone("ramal")?>
+                    local: <?=(new \Source\Models\Contact())->completeRamal("ramal")?>
                 });
                 ramalinp.initialize();
                 $('.ramalinp').typeahead({hint: true, highlight: true, minLength: 1, limit: 8}, {source: ramalinp});

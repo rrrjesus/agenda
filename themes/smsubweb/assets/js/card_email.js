@@ -185,7 +185,7 @@ $(function () {
         if(asramal==='') {
             $('.asramal').html("Tel : +55 (11) 4934-3000");
         } else {
-            $('.asramal').html(astelefone + asramal);
+            $('.asramal').html(astelefone +  '4934-' + asramal);
         }
     });
 
