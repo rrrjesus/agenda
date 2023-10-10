@@ -94,8 +94,8 @@ $(function () {
                     // $(".cepinp").prop('readonly',true);
                 } else {
                     $('.aslogo').html(logo);
-                    $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ")
-                    $('.ascep').html("01008-906");
+                    $('.asendereco').html("Rua São Bento, 405 - Edifício Martinelli - Centro ")
+                    $('.ascep').html("01011-100");
                     // $(".enderecoinp").prop('readonly',false);
                     // $(".cepinp").prop('readonly',false);
                 }
@@ -117,8 +117,8 @@ $(function () {
     $('.ascargo').html("CARGO");
     $('.assector').html("SETOR");
     $('.aslogo').html(logoinicial);
-    $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ");
-    $('.ascep').html("01008-906");
+    $('.asendereco').html("Rua São Bento, 405 - Edifício Martinelli - Centro ");
+    $('.ascep').html("01011-100");
     $('.asemail').html("@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
     // $(".enderecoinp").prop('readonly',true);
@@ -154,7 +154,7 @@ $(function () {
             return a.toUpperCase();
         });
         if(asendereco==='') {
-            $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ");
+            $('.asendereco').html("Rua São Bento, 405 - Edifício Martinelli - Centro ");
         } else {
             $('.asendereco').html(asendereco);
         }
@@ -163,7 +163,7 @@ $(function () {
     $('.cepinp').on( "keyup", function() {
         var ascep = $('.cepinp').val().toUpperCase();
         if(ascep==='') {
-            $('.ascep').html("01008-906");
+            $('.ascep').html("01011-100");
         } else {
             $('.ascep').html(ascep);
         }

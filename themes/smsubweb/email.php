@@ -96,20 +96,20 @@
                             <div class="col-5">
                                 <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">SMSUB/SUBS</label></strong>
                                 <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
-                                       value="SMSUB LIBERO BADARO" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
+                                       value="SMSUB SAO BENTO" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-5">
                                 <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">ENDEREÇO</label></strong>
                                 <input tabindex="9" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="64" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
-                                       value="Rua Líbero Badaró, 504 - Edifício Martinelli - Centro " placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
+                                       value="Rua São Bento, 405 - Edifício Martinelli - Centro " placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-2">
                                 <strong><label for="inputCep" class="col-4 col-form-label col-form-label-sm">CEP</label></strong>
                                 <input tabindex="10" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="9" data-bs-custom-class="custom-tooltip"
-                                       value="01008-906" data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
+                                       value="01011-100" data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
                             </div>
                         </div>
 
