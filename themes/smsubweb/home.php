@@ -15,7 +15,9 @@
                     <div class="carousel-caption" style="text-shadow: 0.05em 0.05em 0.1em #06b8ee">
                         <h1 class="text-dark">Gerador de Assinatura de E-mail.</h1>
                         <p class="text-dark">Mais uma ferramenta para facilitar seu dia a dia , basta preencher seus dados e gerar sua assinatura de e-mail na hora.</p>
-                        <p><a class="btn btn-lg btn-info text-light" href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar o Gerador de Assinatura de E-mail">Acesse aqui</a></p>
+                        <p>
+                            <a class="btn btn-lg btn-info text-light me-5" href="<?=url("/contatos")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar os Contatos"><i class="bi bi-book-half me-2"></i>Agenda de Contatos</a>
+                            <a class="btn btn-lg btn-info text-light" href="<?=url("/email")?>" data-bs-togglee="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para acessar o Gerador de Assinatura de E-mail"><i class="bi bi-card-heading me-2"></i>Assinatura de E-mail</a></p>
                     </div>
                 </div>
             </div>
