@@ -49,7 +49,8 @@ class Dashboard extends Controller
         $post = (new Post());
         $post1 = $post->findById(1)->views;
         $post2 = $post->findById(2)->views;
-        $post3 = $post->findById(3)->views;
+        $post3 = $post->findById(4)->views;
+        $post4 = $post->findById(3)->views;
 
         echo $this->view->render("home-dash",
             [
@@ -58,6 +59,7 @@ class Dashboard extends Controller
                 "post1" => $post1,
                 "post2" => $post2,
                 "post3" => $post3,
+                "post4" => $post4,
             ]);
 
     }

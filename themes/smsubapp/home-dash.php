@@ -45,9 +45,9 @@
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Home', 'Contatos', 'Sobre' ],
+                labels: ['Home', 'Contatos',  'E-mail', 'Sobre', ],
                 datasets: [{
-                    data: [<?=$post1?>, <?=$post2?>, <?=$post3?> ],
+                    data: [<?=$post1?>, <?=$post2?>, <?=$post3?>, <?=$post4?>  ],
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',

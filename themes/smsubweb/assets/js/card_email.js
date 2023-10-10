@@ -77,6 +77,7 @@ $(function () {
                 var jsonendereco = json.enderecoinp;
                 var jsoncep = json.cepinp;
                 var jsonlogo = json.aslogo;
+                var jsonurl = json.url;
                 var logo;
                 var mode = $('body').css("background-color");
                 if(mode==='rgb(255, 255, 255)') {
@@ -90,12 +91,14 @@ $(function () {
                     $('.aslogo').html(logo);
                     $('.asendereco').html(jsonendereco)
                     $('.ascep').html(jsoncep)
+                    $('.asurl').html(jsonurl)
                     // $(".enderecoinp").prop('readonly',true);
                     // $(".cepinp").prop('readonly',true);
                 } else {
                     $('.aslogo').html(logo);
                     $('.asendereco').html("Rua São Bento, 405 - Edifício Martinelli - Centro ")
                     $('.ascep').html("01011-100");
+                    $('.asurl').html("www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras/ ");
                     // $(".enderecoinp").prop('readonly',false);
                     // $(".cepinp").prop('readonly',false);
                 }

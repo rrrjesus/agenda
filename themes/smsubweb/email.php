@@ -128,7 +128,7 @@
                                             <p class="m-0"><small class="asendereco"></small></p>
                                              <p class="m-0"><small class="asandar"></small><small class="assala"></small></p>
                                             <p class="m-0"><small class="ascep"></small> | São Paulo | SP</p>
-                                            <p class="m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</p>
+                                            <p class="asurl m-0">www.prefeitura.sp.gov.br/cidade/secretarias/subprefeituras</p>
                                         </span>
                                     </div>
                                 </div>

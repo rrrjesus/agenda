@@ -14,7 +14,7 @@ use Source\Core\Connect;
 
 function retorna($name) {
 
-    $stmt = Connect::getInstance()->query("SELECT `id`, `sigla`, `name`, `street`, `zip_code`, `logo` FROM units WHERE CONCAT(sigla, ' ', name) = '{$name}'");
+    $stmt = Connect::getInstance()->query("SELECT `id`, `sigla`, `name`, `street`, `zip_code`, `logo`, `url` FROM units WHERE CONCAT(sigla, ' ', name) = '{$name}'");
 
     $arr = Array();
     if ($stmt->rowCount()) {
@@ -22,12 +22,14 @@ function retorna($name) {
             $arr['enderecoinp'] = $dados->street;
             $arr['cepinp'] = $dados->zip_code;
             $arr['aslogo'] = $dados->logo;
+            $arr['url'] = $dados->url;
         }
     } else {
         $arr['secsubinp'] = '';
         $arr['enderecoinp'] = '';
         $arr['cepinp'] = '';
         $arr['aslogo'] = 'logo_ass_smsub';
+        $arr['url'] = '';
     }
     return json_encode($arr);
 
