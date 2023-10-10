@@ -22,9 +22,9 @@
                 <p class="fs-6 text-body-secondary pt-0">Gerador de assinatura de e-mail no padrão estabelecido no <strong>Manual de Identidade Visual da</strong>
                     <a class="text-decoration-none text-info fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
                     target="_blank">SECOM</a></p>
-                <p class="fs-6 text-body-secondary pt-0">Em caso de dúvidas na utilização, <strong>Manual de Criação e Configuração do</strong>
+                <p class="fs-6 text-body-secondary pt-0">Em caso de dúvidas na utilização, acesse o
                     <a class="text-decoration-none text-info fw-semibold" href="<?=url("/themes/smsubweb/assets/manuais/manual_gerador_de_assinatura_smsub.pdf")?>"
-                       target="_blank">Gerador de Assinatura de E-mail SMSUB</a></p>
+                       target="_blank">Manual de Criação e Configuração de Assinatura</a></p>
             </div>
 
             <div class="d-flex justify-content-center">
