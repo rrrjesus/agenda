@@ -22,6 +22,9 @@
                 <p class="fs-6 text-body-secondary pt-0">Gerador de assinatura de e-mail no padrão estabelecido no <strong>Manual de Identidade Visual da</strong>
                     <a class="text-decoration-none text-info fw-semibold" href="https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/comunicacao/arquivos/manual_identidade_visual/manual_identidade/manual_de_identidade.pdf"
                     target="_blank">SECOM</a></p>
+                <p class="fs-6 text-body-secondary pt-0">Em caso de dúvidas na utilização, <strong>Manual de Criação e Configuração do</strong>
+                    <a class="text-decoration-none text-info fw-semibold" href="<?=url("/themes/smsubweb/assets/manuais/manual_gerador_de_assinatura_smsub.pdf")?>"
+                       target="_blank">Gerador de Assinatura de E-mail SMSUB</a></p>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -135,7 +138,7 @@
                             <div class="col-auto">
                                 <button tabindex="11" id="gerarpng" data-bs-togglee="tooltip" data-bs-placement="bottom"
                                         data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-card-text me-1"></i> GERAR</button>
+                                        data-bs-title="Clique para gerar a assinatura" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-card-text me-1"></i> GERAR</button>
                                 <a href="<?=url("/email")?>" tabindex="12" data-bs-togglee="tooltip" data-bs-placement="bottom" role="button" data-bs-custom-class="custom-tooltip"
                                    data-bs-title="Clique para apagar os campos" class="btn btn-outline-secondary btn-sm fw-bold"><i class="bi bi-eraser me-1"></i>APAGAR</a>
                             </div>
