@@ -67,7 +67,8 @@
                                 <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm">RAMAL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <input tabindex="5" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm ramalinp" id="ramalinp" name="ramalinp" maxlength="25" placeholder="DIGITE OS 4 DÍGITOS">
+                                           data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm ramalinp" id="ramalinp"
+                                           name="ramalinp" maxlength="4" placeholder="DIGITE OS 4 DÍGITOS">
                                 </div>
                             </div>
 
