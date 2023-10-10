@@ -90,14 +90,14 @@ $(function () {
                     $('.aslogo').html(logo);
                     $('.asendereco').html(jsonendereco)
                     $('.ascep').html(jsoncep)
-                    $(".enderecoinp").prop('readonly',true);
-                    $(".cepinp").prop('readonly',true);
+                    // $(".enderecoinp").prop('readonly',true);
+                    // $(".cepinp").prop('readonly',true);
                 } else {
                     $('.aslogo').html(logo);
                     $('.asendereco').html("Rua Líbero Badaró, 504 - Edifício Martinelli - Centro ")
                     $('.ascep').html("01008-906");
-                    $(".enderecoinp").prop('readonly',false);
-                    $(".cepinp").prop('readonly',false);
+                    // $(".enderecoinp").prop('readonly',false);
+                    // $(".cepinp").prop('readonly',false);
                 }
 
             }
@@ -121,8 +121,8 @@ $(function () {
     $('.ascep').html("01008-906");
     $('.asemail').html("@smsub.prefeitura.sp.gov.br");
     $('.asramal').html("Tel : +55 (11) 4934-3000");
-    $(".enderecoinp").prop('readonly',true);
-    $(".cepinp").prop('readonly',true);
+    // $(".enderecoinp").prop('readonly',true);
+    // $(".cepinp").prop('readonly',true);
 
     $('.nomeinp').on('keyup',function(){
         var asnome = $('#nomeinp').val().toUpperCase();

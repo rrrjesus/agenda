@@ -30,19 +30,19 @@
                         <div class="row justify-content-center mb-2">
 
                             <div class="col-4">
-                                <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> NOME</label></strong>
+                                <strong><label for="inputNome" class="col-4 col-form-label col-form-label-sm">NOME</label></strong>
                                 <input tabindex="1" autofocus data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Comece a digitar seu nome, caso não apareça na lista, digite manualmente" class="form-control form-control-sm nomeinp" name="nomeinp" id="nomeinp" type="text" placeholder="DIGITE O NOME COMPLETO"/>
                             </div>
 
                             <div class="col-4">
-                                <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-user-plus"></i> CARGO</label></strong>
+                                <strong><label for="inputCargo" class="col-4 col-form-label col-form-label-sm">CARGO</label></strong>
                                 <input tabindex="2" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite o cargo que você ocupa" class="form-control form-control-sm cargoinp" type="text" maxlength="62" name="cargoinp" id="cargoinp" placeholder="DIGITE O CARGO"/>
                             </div>
 
                             <div class="col-4">
-                                <strong><label for="inputSector" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-table"></i> SETOR</label></strong>
+                                <strong><label for="inputSector" class="col-4 col-form-label col-form-label-sm">SETOR</label></strong>
                                 <input tabindex="3" data-bs-togglee="tooltip" data-bs-placement="top"
                                        data-bs-custom-class="custom-tooltip"
                                        data-bs-title="Digite o setor em que você trabalha"  class="form-control form-control-sm sector" type="text" maxlength="54" id="sector" name="sector" placeholder="DIGITE O SETOR"/>
@@ -51,17 +51,17 @@
 
                         <div class="row justify-content-center">
                             <div class="col-4">
-                                <strong><label for="inputEmail" class="col-4 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> E-MAIL</label></strong>
+                                <strong><label for="input" class="col-form-label col-form-label-sm">EMAIL</label></strong>
                                 <div class="input-group input-group-sm mb-3">
-                                    <span class="input-group-text" id="inputGroupPrepend">@smsub.prefeitura.sp.gov.br</span>
                                     <input tabindex="4" type="text" aria-describedby="inputGroupPrepend" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Preenchimento automático !!! Editável apenas se o e-mail não estiver preenchido !!!" class="form-control form-control-sm emailinp" id="emailinp" maxlength="47" name="emailinp" placeholder="DIGITE O INÍCIO">
-
+                                           data-bs-title="Preenchimento automático !!! Editável apenas se o e-mail não estiver preenchido !!!" class="form-control form-control-sm emailinp" id="emailinp"
+                                           maxlength="47" name="emailinp" placeholder="DIGITE O INÍCIO">
+                                    <span class="input-group-text" id="inputGroupPrepend">@smsub.prefeitura.sp.gov.br</span>
                                 </div>
                             </div>
 
                             <div class="col-4">
-                                <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> RAMAL</label></strong>
+                                <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm">RAMAL</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
                                     <input tabindex="5" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Apenas se tiver, digite os 4 dígitos do ramal de telefone" class="form-control form-control-sm ramalinp" id="ramalinp" name="ramalinp" maxlength="25" placeholder="DIGITE OS 4 DÍGITOS">
@@ -69,21 +69,20 @@
                             </div>
 
                             <div class="col-2">
-                                <strong><label for="inputEmail" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> ANDAR</label></strong>
+                                <strong><label for="inputAndar" class="col-2 col-form-label col-form-label-sm">ANDAR</label></strong>
                                 <div class="input-group input-group-sm mb-3">
-                                    <span class="input-group-text">º Andar</span>
                                     <input tabindex="6" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Apenas se tiver, digite apenas o número do andar" class="form-control form-control-sm andarinp" maxlength="2" placeholder="10, 23 ou 24" name="andarinp">
+                                <span class="input-group-text">º Andar</span>
                                 </div>
                             </div>
 
                             <div class="col-2">
-                                <strong><label for="inputTelefone" class="col-2 col-form-label col-form-label-sm"><i class="fas fa-phone-alt"></i> SALA</label></strong>
+                                <strong><label for="inputSala" class="col-2 col-form-label col-form-label-sm">SALA</label></strong>
                                 <div class="input-group  input-group-sm mb-3">
-                                    <span class="input-group-text">Sala</span>
                                     <input tabindex="7" type="text" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Apenas se tiver, digite apenas o número e letra da sala" class="form-control form-control-sm salainp" maxlength="4" placeholder="Nº e LETRA" name="salainp">
-
+                                    <span class="input-group-text">Sala</span>
                                 </div>
                             </div>
 
@@ -91,22 +90,22 @@
 
                         <div class="row justify-content-center mb-2">
                             <div class="col-5">
-                                <strong><label for="inputLogoTitle" e class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> SMSUB/SUBS</label></strong>
+                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">SMSUB/SUBS</label></strong>
                                 <input tabindex="8" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="50" data-bs-custom-class="custom-tooltip"
                                        value="SMSUB LIBERO BADARO" data-bs-title="Digite a Secretaria ou Subprefeitura" class="form-control form-control-sm secsubinp" name="secsubinp" id="secsubinp" type="text" placeholder="DIGITE A SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-5">
-                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> ENDEREÇO</label></strong>
+                                <strong><label for="inputLogoTitle" class="col-4 col-form-label col-form-label-sm">ENDEREÇO</label></strong>
                                 <input tabindex="9" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="64" data-bs-custom-class="custom-tooltip"
-                                       data-bs-title="Preenchimento automático !!! Editável apenas se o endereço não estiver preenchido !!!" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
+                                       data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm enderecoinp" name="enderecoinp" id="enderecoinp" type="text"
                                        value="Rua Líbero Badaró, 504 - Edifício Martinelli - Centro " placeholder="ENDEREÇO DA SECRETARIA/SUBPREFEIRURA"/>
                             </div>
 
                             <div class="col-2">
-                                <strong><label for="inputCep" class="col-4 col-form-label col-form-label-sm"><i class="bi bi-user-plus"></i> CEP</label></strong>
+                                <strong><label for="inputCep" class="col-4 col-form-label col-form-label-sm">CEP</label></strong>
                                 <input tabindex="10" data-bs-togglee="tooltip" data-bs-placement="top" maxlength="9" data-bs-custom-class="custom-tooltip"
-                                       value="01008-906" data-bs-title="Preenchimento automático !!! Editável apenas se o cep não estiver preenchido !!!" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
+                                       value="01008-906" data-bs-title="Preenchimento automático !!! Mas pode ser editado !!!" class="form-control form-control-sm cepinp" name="cepinp" id="cepinp" type="text" placeholder="00000-000"/>
                             </div>
                         </div>
 
