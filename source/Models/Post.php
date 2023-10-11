@@ -15,14 +15,25 @@ class Post extends Model
         parent::__construct("posts", ["id"], ["views"]);
     }
 
-    public function chartPost($columns)
+    public function chartPostLabel()
     {
-        $stm = $this->find("","",$columns);
-        $dataPoints = array();
+        $stb = $this->chart("view", "view");
+        return $stb;
+    }
+
+    public function chartPost()
+    {
+        $this->chart("view", "view");
+        return true;
+    }
+
+    public function chart($name, $colums)
+    {
+        $stm = $this->find("","",$colums);
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $dataPoints [] = array("y" => $row->views, "label" => $row->uri);
+                $dataPoints [] = $row->$name;
             endforeach;
             echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
         endif;

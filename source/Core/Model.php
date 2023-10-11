@@ -133,6 +133,19 @@ abstract class Model
         return $this;
     }
 
+    public function chart(string $name, $colums = "*")
+    {
+        $stm = $this->find("","",$colums);
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $dataPoints [] = $row->$name;
+            endforeach;
+            echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
+        endif;
+        return null;
+    }
+
     /**
      * @param int $id
      * @param string $columns

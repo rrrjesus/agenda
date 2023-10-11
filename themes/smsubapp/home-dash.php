@@ -1,3 +1,8 @@
+<?php
+
+use Source\Models\Post;
+
+?>
 <?= $this->layout("dashboard", ["head" => $head]); ?>
 
 <div class="container-fluid">
@@ -16,74 +21,101 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <div class="col-12">
-
-
-<!--            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
-
-            <!-- -GRAFICS -->
-
+        <div class="col-6">
+            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
         </div>
+        <div class="col-6">
+            <canvas class="my-4 w-100" id="myChart1" width="900" height="380"></canvas>
+        </div>
+<!--        <div class="col-6">-->
+<!--            <div id="chartContainer" style="height: 370px; width: 100%;"></div>-->
+<!--        </div>-->
     </div>
-
-
-
-
 </div>
-
-
-
 
 <script>
     /* https://canvasjs.com/ */
 
-    window.onload = function () {
-        var chart = new CanvasJS.Chart("chartContainer", {
-            theme: "dark2",
-            title: {
-                text: ""
-            },
-            axisY: {
-                title: ""
-            },
-            data: [{
-                type: "line",
-                dataPoints: <?=$post->chartPost("*")?>
-            }]
-        });
-        chart.render();
-    }
-
-    //(() => {
-    //    'use strict'
-    //    // Graphs
-    //    const ctx = document.getElementById('myChart')
-    //    // eslint-disable-next-line no-unused-vars
-    //    const myChart = new Chart(ctx, {
-    //        type: 'line',
-    //        data: {
-    //            labels: ['Home', 'Contatos', 'Email', 'Sobre' ],
-    //            datasets: [{
-    //                data: [<?php //=$post1?>//, <?php //=$post2?>//, <?php //=$post3?>//, <?php //=$post4?>//  ],
-    //                lineTension: 0,
-    //                backgroundColor: 'transparent',
-    //                borderColor: '#861520',
-    //                borderWidth: 4,
-    //                pointBackgroundColor: '#dc2828'
-    //            }]
+    //window.onload = function () {
+    //    var chart = new CanvasJS.Chart("chartContainer", {
+    //        theme: "dark2",
+    //        title: {
+    //            text: ""
     //        },
-    //        options: {
-    //            plugins: {
-    //                legend: {
-    //                    display: false
-    //                },
-    //                tooltip: {
-    //                    boxPadding: 3
-    //                }
-    //            }
-    //        }
-    //    })
-    //})()
+    //        axisY: {
+    //            title: ""
+    //        },
+    //        data: [{
+    //            type: "line",
+    //            dataPoints: <?php //=$post->chartPost()?>
+    //        }]
+    //    });
+    //    chart.render();
+    //}
+</script>
+
+<script>
+    (() => {
+        'use strict'
+        // Graphs
+        const ctx = document.getElementById('myChart')
+        // eslint-disable-next-line no-unused-vars
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: <?=(new Post())->chartPostLabel()?>,
+                datasets: [{
+                    data: <?=(new Post())->chartPostLabel()?>,
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#861520',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#dc2828'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        boxPadding: 3
+                    }
+                }
+            }
+        })
+    })()
+</script>
+
+<script>
+    (() => {
+        'use strict'
+        // Graphs
+        const ctx = document.getElementById('myChart1')
+        // eslint-disable-next-line no-unused-vars
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: <?=(new Post())->chartPostLabel()?>,
+                datasets: [{
+                    data: <?=(new Post())->chartPostLabel()?>,
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#861520',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#dc2828'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        boxPadding: 3
+                    }
+                }
+            }
+        })
+    })()
 </script>
