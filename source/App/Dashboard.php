@@ -22,7 +22,7 @@ class Dashboard extends Controller
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
        // var_dump((new Post())->find()->fetch(true));
        // var_dump((new Contact())->find("sector=:s", "s=1"));
-        var_dump((new Post())->chartPost("*"));
+//        var_dump((new Post())->chartPost("*"));
 
         date_default_timezone_set('America/Sao_Paulo');
 
