@@ -19,7 +19,9 @@
         <div class="col-12">
 
 
-            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+<!--            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 
             <!-- -GRAFICS -->
 
@@ -35,36 +37,52 @@
 
 
 <script>
-    /* globals Chart:false */
+    /* https://canvasjs.com/ */
 
-    (() => {
-        'use strict'
-        // Graphs
-        const ctx = document.getElementById('myChart')
-        // eslint-disable-next-line no-unused-vars
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Home', 'Contatos', 'Email', 'Sobre' ],
-                datasets: [{
-                    data: [<?=$post1?>, <?=$post2?>, <?=$post3?>, <?=$post4?>  ],
-                    lineTension: 0,
-                    backgroundColor: 'transparent',
-                    borderColor: '#861520',
-                    borderWidth: 4,
-                    pointBackgroundColor: '#dc2828'
-                }]
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            title: {
+                text: ""
             },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        boxPadding: 3
-                    }
-                }
-            }
-        })
-    })()
+            axisY: {
+                title: ""
+            },
+            data: [{
+                type: "line",
+                dataPoints: <?=$post->chartPost("*")?>
+            }]
+        });
+        chart.render();
+    }
+
+    //(() => {
+    //    'use strict'
+    //    // Graphs
+    //    const ctx = document.getElementById('myChart')
+    //    // eslint-disable-next-line no-unused-vars
+    //    const myChart = new Chart(ctx, {
+    //        type: 'line',
+    //        data: {
+    //            labels: ['Home', 'Contatos', 'Email', 'Sobre' ],
+    //            datasets: [{
+    //                data: [<?php //=$post1?>//, <?php //=$post2?>//, <?php //=$post3?>//, <?php //=$post4?>//  ],
+    //                lineTension: 0,
+    //                backgroundColor: 'transparent',
+    //                borderColor: '#861520',
+    //                borderWidth: 4,
+    //                pointBackgroundColor: '#dc2828'
+    //            }]
+    //        },
+    //        options: {
+    //            plugins: {
+    //                legend: {
+    //                    display: false
+    //                },
+    //                tooltip: {
+    //                    boxPadding: 3
+    //                }
+    //            }
+    //        }
+    //    })
+    //})()
 </script>

@@ -22,6 +22,7 @@ class Dashboard extends Controller
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
        // var_dump((new Post())->find()->fetch(true));
        // var_dump((new Contact())->find("sector=:s", "s=1"));
+        var_dump((new Post())->chartPost("*"));
 
         date_default_timezone_set('America/Sao_Paulo');
 
@@ -47,19 +48,16 @@ class Dashboard extends Controller
 
         $contact = (new Contact())->find()->fetch(true);
         $post = (new Post());
-        $post1 = $post->findById(1)->views;
-        $post2 = $post->findById(2)->views;
-        $post3 = $post->findById(4)->views;
-        $post4 = $post->findById(3)->views;
+//        $post1 = $post->findById(1)->views;
+//        $post2 = $post->findById(2)->views;
+//        $post3 = $post->findById(4)->views;
+//        $post4 = $post->findById(3)->views;
 
         echo $this->view->render("home-dash",
             [
                 "head" => $head,
                 "contact" => $contact,
-                "post1" => $post1,
-                "post2" => $post2,
-                "post3" => $post3,
-                "post4" => $post4,
+                "post" => $post
             ]);
 
     }
