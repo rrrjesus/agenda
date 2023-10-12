@@ -133,13 +133,31 @@ abstract class Model
         return $this;
     }
 
-    public function chart(string $name, $colums = "*")
+    /**
+     * @param string $name
+     * @param $colums
+     * @return Model|null
+     */
+    public function chart(string $name, $colums = "*"): ?Model
     {
         $stm = $this->find("","",$colums);
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
                 $dataPoints [] = $row->$name;
+            endforeach;
+            echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    public function chartDate(string $name, int $limit, string $colums = "*"): ?Model
+    {
+        $stm = $this->find("","",$colums)->limit($limit);
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $dataPoints [] = date_fmt($row->$name, 'd/m/Y');
             endforeach;
             echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
         endif;
@@ -287,6 +305,9 @@ abstract class Model
         }
     }
 
+    /**
+     * @return bool
+     */
     public function destroy(): bool
     {
         if(empty($this->id)) {

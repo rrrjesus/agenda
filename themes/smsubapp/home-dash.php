@@ -24,7 +24,7 @@ use Source\Models\Post;
         <div class="col-6">
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
         </div>
-        <div class="col-6">
+        <div class="col-3">
             <canvas class="my-4 w-100" id="myChart1" width="900" height="380"></canvas>
         </div>
 <!--        <div class="col-6">-->
@@ -63,9 +63,9 @@ use Source\Models\Post;
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: <?=(new Post())->chartPostLabel()?>,
+                labels: <?=$access->chartDate("created_at", 10,"created_at")?>,
                 datasets: [{
-                    data: <?=(new Post())->chartPostLabel()?>,
+                    data: <?=$access->chart("pages", "pages")?>,
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',
@@ -96,9 +96,9 @@ use Source\Models\Post;
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: <?=(new Post())->chartPostLabel()?>,
+                labels: <?=$post->chart("uri", "uri")?>,
                 datasets: [{
-                    data: <?=(new Post())->chartPostLabel()?>,
+                    data: <?=$post->chart("views", "views")?>,
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',
