@@ -138,9 +138,10 @@ abstract class Model
      * @param $colums
      * @return Model|null
      */
-    public function chart(string $name, $colums = "*"): ?Model
+    public function chart(string $name, int $limit = 10,string $colums = "*"): ?Model
     {
-        $stm = $this->find("","",$colums);
+            $stm = $this->find("","",$colums)
+                ->limit($limit);
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
@@ -151,9 +152,10 @@ abstract class Model
         return null;
     }
 
-    public function chartDate(string $name, int $limit, string $colums = "*"): ?Model
+    public function chartDate(string $name, int $limit = 10, string $colums = "*"): ?Model
     {
-        $stm = $this->find("","",$colums)->limit($limit);
+            $stm = $this->find("","",$colums)
+                ->limit($limit);
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):

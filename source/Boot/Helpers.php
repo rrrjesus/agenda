@@ -133,7 +133,7 @@ function str_limit_chars(string $string, int $limit, string $pointer = "..."): s
  */
 function url(string $path = null): string
 {
-    if(strpos($_SERVER['HTTP_HOST'], "localhost")) {
+    if(strpos($_SERVER['HTTP_HOST'], "127.0.0.1")) {
         if($path){
             return CONF_URL_TESTE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
         }
@@ -204,7 +204,7 @@ function redirect(string $url): void
  */
 function theme (string $path = null): string
 {
-    if(strpos($_SERVER['HTTP_HOST'], "localhost")) {
+    if(strpos($_SERVER['HTTP_HOST'], "127.0.0.1")) {
         if($path){
             return CONF_URL_TESTE . "/themes/" . CONF_VIEW_THEME . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
         }

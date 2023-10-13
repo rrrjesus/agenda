@@ -1,8 +1,3 @@
-<?php
-
-use Source\Models\Post;
-
-?>
 <?= $this->layout("dashboard", ["head" => $head]); ?>
 
 <div class="container-fluid">
@@ -24,38 +19,16 @@ use Source\Models\Post;
         <div class="col-6">
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
         </div>
-        <div class="col-3">
+
+        <div class="col-6">
             <canvas class="my-4 w-100" id="myChart1" width="900" height="380"></canvas>
         </div>
-<!--        <div class="col-6">-->
-<!--            <div id="chartContainer" style="height: 370px; width: 100%;"></div>-->
-<!--        </div>-->
     </div>
 </div>
 
 <script>
-    /* https://canvasjs.com/ */
-
-    //window.onload = function () {
-    //    var chart = new CanvasJS.Chart("chartContainer", {
-    //        theme: "dark2",
-    //        title: {
-    //            text: ""
-    //        },
-    //        axisY: {
-    //            title: ""
-    //        },
-    //        data: [{
-    //            type: "line",
-    //            dataPoints: <?php //=$post->chartPost()?>
-    //        }]
-    //    });
-    //    chart.render();
-    //}
-</script>
-
-<script>
-    (() => {
+    let newVar;
+    newVar = (() => {
         'use strict'
         // Graphs
         const ctx = document.getElementById('myChart')
@@ -63,9 +36,9 @@ use Source\Models\Post;
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: <?=$access->chartDate("created_at", 10,"created_at")?>,
+                labels: <?=(new \Source\Models\Report\Access())->chartDate("created_at", 30)?>,
                 datasets: [{
-                    data: <?=$access->chart("pages", "pages")?>,
+                    data: <?=(new \Source\Models\Report\Access())->chart("pages")?>,
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',
@@ -75,9 +48,14 @@ use Source\Models\Post;
             },
             options: {
                 plugins: {
+                    title: {
+                        display: true,
+                        text: 'Acessos Diários no Geral de Páginas da Agenda'
+                    },
                     legend: {
                         display: false
                     },
+
                     tooltip: {
                         boxPadding: 3
                     }
@@ -85,20 +63,19 @@ use Source\Models\Post;
             }
         })
     })()
-</script>
 
-<script>
-    (() => {
+    let newVar1;
+    newVar1 = (() => {
         'use strict'
         // Graphs
-        const ctx = document.getElementById('myChart1')
+        const ctx1 = document.getElementById('myChart1')
         // eslint-disable-next-line no-unused-vars
-        const myChart = new Chart(ctx, {
+        const myChart1 = new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: <?=$post->chart("uri", "uri")?>,
+                labels: <?=(new \Source\Models\Post())->chart("uri")?>,
                 datasets: [{
-                    data: <?=$post->chart("views", "views")?>,
+                    data: <?=(new \Source\Models\Post())->chart("views")?>,
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',
@@ -108,6 +85,10 @@ use Source\Models\Post;
             },
             options: {
                 plugins: {
+                    title: {
+                        display: true,
+                        text: 'Acessos Diários por Páginas da Agenda'
+                    },
                     legend: {
                         display: false
                     },

@@ -21,7 +21,6 @@ class Dashboard extends Controller
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
-        var_dump((new Post())->chart("views", "views"));
         date_default_timezone_set('America/Sao_Paulo');
 
         if(!Auth::user()){
@@ -44,24 +43,9 @@ class Dashboard extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact())->find()->fetch(true);
-        $post = (new Post());
-        $access = (new Access());
-//        $post1 = $post->findById(1)->views;
-//        $post2 = $post->findById(2)->views;
-//        $post3 = $post->findById(4)->views;
-//        $post4 = $post->findById(3)->views;
-
         echo $this->view->render("home-dash",
             [
-                "head" => $head,
-                "contact" => $contact,
-                "post" => $post,
-                "access" => $access
-//                "post1" => $post1,
-//                "post2" => $post2,
-//                "post3" => $post3,
-//                "post4" => $post4
+                "head" => $head
             ]);
 
     }
