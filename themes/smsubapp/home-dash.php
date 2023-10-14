@@ -22,15 +22,17 @@
         <div class="col-6">
             <canvas class="my-4 w-100" id="graphicView" width="900" height="380"></canvas>
         </div>
+    </div>
 
-        <div class="col-6">
-            <canvas class="my-4 w-100" id="graphicPages" width="900" height="380"></canvas>
+    <div class="row">
+        <div class="col-12 pb-3">
+            <canvas id="graphicPages" class="form-control"></canvas>
         </div>
     </div>
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <canvas id="myChart" style="width:100%;max-width:1200px"></canvas>
+            <canvas id="myChart" class="form-control"></canvas>
         </div>
     </div>
 </div>
@@ -83,31 +85,30 @@
         })
     })()
 
-    let graphicPages;
-    graphicPages = (() => {
-        'use strict'
-        // Graphs
-        const ctx1 = document.getElementById('graphicPages')
-        // eslint-disable-next-line no-unused-vars
-        const myChart1 = new Chart(ctx1, {
-            type: 'line',
+    let graphicPage;
+    graphicPage = (() => {
+
+        new Chart("graphicPages", {
+            type: "line",
             data: {
                 labels: <?=(new \Source\Models\Post())->chart("uri", 30)?>,
                 datasets: [{
                     label: 'Acessos',
                     data: <?=(new \Source\Models\Post())->chart("views", 30)?>,
-                    lineTension: 0,
-                    backgroundColor: 'transparent',
                     borderColor: '#861520',
                     borderWidth: 4,
-                    pointBackgroundColor: '#dc2828'
+                    pointBackgroundColor: '#d81b02',
+                    fill: false
                 }]
             },
             options: {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Acessos Diários por Páginas da Agenda'
+                        text: 'Acessos por página da Agenda',
+                        font: {
+                            size: 16
+                        }
                     },
                     legend: {
                         display: true
@@ -117,19 +118,17 @@
                     }
                 }
             }
-        })
+        });
     })()
 
 
-    let graphicPages1;
-    graphicPages1 = (() => {
-
-    const xValues = <?=(new \Source\Models\Report\Access())->chartDate("created_at", 30)?>;
+let graphicAccessPage;
+graphicAccessPage = (() => {
 
     new Chart("myChart", {
         type: "line",
         data: {
-            labels: xValues,
+            labels: <?=(new \Source\Models\Report\Access())->chartDate("created_at", 30)?>,
             datasets: [{
                 label: 'Usuários',
                 data: <?=(new \Source\Models\Report\Access())->chart("users", 30)?>,
@@ -140,14 +139,14 @@
             },{
                 label: 'Visualizações',
                 data: <?=(new \Source\Models\Report\Access())->chart("views", 30)?>,
-                borderColor: "green",
+                borderColor: '#17781b',
                 borderWidth: 4,
-                pointBackgroundColor: '#4ddc0c',
+                pointBackgroundColor: '#4fe326',
                 fill: false
             },{
                 label: 'Páginas',
                 data: <?=(new \Source\Models\Report\Access())->chart("pages", 30)?>,
-                borderColor: "blue",
+                borderColor: '#1b59b6',
                 borderWidth: 4,
                 pointBackgroundColor: '#06b8ee',
                 fill: false
