@@ -11,51 +11,70 @@
         </nav>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>-->
+
     <div class="pricing-header p-3 pb-md-2 mx-auto text-center">
         <p class="fs-2 fw-normal text-body-emphasis"><i class="bi bi-book-half"></i> Gráfico de acesso - Agenda de contatos SMSUB</p>
     </div>
 
     <div class="d-flex justify-content-center">
         <div class="col-6">
-            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+            <canvas class="my-4 w-100" id="graphicView" width="900" height="380"></canvas>
         </div>
 
         <div class="col-6">
-            <canvas class="my-4 w-100" id="myChart1" width="900" height="380"></canvas>
+            <canvas class="my-4 w-100" id="graphicPages" width="900" height="380"></canvas>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="col-12">
+            <canvas id="myChart" style="width:100%;max-width:1200px"></canvas>
         </div>
     </div>
 </div>
 
 <script>
-    let newVar;
-    newVar = (() => {
+    let graphicViews;
+    graphicViews = (() => {
         'use strict'
         // Graphs
-        const ctx = document.getElementById('myChart')
+        const ctx = document.getElementById('graphicView')
+        const dataX = <?=(new \Source\Models\Report\Access())->chart("pages", 30)?>
         // eslint-disable-next-line no-unused-vars
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: <?=(new \Source\Models\Report\Access())->chartDate("created_at", 30)?>,
                 datasets: [{
-                    data: <?=(new \Source\Models\Report\Access())->chart("pages")?>,
+                    label: 'Visualizações',
+                    data: dataX,
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',
                     borderWidth: 4,
-                    pointBackgroundColor: '#dc2828'
+                    pointBackgroundColor: '#dc2828',
                 }]
             },
             options: {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Acessos Diários no Geral de Páginas da Agenda'
+                        text: 'Visualizações de Páginas da Agenda',
+                        font: {
+                            size: 16
+                        }
                     },
                     legend: {
-                        display: false
+                        display: true,
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                size: 14
+                            }
+                        }
                     },
-
                     tooltip: {
                         boxPadding: 3
                     }
@@ -64,18 +83,19 @@
         })
     })()
 
-    let newVar1;
-    newVar1 = (() => {
+    let graphicPages;
+    graphicPages = (() => {
         'use strict'
         // Graphs
-        const ctx1 = document.getElementById('myChart1')
+        const ctx1 = document.getElementById('graphicPages')
         // eslint-disable-next-line no-unused-vars
         const myChart1 = new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: <?=(new \Source\Models\Post())->chart("uri")?>,
+                labels: <?=(new \Source\Models\Post())->chart("uri", 30)?>,
                 datasets: [{
-                    data: <?=(new \Source\Models\Post())->chart("views")?>,
+                    label: 'Acessos',
+                    data: <?=(new \Source\Models\Post())->chart("views", 30)?>,
                     lineTension: 0,
                     backgroundColor: 'transparent',
                     borderColor: '#861520',
@@ -90,7 +110,7 @@
                         text: 'Acessos Diários por Páginas da Agenda'
                     },
                     legend: {
-                        display: false
+                        display: true
                     },
                     tooltip: {
                         boxPadding: 3
@@ -99,4 +119,59 @@
             }
         })
     })()
+
+
+    let graphicPages1;
+    graphicPages1 = (() => {
+
+    const xValues = <?=(new \Source\Models\Report\Access())->chartDate("created_at", 30)?>;
+
+    new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: 'Usuários',
+                data: <?=(new \Source\Models\Report\Access())->chart("users", 30)?>,
+                borderColor: '#861520',
+                borderWidth: 4,
+                pointBackgroundColor: '#d81b02',
+                fill: false
+            },{
+                label: 'Visualizações',
+                data: <?=(new \Source\Models\Report\Access())->chart("views", 30)?>,
+                borderColor: "green",
+                borderWidth: 4,
+                pointBackgroundColor: '#4ddc0c',
+                fill: false
+            },{
+                label: 'Páginas',
+                data: <?=(new \Source\Models\Report\Access())->chart("pages", 30)?>,
+                borderColor: "blue",
+                borderWidth: 4,
+                pointBackgroundColor: '#06b8ee',
+                fill: false
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Monitoramento de acessos da Agenda',
+                    font: {
+                        size: 16
+                    }
+                },
+                legend: {
+                    display: true
+                },
+                tooltip: {
+                    boxPadding: 3
+                }
+            }
+        }
+    });
+})()
 </script>
+
+

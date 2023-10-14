@@ -159,7 +159,7 @@ abstract class Model
 
         if(!empty($stm)):
             foreach ($stm->fetch(true) as $row):
-                $dataPoints [] = date_fmt($row->$name, 'd/m/Y');
+                $dataPoints [] = date_fmt($row->$name, 'd/m');
             endforeach;
             echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
         endif;
