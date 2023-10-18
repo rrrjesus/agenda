@@ -32,7 +32,7 @@ $(document).ready(function() {
             "oAria": {"sSortAscending": "Ordenar colunas de forma ascendente","sPrevious": "Ordenar colunas de forma descendente"}
         },
         // dom: "lBftipr",
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+        "lengthMenu": [[25, 50, -1], [25, 50, "Todos"]],
         "aaSorting": [0, 'asc']
     });
 });

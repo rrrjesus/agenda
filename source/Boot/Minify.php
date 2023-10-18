@@ -1,5 +1,5 @@
 <?php
-if (strpos(url(), "127.0.0.1")) {
+if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
     /**
      * CSS
      */
