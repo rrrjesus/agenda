@@ -148,6 +148,7 @@
                 </div>
             </div>
 
+            <?php $this->start("scripts"); ?>
             <script>
                 let ramalinp = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.whitespace, queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -191,4 +192,5 @@
                 secsubinp.initialize();
                 $('.secsubinp').typeahead({hint: true, highlight: true, minLength: 1}, {source: secsubinp});
             </script>
+            <?php $this->end(); ?>
 
