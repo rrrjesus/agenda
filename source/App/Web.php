@@ -112,11 +112,19 @@ class Web extends Controller
     public function login(?array $data): void
     {
         if (!empty($data['csrf'])){
+
             if (!csrf_verify($data)) {
                 $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
                 echo json_encode($json);
                 return;
             }
+
+            if(request_limit("weblogin" , 3, 60 * 5)) {
+                $json['message'] = $this->message->error("Você já efetuou 3 tentativas, esse é o limite. Por favor aguarde 5 minutos para tentar novamente !!!")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
             if(empty($data['email']) || empty($data['password'])){
                 $json['message'] = $this->message->warning("Informe seu e-mail e senha para entrar")->render();
                 echo json_encode($json);
@@ -170,6 +178,12 @@ class Web extends Controller
                 echo json_encode($json);
                 return;
             }
+//
+//            if(request_repeat("webforget", $data["email"])) {
+//                $json['message'] = $this->message->error("Ooopss! Você já tentou esse e-mail antes ...")->icon()->render();
+//                echo json_encode($json);
+//                return;
+//            }
 
             $auth = new Auth();
             if($auth->forget($data["email"])){

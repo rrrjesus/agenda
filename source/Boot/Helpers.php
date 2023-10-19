@@ -349,8 +349,47 @@ function is_ramal(string $ramal): bool
     return false;
 }
 
-function filter_stripped($data){
-    $data = strip_tags($data);
-    $data = htmlspecialchars($data);
-    return $data;
+/**
+ * @param string $key
+ * @param int $limit
+ * @param int $seconds
+ * @return bool
+ */
+function request_limit (string $key, int $limit = 5, int $seconds = 60): bool
+{
+    $session = new \Source\Core\Session();
+    if($session->has($key) && $session->$key->time >= time() && $session->$key->requests < $limit) {
+        $session->set($key,[
+            "time" => time() + $seconds,
+            "requests" => $session->$key->requests + 1
+        ]);
+        return false;
+    }
+
+    if($session->has($key) && $session->$key->time >= time() && $session->$key->requests >= $limit) {
+        return true;
+    }
+
+    $session->set($key, [
+        "time" => time() + $seconds,
+        "requests" => 1
+    ]);
+
+    return false;
+}
+
+/**
+ * @param string $repeat
+ * @param string $value
+ * @return bool
+ */
+function request_repeat(string $field, string $value): bool
+{
+    $session = new \Source\Core\Session();
+    if($session->has($field) && $session->$field == $value) {
+        return true;
+    }
+
+    $session->set($field, $value);
+    return false;
 }

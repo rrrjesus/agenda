@@ -88,18 +88,18 @@ class Auth extends Model
         }
 
         if(!is_passwd($password)){
-            $this->message->warning("A senha informada não é válida");
+            $this->message->warning("A senha informada não é válida")->icon("person-lock");
             return false;
         }
 
         $user = (new User())->findByEmail($email);
         if(!$user){
-            $this->message->error("O e-mail informado não está cadastrado");
+            $this->message->error("O e-mail informado não está cadastrado")->icon("exclamation-circle");
             return false;
         }
 
         if(!passwd_verify($password, $user->password)){
-            $this->message->error("A senha informada não confere");
+            $this->message->error("A senha informada não confere")->icon("exclamation-circle");
             return false;
         }
 
@@ -129,8 +129,6 @@ class Auth extends Model
 
         $user->forget = md5(uniqid(rand(), true));
         $user->save();
-
-
 
         $view = new View(__DIR__."/../../shared/views/email");
         $message = $view->render("forget", [
