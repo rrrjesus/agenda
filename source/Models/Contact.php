@@ -74,6 +74,17 @@ class Contact extends Model
         return $this;
     }
 
+    /**
+     * @param string $ramal
+     * @param string $columns
+     * @return null|Contact
+     */
+    public function findByRamal(string $ramal, string $columns = "*"): ?Contact
+    {
+        $find = $this->find("ramal = :ramal", "ramal={$ramal}", $columns);
+        return $find->fetch();
+    }
+
     public function updated(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
     {
         if(!$contact->save()) {
@@ -173,7 +184,7 @@ class Contact extends Model
      */
     public function save(): bool
     {
-        /** User Update */
+        /** Contact Update */
         if (!empty($this->id)) {
             $contactId = $this->id;
 
@@ -189,9 +200,10 @@ class Contact extends Model
             }
         }
 
-        /** User Create */
+        /** Contact Create */
         if (empty($this->id)) {
-            if ($this->find("ramal = :r", "r={$this->ramal}", "id")->fetch()) {
+
+            if ($this->findByRamal($this->ramal, "id")) {
                 $this->message->warning("O Ramal informado pertence a outro contato");
                 return false;
             }
