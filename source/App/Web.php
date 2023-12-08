@@ -105,28 +105,30 @@ class Web extends Controller
     }
 
     /**
-     * SITE REGISTER
+     * SITE LOGIN
      * @param null|array $data
-     * @return void
      */
     public function login(?array $data): void
     {
-        if (!empty($data['csrf'])){
+        if (Auth::user()) {
+            redirect("/app");
+        }
 
+        if (!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
                 echo json_encode($json);
                 return;
             }
 
-            if(request_limit("weblogin" , 3, 60 * 5)) {
-                $json['message'] = $this->message->error("Você já efetuou 3 tentativas, esse é o limite. Por favor aguarde 5 minutos para tentar novamente !!!")->icon()->render();
+            if (request_limit("weblogin", 5, 60 * 5)) {
+                $json['message'] = $this->message->error("Você já efetuou 5 tentativas, esse é o limite. Por favor, aguarde 5 minutos para tentar novamente!")->render();
                 echo json_encode($json);
                 return;
             }
 
-            if(empty($data['email']) || empty($data['password'])){
-                $json['message'] = $this->message->warning("Informe seu e-mail e senha para entrar")->render();
+            if (empty($data['email']) || empty($data['password'])) {
+                $json['message'] = $this->message->warning("Informe seu email e senha para entrar")->icon("exclamation-octagon")->render();
                 echo json_encode($json);
                 return;
             }
@@ -135,24 +137,25 @@ class Web extends Controller
             $auth = new Auth();
             $login = $auth->login($data['email'], $data['password'], $save);
 
-            if($login){
+            if ($login) {
+                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
                 $json['redirect'] = url("/dashboard");
-            }else{
-                $json['message'] = $auth->message()->render();
+            } else {
+                $json['message'] = $auth->message()->icon("emoji-frown")->render();
             }
+
             echo json_encode($json);
             return;
         }
 
-
         $head = $this->seo->render(
-            "Entrar - " . CONF_SITE_TITLE,
+            "Entrar - " . CONF_SITE_NAME,
             CONF_SITE_DESC,
             url("/entrar"),
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("auth-login",[
+        echo $this->view->render("auth-login", [
             "head" => $head,
             "cookie" => filter_input(INPUT_COOKIE, "authEmail")
         ]);
