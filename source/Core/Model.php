@@ -155,6 +155,7 @@ abstract class Model
     public function chartDate(string $name, int $limit = 10, string $colums = "*"): ?Model
     {
             $stm = $this->find("","",$colums)
+                ->orderby("id", "DESC")
                 ->limit($limit);
 
         if(!empty($stm)):
@@ -184,6 +185,16 @@ abstract class Model
     public function order(string $columnOrder): Model
     {
         $this->order = " ORDER BY {$columnOrder}";
+        return $this;
+    }
+
+    /**
+     * @param string $columnOrder
+     * @return Model
+     */
+    public function orderby(string $columnOrder, string $direct): Model
+    {
+        $this->order = " ORDER BY {$columnOrder} {$direct}";
         return $this;
     }
 

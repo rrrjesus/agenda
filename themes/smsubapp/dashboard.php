@@ -8,7 +8,9 @@ $user = (new \Source\Models\Auth())->user();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <?= $head;?> <!-- HEAD -->
+
     <link rel="icon" type="image/png" href="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/images/favicon.png"); ?>"/>
     <link rel="stylesheet" href="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/style.css"); ?>"/>
 
