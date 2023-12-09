@@ -102,10 +102,10 @@ class Auth extends Model
             $this->message->error("A senha informada não confere");
             return false;
         }
-//        if (passwd_rehash($user->password)){
-//            $user->password = $password;
-//            $user->save();
-//        }
+        if (passwd_rehash($user->password)){
+            $user->password = $password;
+            $user->save();
+        }
         if (passwd_rehash($user->password)) {
             $user->password = passwd($password);
             $user->save();

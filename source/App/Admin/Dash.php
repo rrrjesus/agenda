@@ -71,6 +71,11 @@ class Dash extends Admin
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
             "head" => $head,
+            "control" => (object)[
+                "subscribers" => (new AppSubscription())->find("pay_status = :s", "s=active")->count(),
+                "plans" => (new AppPlan())->find("status = :s", "s=active")->count(),
+                "recurrence" => (new AppSubscription())->recurrence()
+            ],
             "blog" => (object)[
                 "posts" => (new Post())->find("status = 'post'")->count(),
                 "drafts" => (new Post())->find("status = 'draft'")->count(),
@@ -80,7 +85,6 @@ class Dash extends Admin
                 "users" => (new User())->find("level < 5")->count(),
                 "admins" => (new User())->find("level >= 5")->count()
             ],
-            "user" => (new Auth())->user(),
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)
         ]);
