@@ -1,4 +1,4 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <!-- https://github.com/tsayen/dom-to-image version: 2.6.0 -->
 <script src="<?=theme("/assets/js/email/dom-to-image.min.js")?>"></script>

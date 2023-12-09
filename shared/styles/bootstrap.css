@@ -3353,7 +3353,7 @@ textarea.form-control-lg {
 
 .btn-sm, .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.25rem;
-  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-padding-x: 0.4rem;
   --bs-btn-font-size: 0.875rem;
   --bs-btn-border-radius: var(--bs-border-radius-sm);
 }
@@ -4856,8 +4856,8 @@ textarea.form-control-lg {
 
 .alert {
   --bs-alert-bg: transparent;
-  --bs-alert-padding-x: 1rem;
-  --bs-alert-padding-y: 1rem;
+  --bs-alert-padding-x: .5rem;
+  --bs-alert-padding-y: .5rem;
   --bs-alert-margin-bottom: 1rem;
   --bs-alert-color: inherit;
   --bs-alert-border-color: transparent;
@@ -5365,7 +5365,7 @@ textarea.form-control-lg {
   --bs-btn-close-white-filter: invert(1) grayscale(100%) brightness(200%);
   box-sizing: content-box;
   width: 1em;
-  height: 1em;
+  /*height: 1em;*/
   padding: 0.25em 0.25em;
   color: var(--bs-btn-close-color);
   background: transparent var(--bs-btn-close-bg) center/1em auto no-repeat;

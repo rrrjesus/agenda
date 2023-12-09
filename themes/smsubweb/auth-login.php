@@ -1,7 +1,7 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <div class="form-signin w-100 m-auto mt-5">
-    <form class="needs-validation" novalidate id="login" action="<?=url("/admin/login")?>" method="post" enctype="multipart/form-data">
+    <form class="needs-validation" novalidate id="login" action="<?=url("/entrar")?>" method="post" enctype="multipart/form-data">
         <?=csrf_input();?>
         <h1 class="h3 mb-3 fw-normal">
             <img src="<?=theme("assets/images/logo_intra.png")?>" class="mb-1 me-2" alt="logo" width="30" height="30"><?=CONF_SITE_NAME?></h1>

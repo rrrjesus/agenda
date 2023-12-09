@@ -3,13 +3,14 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Core\Session;
 use Source\Models\Auth;
 use Source\Models\Contact;
-use Source\Models\Post;
-use Source\Models\Report\Access;
 use Source\Models\Sector;
 use Source\Models\User;
 use Source\Support\Message;
+use Source\Support\Thumb;
+use Source\Support\Upload;
 
 /**
  *
@@ -17,15 +18,30 @@ use Source\Support\Message;
 class Dashboard extends Controller
 {
 
-    /** Contrutor */
+    /** @var User */
+    private $user;
+
+    /**
+     * App constructor.
+     */
     public function __construct()
     {
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME_APP);
         date_default_timezone_set('America/Sao_Paulo');
 
-        if(!Auth::user()){
+        if(!$this->user = Auth::user()){
             $this->message->warning("Efetue login para acessar o Sistema")->flash();
             redirect("/entrar");
+        }
+
+        //UNCONFIRMED EMAIL
+        if ($this->user->status != "confirmed") {
+            $session = new Session();
+            if (!$session->has("appconfirmed")) {
+                $this->message->info("IMPORTANTE: Acesse seu e-mail para confirmar seu cadastro e ativar todos os recursos.")->flash();
+                $session->set("appconfirmed", true);
+                (new Auth())->register($this->user);
+            }
         }
     }
 
@@ -675,6 +691,74 @@ class Dashboard extends Controller
             );
             $user->reactivated($user);
         }
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    public function profile(?array $data): void
+    {
+        if (!empty($data["update"])) {
+            list($d, $m, $y) = explode("/", $data["datebirth"]);
+            $user = (new User())->findById($this->user->id);
+            $user->first_name = $data["first_name"];
+            $user->last_name = $data["last_name"];
+            $user->genre = $data["genre"];
+            $user->datebirth = "{$y}-{$m}-{$d}";
+            $user->document = preg_replace("/[^0-9]/", "", $data["document"]);
+
+            if (!empty($_FILES["photo"])) {
+                $file = $_FILES["photo"];
+                $upload = new Upload();
+
+                if ($this->user->photo()) {
+                    (new Thumb())->flush("storage/{$this->user->photo}");
+                    $upload->remove("storage/{$this->user->photo}");
+                }
+
+                if (!$user->photo = $upload->image($file, "{$user->first_name} {$user->last_name} " . time(), 360)) {
+                    $json["message"] = $upload->message()->before("Ooops {$this->user->first_name}! ")->after(".")->render();
+                    echo json_encode($json);
+                    return;
+                }
+            }
+
+            if (!empty($data["password"])) {
+                if (empty($data["password_re"]) || $data["password"] != $data["password_re"]) {
+                    $json["message"] = $this->message->warning("Para alterar sua senha, informa e repita a nova senha!")->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $user->password = $data["password"];
+            }
+
+            if (!$user->save()) {
+                $json["message"] = $user->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $json["message"] = $this->message->success("Pronto {$data["first_name"]}. Seus dados foram atualizados com sucesso !!!")->icon("emoji-smile")->render();
+            echo json_encode($json);
+            return;
+        }
+
+        $head = $this->seo->render(
+            "Meu perfil - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg"),
+            false
+        );
+
+        echo $this->view->render("user-profile", [
+            "head" => $head,
+            "user" => $this->user,
+            "photo" => ($this->user->photo() ? image($this->user->photo, 360, 360) :
+                theme("/assets/images/avatar.jpg", CONF_VIEW_THEME_APP))
+        ]);
     }
 
 

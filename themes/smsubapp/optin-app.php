@@ -1,4 +1,4 @@
-<?php $this->layout("dashboard", ["head" => $head]); ?>
+<?php $this->layout("dashboard"); ?>
 
 <article class="optin_page">
     <div class="container content">

@@ -2,7 +2,6 @@
 
 namespace Source\Core;
 
-use Source\Models\User;
 use Source\Support\Message;
 
 /**
@@ -22,29 +21,29 @@ abstract class Model
     /** @var Message|null */
     protected $message;
 
-    /** @var string*/
+    /** @var string */
     protected $query;
 
-    /**  @var string*/
+    /** @var string */
     protected $params;
 
-    /**  @var string*/
+    /** @var string */
     protected $order;
 
-    /**  @var int*/
+    /** @var int */
     protected $limit;
 
-    /**  @var int*/
+    /** @var int */
     protected $offset;
 
     /** @var string $entity database table */
-    protected static $entity;
+    protected $entity;
 
     /** @var array $protected no update or create */
-    protected static $protected;
+    protected $protected;
 
     /** @var array $entity database table */
-    protected static $required;
+    protected $required;
 
     /**
      * Model constructor.
@@ -54,10 +53,9 @@ abstract class Model
      */
     public function __construct(string $entity, array $protected, array $required)
     {
-        self::$entity = $entity;
-        self::$protected = array_merge($protected, ['created_at', "updated_at"]);
-        self::$required = $required;
-
+        $this->entity = $entity;
+        $this->protected = array_merge($protected, ['created_at', "updated_at"]);
+        $this->required = $required;
         $this->message = new Message();
     }
 
@@ -117,60 +115,27 @@ abstract class Model
     }
 
     /**
-     * @param string|null $terms
-     * @param string|null $params
-     * @param string $colums
+     * @param null|string $terms
+     * @param null|string $params
+     * @param string $columns
      * @return Model|mixed
      */
-    public function find(?string $terms = null, ?string $params = null, string $colums = "*")
+    public function find(?string $terms = null, ?string $params = null, string $columns = "*")
     {
-        if($terms) {
-            $this->query = "SELECT {$colums} FROM " . static::$entity . " WHERE {$terms}" ;
+        if ($terms) {
+            $this->query = "SELECT {$columns} FROM {$this->entity} WHERE {$terms}";
             parse_str($params, $this->params);
             return $this;
         }
-        $this->query = "SELECT {$colums} FROM " . static::$entity;
+
+        $this->query = "SELECT {$columns} FROM {$this->entity}";
         return $this;
-    }
-
-    /**
-     * @param string $name
-     * @param $colums
-     * @return Model|null
-     */
-    public function chart(string $name, int $limit = 10,string $colums = "*"): ?Model
-    {
-            $stm = $this->find("","",$colums)
-                ->limit($limit);
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                $dataPoints [] = $row->$name;
-            endforeach;
-            echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
-        endif;
-        return null;
-    }
-
-    public function chartDate(string $name, int $limit = 10, string $colums = "*"): ?Model
-    {
-            $stm = $this->find("","",$colums)
-                ->orderby("id", "DESC")
-                ->limit($limit);
-
-        if(!empty($stm)):
-            foreach ($stm->fetch(true) as $row):
-                $dataPoints [] = date_fmt($row->$name, 'd/m');
-            endforeach;
-            echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
-        endif;
-        return null;
     }
 
     /**
      * @param int $id
      * @param string $columns
-     * @return null|Model|mixed
+     * @return null|mixed|Model
      */
     public function findById(int $id, string $columns = "*"): ?Model
     {
@@ -185,16 +150,6 @@ abstract class Model
     public function order(string $columnOrder): Model
     {
         $this->order = " ORDER BY {$columnOrder}";
-        return $this;
-    }
-
-    /**
-     * @param string $columnOrder
-     * @return Model
-     */
-    public function orderby(string $columnOrder, string $direct): Model
-    {
-        $this->order = " ORDER BY {$columnOrder} {$direct}";
         return $this;
     }
 
@@ -225,16 +180,17 @@ abstract class Model
     public function fetch(bool $all = false)
     {
         try {
-            $stmt = Connect::getInstance()->prepare($this->query.$this->order.$this->limit.$this->offset);
+            $stmt = Connect::getInstance()->prepare($this->query . $this->order . $this->limit . $this->offset);
             $stmt->execute($this->params);
 
-            if(!$stmt->rowCount()) {
+            if (!$stmt->rowCount()) {
                 return null;
             }
 
-            if($all) {
+            if ($all) {
                 return $stmt->fetchAll(\PDO::FETCH_CLASS, static::class);
             }
+
             return $stmt->fetchObject(static::class);
         } catch (\PDOException $exception) {
             $this->fail = $exception;
@@ -262,8 +218,10 @@ abstract class Model
         try {
             $columns = implode(", ", array_keys($data));
             $values = ":" . implode(", :", array_keys($data));
-            $stmt = Connect::getInstance()->prepare("INSERT INTO " . static::$entity . " ({$columns}) VALUES ({$values})");
+
+            $stmt = Connect::getInstance()->prepare("INSERT INTO {$this->entity} ({$columns}) VALUES ({$values})");
             $stmt->execute($this->filter($data));
+
             return Connect::getInstance()->lastInsertId();
         } catch (\PDOException $exception) {
             $this->fail = $exception;
@@ -287,7 +245,7 @@ abstract class Model
             $dateSet = implode(", ", $dateSet);
             parse_str($params, $params);
 
-            $stmt = Connect::getInstance()->prepare("UPDATE " . static::$entity . " SET {$dateSet} WHERE {$terms}");
+            $stmt = Connect::getInstance()->prepare("UPDATE {$this->entity} SET {$dateSet} WHERE {$terms}");
             $stmt->execute($this->filter(array_merge($data, $params)));
             return ($stmt->rowCount() ?? 1);
         } catch (\PDOException $exception) {
@@ -297,19 +255,61 @@ abstract class Model
     }
 
     /**
-     * @param string $key
-     * @param string $value
-     * @return bool|null
+     * @return bool
+     */
+    public function save(): bool
+    {
+        if (!$this->required()) {
+            $this->message->warning("Preencha todos os campos para continuar");
+            return false;
+        }
+
+        /** Update */
+        if (!empty($this->id)) {
+            $id = $this->id;
+            $this->update($this->safe(), "id = :id", "id={$id}");
+            if ($this->fail()) {
+                $this->message->error("Erro ao atualizar, verifique os dados");
+                return false;
+            }
+        }
+
+        /** Create */
+        if (empty($this->id)) {
+            $id = $this->create($this->safe());
+            if ($this->fail()) {
+                $this->message->error("Erro ao cadastrar, verifique os dados");
+                return false;
+            }
+        }
+
+        $this->data = $this->findById($id)->data();
+        return true;
+    }
+
+    /**
+     * @return int
+     */
+    public function lastId(): int
+    {
+        return Connect::getInstance()->query("SELECT MAX(id) as maxId FROM {$this->entity}")->fetch()->maxId + 1;
+    }
+
+    /**
+     * @param string $terms
+     * @param null|string $params
+     * @return bool
      */
     public function delete(string $terms, ?string $params): bool
     {
         try {
-            $stmt = Connect::getInstance()->prepare("DELETE FROM " . static::$entity . " WHERE {$terms}");
-            if($params) {
+            $stmt = Connect::getInstance()->prepare("DELETE FROM {$this->entity} WHERE {$terms}");
+            if ($params) {
                 parse_str($params, $params);
                 $stmt->execute($params);
                 return true;
             }
+
             $stmt->execute();
             return true;
         } catch (\PDOException $exception) {
@@ -323,9 +323,10 @@ abstract class Model
      */
     public function destroy(): bool
     {
-        if(empty($this->id)) {
+        if (empty($this->id)) {
             return false;
         }
+
         $destroy = $this->delete("id = :id", "id={$this->id}");
         return $destroy;
     }
@@ -336,7 +337,7 @@ abstract class Model
     protected function safe(): ?array
     {
         $safe = (array)$this->data;
-        foreach (static::$protected as $unset) {
+        foreach ($this->protected as $unset) {
             unset($safe[$unset]);
         }
         return $safe;
@@ -361,11 +362,62 @@ abstract class Model
     protected function required(): bool
     {
         $data = (array)$this->data();
-        foreach (static::$required as $field) {
+        foreach ($this->required as $field) {
             if (empty($data[$field])) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * @param string $name
+     * @param int $limit
+     * @param string $colums
+     * @return Model|null
+     */
+    public function chart(string $name, int $limit = 10,string $colums = "*"): ?Model
+    {
+        $stm = $this->find("","",$colums)
+            ->limit($limit);
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $dataPoints [] = $row->$name;
+            endforeach;
+            echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @param string $name
+     * @param int $limit
+     * @param string $colums
+     * @return Model|null
+     */
+    public function chartDate(string $name, int $limit = 10, string $colums = "*"): ?Model
+    {
+        $stm = $this->find("","",$colums)
+            ->orderby("id", "DESC")
+            ->limit($limit);
+
+        if(!empty($stm)):
+            foreach ($stm->fetch(true) as $row):
+                $dataPoints [] = date_fmt($row->$name, 'd/m');
+            endforeach;
+            echo json_encode($dataPoints, JSON_NUMERIC_CHECK); //Return the JSON Array
+        endif;
+        return null;
+    }
+
+    /**
+     * @param string $columnOrder
+     * @return Model
+     */
+    public function orderby(string $columnOrder, string $direct): Model
+    {
+        $this->order = " ORDER BY {$columnOrder} {$direct}";
+        return $this;
     }
 }

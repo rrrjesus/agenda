@@ -111,7 +111,7 @@ class Web extends Controller
     public function login(?array $data): void
     {
         if (Auth::user()) {
-            redirect("/app");
+            redirect("/dashboard");
         }
 
         if (!empty($data['csrf'])) {

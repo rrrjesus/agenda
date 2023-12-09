@@ -1,4 +1,4 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <article class="auth">
     <div class="auth_content container content">

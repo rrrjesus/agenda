@@ -1,4 +1,4 @@
-<?= $this->layout("dashboard", ["head" => $head]); ?>
+<?= $this->layout("dashboard"); ?>
 
 <div class="container-fluid">
     <div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
@@ -37,7 +37,7 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-12">
-            <table id="contactApp" class="table table-hover table-striped table-sm table-bordered border-danger" style="width:100%">
+            <table id="contactApp" class="table-sm table table-hover table-striped table-bordered border-danger" style="width:100%">
                 <thead class="table-danger">
                 <tr>
                     <th class="text-center">EDITAR</th>

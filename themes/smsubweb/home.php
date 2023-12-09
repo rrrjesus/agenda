@@ -1,4 +1,4 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <!-- CARROUSSEL -->
 <!--    <div id="myCarousel" class="carousel slide mb-2" data-bs-ride="carousel">-->

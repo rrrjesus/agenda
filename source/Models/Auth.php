@@ -17,7 +17,7 @@ class Auth extends Model
      */
     public function __construct()
     {
-        parent::__construct("user", ["id"], ["email", "password", "status"]);
+        parent::__construct("user", ["id"], ["email", "password"]);
     }
 
     /**
@@ -32,17 +32,6 @@ class Auth extends Model
         return (new User())->findById($session->authUser);
     }
 
-    static function remoteUser(): ?User
-    {
-        $stm = (new User())->find("email =:e", "e='{$_GET['email']}'", "");
-
-        if (!empty($stm)) {
-            echo json_encode(true);
-        } else {
-            echo json_encode(false);
-        }
-    }
-
     /**
      * log-out
      * @return void
@@ -52,8 +41,7 @@ class Auth extends Model
         $session = new Session();
         $session->unset("authUser");
     }
-
-     /**
+    /**
      * @param User $user
      * @return bool
      */
@@ -62,9 +50,21 @@ class Auth extends Model
         if(!$user->save()) {
             $this->message = $user->message;
             return false;
-        }else{
-            $this->message->success("Cadastro de {$user->first_name} salvo com sucesso!!!")->icon()->flash();
         }
+
+        $view = new View(__DIR__."/../../shared/views/email");
+        $message = $view->render("confirm", [
+            "first_name" => $user->first_name,
+            "confirm_link" => url("/obrigado/" . base64_encode($user->email))
+        ]);
+
+        (new Email())->bootstrap(
+            "Ative sua conta no " . CONF_SITE_NAME,
+            $message,
+            $user->email,
+            "{$user->first_name} {$user->last_name}"
+        )->send();
+
         return true;
     }
 
@@ -88,21 +88,24 @@ class Auth extends Model
         }
 
         if(!is_passwd($password)){
-            $this->message->warning("A senha informada não é válida")->icon("person-lock");
+            $this->message->warning("A senha informada não é válida");
             return false;
         }
 
         $user = (new User())->findByEmail($email);
         if(!$user){
-            $this->message->error("O e-mail informado não está cadastrado")->icon("exclamation-circle");
+            $this->message->error("O e-mail informado não está cadastrado");
             return false;
         }
 
         if(!passwd_verify($password, $user->password)){
-            $this->message->error("A senha informada não confere")->icon("exclamation-circle");
+            $this->message->error("A senha informada não confere");
             return false;
         }
-
+//        if (passwd_rehash($user->password)){
+//            $user->password = $password;
+//            $user->save();
+//        }
         if (passwd_rehash($user->password)) {
             $user->password = passwd($password);
             $user->save();
@@ -110,8 +113,10 @@ class Auth extends Model
 
         //LOGIN
         (new Session())->set("authUser", $user->id);
-        $this->message->success("Bem Vindo(a) ".$user->first_name)->icon()->flash();
+        $this->message->success("Login efetuado com sucesso")->flash();
         return true;
+
+
     }
 
     /**
@@ -130,16 +135,18 @@ class Auth extends Model
         $user->forget = md5(uniqid(rand(), true));
         $user->save();
 
+
+
         $view = new View(__DIR__."/../../shared/views/email");
         $message = $view->render("forget", [
             "first_name" => $user->first_name,
             "forget_link" => url("/recuperar/{$user->email}|{$user->forget}")
-            ]);
+        ]);
         (new Email())->bootstrap(
             "Recupere sua senha no " . CONF_SITE_NAME,
             "$message",
             $user->email,
-        "{$user->first_name} {$user->last_name}"
+            "{$user->first_name} {$user->last_name}"
         )->send();
         return true;
     }
@@ -161,7 +168,7 @@ class Auth extends Model
         }
 
         if ($user->forget != $code){
-            $this->message->error("Desculpe mas o código de verificação não é válido");
+            $this->message->error("Desculpe mas o código de verificação não é válido")->icon("emoji-tear");
             return false;
         }
 
@@ -183,5 +190,4 @@ class Auth extends Model
         return true;
 
     }
-
 }

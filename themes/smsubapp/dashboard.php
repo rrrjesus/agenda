@@ -137,13 +137,12 @@ $user = (new \Source\Models\Auth())->user();
         </div>
 
         <!--CONTENT-->
-        <main class="col-lg-10 col-md-10 col-sm-10 ">
+        <main class="col-lg-10 col-md-10 col-sm-10">
 
-            <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
+            <script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_APP); ?>"></script>
+            <?= $this->section("scripts"); ?>
 
             <?= $this->section("content"); ?>
-
-            <?= $this->section("scripts"); ?>
 
         </main>
 
@@ -206,6 +205,7 @@ $user = (new \Source\Models\Auth())->user();
             </div>
         </footer>
 </div>
+
 </div>
 
 </body>

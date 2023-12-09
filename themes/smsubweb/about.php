@@ -1,4 +1,4 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <!--            <img src="--><?php //=theme("/assets/images/agendav1.jpg")?><!--" width="100%" height="250">-->
     <div class="row g-5 mt-1 me-0 ms-0">

@@ -1,4 +1,4 @@
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <div class="form-signin w-100 m-auto">
     <form class="needs-validation" novalidate id="forget" data-reset="true" action="<?=url("/recuperar")?>" method="post" enctype="multipart/form-data">

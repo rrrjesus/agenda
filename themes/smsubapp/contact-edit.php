@@ -1,4 +1,4 @@
-<?= $this->layout("dashboard", ["head" => $head]); ?>
+<?= $this->layout("dashboard"); ?>
 
 
 <div class="container-fluid">

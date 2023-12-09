@@ -4,6 +4,7 @@ namespace Source\Models\Report;
 
 use Source\Core\Model;
 use Source\Core\Session;
+use Source\Models\User;
 
 /**
  * Class Online
@@ -35,15 +36,8 @@ class Online extends Model
             return $find->count();
         }
 
+        $find->order("updated_at DESC");
         return $find->fetch(true);
-    }
-
-    public function linkActive(?string $link): bool
-    {
-        if($link == '/contatos'){
-            return 'active';
-        }
-        return true;
     }
 
     /**
@@ -53,6 +47,10 @@ class Online extends Model
     public function report(bool $clear = true): Online
     {
         $session = new Session();
+
+        if ($clear) {
+            $this->clear();
+        }
 
         if (!$session->has("online")) {
             $this->user = ($session->authUser ?? null);
@@ -76,10 +74,6 @@ class Online extends Model
         $find->pages += 1;
         $find->save();
 
-        if ($clear) {
-            $this->clear();
-        }
-
         return $this;
     }
 
@@ -92,30 +86,10 @@ class Online extends Model
     }
 
     /**
-     * @return bool
+     * @return mixed|Model|null
      */
-    public function save(): bool
+    public function user()
     {
-        /** Update Access */
-        if (!empty($this->id)) {
-            $onlineId = $this->id;
-            $this->update($this->safe(), "id = :id", "id={$onlineId}");
-            if ($this->fail()) {
-                $this->message->error("Erro ao atualizar, verifique os dados");
-                return false;
-            }
-        }
-
-        /** Create Access */
-        if (empty($this->id)) {
-            $onlineId = $this->create($this->safe());
-            if ($this->fail()) {
-                $this->message->error("Erro ao cadastrar, verifique os dados");
-                return false;
-            }
-        }
-
-        $this->data = $this->findById($onlineId)->data();
-        return true;
+        return (new User())->findById($this->user);
     }
 }

@@ -1,5 +1,5 @@
 
-<?= $this->layout("_theme", ["head" => $head]); ?>
+<?= $this->layout("_theme"); ?>
 
 <div class="container-fluid">
     <div class="d-flex justify-content-center mt-3">
