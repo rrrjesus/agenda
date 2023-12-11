@@ -104,6 +104,30 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.text-xs {
+  font-size: .7rem;
+}
+
+.text-gray-800 {
+  color: #5a5c69!important;
+}
+
+.text-gray-300 {
+  color: #dddfeb!important;
+}
+
+.font-weight-bold {
+  font-weight: 700!important;
+}
+
+.border-left-warning {
+  border-left: 0.25rem solid #f6c23e!important;
+}
+
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a!important;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;

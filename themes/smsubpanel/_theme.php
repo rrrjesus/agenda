@@ -13,10 +13,18 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="<?=theme("assets/css/styles.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
     <link href="<?=theme("assets/css/bootstrap.min.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
-
+    <link href="<?=url("/../../../shared/styles/bootstrap-icons.min.css")?>" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="<?=url("/shared/styles/bootstrap-icons.min.css")?>" rel="stylesheet" />
 </head>
 <body class="sb-nav-fixed">
+
+<div class="ajax_load">
+    <div class="ajax_load_box">
+        <div class="ajax_load_box_circle"></div>
+        <p class="ajax_load_box_title">Aguarde, carregando ...</p>
+    </div>
+</div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="circle-half" viewBox="0 0 16 16">
@@ -37,12 +45,9 @@
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-        </div>
-    </form>
+
+    <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    </div>
 
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -54,27 +59,27 @@
                     data-bs-toggle="dropdown"
                     data-bs-display="static"
                     aria-label="Toggle theme (auto)">
-                <svg class="bi my-1 theme-icon-active" height="20" width="20"><use href="#circle-half"></use></svg>
+                <svg class="bi my-1 theme-icon-active" height="16" width="16" style="color: #F0F0EE"><use href="#circle-half"></use></svg>
                 <span class="d-lg-none ms-2" id="bd-theme-text">Alternar tema</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li>
                     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                        <svg class="bi me-2 opacity-50 theme-icon" height="20" width="20"><use href="#sun-fill"></use></svg>
+                        <svg class="bi me-2 opacity-50 theme-icon" height="16" width="16"><use href="#sun-fill"></use></svg>
                         Light
                         <i class="bi bi-check2 ms-auto d-none"></i>
                     </button>
                 </li>
                 <li>
                     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                        <svg class="bi me-2 opacity-50 theme-icon" height="20" width="20"><use href="#moon-stars-fill"></use></svg>
+                        <svg class="bi me-2 opacity-50 theme-icon" height="16" width="16"><use href="#moon-stars-fill"></use></svg>
                         Dark
                         <i class="bi bi-check2 ms-auto d-none"></i>
                     </button>
                 </li>
                 <li>
                     <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                        <svg class="bi me-2 opacity-50 theme-icon" height="20" width="20"><use href="#circle-half"></use></svg>
+                        <svg class="bi me-2 opacity-50 theme-icon" height="16" width="16"><use href="#circle-half"></use></svg>
                         Auto
                         <i class="bi bi-check2 ms-auto d-none"></i>
                     </button>
@@ -107,6 +112,20 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
+
+                    <div class="sb-sidenav-menu-heading">Painel</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseContatos" aria-expanded="false" aria-controls="collapseContatos">
+                        <div class="sb-nav-link-icon"><i class="bi bi-book-half"></i></div>
+                        Contatos
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseContatos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html"><i class="bi bi-list me-2"></i> Lista</a>
+                            <a class="nav-link" href="layout-sidenav-light.html"><i class="bi bi- me-2"></i> Novo</a>
+                        </nav>
+                    </div>
+
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -177,12 +196,30 @@
                 <div class="row">
 
                     <?= $this->section("content"); ?>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Primary Card</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+<!--                    <div class="col-xl-3 col-md-6">-->
+<!--                        <div class="card bg-primary text-white mb-4">-->
+<!--                            <div class="card-body">Primary Card</div>-->
+<!--                            <div class="card-footer d-flex align-items-center justify-content-between">-->
+<!--                                <a class="small text-white stretched-link" href="#">View Details</a>-->
+<!--                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <!-- Pending Requests Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Pending Requests</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

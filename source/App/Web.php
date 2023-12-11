@@ -109,8 +109,12 @@ class Web extends Controller
      */
     public function login(?array $data): void
     {
-        if (Auth::user()) {
+        if (Auth::user()->level >= 5) {
+            redirect("/painel");
+        }elseif (Auth::user() < 5){
             redirect("/app");
+        }else{
+            redirect("/entrar");
         }
 
         if (!empty($data['csrf'])) {

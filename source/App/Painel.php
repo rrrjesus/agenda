@@ -3,6 +3,8 @@
 namespace Source\App;
 
 use Source\Core\Controller;
+use Source\Models\Auth;
+use Source\Support\Message;
 
 class Painel extends Controller
 {
@@ -28,5 +30,14 @@ class Painel extends Controller
             "head" => $head
         ]);
     }
+
+    /** @return void */
+    public function logout()
+    {
+        (new Message())->info("Você saiu com sucesso " . Auth::user()->first_name . " Volta logo :)")->flash();
+        Auth::logout();
+        redirect("/entrar");
+    }
+
 
 }

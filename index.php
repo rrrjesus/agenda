@@ -64,6 +64,7 @@ $route->get("/termos", "Web:terms");
 
 $route->group("/painel");
 $route->get("/", "Painel:home");
+$route->get("/sair", "Dashboard:logout");
 
 /**
  * APP
