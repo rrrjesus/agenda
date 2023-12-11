@@ -502,7 +502,7 @@ class Dashboard extends Controller
 
         $user = (new User());
         $userId = (new Auth())->user();
-        $userlista = $user->find("status = :s AND id != :i", "s=confirmed&i={$userId->id}")->fetch(true);
+        $userlista = $user->find("id != :i", "i={$userId->id}")->fetch(true);
         $lixeira = $user->find("status = :s", "s=trash")->fetch(true);
         $lixo = (!empty($lixeira) ? count($lixeira) : '');
 

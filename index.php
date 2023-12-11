@@ -59,6 +59,13 @@ $route->group(null);
 $route->get("/termos", "Web:terms");
 
 /**
+ *  PAINEL
+ */
+
+$route->group("/painel");
+$route->get("/", "Painel:home");
+
+/**
  * APP
  */
 $route->group("/dashboard");

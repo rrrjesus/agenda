@@ -120,11 +120,11 @@ abstract class Model
      * @param string $columns
      * @return Model|mixed
      */
-    public function find(?string $terms = null, ?string $params = null, string $columns = "*")
+    public function find(?string $terms = null, ?string $params = "", string $columns = "*")
     {
         if ($terms) {
             $this->query = "SELECT {$columns} FROM {$this->entity} WHERE {$terms}";
-            parse_str($params, $this->params);
+            parse_str($params ?? "", $this->params);
             return $this;
         }
 

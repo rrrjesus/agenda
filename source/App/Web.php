@@ -1,463 +1,427 @@
 <?php
 
-/**
- * ####################
- * ###   VALIDATE   ###
- * ####################
- */
+namespace Source\App;
 
-/**
- * @param string $email
- * @return bool
- */
-function is_email(string $email): bool
-{
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
 
-/**
- * @param string $password
- * @return bool
+use Source\Core\Controller;
+use Source\Models\Auth;
+use Source\Models\Contact;
+use Source\Models\Faq\Question;
+use Source\Models\Report\Access;
+use Source\Models\Report\Online;
+use Source\Models\Signature;
+use Source\Models\User;
+use Source\Models\Post;
+
+
+/** Web Controler
+ * @package Source\App
  */
-function is_passwd(string $password): bool
+class Web extends Controller
 {
-    if (password_get_info($password)['algo'] || (mb_strlen($password) >= CONF_PASSWD_MIN_LEN && mb_strlen($password) <= CONF_PASSWD_MAX_LEN)) {
-        return true;
+    /**
+     * Web Constructor
+     */
+    public function __construct()
+    {
+        //Connect::getInstance();
+        parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME . "/");
+
+//        (new Access())->report();
+//        (new Online())->report();
     }
 
-    return false;
-}
+    /**
+     * SITE HOME
+     */
+    public function home(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg")
+        );
 
-/**
- * ##################
- * ###   STRING   ###
- * ##################
- */
+        $post = (new Post())->findById(1);
+        $post->views += 1;
+        $post->save();
 
-/**
- * @param string $string
- * @return string
- */
-function str_slug(string $string): string
-{
-    $string = filter_var(mb_strtolower($string), FILTER_SANITIZE_STRIPPED);
-    $formats = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]/?;:.,\\\'<>°ºª';
-    $replace = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr                                 ';
-
-    $slug = str_replace(["-----", "----", "---", "--"], "-",
-        str_replace(" ", "-",
-            trim(strtr(utf8_decode($string), utf8_decode($formats), $replace))
-        )
-    );
-    return $slug;
-}
-
-/**
- * @param string $string
- * @return string
- */
-function str_studly_case(string $string): string
-{
-    $string = str_slug($string);
-    $studlyCase = str_replace(" ", "",
-        mb_convert_case(str_replace("-", " ", $string), MB_CASE_TITLE)
-    );
-
-    return $studlyCase;
-}
-
-/**
- * @param string $string
- * @return string
- */
-function str_camel_case(string $string): string
-{
-    return lcfirst(str_studly_case($string));
-}
-
-/**
- * @param string $string
- * @return string
- */
-function str_title(string $string): string
-{
-    return mb_convert_case(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS), MB_CASE_TITLE);
-}
-
-/**
- * @param string $text
- * @return string
- */
-function str_textarea(string $text): string
-{
-    $text = filter_var($text, FILTER_SANITIZE_STRIPPED);
-    $arrayReplace = ["&#10;", "&#10;&#10;", "&#10;&#10;&#10;", "&#10;&#10;&#10;&#10;", "&#10;&#10;&#10;&#10;&#10;"];
-    return "<p>" . str_replace($arrayReplace, "</p><p>", $text) . "</p>";
-}
-
-/**
- * @param string $string
- * @param int $limit
- * @param string $pointer
- * @return string
- */
-function str_limit_words(string $string, int $limit, string $pointer = "..."): string
-{
-    $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
-    $arrWords = explode(" ", $string);
-    $numWords = count($arrWords);
-
-    if ($numWords < $limit) {
-        return $string;
+        echo $this->view->render("home",
+            [
+                "head" => $head
+            ]);
     }
 
-    $words = implode(" ", array_slice($arrWords, 0, $limit));
-    return "{$words}{$pointer}";
-}
+    /**
+     * SITE ABOUT
+     * @return void
+     */
+    public function about(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - " . CONF_SITE_DESC ,
+            CONF_SITE_DESC,
+            url("/sobre"),
+            theme("/assets/images/share.jpg")
+        );
 
-/**
- * @param string $string
- * @param int $limit
- * @param string $pointer
- * @return string
- */
-function str_limit_chars(string $string, int $limit, string $pointer = "..."): string
-{
-    $string = trim(filter_var($string, FILTER_SANITIZE_SPECIAL_CHARS));
-    if (mb_strlen($string) <= $limit) {
-        return $string;
+        $post = (new Post())->findById(3);
+        $post->views += 1;
+        $post->save();
+
+        echo $this->view->render("about",
+            [
+                "head" => $head
+            ]);
     }
 
-    $chars = mb_substr($string, 0, mb_strrpos(mb_substr($string, 0, $limit), " "));
-    return "{$chars}{$pointer}";
-}
+    /**
+     * SITE BLOG
+     * @param array|null $data
+     * @return void
+     */
+    public function contact(?array $data): void
+    {
+        $head = $this->seo->render(
+            "Agenda - " . CONF_SITE_NAME ,
+            "Agenda de contatos SMSUB",
+            url("/agenda"),
+            theme("/assets/images/share.jpg")
+        );
 
-/**
- * @param string $price
- * @return string
- */
-function str_price(?string $price): string
-{
-    return number_format((!empty($price) ? $price : 0), 2, ",", ".");
-}
+        $post = (new Post())->findById(2);
+        $post->views += 1;
+        $post->save();
 
-/**
- * @param string|null $search
- * @return string
- */
-function str_search(?string $search): string
-{
-    if (!$search) {
-        return "all";
+        $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
+
+        echo $this->view->render("contact",
+            [
+                "head" => $head,
+                "contact" => $contact
+            ]);
     }
 
-    $search = preg_replace("/[^a-z0-9A-Z\@\ ]/", "", $search);
-    return (!empty($search) ? $search : "all");
-}
-
-/**
- * ###############
- * ###   URL   ###
- * ###############
- */
-
-/**
- * @param string $path
- * @return string
- */
-function url(string $path = null): string
-{
-    if (strpos($_SERVER['HTTP_HOST'], "127.0.0.1")) {
-        if ($path) {
-            return CONF_URL_TESTE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-        }
-        return CONF_URL_TESTE;
-    }
-
-    if ($path) {
-        return CONF_URL_BASE . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-    }
-
-    return CONF_URL_BASE;
-}
-
-function lnk($var): ?string
-{
-    if(!empty($_GET['route'])) {
-        if(strip_tags($_GET['route']) == $var) {
-            return 'active';
-        }
-    } else {
-        if($var == '/') {
-            return 'active';
-        }
-    }
-    return true;
-}
-
-/**
- * @return string
- */
-function url_back(): string
-{
-    return ($_SERVER['HTTP_REFERER'] ?? url());
-}
-
-/**
- * @param string $url
- */
-function redirect(string $url): void
-{
-    header("HTTP/1.1 302 Redirect");
-    if (filter_var($url, FILTER_VALIDATE_URL)) {
-        header("Location: {$url}");
-        exit;
-    }
-
-    if (filter_input(INPUT_GET, "route", FILTER_DEFAULT) != $url) {
-        $location = url($url);
-        header("Location: {$location}");
-        exit;
-    }
-}
-
-/**
- * ##################
- * ###   ASSETS   ###
- * ##################
- */
-
-/**
- * @return \Source\Models\User|null
- */
-function user(): ?\Source\Models\User
-{
-    return \Source\Models\Auth::user();
-}
-
-/**
- * @return \Source\Core\Session
- */
-function session(): \Source\Core\Session
-{
-    return new \Source\Core\Session();
-}
-
-/**
- * @param string|null $path
- * @param string $theme
- * @return string
- */
-function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
-{
-    if (strpos($_SERVER['HTTP_HOST'], "127.0.0.1")) {
-        if ($path) {
-            return CONF_URL_TESTE . "/themes/{$theme}/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    /**
+     * SITE LOGIN
+     * @param null|array $data
+     */
+    public function login(?array $data): void
+    {
+        if (Auth::user()) {
+            redirect("/app");
         }
 
-        return CONF_URL_TESTE . "/themes/{$theme}";
-    }
+        if (!empty($data['csrf'])) {
+            if (!csrf_verify($data)) {
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
 
-    if ($path) {
-        return CONF_URL_BASE . "/themes/{$theme}/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-    }
+            if (request_limit("weblogin", 5, 60 * 5)) {
+                $json['message'] = $this->message->error("Você já efetuou 5 tentativas, esse é o limite. Por favor, aguarde 5 minutos para tentar novamente!")->render();
+                echo json_encode($json);
+                return;
+            }
 
-    return CONF_URL_BASE . "/themes/{$theme}";
-}
+            if (empty($data['email']) || empty($data['password'])) {
+                $json['message'] = $this->message->warning("Informe seu email e senha para entrar")->icon("exclamation-octagon")->render();
+                echo json_encode($json);
+                return;
+            }
 
-/**
- * @param string $image
- * @param int $width
- * @param int|null $height
- * @return string
- */
-function image(?string $image, int $width, int $height = null): ?string
-{
-    if ($image) {
-        return url() . "/" . (new \Source\Support\Thumb())->make($image, $width, $height);
-    }
+            $save = (!empty($data['save']) ? true : false);
+            $auth = new Auth();
+            $login = $auth->login($data['email'], $data['password'], $save);
 
-    return null;
-}
+            if ($login) {
+                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
+                $json['redirect'] = url("/dashboard");
+            } else {
+                $json['message'] = $auth->message()->icon("emoji-frown")->render();
+            }
 
-/**
- * ################
- * ###   DATE   ###
- * ################
- */
+            echo json_encode($json);
+            return;
+        }
 
-/**
- * @param string $date
- * @param string $format
- * @return string
- * @throws Exception
- */
-function date_fmt(?string $date, string $format = "d/m/Y H\hi"): string
-{
-    $date = (empty($date) ? "now" : $date);
-    return (new DateTime($date))->format($format);
-}
+        $head = $this->seo->render(
+            "Entrar - " . CONF_SITE_NAME,
+            CONF_SITE_DESC,
+            url("/entrar"),
+            theme("/assets/images/share.jpg")
+        );
 
-/**
- * @param string $date
- * @return string
- * @throws Exception
- */
-function date_fmt_br(?string $date): string
-{
-    $date = (empty($date) ? "now" : $date);
-    return (new DateTime($date))->format(CONF_DATE_BR);
-}
-
-/**
- * @param string $date
- * @return string
- * @throws Exception
- */
-function date_fmt_app(?string $date): string
-{
-    $date = (empty($date) ? "now" : $date);
-    return (new DateTime($date))->format(CONF_DATE_APP);
-}
-
-/**
- * @param string|null $date
- * @return string|null
- */
-function date_fmt_back(?string $date): ?string
-{
-    if (!$date) {
-        return null;
-    }
-
-    if (strpos($date, " ")) {
-        $date = explode(" ", $date);
-        return implode("-", array_reverse(explode("/", $date[0]))) . " " . $date[1];
-    }
-
-    return implode("-", array_reverse(explode("/", $date)));
-}
-
-/**
- * ####################
- * ###   PASSWORD   ###
- * ####################
- */
-
-/**
- * @param string $password
- * @return string
- */
-function passwd(string $password): string
-{
-    if (!empty(password_get_info($password)['algo'])) {
-        return $password;
-    }
-
-    return password_hash($password, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
-}
-
-/**
- * @param string $password
- * @param string $hash
- * @return bool
- */
-function passwd_verify(string $password, string $hash): bool
-{
-    return password_verify($password, $hash);
-}
-
-/**
- * @param string $hash
- * @return bool
- */
-function passwd_rehash(string $hash): bool
-{
-    return password_needs_rehash($hash, CONF_PASSWD_ALGO, CONF_PASSWD_OPTION);
-}
-
-/**
- * ###################
- * ###   REQUEST   ###
- * ###################
- */
-
-/**
- * @return string
- */
-function csrf_input(): string
-{
-    $session = new \Source\Core\Session();
-    $session->csrf();
-    return "<input type='hidden' name='csrf' value='" . ($session->csrf_token ?? "") . "'/>";
-}
-
-/**
- * @param $request
- * @return bool
- */
-function csrf_verify($request): bool
-{
-    $session = new \Source\Core\Session();
-    if (empty($session->csrf_token) || empty($request['csrf']) || $request['csrf'] != $session->csrf_token) {
-        return false;
-    }
-    return true;
-}
-
-/**
- * @return null|string
- */
-function flash(): ?string
-{
-    $session = new \Source\Core\Session();
-    if ($flash = $session->flash()) {
-        return $flash;
-    }
-    return null;
-}
-
-/**
- * @param string $key
- * @param int $limit
- * @param int $seconds
- * @return bool
- */
-function request_limit(string $key, int $limit = 5, int $seconds = 60): bool
-{
-    $session = new \Source\Core\Session();
-    if ($session->has($key) && $session->$key->time >= time() && $session->$key->requests < $limit) {
-        $session->set($key, [
-            "time" => time() + $seconds,
-            "requests" => $session->$key->requests + 1
+        echo $this->view->render("auth-login", [
+            "head" => $head,
+            "cookie" => filter_input(INPUT_COOKIE, "authEmail")
         ]);
-        return false;
     }
 
-    if ($session->has($key) && $session->$key->time >= time() && $session->$key->requests >= $limit) {
-        return true;
+    /**
+     * SITE FORGET
+     * @return void
+     * @param null|array $data
+     */
+    public function forget(?array $data): void
+    {
+
+        if (!empty($data['csrf'])) {
+            if (!csrf_verify($data)) {
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if(empty($data["email"])){
+                $json['message'] = $this->message->info("Informe seu e-mail para continuar")->render();
+                echo json_encode($json);
+                return;
+            }
+
+            if(request_repeat("webforget", $data["email"])) {
+                $json['message'] = $this->message->error("Ooopss! Você já tentou esse e-mail antes ...")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            $auth = new Auth();
+            if($auth->forget($data["email"])){
+                $json['message'] = $this->message->success("Acesse seu email {$data['email']} para recuperar a senha.")->render();
+            } else {
+                $json['message'] = $auth->message()->render();
+            }
+            echo json_encode($json);
+            return;
+
+        }
+
+        $head = $this->seo->render(
+            "Recuperar Senha - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/recuperar"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("auth-forget",
+            [
+                "head" => $head
+            ]);
     }
 
-    $session->set($key, [
-        "time" => time() + $seconds,
-        "requests" => 1
-    ]);
+    /**
+     * SITE FORGET RESET
+     * @param array $data
+     * @return void
+     */
+    public function reset(array $data): void
+    {
 
-    return false;
-}
+        if(!empty($data['csrf'])) {
+            if (!csrf_verify($data)) {
+                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
 
-/**
- * @param string $field
- * @param string $value
- * @return bool
- */
-function request_repeat(string $field, string $value): bool
-{
-    $session = new \Source\Core\Session();
-    if ($session->has($field) && $session->$field == $value) {
-        return true;
+
+            if(empty($data["password"]) || empty($data["password_re"])){
+                $json["message"] = $this->message->info("Informe e repita a senha para continuar")->icon()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            list($email, $code) = explode("|", $data["code"]);
+            $auth = new Auth();
+
+            if ($auth->reset($email, $code, $data["password"], $data["password_re"])){
+                $this->message->success("Senha alterada com sucesso. Vamos controlar")->flash();
+                $json["redirect"] = url("/entrar");
+            }else{
+                $json["message"] = $auth->message()->after("Ooops!")->icon()->render();
+            }
+
+            echo json_encode($json);
+            return;
+        }
+
+        $head = $this->seo->render(
+            "Crie sua nova senha no - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/recuperar"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("auth-reset",
+            [
+                "head" => $head,
+                "code" => $data["code"]
+            ]);
     }
 
-    $session->set($field, $value);
-    return false;
+    /**
+     *  SITE ASSINATURA DE EMAIL
+     */
+
+    /**
+     * @return void
+     * @param null|array $data
+     */
+    public function creatorCard(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg")
+        );
+
+//        $post = (new Post())->findById(4);
+//        $post->views += 1;
+//        $post->save();
+
+        echo $this->view->render("email",
+            [
+                "head" => $head
+            ]);
+    }
+
+
+
+    /**
+     * SITE OPTIN CONFIRM
+     * @return void
+     */
+    public function confirm (): void
+    {
+        $head = $this->seo->render(
+            "Confirme Seu Cadastro - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/confirma"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("optin",
+            [
+                "head" => $head,
+                "data" => (object)[
+                    "title" => "Falta pouco! Confirme seu cadastro.",
+                    "desc" => "Enviamos um link de confirmação para seu e-mail. Acesse e siga as instruções para concluir seu cadastro e comece a controlar com o CaféControl",
+                    "image" => theme("/assets/images/optin-confirm.jpg"),
+                    "url" => url()
+                ]
+            ]);
+    }
+
+    /**
+     * SITE OPTIN SUCCESS
+     * @param array $data
+     * @return void
+     */
+    public function success(array $data): void
+    {
+        $email = base64_decode($data["email"]);
+        $user = (new User())->findByEmail($email);
+
+        if($user && $user->status != "confirmed"){
+            $user->status = "confirmed";
+            $user->save();
+        }
+
+        $head = $this->seo->render(
+            "Bem-vindo(a) ao" . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/obrigado"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("optin",
+            [
+                "head" => $head,
+                //               "data" => $this->seo->data()
+                "data" => (object)[
+                    "title" => "Tudo pronto. Você já pode controlar :)",
+                    "desc" => "Bem-vindo(a) ao seu controle de contas, vamos tomar um café?",
+                    "image" => theme("/assets/images/optin-success.jpg"),
+                    "link" => url("/entrar"),
+                    "linkTitle" => "Fazer Login",
+                    "url" => url()
+                ]
+            ]);
+    }
+
+
+
+    /**
+     * @return void
+     */
+    public function terms(): void
+    {
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - Termos de Uso",
+            CONF_SITE_DESC,
+            url("/termos"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("terms",
+            [
+                "head" => $head
+            ]);
+    }
+
+    /**
+     * SITE NAV ERROR
+     * @param array $data
+     * @return void
+     */
+    public function error(array $data): void
+    {
+        $error = new \stdClass();
+
+        switch ($data['errcode']) {
+
+            case "problemas":
+                $error->code = "OPS";
+                $error->title = "Estamos enfrentando problemas";
+                $error->message = "Parece que nosso serviço não está disponível no momento. Já estamos vendo isso mas caso precise, envie um e-mail :)";
+                $error->linkTitle = "Enviar E-MAIL";
+                $error->link = "mailto:" . CONF_MAIL_SUPORT;
+                break;
+
+            case "manutencao":
+                $error->code = "OPS";
+                $error->title = "Desculpe. Estamos em manutenção !";
+                $error->message = "Voltamos logo! Por hora estamos trabalhando para melhorar nosso conteúdo para você controlar melhor as suas contas P:";
+                $error->linkTitle = null;
+                $error->link = null;
+                break;
+
+            default:
+                $error->code = $data['errcode'];
+                $error->title = "Ooops. Conteúdo indisponível :/";
+                $error->message = "Sentimos muito, mas o conteúdo que você tentou acessar não existe, está indisponível no momento";
+                $error->linkTitle = "Continue navegando!";
+                $error->link = url_back();
+                break;
+
+
+        }
+
+        $head = $this->seo->render(
+            "{$error->code} | {$error->title}",
+            $error->message,
+            url("/ops/{$error->code}"),
+            theme("/assets/images/share.jpg"),
+            false
+        );
+
+
+        echo $this->view->render("error", [
+            "head" => $head,
+            "error" => $error
+        ]);
+    }
 }
