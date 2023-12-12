@@ -61,10 +61,22 @@ $route->get("/termos", "Web:terms");
 /**
  *  PAINEL
  */
-
+$route->namespace("Source\App\Painel");
 $route->group("/painel");
-$route->get("/", "Painel:home");
-$route->get("/sair", "Dashboard:logout");
+
+//login
+$route->get("/", "Login:root");
+$route->get("/login", "Login:login");
+$route->post("/login", "Login:login");
+
+//dash
+$route->get("/dash", "Dash:dash");
+$route->get("/dash/home", "Dash:home");
+$route->post("/dash/home", "Dash:home");
+$route->get("/logoff", "Dash:logoff");
+
+
+
 
 /**
  * APP

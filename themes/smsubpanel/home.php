@@ -1,3 +1,0 @@
-<?= $this->layout("_theme");?>
-
-

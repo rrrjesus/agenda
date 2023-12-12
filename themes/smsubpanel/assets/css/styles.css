@@ -104,6 +104,27 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .text-xs {
   font-size: .7rem;
 }
@@ -126,6 +147,10 @@ body {
 
 .border-left-success {
   border-left: 0.25rem solid #1cc88a!important;
+}
+
+.border-left-danger {
+  border-left: 0.25rem solid #e74a3b!important;
 }
 
 hr {
@@ -11040,6 +11065,35 @@ body {
 .sb-sidenav .sb-sidenav-footer {
   padding: 0.75rem;
   flex-shrink: 0;
+}
+
+.sb-sidenav-primary {
+  background-color:  rgb(13,110,253);
+  color: rgb(255, 255, 255);
+}
+.sb-sidenav-primary .sb-sidenav-menu .sb-sidenav-menu-heading {
+  color: rgb(255, 255, 255);
+}
+.sb-sidenav-primary .sb-sidenav-menu .nav-link {
+  color: rgb(255, 255, 255);
+}
+.sb-sidenav-primary .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+  color: rgb(255, 255, 255);
+}
+.sb-sidenav-primary .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
+  color: rgb(255, 255, 255);
+}
+.sb-sidenav-primary.sb-sidenav-menu .nav-link:hover {
+  color: #fff;
+}
+.sb-sidenav-primary .sb-sidenav-menu .nav-link.active {
+  color: #fff;
+}
+.sb-sidenav-primary .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+  color: #fff;
+}
+.sb-sidenav-primary .sb-sidenav-footer {
+  background-color:  rgb(13,110,253);
 }
 
 .sb-sidenav-dark {
