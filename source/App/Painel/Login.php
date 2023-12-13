@@ -67,7 +67,7 @@ class Login extends Controller
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Painel",
             CONF_SITE_DESC,
-            url("/admin"),
+            url("/painel"),
             theme("/assets/images/image.jpg", CONF_VIEW_THEME_PANEL),
             false
         );

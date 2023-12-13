@@ -10,5 +10,5 @@ return array(
     'e06b8758150737305072dd1b18aa64eb' => $baseDir . '/source/Boot/Helpers.php',
     '18489dd0b472523f0435668b6739f29d' => $baseDir . '/source/Boot/Minify/Web.php',
     '1dab026aea16b8ad613ba47e3840ac2f' => $baseDir . '/source/Boot/Minify/App.php',
-    '75e08ae79306ac7415145f9c6e8c3201' => $baseDir . '/source/Boot/Minify/Admin.php',
+    'ad64dd543c974edb69b56027fd20b1c4' => $baseDir . '/source/Boot/Minify/Painel.php',
 );

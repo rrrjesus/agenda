@@ -16,7 +16,8 @@
                 </a>
                 <div class="collapse" id="collapseContatos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html"><i class="bi bi-list me-2"></i> Lista</a>
+                        <a class="nav-link" href="<?=url("/painel/contatos/home")?>"><i class="bi bi-house me-2"></i> Início</a>
+                        <a class="nav-link" href="<?=url("/painel/contatos/lista")?>"><i class="bi bi-list me-2"></i> Lista</a>
                         <a class="nav-link" href="layout-sidenav-light.html"><i class="bi bi- me-2"></i> Novo</a>
                     </nav>
                 </div>

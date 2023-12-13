@@ -6,8 +6,7 @@
 
     <?= $head; ?>
 
-    <link href="<?=theme("assets/css/bootstrap.min.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
-    <link href="<?=theme("assets/css/styles.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
+    <link href="<?=theme("assets/style.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png", CONF_VIEW_THEME_PANEL); ?>"/>
 </head>
 <body>
@@ -22,6 +21,10 @@
 <?= $this->section("content"); ?>
 
 <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53658515-18"></script>-->
+<script src="<?= url("/shared/scripts/jquery.min.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/jquery-ui.js"); ?>"></script>
+<script src="<?=theme("assets/js/jquery.validate.js", CONF_VIEW_THEME_PANEL)?>"></script>
+<script src="<?= theme("/assets/js/login.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <?= $this->section("scripts"); ?>
 

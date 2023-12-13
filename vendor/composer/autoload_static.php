@@ -11,7 +11,7 @@ class ComposerStaticInit88f20878691ce581c2e3e5121d12aa22
         'e06b8758150737305072dd1b18aa64eb' => __DIR__ . '/../..' . '/source/Boot/Helpers.php',
         '18489dd0b472523f0435668b6739f29d' => __DIR__ . '/../..' . '/source/Boot/Minify/Web.php',
         '1dab026aea16b8ad613ba47e3840ac2f' => __DIR__ . '/../..' . '/source/Boot/Minify/App.php',
-        '75e08ae79306ac7415145f9c6e8c3201' => __DIR__ . '/../..' . '/source/Boot/Minify/Admin.php',
+        'ad64dd543c974edb69b56027fd20b1c4' => __DIR__ . '/../..' . '/source/Boot/Minify/Painel.php',
     );
 
     public static $prefixLengthsPsr4 = array (

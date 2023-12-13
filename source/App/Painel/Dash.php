@@ -87,6 +87,6 @@ class Dash extends Painel
         $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->flash();
 
         Auth::logout();
-        redirect("/admin/login");
+        redirect("/painel/login");
     }
 }
