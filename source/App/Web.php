@@ -90,9 +90,9 @@ class Web extends Controller
             theme("/assets/images/share.jpg")
         );
 
-        $post = (new Post())->findById(2);
-        $post->views += 1;
-        $post->save();
+//        $post = (new Post())->findById(2);
+//        $post->views += 1;
+//        $post->save();
 
         $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
 
@@ -109,13 +109,13 @@ class Web extends Controller
      */
     public function login(?array $data): void
     {
-        if (Auth::user()->level >= 5) {
-            redirect("/painel");
-        }elseif (Auth::user() < 5){
-            redirect("/app");
-        }else{
-            redirect("/entrar");
-        }
+//        if (Auth::user()->level >= 5) {
+//            redirect("/painel");
+//        }elseif (Auth::user() < 5){
+//            redirect("/app");
+//        }else{
+//            redirect("/entrar");
+//        }
 
         if (!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
@@ -141,8 +141,13 @@ class Web extends Controller
             $login = $auth->login($data['email'], $data['password'], $save);
 
             if ($login) {
-                $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
-                $json['redirect'] = url("/dashboard");
+                if (Auth::user()->level >= 5) {
+                    $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
+                    $json['redirect'] = url("/painel");
+                } else {
+                    $this->message->success("Seja bem-vindo(a) de volta " . Auth::user()->first_name . "!")->flash();
+                    $json['redirect'] = url("/app");
+                }
             } else {
                 $json['message'] = $auth->message()->icon("emoji-frown")->render();
             }
