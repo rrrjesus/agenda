@@ -39,7 +39,17 @@ class Agenda extends Painel
 
         echo $this->view->render("widgets/agenda/home", [
             "app" => "agenda",
-            "head" => $head
+            "head" => $head,
+            "ramais" => (object)[
+                "totais" => (new Contact())->find()->count(),
+                "ativos" => (new Contact())->find("status=:s", "s=post")->count(),
+                "lixeira" => (new Contact())->find("status=:s", "s=trash")->count()
+            ],
+            "setores" => (object)[
+                "totais" => (new Sector())->find()->count(),
+                "ativos" => (new Sector())->find("trash=:t", "t=0")->count(),
+                "lixeira" => (new Sector())->find("trash=:t", "t=1")->count()
+            ],
         ]);
     }
 

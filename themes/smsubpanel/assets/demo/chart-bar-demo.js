@@ -7,12 +7,12 @@ var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
     datasets: [{
-      label: "Revenue",
+      label: "Acesso Mensal da Agenda",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [4215, 5312, 6251, 7841, 9821, 14984, 2500, 9500, 6000, 5624, 5236, 1560],
     }],
   },
   options: {
@@ -25,14 +25,14 @@ var myLineChart = new Chart(ctx, {
           display: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 12
         }
       }],
       yAxes: [{
         ticks: {
           min: 0,
           max: 15000,
-          maxTicksLimit: 5
+          maxTicksLimit: 12
         },
         gridLines: {
           display: true
