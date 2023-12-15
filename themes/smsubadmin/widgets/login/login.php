@@ -4,7 +4,7 @@
     <form class="needs-validation" novalidate id="login" name="login" action="<?= url("/admin/login"); ?>" method="post" enctype="multipart/form-data">
         <?=csrf_input();?>
         <h1 class="h3 mb-3 fw-normal">
-            <img src="<?=theme("assets/images/logo_intra.png")?>" class="mb-1 me-2" alt="logo" width="30" height="30"><?=CONF_SITE_NAME?></h1>
+            <img src="<?=theme("/assets/images/logo_intra.png")?>" class="mb-1 me-2" alt="logo" width="30" height="30"><?=CONF_SITE_NAME?></h1>
         <p class="mb-4">Por favor insira seu login e senha!</p>
         <div class="ajax_response"><?=flash();?></div>
 

@@ -28,29 +28,25 @@ class Agenda extends Painel
      */
     public function home(?array $data): void
     {
-
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | Agenda",
-            CONF_SITE_DESC,
-            url("/painel"),
-            theme("/assets/images/image.jpg", CONF_VIEW_THEME_PANEL),
-            false
+            "Contatos - " . CONF_SITE_NAME ,
+            "Lista de Contatos",
+            url("/painel/contatos"),
+            theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("widgets/agenda/home", [
-            "app" => "agenda",
-            "head" => $head,
-            "ramais" => (object)[
-                "totais" => (new Contact())->find()->count(),
-                "ativos" => (new Contact())->find("status=:s", "s=post")->count(),
-                "lixeira" => (new Contact())->find("status=:s", "s=trash")->count()
-            ],
-            "setores" => (object)[
-                "totais" => (new Sector())->find()->count(),
-                "ativos" => (new Sector())->find("trash=:t", "t=0")->count(),
-                "lixeira" => (new Sector())->find("trash=:t", "t=1")->count()
-            ],
-        ]);
+        $contact = (new Contact());
+        $contactlista = $contact->find("status = :s", "s=post")->fetch(true);
+        $lixeira = $contact->find("status = :s", "s=trash")->fetch(true);
+        $lixo = (!empty($lixeira) ? count($lixeira) : '');
+
+        echo $this->view->render("widgets/contatos/home",
+            [
+                "head" => $head,
+                "contactlista" => $contactlista,
+                "lixo" => $lixo
+            ]);
+
     }
 
     /** @return void */

@@ -6,7 +6,7 @@
 
     <?= $head; ?>
 
-    <link href="<?=theme("assets/css/bootstrap.min.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
+    <link href="<?=theme("/assets/css/bootstrap.min.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png", CONF_VIEW_THEME_PANEL); ?>"/>
 </head>
 <body>
