@@ -46,7 +46,7 @@ class Login extends Controller
 
         if (!empty($data["email"]) && !empty($data["password"])) {
             if (request_limit("loginLogin", 3, 5 * 60)) {
-                $json["message"] = $this->message->error("ACESSO NEGADO: Aguarde por 5 minutos para tentar novamente.")->render();
+                $json["message"] = $this->message->error("ACESSO NEGADO: Aguarde por 5 minutos para tentar novamente.")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -68,7 +68,7 @@ class Login extends Controller
             CONF_SITE_NAME . " | Admin",
             CONF_SITE_DESC,
             url("/admin"),
-            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
+            theme("/assets/images/image.jpg", CONF_VIEW_THEME_PANEL),
             false
         );
 

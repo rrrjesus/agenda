@@ -6,13 +6,13 @@
 
     <?= $head; ?>
 
-    <link rel="stylesheet" href="<?= theme("/assets/style.css", CONF_VIEW_THEME_PANEL); ?>"/>
+    <link href="<?=theme("/assets/style.css", CONF_VIEW_THEME_PANEL)?>" rel="stylesheet" />
     <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png", CONF_VIEW_THEME_PANEL); ?>"/>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 </head>
 
-<svg xmlns="http://www.w3.org/2000/svg" class="d-none" style="background-color: #9eeaf9">
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="circle-half" viewBox="0 0 16 16">
         <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
     </symbol>
@@ -38,6 +38,7 @@
         <main>
             <div class="container-fluid px-4">
 
+
                 <?= $this->section("content"); ?>
             </div>
         </main>
@@ -48,13 +49,11 @@
     </div>
 </div>
 
-<script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_APP); ?>"></script>
-<script src="<?=theme("/assets/js/scripts.js", CONF_VIEW_THEME_PANEL)?>"></script>
+<script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
+<script src="<?= theme("/assets/js/sidebar.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="<?=theme("/assets/demo/chart-area-demo.js", CONF_VIEW_THEME_PANEL)?>"></script>
 <script src="<?=theme("/assets/demo/chart-bar-demo.js", CONF_VIEW_THEME_PANEL)?>"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>-->
-<script src="<?=theme("/assets/js/datatables-simple-demo.js", CONF_VIEW_THEME_PANEL)?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

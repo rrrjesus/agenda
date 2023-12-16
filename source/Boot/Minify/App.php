@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
+//if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
     /**
      * CSS APP
      */
@@ -74,4 +74,4 @@ if ($_SERVER['HTTP_HOST'] == '127.0.0.1') {
 
     //Minify JS Dashboard
     $minAppJs->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME_APP . "/assets/scripts.js");
-}
+//}

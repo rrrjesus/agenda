@@ -26,7 +26,7 @@ class Painel extends Controller
         $this->user = Auth::user();
 
         if (!$this->user || $this->user->level < 5) {
-            $this->message->error("Para acessar é preciso logar-se")->flash();
+            $this->message->error("Para acessar é preciso logar!")->icon()->flash();
             redirect("/painel/login");
         }
     }

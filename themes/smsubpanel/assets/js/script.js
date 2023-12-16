@@ -245,21 +245,6 @@ $(function () {
     $(".mask-money").mask('000.000.000.000.000,00', {reverse: true, placeholder: "0,00"});
 });
 
-// SIDEBAR
-window.addEventListener('DOMContentLoaded', event => {
-
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', event => {
-            event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        });
-    }
-
-});
-
 // TINYMCE INIT
 
 tinyMCE.init({

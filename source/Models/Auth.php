@@ -88,7 +88,7 @@ class Auth extends Model
         }
 
         if(!is_passwd($password)){
-            $this->message->warning("A senha informada não é válida");
+            $this->message->warning("A senha informada não é válida")->icon();
             return false;
         }
 
@@ -113,7 +113,7 @@ class Auth extends Model
 
         //LOGIN
         (new Session())->set("authUser", $user->id);
-        $this->message->success("Login efetuado com sucesso")->flash();
+        $this->message->success("Login efetuado com sucesso")->icon("check2-all")->flash();
         return true;
 
 
