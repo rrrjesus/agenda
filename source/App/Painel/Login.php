@@ -27,7 +27,7 @@ class Login extends Controller
         $user = Auth::user();
 
         if ($user && $user->level >= 5) {
-            redirect("/painel/dash");
+            redirect("/painel/contatos/home");
         } else {
             redirect("/painel/login");
         }
@@ -41,7 +41,7 @@ class Login extends Controller
         $user = Auth::user();
 
         if ($user && $user->level >= 5) {
-            redirect("/painel/dash");
+            redirect("/painel/contatos/home");
         }
 
         if (!empty($data["email"]) && !empty($data["password"])) {
@@ -55,7 +55,7 @@ class Login extends Controller
             $login = $auth->login($data["email"], $data["password"], true, 5);
 
             if ($login) {
-                $json["redirect"] = url("/painel/dash");
+                $json["redirect"] = url("/painel/contatos/home");
             } else {
                 $json["message"] = $auth->message()->render();
             }
@@ -65,10 +65,10 @@ class Login extends Controller
         }
 
         $head = $this->seo->render(
-            CONF_SITE_NAME . " | Painel",
+            CONF_SITE_NAME . " | Admin",
             CONF_SITE_DESC,
-            url("/painel"),
-            theme("/assets/images/image.jpg", CONF_VIEW_THEME_PANEL),
+            url("/admin"),
+            theme("/assets/images/image.jpg", CONF_VIEW_ADMIN),
             false
         );
 

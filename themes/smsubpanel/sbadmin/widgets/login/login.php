@@ -1,4 +1,3 @@
-@ -1,70 +0,0 @@
 <?php $this->layout("_login"); ?>
 
 <div class="form-signin w-100 m-auto mt-2">

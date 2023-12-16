@@ -1,4 +1,3 @@
-@ -1,32 +0,0 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,12 +20,7 @@
 
 <?= $this->section("content"); ?>
 
-<!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53658515-18"></script>-->
-<script src="<?= url("/shared/scripts/jquery.min.js"); ?>"></script>
-<script src="<?= url("/shared/scripts/jquery-ui.js"); ?>"></script>
-<script src="<?=theme("assets/js/jquery.validate.js", CONF_VIEW_THEME_PANEL)?>"></script>
-<script src="<?= theme("/assets/js/login.js", CONF_VIEW_THEME_PANEL); ?>"></script>
-<script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
+<script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>
