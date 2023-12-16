@@ -3,9 +3,9 @@
 <div class="form-signin w-100 m-auto mt-2">
     <form class="needs-validation" novalidate id="login" name="login" action="<?= url("/painel/login"); ?>" method="post" enctype="multipart/form-data">
         <?=csrf_input();?>
-        <h1 class="h3 mb-3 fw-normal">
+        <h1 class="h3 mb-3 fw-normal text-center">
             <img src="<?=theme("assets/images/logo_intra.png")?>" class="mb-1 me-2" alt="logo" width="30" height="30"><?=CONF_SITE_NAME?></h1>
-        <p class="mb-4">Por favor insira seu login e senha!</p>
+        <p class="text-center fw-semibold text-body-emphasis mb-4">Por favor insira seu login e senha!</p>
         <div class="ajax_response"><?=flash();?></div>
 
         <label for="inputPassword" class="form-label fw-semibold"><i class="bi bi-envelope-at pe-2"></i>Email</label>
@@ -31,7 +31,7 @@
         <p class="my-3"><a class="link-body-emphasis text-decoration-none fw-semibold text-danger" href="<?= url("/recuperar"); ?>">Esqueceu a senha ?</a></p>
 
         <div class="d-grid">
-            <button class="btn btn-outline-<?=CONF_SITE_COLOR?> fw-semibold mt-3" type="submit" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-title="Clique para fazer o login">Entrar</button>
+            <button class="btn btn-outline-<?=CONF_PANEL_COLOR?> fw-semibold mt-3" type="submit" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-title="Clique para fazer o login">Entrar</button>
         </div>
     </form>
 
@@ -62,7 +62,7 @@
             <ul class="list-unstyled d-flex">
                 <li class="ms-3"><a class="link-body-emphasis text-decoration-none fw-medium"
                                     target="_blank" href="https://api.whatsapp.com/send?phone=5511991091365&text=Olá, preciso de ajuda com o login.">
-                        <i class="bi bi-whatsapp"></i> 991091365</a></li>
+                        <i class="bi bi-whatsapp text-success"></i> 991091365</a></li>
             </ul>
         </div>
     </footer>

@@ -43,6 +43,11 @@ class Agenda extends Painel
         echo $this->view->render("widgets/contatos/home",
             [
                 "head" => $head,
+                "ramais" => (object)[
+                    "totais" => (new Contact())->find()->count(),
+                    "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
+                    "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
+                ],
                 "contactlista" => $contactlista,
                 "lixo" => $lixo
             ]);

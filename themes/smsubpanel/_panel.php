@@ -50,7 +50,7 @@
 </div>
 
 <script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
-<script src="<?= theme("/assets/js/sidebar.js", CONF_VIEW_THEME_PANEL); ?>"></script>
+<script src="<?= theme("/assets/sidebar.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="<?=theme("/assets/demo/chart-area-demo.js", CONF_VIEW_THEME_PANEL)?>"></script>
 <script src="<?=theme("/assets/demo/chart-bar-demo.js", CONF_VIEW_THEME_PANEL)?>"></script>

@@ -84,7 +84,7 @@ class Dash extends Painel
      */
     public function logoff(): void
     {
-        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->flash();
+        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->icon("check2-all")->flash();
 
         Auth::logout();
         redirect("/painel/login");

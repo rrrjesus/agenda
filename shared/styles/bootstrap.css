@@ -3998,6 +3998,7 @@ textarea.form-control-lg {
 }
 .navbar-brand:hover, .navbar-brand:focus {
   color: var(--bs-navbar-brand-hover-color);
+  transform:rotate(-5deg) scale(1.1);
 }
 
 .navbar-nav {
@@ -15862,6 +15863,7 @@ textarea.form-control-lg {
 }
 .navbar-brand:hover, .navbar-brand:focus {
   color: var(--bs-navbar-brand-hover-color);
+  transform:rotate(-5deg) scale(1.1);
 }
 
 .navbar-nav {
