@@ -27,7 +27,7 @@ class Login extends Controller
         $user = Auth::user();
 
         if ($user && $user->level >= 5) {
-            redirect("/painel/contatos/home");
+            redirect("/painel/dash/home");
         } else {
             redirect("/painel/login");
         }
@@ -41,7 +41,7 @@ class Login extends Controller
         $user = Auth::user();
 
         if ($user && $user->level >= 5) {
-            redirect("/painel/contatos/home");
+            redirect("/painel/dash/home");
         }
 
         if (!empty($data["email"]) && !empty($data["password"])) {
@@ -55,7 +55,7 @@ class Login extends Controller
             $login = $auth->login($data["email"], $data["password"], true, 5);
 
             if ($login) {
-                $json["redirect"] = url("/painel/contatos/home");
+                $json["redirect"] = url("/painel/dash/home");
             } else {
                 $json["message"] = $auth->message()->render();
             }

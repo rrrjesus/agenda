@@ -48,6 +48,11 @@ class Agenda extends Painel
                     "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
                     "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
                 ],
+                "setores" => (object)[
+                    "totais" => (new Sector())->find()->count(),
+                    "ativos" => (new Sector())->find("status = :s", "s=post")->count(),
+                    "desativados" => (new Sector())->find("status = :s", "s=trash")->count()
+                ],
                 "contactlista" => $contactlista,
                 "lixo" => $lixo
             ]);

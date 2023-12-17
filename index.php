@@ -59,38 +59,6 @@ $route->group(null);
 $route->get("/termos", "Web:terms");
 
 /**
- *  PAINEL
- */
-$route->namespace("Source\App\Painel");
-$route->group("/painel");
-
-//login
-$route->get("/", "Login:root");
-$route->get("/login", "Login:login");
-$route->post("/login", "Login:login");
-
-//dash
-$route->get("/dash", "Dash:dash");
-$route->get("/dash/home", "Dash:home");
-$route->post("/dash/home", "Dash:home");
-$route->get("/logoff", "Dash:logoff");
-
-// Contacts
-$route->get("/contatos/home", "Agenda:home");
-$route->get("/contatos/lista", "Agenda:contactDash");
-$route->get("/contatos/lixeira", "Agenda:contactTrashDash");
-$route->get("/contatos/cadastrar", "Agenda:registerContact");
-$route->post("/contatos/cadastrar", "Agenda:registerContact");
-$route->get("/contatos/editar/{id}", "Agenda:updatedContact");
-$route->post("/contatos/editar", "Agenda:updatedContact");
-$route->get("/contatos/excluir/{id}", "Agenda:deletedContact");
-$route->get("/contatos/excluir-definitivo/{id}", "Agenda:deleteContact");
-$route->get("/contatos/reativar/{id}", "Agenda:reactivatedContact");
-
-
-
-
-/**
  * APP
  */
 $route->group("/dashboard");
@@ -148,8 +116,8 @@ $route->get("/por/{author}/{page}", "Web:blogAuthor");
 /**
  * ADMIN ROUTES
  */
-$route->namespace("Source\App\Admin");
-$route->group("/admin");
+$route->namespace("Source\App\Painel");
+$route->group("/painel");
 
 //login
 $route->get("/", "Login:root");
@@ -161,6 +129,19 @@ $route->get("/dash", "Dash:dash");
 $route->get("/dash/home", "Dash:home");
 $route->post("/dash/home", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
+
+// Contacts
+$route->get("/contatos/home", "Agenda:home");
+$route->get("/contatos/lista", "Agenda:contactDash");
+$route->get("/contatos/lixeira", "Agenda:contactTrashDash");
+$route->get("/contatos/cadastrar", "Agenda:registerContact");
+$route->post("/contatos/cadastrar", "Agenda:registerContact");
+$route->get("/contatos/editar/{id}", "Agenda:updatedContact");
+$route->post("/contatos/editar", "Agenda:updatedContact");
+$route->get("/contatos/excluir/{id}", "Agenda:deletedContact");
+$route->get("/contatos/excluir-definitivo/{id}", "Agenda:deleteContact");
+$route->get("/contatos/reativar/{id}", "Agenda:reactivatedContact");
+
 
 //control
 $route->get("/control/home", "Control:home");

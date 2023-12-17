@@ -27,8 +27,8 @@ class Web extends Controller
         //Connect::getInstance();
         parent::__construct(__DIR__."/../../themes/" . CONF_VIEW_THEME . "/");
 
-//        (new Access())->report();
-//        (new Online())->report();
+        (new Access())->report();
+        (new Online())->report();
     }
 
     /**

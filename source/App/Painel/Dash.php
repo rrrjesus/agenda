@@ -2,11 +2,14 @@
 
 namespace Source\App\Painel;
 
-use Source\App\Painel\Painel;
 use Source\Models\Auth;
 use Source\Models\CafeApp\AppPlan;
 use Source\Models\CafeApp\AppSubscription;
+use Source\Models\Category;
+use Source\Models\Contact;
+use Source\Models\Post;
 use Source\Models\Report\Online;
+use Source\Models\Sector;
 use Source\Models\User;
 
 /**
@@ -21,6 +24,8 @@ class Dash extends Painel
     public function __construct()
     {
         parent::__construct();
+
+
     }
 
     /**
@@ -70,9 +75,30 @@ class Dash extends Painel
         echo $this->view->render("widgets/dash/home", [
             "app" => "dash",
             "head" => $head,
+            "control" => (object)[
+                "subscribers" => (new AppSubscription())->find("pay_status = :s", "s=active")->count(),
+                "plans" => (new AppPlan())->find("status = :s", "s=active")->count(),
+                "recurrence" => (new AppSubscription())->recurrence()
+            ],
+            "blog" => (object)[
+                "posts" => (new Post())->find("status = 'post'")->count(),
+                "drafts" => (new Post())->find("status = 'draft'")->count(),
+                "categories" => (new Category())->find("type = 'post'")->count()
+            ],
             "users" => (object)[
                 "users" => (new User())->find("level < 5")->count(),
-                "admins" => (new User())->find("level >= 5")->count()
+                "admins" => (new User())->find("level >= 5")->count(),
+                "totais" => (new User())->find()->count()
+            ],
+            "setores" => (object)[
+                "totais" => (new Sector())->find()->count(),
+                "ativos" => (new Sector())->find("status = :s", "s=active")->count(),
+                "desativados" => (new Sector())->find("status = :s", "s=disable")->count()
+            ],
+            "ramais" => (object)[
+                "totais" => (new Contact())->find()->count(),
+                "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
+                "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
             ],
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)
@@ -84,7 +110,7 @@ class Dash extends Painel
      */
     public function logoff(): void
     {
-        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->icon("check2-all")->flash();
+        $this->message->success("Você saiu com sucesso {$this->user->first_name}.")->flash();
 
         Auth::logout();
         redirect("/painel/login");
