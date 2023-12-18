@@ -131,16 +131,16 @@ $route->post("/dash/home", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
 // Contacts
-$route->get("/contatos/home", "Agenda:home");
-$route->get("/contatos/lista", "Agenda:contactDash");
-$route->get("/contatos/lixeira", "Agenda:contactTrashDash");
-$route->get("/contatos/cadastrar", "Agenda:registerContact");
-$route->post("/contatos/cadastrar", "Agenda:registerContact");
-$route->get("/contatos/editar/{id}", "Agenda:updatedContact");
-$route->post("/contatos/editar", "Agenda:updatedContact");
-$route->get("/contatos/excluir/{id}", "Agenda:deletedContact");
-$route->get("/contatos/excluir-definitivo/{id}", "Agenda:deleteContact");
-$route->get("/contatos/reativar/{id}", "Agenda:reactivatedContact");
+$route->get("/agenda/home", "Agenda:home");
+$route->get("/agenda/lista", "Agenda:contactDash");
+$route->get("/agenda/lixeira", "Agenda:contactTrashDash");
+$route->get("/agenda/cadastrar", "Agenda:registerContact");
+$route->post("/agenda/cadastrar", "Agenda:registerContact");
+$route->get("/agenda/editar/{id}", "Agenda:updatedContact");
+$route->post("/agenda/editar", "Agenda:updatedContact");
+$route->get("/agenda/excluir/{id}", "Agenda:deletedContact");
+$route->get("/agenda/excluir-definitivo/{id}", "Agenda:deleteContact");
+$route->get("/agenda/reativar/{id}", "Agenda:reactivatedContact");
 
 
 //control

@@ -99,16 +99,18 @@
 
                     <div class="app_dash_home_trafic_list">
                         <?php if (!$online): ?>
-                            <div class="message info icon-info">
-                                Não existem usuários online navegando no site neste momento. Quando tiver, você
-                                poderá monitoriar todos por aqui.
+                            <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+                                <i class="bi bi-info-circle-fill p-2"></i>
+                                    Não existem usuários online navegando no site neste momento. Quando tiver, você
+                                    poderá monitoriar todos por aqui.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php else: ?>
                             <?php foreach ($online as $onlineNow): ?>
                                 <article>
                                     <h4>[<?= date_fmt($onlineNow->created_at, "H\hm"); ?> - <?= date_fmt($onlineNow->updated_at,
                                             "H\hm"); ?>]
-                                        <?= ($onlineNow->user ? $onlineNow->user()->fullName() : "Guest User"); ?></h4>
+                                        <?= ($onlineNow->user ? $onlineNow->user()->fullName() : "Usuário Convidado"); ?></h4>
                                     <p><?= $onlineNow->pages; ?> páginas vistas</p>
                                     <p class="radius icon-link"><a target="_blank"
                                                                    href="<?= url("/{$onlineNow->url}"); ?>"><b><?= strtolower(CONF_SITE_NAME); ?></b><?= $onlineNow->url; ?>
@@ -120,40 +122,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-area me-1"></i>
-                            Area Chart Example
-                        </div>
-                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-bar me-1"></i>
-                            Bar Chart Example
-                        </div>
-                        <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            DataTable Example
-                        </div>
-                        <div class="card-body">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
     <?php $this->start("scripts"); ?>
     <script>
@@ -183,10 +152,10 @@
                             list += "</article>";
                         });
                     } else {
-                        list = "<div class=\"message info icon-info\">\n" +
-                            "Não existem usuários online navegando no site neste momento. Quando tiver, você\n" +
-                            "poderá monitoriar todos por aqui.\n" +
-                            "</div>";
+                        list = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">\n" +
+                                "<i class=\"bi bi-info-circle-fill p-2\"></i>\n" +
+                                "Não existem usuários online navegando no site neste momento. Quando tiver, você poderá monitoriar todos por aqui.\n" +
+                                "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>"
                     }
 
                     $(".app_dash_home_trafic_list").html(list);
@@ -195,3 +164,38 @@
         });
     </script>
 <?php $this->end(); ?>
+
+<!--            <div class="row">-->
+<!--                <div class="col-xl-6">-->
+<!--                    <div class="card mb-4">-->
+<!--                        <div class="card-header">-->
+<!--                            <i class="fas fa-chart-area me-1"></i>-->
+<!--                            Area Chart Example-->
+<!--                        </div>-->
+<!--                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-xl-6">-->
+<!--                    <div class="card mb-4">-->
+<!--                        <div class="card-header">-->
+<!--                            <i class="fas fa-chart-bar me-1"></i>-->
+<!--                            Bar Chart Example-->
+<!--                        </div>-->
+<!--                        <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="row">-->
+<!--                <div class="col-xl-6">-->
+<!--                    <div class="card mb-4">-->
+<!--                        <div class="card-header">-->
+<!--                            <i class="fas fa-table me-1"></i>-->
+<!--                            DataTable Example-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
