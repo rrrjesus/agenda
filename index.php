@@ -131,8 +131,9 @@ $route->post("/dash/home", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
 // Contacts
-$route->get("/agenda/home", "Agenda:home");
-$route->get("/agenda/lista", "Agenda:contactDash");
+$route->get("/agenda", "Agenda:contacts");
+$route->get("/agenda/contatos", "Agenda:contacts");
+$route->get("/agenda/setores", "Agenda:sectors");
 $route->get("/agenda/lixeira", "Agenda:contactTrashDash");
 $route->get("/agenda/cadastrar", "Agenda:registerContact");
 $route->post("/agenda/cadastrar", "Agenda:registerContact");

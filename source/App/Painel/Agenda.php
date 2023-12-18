@@ -26,58 +26,61 @@ class Agenda extends Painel
      * @param array|null $data
      * @throws \Exception
      */
-    public function home(?array $data): void
+    /** @return void */
+    public function contacts(): void
     {
         $head = $this->seo->render(
-            "Contatos - " . CONF_SITE_NAME ,
-            "Lista de Contatos",
-            url("/painel/contatos"),
+            "Painel de Contatos - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento da lista de contatos",
+            url("/painel/agenda/contatos"),
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact());
-        $contactlista = $contact->find("status = :s", "s=post")->fetch(true);
-        $lixeira = $contact->find("status = :s", "s=trash")->fetch(true);
-        $lixo = (!empty($lixeira) ? count($lixeira) : '');
+        $contatos = (new Contact())->find("status = :s", "s=post")->fetch(true);
 
-        echo $this->view->render("widgets/contatos/home",
+        echo $this->view->render("widgets/agenda/contacts",
             [
+                "app" => "agenda",
                 "head" => $head,
                 "ramais" => (object)[
                     "totais" => (new Contact())->find()->count(),
                     "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
                     "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
                 ],
-                "setores" => (object)[
-                    "totais" => (new Sector())->find()->count(),
-                    "ativos" => (new Sector())->find("status = :s", "s=post")->count(),
-                    "desativados" => (new Sector())->find("status = :s", "s=trash")->count()
-                ],
-                "contactlista" => $contactlista,
-                "lixo" => $lixo
+                "contatos" => $contatos
             ]);
 
     }
 
     /** @return void */
-    public function contactDash(): void
+    public function sectors(): void
     {
         $head = $this->seo->render(
-            "Contatos - " . CONF_SITE_NAME ,
+            "Painel - Contatos - " . CONF_SITE_NAME ,
             "Lista de Contatos",
             url("/painel"),
             theme("/assets/images/share.jpg")
         );
 
-        $contact = (new Contact());
-        $contactlista = $contact->find("status = :s", "s=post")->fetch(true);
-        $lixeira = $contact->find("status = :s", "s=trash")->fetch(true);
+        $sector = (new Sector());
+        $lista = $sector->find("status = :s", "s=active")->fetch(true);
+        $trash = $sector->find("status = :s", "s=trash")->fetch(true);
         $lixo = (!empty($lixeira) ? count($lixeira) : '');
 
         echo $this->view->render("widgets/agenda/lista",
             [
                 "app" => "agenda",
                 "head" => $head,
+                "setores" => (object)[
+                    "totais" => (new Sector())->find()->count(),
+                    "ativos" => (new Sector())->find("status = :s", "s=active")->count(),
+                    "desativados" => (new Sector())->find("status = :s", "s=disable")->count()
+                ],
+                "ramais" => (object)[
+                    "totais" => (new Contact())->find()->count(),
+                    "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
+                    "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
+                ],
                 "contactlista" => $contactlista,
                 "lixo" => $lixo
             ]);

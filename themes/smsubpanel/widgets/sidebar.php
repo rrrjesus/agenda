@@ -23,8 +23,8 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link fw-semibold" href="<?=url("/painel/agenda/home")?>"><i class="bi bi-house mb-2 me-2"></i> Home</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Ramais</a>
+                        <a class="nav-link fw-semibold" href="<?=url("/painel/agenda/contatos")?>"><i class="bi bi-telephone mb-2 me-2"></i> Contatos</a>
+                        <a class="nav-link fw-semibold" href="<?=url("/painel/agenda/setores")?>"><i class="bi bi-telephone mb-2 me-2"></i> Setores</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

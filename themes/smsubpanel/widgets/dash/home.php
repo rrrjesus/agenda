@@ -15,11 +15,11 @@
 
                 <!-- UsuáriosTotais da Agenda -->
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="fw-semibold text-success text-uppercase mb-1 fs-5">Usuarios</div>
+                                    <div class="fw-semibold text-primary text-uppercase mb-1 fs-5">Usuarios</div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Usuários :  <?=$users->users?></div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Administradores :  <?=$users->admins?></div>
                                     <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$users->totais?></div>
@@ -34,11 +34,11 @@
 
                 <!-- Setores Totais da Agenda -->
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="fw-semibold text-success text-uppercase mb-1 fs-5">Blog</div>
+                                    <div class="fw-semibold text-primary text-uppercase mb-1 fs-5">Blog</div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Artigos :  <?=$blog->posts?></div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Rascunhos :  <?=$blog->drafts?></div>
                                     <div class="h6 mb-0 font-weight-bold text-gray-800">Categorias:  <?=$blog->categories?></div>
@@ -53,11 +53,11 @@
 
                 <!-- Ramais Totais da Agenda -->
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="fw-semibold text-success text-uppercase mb-1 fs-5">Ramais</div>
+                                    <div class="fw-semibold text-primary text-uppercase mb-1 fs-5">Ramais</div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Ativados :  <?=$ramais->ativos?></div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Desativados :  <?=$ramais->desativados?></div>
                                     <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$ramais->totais?></div>
@@ -72,11 +72,11 @@
 
                 <!-- Setores Totais da Agenda -->
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="fw-semibold text-success text-uppercase mb-1 fs-5">Setores</div>
+                                    <div class="fw-semibold text-primary text-uppercase mb-1 fs-5">Setores</div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Ativados :  <?=$setores->ativos?></div>
                                     <div class="h6 mb-1 font-weight-bold text-gray-800">Desativados :  <?=$setores->desativados?></div>
                                     <div class="h6 mb-0 font-weight-bold text-gray-800">Total Geral:  <?=$setores->totais?></div>

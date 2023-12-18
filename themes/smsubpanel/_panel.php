@@ -53,7 +53,7 @@
 <script src="<?= url("/shared/scripts/jquery.min.js"); ?>"></script>
 <script src="<?= url("/shared/scripts/jquery.form.js"); ?>"></script>
 <script src="<?= url("/shared/scripts/jquery-ui.js"); ?>"></script>
-<!--<script src="--><?php //= url("/shared/scripts/jquery.mask.js"); ?><!--"></script>-->
+<script src="<?= url("/shared/scripts/color-modes.js"); ?>"></script>
 <script src="<?= url("/shared/scripts/tinymce/tinymce.min.js"); ?>"></script>
 <script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="<?= theme("/assets/sidebar.js", CONF_VIEW_THEME_PANEL); ?>"></script>
