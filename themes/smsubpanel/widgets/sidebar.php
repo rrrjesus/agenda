@@ -22,9 +22,29 @@
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link fw-semibold" href="<?=url("/painel/agenda/contatos")?>"><i class="bi bi-telephone mb-2 me-2"></i> Contatos</a>
-                        <a class="nav-link fw-semibold" href="<?=url("/painel/agenda/setores")?>"><i class="bi bi-telephone mb-2 me-2"></i> Setores</a>
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionAgenda">
+                        <a class="nav-link  collapsed fw-semibold" href="<?=url("/painel/agenda/contatos")?>" data-bs-toggle="collapse" data-bs-target="#agendaCollapseContact" aria-expanded="false" aria-controls="agendaCollapseContact">
+                            <i class="bi bi-telephone mb-2 me-2"></i> Contatos
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="agendaCollapseContact" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionAgenda">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="<?=url("/painel/agenda/contatos/novo")?>"><i class="bi bi-person-add  mb-2 me-2"></i> Cadastrar</a>
+                                <a class="nav-link" href="<?=url("/painel/agenda/contatos")?>"><i class="bi bi-list  mb-2 me-2"></i> Listar</a>
+                                <a class="nav-link" href="<?=url("/painel/agenda/contatos/lixeira")?>"><i class="bi bi-trash  mb-2 me-2"></i> Lixeira</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link  collapsed fw-semibold" href="<?=url("/painel/agenda/setores")?>" data-bs-toggle="collapse" data-bs-target="#agendaCollapseSector" aria-expanded="false" aria-controls="agendaCollapseSector">
+                            <i class="bi bi-globe-americas mb-2 me-2"></i> Setores
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="agendaCollapseSector" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionAgenda">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="<?=url("/painel/agenda/setores/novo")?>"><i class="bi bi-person-add  mb-2 me-2"></i> Cadastrar</a>
+                                <a class="nav-link" href="<?=url("/painel/agenda/setores")?>"><i class="bi bi-list  mb-2 me-2"></i> Listar</a>
+                                <a class="nav-link" href="<?=url("/painel/agenda/setores/lixeira")?>"><i class="bi bi-trash  mb-2 me-2"></i> Lixeira</a>
+                            </nav>
+                        </div>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

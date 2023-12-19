@@ -49,13 +49,8 @@
     </div>
 </div>
 
-<script src="<?= url("/shared/scripts/bootstrap.bundle.min.js"); ?>"></script>
-<script src="<?= url("/shared/scripts/jquery.min.js"); ?>"></script>
-<script src="<?= url("/shared/scripts/jquery.form.js"); ?>"></script>
-<script src="<?= url("/shared/scripts/jquery-ui.js"); ?>"></script>
-<script src="<?= url("/shared/scripts/color-modes.js"); ?>"></script>
+<script src="<?= theme("/assets/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="<?= url("/shared/scripts/tinymce/tinymce.min.js"); ?>"></script>
-<script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="<?= theme("/assets/sidebar.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="<?=theme("/assets/demo/chart-area-demo.js", CONF_VIEW_THEME_PANEL)?>"></script>

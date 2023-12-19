@@ -36,73 +36,74 @@ class Agenda extends Painel
             theme("/assets/images/share.jpg")
         );
 
-        $contatos = (new Contact())->find("status = :s", "s=post")->fetch(true);
+        $contact = (new Contact());
+        $contatos = $contact->find("status = :s", "s=post")->fetch(true);
 
         echo $this->view->render("widgets/agenda/contacts",
             [
                 "app" => "agenda",
                 "head" => $head,
+                "contatos" => $contatos,
                 "ramais" => (object)[
-                    "totais" => (new Contact())->find()->count(),
-                    "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
-                    "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
-                ],
-                "contatos" => $contatos
+                    "ativos" => $contact->find("status = :s", "s=post")->count(),
+                    "desativados" => $contact->find("status = :s", "s=trash")->count()
+                ]
             ]);
 
     }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    /** @return void */
+    public function contactsTrash(): void
+    {
+        $head = $this->seo->render(
+            "Lixeira de Contatos - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento da lixeira de contatos",
+            url("/painel/agenda/contatos/lixeira"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $contact = (new Contact());
+        $contacts = $contact->find("status = :s", "s=trash")->fetch(true);
+        $lixeira = $contact->find("status = :s", "s=trash")->count();
+
+        echo $this->view->render("widgets/agenda/contacts-trash",
+            [
+                "app" => "agenda",
+                "head" => $head,
+                "contacts" => $contacts,
+                "lixeira" => $lixeira
+            ]);
+
+    }
+
+
 
     /** @return void */
     public function sectors(): void
     {
         $head = $this->seo->render(
-            "Painel - Contatos - " . CONF_SITE_NAME ,
-            "Lista de Contatos",
+            "Painel - Setores - " . CONF_SITE_NAME ,
+            "Lista de Setores",
             url("/painel"),
             theme("/assets/images/share.jpg")
         );
 
         $sector = (new Sector());
-        $lista = $sector->find("status = :s", "s=active")->fetch(true);
-        $trash = $sector->find("status = :s", "s=trash")->fetch(true);
-        $lixo = (!empty($lixeira) ? count($lixeira) : '');
+        $sectors = $sector->find("status = :s", "s=post")->fetch(true);
 
-        echo $this->view->render("widgets/agenda/lista",
+        echo $this->view->render("widgets/agenda/sectors",
             [
                 "app" => "agenda",
                 "head" => $head,
-                "setores" => (object)[
-                    "totais" => (new Sector())->find()->count(),
-                    "ativos" => (new Sector())->find("status = :s", "s=active")->count(),
-                    "desativados" => (new Sector())->find("status = :s", "s=disable")->count()
-                ],
-                "ramais" => (object)[
-                    "totais" => (new Contact())->find()->count(),
-                    "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
-                    "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
-                ],
-                "contactlista" => $contactlista,
-                "lixo" => $lixo
-            ]);
-
-    }
-
-    /** @return void */
-    public function contactTrashDash(): void
-    {
-        $head = $this->seo->render(
-            "Lixeira de Contatos - " . CONF_SITE_NAME ,
-            "Lixeira de Contatos",
-            url("/dashboard/lixeira-contatos"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $contact = (new Contact())->find("status = :s", "s=trash")->fetch(true);
-
-        echo $this->view->render("contact-list-trash",
-            [
-                "head" => $head,
-                "contact" => $contact
+                "sectors" => $sectors,
+                "sector" => (object)[
+                    "ativos" => $sector->find("status = :s", "s=post")->count(),
+                    "desativados" => $sector->find("status = :s", "s=trash")->count()
+                ]
             ]);
 
     }
@@ -110,17 +111,11 @@ class Agenda extends Painel
     /** @return void
      * @param null|array $data
      */
-    public function registerContact(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
+    public function newContact(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
     {
         if(!empty($data['csrf'])) {
             if (!csrf_verify($data)) {
                 $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
-                echo json_encode($json);
-                return;
-            }
-
-            if(in_array("", $data)){
-                $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->icon()->render();
                 echo json_encode($json);
                 return;
             }
@@ -135,7 +130,7 @@ class Agenda extends Painel
             );
 
             if($contact->register($contact)){
-                $json['redirect'] = url("/dashboard/cadastrar-contato");
+                $json['redirect'] = url("/painel/agenda/novo");
             } else {
                 $json['message'] = $contact->message()->icon()->render();
             }
@@ -146,12 +141,13 @@ class Agenda extends Painel
         $head = $this->seo->render(
             "Cadastro de Contato - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/dashboard/cadastrar-contato"),
+            url("/painel/agenda/novo"),
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("contact-register",
+        echo $this->view->render("widgets/agenda/contacts-new",
             [
+                "app" => "agenda",
                 "head" => $head
             ]);
     }

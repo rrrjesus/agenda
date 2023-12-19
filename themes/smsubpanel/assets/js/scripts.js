@@ -1,3 +1,11 @@
+
+//  DATA-BS-TOGGLE ="TOOLTIP" BOOTSTRAP TITLE
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-togglee="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 // JQUERY INIT
 
 $(function () {

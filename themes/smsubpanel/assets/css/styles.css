@@ -35,13 +35,13 @@ span.twitter-typeahead .tt-suggestion:hover {
 
 /* AJUDA */
 .custom-tooltip {
-    --bs-tooltip-bg: var(--bd-red-bg);
+    --bs-tooltip-bg: var(--bs-primary);
     --bs-tooltip-color: var(--bs-white);
 }
 
-.page-link {color: #dc3545;}
-.pagination {--bs-link-hover-color: #900c0c;}
-.active>.page-link, .page-link.active {background-color: #dc3545;border-color: #dc3545;}
+.page-link {color: var(--bs-primary)}
+.pagination {--bs-link-hover-color: #0c1390;}
+.active>.page-link, .page-link.active {background-color: var(--bs-primary);border-color: var(--bs-primary);}
 
 /*DEFAULT LOAD*/
 .ajax_load {

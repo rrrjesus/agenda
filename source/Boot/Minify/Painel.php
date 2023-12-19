@@ -37,12 +37,14 @@ $minPainelCss->minify(__DIR__ . "/../../../themes/" . CONF_VIEW_THEME_PANEL . "/
  * JS
  */
 $minPainelJs = new MatthiasMullie\Minify\JS();
+
+// JS Bootstrap 5
+$minPainelJs->add(__DIR__ . "/../../../shared/scripts/bootstrap.bundle.min.js");
 // JS Padrão Sistema Dashboard
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery.min.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery.form.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery-ui.js");
-// JS Bootstrap 5
-$minPainelJs->add(__DIR__ . "/../../../shared/scripts/bootstrap.bundle.min.js");
+// JS Theme Color (Light / Dark / Auto)
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/color-modes.js");
 // JS Datatables Bootstrap 5
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery.dataTables.min.js");

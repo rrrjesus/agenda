@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //var table =
-    $('#contactApp').DataTable( {
+    $('#contacts').DataTable( {
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
