@@ -44,6 +44,7 @@ $minPainelJs->add(__DIR__ . "/../../../shared/scripts/bootstrap.bundle.min.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery.min.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery.form.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery-ui.js");
+    $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery.validate.min.js");
 // JS Theme Color (Light / Dark / Auto)
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/color-modes.js");
 // JS Datatables Bootstrap 5

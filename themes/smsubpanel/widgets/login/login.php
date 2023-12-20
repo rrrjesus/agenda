@@ -6,7 +6,7 @@
         <h1 class="h3 mb-3 fw-normal text-center">
             <img src="<?=theme("assets/images/logo_intra.png")?>" class="mb-1 me-2" alt="logo" width="30" height="30"><?=CONF_SITE_NAME?></h1>
         <p class="text-center fw-semibold text-body-emphasis mb-4">Por favor insira seu login e senha!</p>
-        <div class="row"><?=flash();?></div>
+        <div class="ajax_response"><?=flash();?></div>
 
         <label for="inputPassword" class="form-label fw-semibold"><i class="bi bi-envelope-at pe-2"></i>Email</label>
         <div class="form-floating mb-3 mt-1">
