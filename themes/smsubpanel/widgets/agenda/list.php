@@ -22,10 +22,10 @@
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-12 ml-auto text-center">
                             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/agenda/contatos/novo")?>"
+                               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/agenda/contatos")?>"
                                role="button"><i class="bi bi-telephone-plus me-1"></i>Novo</a>
                             <?php if(!empty($ramais->desativados)){ ?>
-                                <a role="button" href="<?=url("/painel/agenda/contatos/lixeira")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                <a role="button" href="<?=url("/painel/agenda/lixeira")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
                                    data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-primary">
                                     </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"><?=$ramais->desativados?></span></a>
                             <?php } ?>
@@ -51,7 +51,7 @@
                                 <?php foreach ($contatos as $lista): ?>
                                     <tr>
                                         <td class="text-center"><?=$lista->id?></td>
-                                        <?php if(!empty($lista->sector) && $lista->sector()->status == "post"):
+                                        <?php if(!empty($lista->sector) && $lista->sector()->status == "active"):
                                             echo '<td class="text-center">'.$lista->sector()->sector_name;
                                         else:
                                             echo '<td class="text-center text-primary">

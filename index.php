@@ -131,14 +131,14 @@ $route->post("/dash/home", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
 // Contacts
-$route->get("/agenda", "Agenda:contacts");
-$route->get("/agenda/contatos", "Agenda:contacts");
+$route->get("/agenda", "Agenda:list");
+$route->get("/agenda/lista", "Agenda:list");
 $route->get("/agenda/setores", "Agenda:sectors");
-$route->get("/agenda/contatos/lixeira", "Agenda:contactsTrash");
-$route->get("/agenda/contatos/novo", "Agenda:newContact");
-$route->post("/agenda/contatos/novo", "Agenda:newContact");
-$route->get("/agenda/editar/{id}", "Agenda:updatedContact");
-$route->post("/agenda/editar", "Agenda:updatedContact");
+$route->get("/agenda/lixeira", "Agenda:trash");
+$route->get("/agenda/contatos", "Agenda:contact");
+$route->post("/agenda/contatos", "Agenda:contact");
+$route->get("/agenda/contatos/{id}", "Agenda:contact");
+$route->post("/agenda/contatos/{id}", "Agenda:contact");
 $route->get("/agenda/excluir/{id}", "Agenda:deletedContact");
 $route->get("/agenda/excluir-definitivo/{id}", "Agenda:deleteContact");
 $route->get("/agenda/reativar/{id}", "Agenda:reactivatedContact");

@@ -2,14 +2,14 @@
 
 namespace Source\App\Painel;
 
-use Source\App\Painel\Admin;
+use Source\App\Painel\Painel;
 use Source\Models\Notification;
 
 /**
  * Class Notifications
  * @package Source\App\Admin
  */
-class Notifications extends Admin
+class Notifications extends Painel
 {
     /**
      * Notifications constructor.

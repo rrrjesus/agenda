@@ -27,7 +27,7 @@ class Agenda extends Painel
      * @throws \Exception
      */
     /** @return void */
-    public function contacts(): void
+    public function list(): void
     {
         $head = $this->seo->render(
             "Painel de Contatos - " . CONF_SITE_NAME ,
@@ -39,7 +39,7 @@ class Agenda extends Painel
         $contact = (new Contact());
         $contatos = $contact->find("status = :s", "s=post")->fetch(true);
 
-        echo $this->view->render("widgets/agenda/contacts",
+        echo $this->view->render("widgets/agenda/list",
             [
                 "app" => "agenda",
                 "head" => $head,
@@ -57,12 +57,12 @@ class Agenda extends Painel
      * @throws \Exception
      */
     /** @return void */
-    public function contactsTrash(): void
+    public function trash(): void
     {
         $head = $this->seo->render(
             "Lixeira de Contatos - " . CONF_SITE_NAME ,
             "Painel para gerenciamento da lixeira de contatos",
-            url("/painel/agenda/contatos/lixeira"),
+            url("/painel/agenda/lixeira"),
             theme("/assets/images/share.jpg")
         );
 
@@ -70,7 +70,7 @@ class Agenda extends Painel
         $contacts = $contact->find("status = :s", "s=trash")->fetch(true);
         $lixeira = $contact->find("status = :s", "s=trash")->count();
 
-        echo $this->view->render("widgets/agenda/contacts-trash",
+        echo $this->view->render("widgets/agenda/trash",
             [
                 "app" => "agenda",
                 "head" => $head,
@@ -79,8 +79,6 @@ class Agenda extends Painel
             ]);
 
     }
-
-
 
     /** @return void */
     public function sectors(): void
@@ -111,41 +109,68 @@ class Agenda extends Painel
     /** @return void
      * @param null|array $data
      */
-    public function newContact(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
+    public function contact(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
     {
         if(!empty($data['csrf'])) {
-            if (!csrf_verify($data)) {
-                $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
+            //create
+            if (!empty($data["action"]) && $data["action"] == "create") {
+
+                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if(in_array("", $data)){
+                    $json['message'] = $this->message->info("Digite o setor, nome e ramal para criar o contato ...")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if (!csrf_verify($data)) {
+                    $json['message'] = $this->message->error("Erro ao cadastrar, verifique os dados ...")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if(is_ramal( $data["ramal"])){
+                    $json['message'] = $this->message->warning("O Ramal informado não é válido !!!")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $dataSector = (new Sector())->findyBySector($data["sector"])->id;
+
+                $contactCreate = new Contact();
+
+                if ( $contactCreate->findByRamal( $data["ramal"], "id")) {
+                    $json['message'] = $this->message->warning("O Ramal informado pertence a outro contato")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $contactCreate->sector = $dataSector;
+                $contactCreate->collaborator = strtoupper($data["collaborator"]);
+                $contactCreate->ramal = $data["ramal"];
+
+                if (!$contactCreate->save()) {
+                    $json["message"] = $contactCreate->message()->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $this->message->success("Cadastro de {$data["collaborator"]} salvo com sucesso ...")->icon()->flash();
+                $json["redirect"] = url("/painel/agenda/contatos/novo");
+
                 echo json_encode($json);
                 return;
             }
-
-            $dataSector = (new Sector())->findyBySector($data["sector"])->id;
-
-            $contact = new Contact();
-            $contact->bootstrap(
-                strtoupper($dataSector),
-                strtoupper($data["collaborator"]),
-                $data["ramal"]
-            );
-
-            if($contact->register($contact)){
-                $json['redirect'] = url("/painel/agenda/novo");
-            } else {
-                $json['message'] = $contact->message()->icon()->render();
-            }
-            echo json_encode($json);
-            return;
         }
 
         $head = $this->seo->render(
-            "Cadastro de Contato - " . CONF_SITE_TITLE,
+            "Cadastro de Contatos - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/painel/agenda/novo"),
+            url("/painel/agenda/contatos/novo"),
             theme("/assets/images/share.jpg")
         );
 
-        echo $this->view->render("widgets/agenda/contacts-new",
+        echo $this->view->render("widgets/agenda/contact",
             [
                 "app" => "agenda",
                 "head" => $head

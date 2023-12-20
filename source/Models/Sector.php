@@ -130,7 +130,7 @@ class Sector extends Model
 
     static function completeSector($columns): ?Sector
     {
-        $stm = (new Sector())->find("status=:s","s=post",$columns);
+        $stm = (new Sector())->find("status=:s","s=active",$columns);
         $array = array();
 
         if(!empty($stm)):

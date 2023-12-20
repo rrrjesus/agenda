@@ -61,7 +61,7 @@ $minPainelJs->add(__DIR__ . "/../../../shared/scripts/buttons.html5.min.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jszip.min.js");
 $minPainelJs->add(__DIR__ . "/../../../shared/scripts/vfs_fonts.js");
 // JS Typeahead Autocomplete
-$minPainelJs->add(__DIR__ . "/../../../shared/scripts/typeahead.bundle.js");
+//$minPainelJs->add(__DIR__ . "/../../../shared/scripts/typeahead.bundle.js");
 //    $minPainelJs->add(__DIR__ . "/../../../shared/scripts/jquery-mask.js");
 
 //theme CSS Dashboard

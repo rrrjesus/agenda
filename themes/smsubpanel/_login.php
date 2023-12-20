@@ -27,7 +27,7 @@
 <script src="<?= url("/shared/scripts/jquery-ui.js"); ?>"></script>
 <script src="<?= url("/shared/scripts/jquery.validate.min.js"); ?>"></script>
 <script src="<?= theme("/assets/js/login_validate.js", CONF_VIEW_THEME_PANEL); ?>"></script>
-<script src="<?= theme("/assets/js/login.js", CONF_VIEW_THEME_PANEL); ?>"></script>
+<script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_THEME_PANEL); ?>"></script>
 <?= $this->section("scripts"); ?>
 
 </body>

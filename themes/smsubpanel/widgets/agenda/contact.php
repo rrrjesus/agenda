@@ -1,22 +1,20 @@
 <?= $this->layout("_panel"); ?>
 
-<?php $this->layout("_panel"); ?>
-
-<h2 class="mt-4">Agenda</h2>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Lista de Contatos</li>
-</ol>
+<h2 class="mt-4 mb-4">Agenda</h2>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
         <div class="card mb-4 border-primary">
-            <div class="card-header text-center fs-5 border-primary text-primary"><i class="bi bi-book-half me-1"></i> Lista de Ramais Ativos</div>
+            <div class="card-header text-center fs-5 border-primary text-primary"><i class="bi bi-book-half me-1"></i> Contatos</div>
                 <div class="card-body">
                     <div class="container-fluid">
 
                         <div class="d-flex justify-content-center">
                             <div class="col-12">
                                 <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/contatos/novo")?>" method="post" enctype="multipart/form-data">
+
+                                    <!-- ACTION SPOOFING-->
+                                    <input type="hidden" name="action" value="create"/>
 
                                     <div class="row justify-content-center mb-3 mt-3">
                                         <div class="ajax_response col-xl-4 col-md-6">
@@ -53,9 +51,8 @@
 
                                     <div class="row justify-content-center mt-3 mb-3">
                                         <div class="col-auto">
-                                            <button data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                    data-bs-custom-class="custom-tooltip"
-                                                    data-bs-title="Clique para gravar o registro" class="btn btn-outline-success btn-sm fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
+                                            <button data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para gravar o registro"
+                                                    class="btn btn-outline-success btn-sm fw-bold me-3" type="submit"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
                                             <a href="<?=url("/painel/agenda/contatos")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
                                                data-bs-custom-class="custom-tooltip"
                                                data-bs-title="Clique para listar os contatos" class="btn btn-outline-info btn-sm fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
@@ -69,7 +66,9 @@
         </div>
     </div>
 </div>
-    <script src="<?= theme("/../".CONF_VIEW_THEME_APP."/assets/scripts.js"); ?>"></script>
+
+<script src="<?= url("/shared/scripts/jquery.min.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/typeahead.bundle.js"); ?>"></script>
 
     <script>
 
