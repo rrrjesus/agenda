@@ -1,14 +1,11 @@
 <?php $this->layout("_panel"); ?>
 
-<h2 class="mt-4">Agenda</h2>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Lista de Contatos</li>
-</ol>
+<h2 class="mt-4 mb-4"><i class="bi bi-book-half me-1"></i> Agenda</h2>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
         <div class="card mb-4 border-primary">
-            <div class="card-header text-center fs-5 border-primary text-primary"><i class="bi bi-book-half me-1"></i> Lista de Ramais Ativos <span class="badge bg-primary rounded-pill"><?=$ramais->ativos?></span>
+            <div class="card-header text-center fs-4 border-primary text-primary"><i class="bi bi-book-half me-1"></i> Lista de Ramais Ativos <span class="badge bg-primary rounded-pill"><?=$ramais->ativos?></span>
             </div>
             <div class="card-body">
                 <div class="container-fluid">
@@ -22,11 +19,11 @@
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-12 ml-auto text-center">
                             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/agenda/contatos")?>"
-                               role="button"><i class="bi bi-telephone-plus me-1"></i>Novo</a>
+                               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success me-3 fw-semibold" href="<?=url("/painel/agenda/contatos")?>"
+                               role="button"><i class="bi bi-telephone-plus me-1 mt-1"></i>Novo</a>
                             <?php if(!empty($ramais->desativados)){ ?>
                                 <a role="button" href="<?=url("/painel/agenda/lixeira")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                                   data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold"><i class="bi bi-trash-fill text-primary">
+                                   data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary position-relative fw-semibold mt-1"><i class="bi bi-trash-fill text-primary">
                                     </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"><?=$ramais->desativados?></span></a>
                             <?php } ?>
 
@@ -35,7 +32,7 @@
 
                     <div class="d-flex justify-content-center">
                         <div class="col-12">
-                            <table id="contacts" class="table table-sm table-bordered border-primary table-striped" style="width:100%">
+                            <table id="contacts" class="table table-bordered border-primary table-hover" style="width:100%">
                                 <thead class="table-primary">
                                 <tr>
                                     <th class="text-center">EDITAR</th>

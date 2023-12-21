@@ -99,15 +99,9 @@ span.twitter-typeahead .tt-suggestion:hover {
     }
 }
 
-.bi {
-    width:1.5rem;height:1.5rem
-}
-.bi {
-    color:inherit !important
-}
 .bd-navbar .dropdown-menu .active .bi {
     display:block !important
 }
 .bi {
-    width:1em;height:1em;vertical-align:-.125em;fill:currentcolor
+   fill:currentcolor
 }

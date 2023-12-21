@@ -1,9 +1,6 @@
 <?php $this->layout("_panel"); ?>
 
-            <h1 class="mt-4">Dashboard</h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Home</li>
-            </ol>
+            <h2 class="mt-4 mb-4"><i class="bi bi-speedometer me-1"></i> Painel</h2>
 
             <div class="row justify-content-center">
                 <div class="col-12 ajax_response">
@@ -99,7 +96,7 @@
 
                     <div class="app_dash_home_trafic_list">
                         <?php if (!$online): ?>
-                            <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+                            <div class="alert alert-info alert-dismissible fade show text-center fw-semibold fs-5x" role="alert">
                                 <i class="bi bi-info-circle-fill p-2"></i>
                                     Não existem usuários online navegando no site neste momento. Quando tiver, você
                                     poderá monitoriar todos por aqui.
@@ -152,7 +149,7 @@
                             list += "</article>";
                         });
                     } else {
-                        list = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">\n" +
+                        list = "<div class=\"alert alert-info alert-dismissible fade show text-center fw-semibold fs-5x\" role=\"alert\">\n" +
                                 "<i class=\"bi bi-info-circle-fill p-2\"></i>\n" +
                                 "Não existem usuários online navegando no site neste momento. Quando tiver, você poderá monitoriar todos por aqui.\n" +
                                 "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>"

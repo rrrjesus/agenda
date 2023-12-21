@@ -126,7 +126,7 @@ class Message
     /** @return string */
     public function render(): string
     {
-        return "<div class='alert alert-{$this->getType()} alert-dismissible fade show text-center' role='alert'>
+        return "<div class='alert alert-{$this->getType()} alert-dismissible fade show text-center fw-semibold fs-5x' role='alert'>
                     <i class='bi bi-{$this->getIcon()} p-2'></i> {$this->getText()}
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> 
                 </div>";

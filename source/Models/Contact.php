@@ -164,67 +164,6 @@ class Contact extends Model
         return null;
     }
 
-    /**
-     * @param Contact $contact
-     * @return bool
-     */
-    public function register(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
-    {
-        if(!$contact->save()) {
-            $this->message = $contact->message;
-            return false;
-        }else{
-            $this->message->success("Cadastro de {$contact->collaborator} salvo com sucesso!!!")->icon()->flash();
-        }
-        return true;
-    }
-
-    /**
-     * @return bool
-     */
-    public function save(): bool
-    {
-        /** Contact Update */
-        if (!empty($this->id)) {
-            $contactId = $this->id;
-
-            if ($this->find("ramal = :r AND id != :i", "r={$this->ramal}&i={$contactId}", "id")->fetch()) {
-                $this->message->warning("O ramal informado já está cadastrado");
-                return false;
-            }
-
-            $this->update($this->safe(), "id = :id", "id={$contactId}");
-            if ($this->fail()) {
-                $this->message->error("Erro ao atualizar, verifique os dados");
-                return false;
-            }
-        }
-
-        /** Contact Create */
-        if (empty($this->id)) {
-
-            if ($this->findByRamal($this->ramal, "id")) {
-                $this->message->warning("O Ramal informado pertence a outro contato");
-                return false;
-            }
-
-            if(is_ramal($this->ramal)){
-                $this->message->warning("O Ramal informado não é válido !!!");
-                return false;
-            }
-
-            $contactId = $this->create($this->safe());
-
-            if ($this->fail()) {
-                $this->message->error("Erro ao cadastrar, verifique os dados");
-                return false;
-            }
-        }
-
-        $this->data = ($this->findById($contactId))->data();
-        return true;
-    }
-
     public function sector(): ?Sector
     {
         if($this->sector) {

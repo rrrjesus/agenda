@@ -7,10 +7,10 @@ $(document).ready(function() {
             });
         },
         buttons: [
-            {extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-sm btn-outline-success mb-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            {extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success mb-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
             // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
-            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-sm btn-outline-secondary mb-2',text:'<i class="bi bi-printer"></i>'},
-            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-sm btn-outline-info mb-2',text:'<i class="bi bi-list"></i>'}],
+            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2',text:'<i class="bi bi-printer"></i>'},
+            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info mb-2',text:'<i class="bi bi-list"></i>'}],
         "dom": "<'row'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -40,7 +40,7 @@ $(document).ready(function() {
                 "aTargets": [0], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<a data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para editar o contato ' + full[2] + ' - Ramal : ' + full[3] + '" href="editar-contato/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
+                        'data-bs-title="Clique para editar o contato ' + full[2] + ' - Ramal : ' + full[3] + '" href="contatos/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
                 }
             },
             {

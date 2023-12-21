@@ -61,8 +61,8 @@
             <p>Desenvolvido por <strong>rrrjesus</strong></p>
             <ul class="list-unstyled d-flex">
                 <li class="ms-3"><a class="link-body-emphasis text-decoration-none fw-medium"
-                                    target="_blank" href="https://api.whatsapp.com/send?phone=5511991091365&text=Olá, preciso de ajuda com o login.">
-                        <i class="bi bi-whatsapp text-success"></i> 991091365</a></li>
+                                    target="_blank" href="https://api.whatsapp.com/send?phone=551149343235&text=Olá, preciso de ajuda com o login.">
+                        <i class="bi bi-whatsapp text-success"></i> 49343235</a></li>
             </ul>
         </div>
     </footer>

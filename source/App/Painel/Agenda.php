@@ -140,7 +140,7 @@ class Agenda extends Painel
                 $contactCreate = new Contact();
 
                 if ( $contactCreate->findByRamal( $data["ramal"], "id")) {
-                    $json['message'] = $this->message->warning("O Ramal informado pertence a outro contato")->icon()->render();
+                    $json['message'] = $this->message->warning("O Ramal informado já esta cadastrado")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -156,15 +156,57 @@ class Agenda extends Painel
                 }
 
                 $this->message->success("Cadastro de {$data["collaborator"]} salvo com sucesso ...")->icon()->flash();
-                $json["redirect"] = url("/painel/agenda/contatos/novo");
+                $json["redirect"] = url("/painel/agenda/contatos");
 
+                echo json_encode($json);
+                return;
+            }
+
+            //update
+            if (!empty($data["action"]) && $data["action"] == "update") {
+                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $contactEdit = (new Contact())->findById($data["contact_id"]);
+                $contact = (new Contact());
+
+                if ($contact->find("ramal = :r AND id != :i", "r={$data["ramal"]}&i={$data["contact_id"]}", "id")->fetch()) {
+                    $json['message'] = $this->message->warning("O Ramal informado pertence a outro contato")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if (!$contactEdit) {
+                    $this->message->error("Você tentou atualizar um contato que não existe ou foi removido")->icon()->flash();
+                    echo json_encode(["redirect" => url("/painel/agenda/lista")]);
+                    return;
+                }
+
+                $dataSector = (new Sector())->findyBySector($data["sector"])->id;
+
+                $contactEdit->sector = $dataSector;
+                $contactEdit->collaborator = strtoupper($data["collaborator"]);
+                $contactEdit->ramal = $data["ramal"];
+
+                if (!$contactEdit->save()) {
+                    $json["message"] = $contactEdit->message()->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $this->message->success("Contato de ".ucfirst(strtolower($data["collaborator"]))." ramal {$data["ramal"]} atualizado com sucesso...")->icon("check2-all")->flash();
+                $json["redirect"] = url("/painel/agenda/lista");
                 echo json_encode($json);
                 return;
             }
         }
 
+        $contactEdit = null;
+        if (!empty($data["contact_id"])) {
+            $contactId = filter_var($data["contact_id"], FILTER_VALIDATE_INT);
+            $contactEdit = (new Contact())->findById($contactId);
+        }
+
         $head = $this->seo->render(
-            "Cadastro de Contatos - " . CONF_SITE_TITLE,
+            "Contatos - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
             url("/painel/agenda/contatos/novo"),
             theme("/assets/images/share.jpg")
@@ -173,7 +215,8 @@ class Agenda extends Painel
         echo $this->view->render("widgets/agenda/contact",
             [
                 "app" => "agenda",
-                "head" => $head
+                "head" => $head,
+                "contact" => $contactEdit
             ]);
     }
 
