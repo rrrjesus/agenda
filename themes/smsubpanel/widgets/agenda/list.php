@@ -1,6 +1,6 @@
 <?php $this->layout("_panel"); ?>
 
-<h2 class="mt-4 mb-4"><i class="bi bi-book-half me-1"></i> Agenda</h2>
+<h2 class="mt-4 mb-4 text-<?=CONF_PANEL_COLOR?>"><i class="bi bi-telephone me-1"></i> Contato</h2>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
@@ -20,7 +20,7 @@
                         <div class="col-md-12 ml-auto text-center">
                             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success me-3 fw-semibold" href="<?=url("/painel/agenda/contatos")?>"
-                               role="button"><i class="bi bi-telephone-plus me-1 mt-1"></i>Novo</a>
+                               role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Novo</a>
                             <?php if(!empty($ramais->desativados)){ ?>
                                 <a role="button" href="<?=url("/painel/agenda/lixeira")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
                                    data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary position-relative fw-semibold mt-1"><i class="bi bi-trash-fill text-primary">

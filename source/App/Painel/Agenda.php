@@ -197,6 +197,25 @@ class Agenda extends Painel
                 echo json_encode($json);
                 return;
             }
+
+            //delete
+            if (!empty($data["action"]) && $data["action"] == "delete") {
+                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $contactDelete = (new Contact())->findById($data["contact_id"]);
+
+                if (!$contactDelete) {
+                    $this->message->error("Você tentou excluir um contato que não existe ou já foi removido")->flash();
+                    $json["redirect"] = url("/painel/agenda/lista");
+                    echo json_encode($json);
+                    return;
+                }
+
+                $contactDelete->destroy();
+                $this->message->success("Contato de ".ucfirst(strtolower($data["collaborator"]))." ramal {$data["ramal"]} foi excluído com sucesso...")->icon("check2-all")->flash();
+                $json["redirect"] = url("/painel/agenda/lista");
+                echo json_encode($json);
+                return;
+            }
         }
 
         $contactEdit = null;

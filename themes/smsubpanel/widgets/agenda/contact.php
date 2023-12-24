@@ -1,6 +1,6 @@
 <?= $this->layout("_panel"); ?>
 
-<h2 class="mt-4 mb-4"><i class="bi bi-book-half me-1"></i> Agenda</h2>
+<h2 class="mt-4 mb-4 text-<?=CONF_PANEL_COLOR?>"><i class="bi bi-telephone me-1"></i> Contato</h2>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
