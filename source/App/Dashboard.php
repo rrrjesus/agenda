@@ -253,7 +253,7 @@ class Dashboard extends Controller
 
     /** @param array $data
      * @return void */
-    public function deletedContact(array $data):void
+    public function deletedContact(?array $data):void
     {
         if(!empty($data['id'])) {
             $contact = new Contact();

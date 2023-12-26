@@ -97,8 +97,8 @@ class Dash extends Painel
             ],
             "ramais" => (object)[
                 "totais" => (new Contact())->find()->count(),
-                "ativos" => (new Contact())->find("status = :s", "s=post")->count(),
-                "desativados" => (new Contact())->find("status = :s", "s=trash")->count()
+                "ativos" => (new Contact())->find("status = :s", "s=actived")->count(),
+                "desativados" => (new Contact())->find("status = :s", "s=disabled")->count()
             ],
             "online" => (new Online())->findByActive(),
             "onlineCount" => (new Online())->findByActive(true)

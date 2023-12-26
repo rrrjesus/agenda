@@ -1,23 +1,30 @@
 <?= $this->layout("_panel"); ?>
 
-<h2 class="mt-4 mb-4 text-<?=CONF_PANEL_COLOR?>"><i class="bi bi-telephone me-1"></i> Contato</h2>
+<div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("")?>"><i class="bi bi-house-door"></i> Painel</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("/painel/agenda/ramais/ativados")?>"><i class="bi bi-telephone"></i> Ramais</a></li>
+            <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> <?php if(!empty($contact->id)): echo "Editar Ramal ".$contact->ramal; else : echo "Cadastrar"; endif;?></li>
+        </ol>
+    </nav>
+</div>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
         <?php if (!$contact): ?>
         <div class="card mb-4 border-primary">
-            <div class="card-header text-center bg-primary fs-4 border-primary text-light fw-semibold"><i class="bi bi-telephone-plus me-1"></i> Cadastrar Contato</div>
                 <div class="card-body">
                     <div class="container-fluid">
                         <div class="d-flex justify-content-center">
                             <div class="col-12">
-                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/contatos")?>" method="post" enctype="multipart/form-data">
+                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/ramais/ramal")?>" method="post" enctype="multipart/form-data">
 
                                     <!-- ACTION SPOOFING-->
                                     <input type="hidden" name="action" value="create"/>
 
                                     <div class="row justify-content-center mb-3 mt-3">
-                                        <div class="ajax_response col-xl-4 col-md-6">
+                                        <div class="ajax_response col-xl-12 col-md-12">
                                             <?=flash();?>
                                         </div>
                                     </div>
@@ -53,7 +60,7 @@
                                         <div class="col-auto">
                                             <button data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para gravar o registro"
                                                     class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
-                                            <a href="<?=url("/painel/agenda/lista")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
+                                            <a href="<?=url("/painel/agenda/ramais/ativados")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
                                                data-bs-custom-class="custom-tooltip"
                                                data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                                         </div>
@@ -66,18 +73,17 @@
         </div>
         <?php else: ?>
         <div class="card mb-4 border-primary">
-            <div class="card-header text-center bg-primary fs-4 border-primary text-light fw-semibold"><i class="bi bi-telephone-plus me-1"></i> Editar Contato <?= $contact->id; ?></div>
             <div class="card-body">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
                         <div class="col-12">
-                            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/contatos/{$contact->id}")?>" method="post" enctype="multipart/form-data">
+                            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/ramais/ramal/{$contact->id}")?>" method="post" enctype="multipart/form-data">
 
                                 <!-- ACTION SPOOFING-->
                                 <input type="hidden" name="action" value="update"/>
 
                                 <div class="row justify-content-center mb-3 mt-3">
-                                    <div class="ajax_response col-xl-4 col-md-6">
+                                    <div class="ajax_response col-xl-12 col-md-12">
                                         <?=flash();?>
                                     </div>
                                 </div>
@@ -111,8 +117,8 @@
                                 <div class="row justify-content-center mt-3 mb-3">
                                     <div class="col-auto">
                                         <button data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para gravar o registro"
-                                                class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
-                                        <a href="<?=url("/painel/agenda/lista")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
+                                                class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> ATUALIZAR</button>
+                                        <a href="<?=url("/painel/agenda/ramais/ativados")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
                                            data-bs-custom-class="custom-tooltip"
                                            data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                                     </div>

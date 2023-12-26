@@ -11,7 +11,7 @@
           data-count="<?= url("/painel/notifications/count"); ?>"
           data-notify="<?= url("/painel/notifications/list"); ?>">0</span>
     <span class="no_mobile icon-clock-o"><?= date("d/m H\hi"); ?></span>
-    <a class="no_mobile icon-sign-out" title="Sair" href="<?= url("/admin/logoff"); ?>">Sair</a>
+
     <span class="icon-menu icon-notext mobile_menu transition"></span>
 
     <!-- Navbar Search-->
@@ -60,9 +60,8 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!"><i class="bi bi-person-fill-gear"></i> Perfil</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="<?= url("/painel/logoff"); ?>"><i class="bi bi-power mb-2"></i> Sair</a></li>
             </ul>
         </li>
     </ul>
+    <a class="btn btn-outline-danger me-0 me-md-3 my-2 my-md-0 fw-semibold" role="button" title="Sair" href="<?= url("/painel/logoff"); ?>"><i class="bi bi-power mb-2"></i> Sair</a>
 </nav>

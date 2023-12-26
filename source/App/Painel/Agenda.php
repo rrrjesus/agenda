@@ -27,26 +27,26 @@ class Agenda extends Painel
      * @throws \Exception
      */
     /** @return void */
-    public function list(): void
+    public function activedExtensions(): void
     {
         $head = $this->seo->render(
-            "Painel de Contatos - " . CONF_SITE_NAME ,
-            "Painel para gerenciamento da lista de contatos",
-            url("/painel/agenda/contatos"),
+            "Ramais Ativados - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento de ramais ativados",
+            url("/painel/agenda/ramais/ativados"),
             theme("/assets/images/share.jpg")
         );
 
         $contact = (new Contact());
-        $contatos = $contact->find("status = :s", "s=post")->fetch(true);
+        $contatos = $contact->find("status = :s", "s=actived")->fetch(true);
 
-        echo $this->view->render("widgets/agenda/list",
+        echo $this->view->render("widgets/agenda/actived",
             [
                 "app" => "agenda",
                 "head" => $head,
                 "contatos" => $contatos,
                 "ramais" => (object)[
-                    "ativos" => $contact->find("status = :s", "s=post")->count(),
-                    "desativados" => $contact->find("status = :s", "s=trash")->count()
+                    "ativos" => $contact->find("status = :s", "s=actived")->count(),
+                    "desativados" => $contact->find("status = :s", "s=disabled")->count()
                 ]
             ]);
 
@@ -57,20 +57,20 @@ class Agenda extends Painel
      * @throws \Exception
      */
     /** @return void */
-    public function trash(): void
+    public function disabledExtensions(): void
     {
         $head = $this->seo->render(
-            "Lixeira de Contatos - " . CONF_SITE_NAME ,
-            "Painel para gerenciamento da lixeira de contatos",
-            url("/painel/agenda/lixeira"),
+            "Ramais Desativados - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento de ramais desativados",
+            url("/painel/agenda/ramais/desativados"),
             theme("/assets/images/share.jpg")
         );
 
         $contact = (new Contact());
-        $contacts = $contact->find("status = :s", "s=trash")->fetch(true);
-        $lixeira = $contact->find("status = :s", "s=trash")->count();
+        $contacts = $contact->find("status = :s", "s=disabled")->fetch(true);
+        $lixeira = $contact->find("status = :s", "s=disabled")->count();
 
-        echo $this->view->render("widgets/agenda/trash",
+        echo $this->view->render("widgets/agenda/disabled",
             [
                 "app" => "agenda",
                 "head" => $head,
@@ -80,31 +80,6 @@ class Agenda extends Painel
 
     }
 
-    /** @return void */
-    public function sectors(): void
-    {
-        $head = $this->seo->render(
-            "Painel - Setores - " . CONF_SITE_NAME ,
-            "Lista de Setores",
-            url("/painel"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $sector = (new Sector());
-        $sectors = $sector->find("status = :s", "s=post")->fetch(true);
-
-        echo $this->view->render("widgets/agenda/sectors",
-            [
-                "app" => "agenda",
-                "head" => $head,
-                "sectors" => $sectors,
-                "sector" => (object)[
-                    "ativos" => $sector->find("status = :s", "s=post")->count(),
-                    "desativados" => $sector->find("status = :s", "s=trash")->count()
-                ]
-            ]);
-
-    }
 
     /** @return void
      * @param null|array $data
@@ -119,6 +94,13 @@ class Agenda extends Painel
 
                 if(in_array("", $data)){
                     $json['message'] = $this->message->info("Digite o setor, nome e ramal para criar o contato ...")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $sectors = (new Sector());
+                if(!isset($sectors->findyBySector($data["sector"])->id)){
+                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
@@ -155,8 +137,8 @@ class Agenda extends Painel
                     return;
                 }
 
-                $this->message->success("Cadastro de {$data["collaborator"]} salvo com sucesso ...")->icon()->flash();
-                $json["redirect"] = url("/painel/agenda/contatos");
+                $this->message->success("Cadastro de {$data["collaborator"]} - ramal : {$data["ramal"]} salvo com sucesso ...")->icon()->flash();
+                $json["redirect"] = url("/painel/agenda/ramais/ramal");
 
                 echo json_encode($json);
                 return;
@@ -165,18 +147,25 @@ class Agenda extends Painel
             //update
             if (!empty($data["action"]) && $data["action"] == "update") {
                 $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $contactEdit = (new Contact())->findById($data["contact_id"]);
+                $contactEdit = (new Contact())->findById($data["ramal_id"]);
                 $contact = (new Contact());
 
-                if ($contact->find("ramal = :r AND id != :i", "r={$data["ramal"]}&i={$data["contact_id"]}", "id")->fetch()) {
+                if ($contact->find("ramal = :r AND id != :i", "r={$data["ramal"]}&i={$data["ramal_id"]}", "id")->fetch()) {
                     $json['message'] = $this->message->warning("O Ramal informado pertence a outro contato")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $sectors = (new Sector());
+                if(!isset($sectors->findyBySector($data["sector"])->id)){
+                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->icon()->render();
                     echo json_encode($json);
                     return;
                 }
 
                 if (!$contactEdit) {
                     $this->message->error("Você tentou atualizar um contato que não existe ou foi removido")->icon()->flash();
-                    echo json_encode(["redirect" => url("/painel/agenda/lista")]);
+                    echo json_encode(["redirect" => url("/painel/agenda/ramais/ativados")]);
                     return;
                 }
 
@@ -193,41 +182,22 @@ class Agenda extends Painel
                 }
 
                 $this->message->success("Contato de ".ucfirst(strtolower($data["collaborator"]))." ramal {$data["ramal"]} atualizado com sucesso...")->icon("check2-all")->flash();
-                $json["redirect"] = url("/painel/agenda/lista");
-                echo json_encode($json);
-                return;
-            }
-
-            //delete
-            if (!empty($data["action"]) && $data["action"] == "delete") {
-                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $contactDelete = (new Contact())->findById($data["contact_id"]);
-
-                if (!$contactDelete) {
-                    $this->message->error("Você tentou excluir um contato que não existe ou já foi removido")->flash();
-                    $json["redirect"] = url("/painel/agenda/lista");
-                    echo json_encode($json);
-                    return;
-                }
-
-                $contactDelete->destroy();
-                $this->message->success("Contato de ".ucfirst(strtolower($data["collaborator"]))." ramal {$data["ramal"]} foi excluído com sucesso...")->icon("check2-all")->flash();
-                $json["redirect"] = url("/painel/agenda/lista");
+                $json["redirect"] = url("/painel/agenda/ramais/ativados");
                 echo json_encode($json);
                 return;
             }
         }
 
         $contactEdit = null;
-        if (!empty($data["contact_id"])) {
-            $contactId = filter_var($data["contact_id"], FILTER_VALIDATE_INT);
+        if (!empty($data["ramal_id"])) {
+            $contactId = filter_var($data["ramal_id"], FILTER_VALIDATE_INT);
             $contactEdit = (new Contact())->findById($contactId);
         }
 
         $head = $this->seo->render(
             "Contatos - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
-            url("/painel/agenda/contatos/novo"),
+            url("/painel/agenda/ramais/ramal"),
             theme("/assets/images/share.jpg")
         );
 
@@ -241,126 +211,80 @@ class Agenda extends Painel
 
     /** @param array $data
      * @return void */
-    public function updatedContact(array $data):void
+    public function disabledExtension(?array $data): void
     {
+        if (!empty($data["ramal_id"])) {
+            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $ramalDisable = (new Contact())->findById($data["ramal_id"]);
 
-        if(!empty($data['csrf'])) {
-            if(!empty($data['csrf'])) {
-                if (!csrf_verify($data)) {
-                    $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                if(in_array("", $data)){
-                    $json['message'] = $this->message->info("Informe o setor, nome e ramal para criar contato")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $id = $data['id'];
-                $contacts = (new Contact());
-
-                if($contacts->findById($id)->status == "trash"){
-                    $json['message'] = $this->message->warning("O contato informado está na lixeira !!!")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $sectors = (new Sector());
-                if(!isset($sectors->findyBySector($data["sector"])->id)){
-                    $json['message'] = $this->message->warning("Informe um setor cadastrado !!!")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                if($sectors->findyBySector($data["sector"])->status == "trash"){
-                    $json['message'] = $this->message->warning("O setor informado está na lixeira !!!")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $dataSector = $sectors->findyBySector($data["sector"])->id;
-
-                $contact = new Contact();
-
-                $contact->bootstrapId(
-                    $data["id"],
-                    $dataSector,
-                    $data["collaborator"],
-                    $data["ramal"]
-                );
-
-                if($contact->updated($contact)){
-                    $json['redirect'] = url("/dashboard/listar-contatos");
-                } else {
-                    $json['message'] = $contact->message()->icon()->render();
-                }
-                echo json_encode($json);
+            if (!$ramalDisable) {
+                $this->message->error("Você tentou desabilitar um ramal que não existe ou foi removido")->icon()->flash();
+                redirect("/painel/agenda/ramais/ativados");
                 return;
             }
+
+            $ramalDisable->status = "disabled";
+            $ramalDisable->updated_at = (new \DateTime())->format("Y-m-d H:i:s");
+
+            if (!$ramalDisable->save()) {
+                $ramalDisable->message()->icon()->render();
+                redirect("/painel/agenda/ramais/ativados");
+                return;
+            }
+
         }
 
-        $id = $data['id'];
-        $edit = (new Contact())->findById($id);
-        $sector = (new Sector())->findById($edit->sector);
-
-        $head = $this->seo->render(
-            "Edição de Contato - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
-            url("/dashboard/editar-contato/{$id}"),
-            theme("/assets/images/share.jpg")
-        );
-
-        echo $this->view->render("contact-edit",
-            [
-                "head" => $head,
-                "edit" => $edit,
-                "sector" => $sector
-            ]);
+        $this->message->success("Ramal {$ramalDisable->ramal} desabilitado com sucesso...")->icon("check2-all")->flash();
+        redirect("/painel/agenda/ramais/ativados");
     }
 
     /** @param array $data
      * @return void */
-    public function deletedContact(array $data):void
+    public function activatedExtension(?array $data): void
     {
-        if(!empty($data['id'])) {
-            $contact = new Contact();
-            $contact->bootstrapTrash(
-                $data['id'],
-                "trash",
-                (new \DateTime())->format("Y-m-d H:i:s")
-            );
-            $contact->deleted($contact);
+        if (!empty($data["ramal_id"])) {
+            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $ramalDisable = (new Contact())->findById($data["ramal_id"]);
+
+            if (!$ramalDisable) {
+                $this->message->error("Você tentou desabilitar um ramal que não existe ou foi removido")->icon()->flash();
+                redirect("/painel/agenda/ramais/desativados");
+                return;
+            }
+
+            $ramalDisable->status = "actived";
+            $ramalDisable->updated_at = (new \DateTime())->format("Y-m-d H:i:s");
+
+            if (!$ramalDisable->save()) {
+                $ramalDisable->message()->icon()->render();
+                redirect("/painel/agenda/ramais/desativados");
+                return;
+            }
+
         }
+
+        $this->message->success("Ramal {$ramalDisable->ramal} ativado com sucesso...")->icon("check2-all")->flash();
+        redirect("/painel/agenda/ramais/desativados");
     }
 
     /** @param array $data
      * @return void */
-    public function reactivatedContact(array $data):void
+    public function deletedExtension(?array $data): void
     {
+        if (!empty($data["ramal_id"])) {
+            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $ramalDisable = (new Contact())->findById($data["ramal_id"]);
 
-        if(!empty($data['id'])) {
-            $contact = new Contact();
-            $contact->bootstrapTrash(
-                $data['id'],
-                "post",
-                ""
-            );
-            $contact->reactivated($contact);
-        }
-    }
+            if (!$ramalDisable) {
+                $this->message->error("Você tentou excluir um ramal que não existe ou foi removido")->icon()->flash();
+                redirect("/painel/agenda/ramais/ativados");
+                return;
+            }
 
-    public function deleteContact(array $data):void
-    {
-        if(!empty($data['id'])) {
-            $contact = new Contact();
-            $contact->bootstrapTrash(
-                $data['id'],
-                "trash",
-                (new \DateTime())->format("Y-m-d H:i:s")
-            );
-            $contact->delet($contact);
+            $ramalDisable->destroy();
         }
+
+        $this->message->success("Ramal {$ramalDisable->ramal} excluido com sucesso...")->icon("trash")->flash();
+        redirect("/painel/agenda/ramais/ativados");
     }
 }

@@ -18,17 +18,17 @@ $(document).ready(function() {
         ]
     });
 
-    $('#contacts').DataTable( {
+    $('#extensions').DataTable( {
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
             });
         },
         buttons: [
-            {extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success mb-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
+            {extend:'excel',title:'Agenda',header: 'Agenda',filename:'Agenda',className: 'btn btn-outline-success btn-sm mb-2',text:'<i class="bi bi-file-earmark-excel"></i>' },
             // {extend: 'pdfHtml5',exportOptions: {columns: ':visible'},title:'Agenda',header: 'Agenda',filename:'Agenda',orientation: 'portrait',pageSize: 'LEGAL',className: 'btn btn-outline-danger',text:'<i class="bi bi-file-earmark-pdf"></i>'},
-            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary mb-2',text:'<i class="bi bi-printer"></i>'},
-            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info mb-2',text:'<i class="bi bi-list"></i>'}],
+            {extend:'print', exportOptions: {columns: ':visible'},title:'Agenda SMSUB',header: 'Agenda',filename:'Agenda',orientation: 'portrait',className: 'btn btn-outline-secondary btn-sm mb-2',text:'<i class="bi bi-printer"></i>'},
+            {extend:'colvis',titleAttr: 'Select Colunas',className: 'btn btn-outline-info btn-sm mb-2',text:'<i class="bi bi-list"></i>'}],
         "dom": "<'row'<'col-lg-5 col-sm-5 col-md-5 numporpag'l><'col-lg-2 col-sm-2 col-md-2 text-center'B><'col-lg-5 col-sm-5 col-md-5 searchbar'f>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -58,11 +58,11 @@ $(document).ready(function() {
                 "aTargets": [0], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<a data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para editar o contato ' + full[2] + ' - Ramal : ' + full[3] + '" href="contatos/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
+                        'data-bs-title="Clique para editar o contato ' + full[2] + ' - Ramal : ' + full[3] + '" href="ramal/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
                 }
             },
             {
-                "aTargets": [5], // o numero 6 é o nº da coluna
+                "aTargets": [6], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
                         'data-bs-title="Clique para excluir o contato ' + full[2] + ' - Ramal : ' + full[3] + '" class="btn btn-outline-warning btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'">' +
@@ -77,7 +77,7 @@ $(document).ready(function() {
                                             '<div class="modal-body fw-semibold">Deseja enviar a lixeira o ramal : ' + full[3] + ' ?</div>\n' +
                                                 '<div class="modal-footer">\n' +
                                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                                    '<a href="excluir-contato/' + full[0] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                                    '<a href="ramal/desativar/' + full[0] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                                 '</div>\n' +
                                             '</div>\n' +
                                     '</div>\n' +
@@ -85,11 +85,11 @@ $(document).ready(function() {
                 }
             },
             {
-                "aTargets": [6], // o numero 6 é o nº da coluna
+                "aTargets": [7], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[6]+'">' +
+                    return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[7]+'">' +
                         '<i class="bi bi-trash"></i></button>' +
-                        '<div class="modal fade" id="trashModalFim' + full[6] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                        '<div class="modal fade" id="trashModalFim' + full[7] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                         '<div class="modal-dialog modal-sm">\n' +
                         '<div class="modal-content">\n' +
                         '<div class="modal-header bg-danger text-light">\n' +
@@ -99,7 +99,7 @@ $(document).ready(function() {
                         '<div class="modal-body fw-semibold">Deseja excluir definitivo o ramal : ' + full[3] + ' ?</div>\n' +
                         '<div class="modal-footer">\n' +
                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                        '<a href="excluir-definitivo-contato/' + full[6] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                        '<a href="ramal/excluir/' + full[7] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                         '</div>\n' +
                         '</div>\n' +
                         '</div>\n' +
@@ -110,7 +110,7 @@ $(document).ready(function() {
     });
 
     //var table =
-    $('#contactAppTrash').DataTable( {
+    $('#extensionsDisabled').DataTable( {
         drawCallback: function() {
             $('body').tooltip({
                 selector: '[data-bs-togglee="tooltip"]'
@@ -161,7 +161,7 @@ $(document).ready(function() {
                                             '<div class="modal-body fw-semibold">Deseja restaurar o ramal : ' + full[2] + ' ?</div>\n' +
                                         '<div class="modal-footer">\n' +
                                             '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                                            '<a href="reativar-contato/' + full[4] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                                            '<a href="ramal/ativar/' + full[4] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                                         '</div>\n' +
                                     '</div>\n' +
                                 '</div>\n' +
@@ -183,7 +183,7 @@ $(document).ready(function() {
                         '<div class="modal-body fw-semibold">Deseja excluir definitivo o contato : ' + full[1] + ' ?</div>\n' +
                         '<div class="modal-footer">\n' +
                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
-                        '<a href="excluir-definitivo-contato/' + full[5] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
+                        '<a href="ramal/excluir/' + full[5] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
                         '</div>\n' +
                         '</div>\n' +
                         '</div>\n' +

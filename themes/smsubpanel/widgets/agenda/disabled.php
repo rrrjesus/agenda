@@ -1,15 +1,18 @@
 <?= $this->layout("_panel"); ?>
 
-<h2 class="mt-4">Agenda</h2>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Lixeira de Contatos</li>
-</ol>
+<div class="col-md-12 ml-auto mt-3"> <!-- https://getbootstrap.com/docs/4.0/layout/grid/#mix-and-match -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-secondary" href="<?=url("")?>"><i class="bi bi-house-door"></i> Painel</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-secondary" href="<?=url("/painel/agenda/ramais/ativados")?>"><i class="bi bi-telephone"></i> Ramais</a></li>
+            <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> Ramais Desativados <span class="badge bg-secondary rounded-pill"><?=$lixeira?></span></li>
+        </ol>
+    </nav>
+</div>
 
 <div class="row justify-content-center">
     <div class="col-xl-12">
         <div class="card mb-4 border-secondary">
-            <div class="card-header text-center fs-5 border-secondary text-secondary"><i class="bi bi-trash me-1"></i> Lista de Ramais Desativados <span class="badge bg-secondary rounded-pill"><?=$lixeira?></span>
-            </div>
             <div class="card-body">
                 <div class="container-fluid">
 
@@ -22,14 +25,14 @@
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-12 ml-auto text-center">
                             <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Clique para listar contatos" class="btn btn-outline-danger btn-sm fw-semibold" href="<?=url("/painel/agenda/lista")?>"
+                               data-bs-title="Clique para listar ramais" class="btn btn-outline-danger btn-sm fw-semibold" href="<?=url("/painel/agenda/ramais/ativados")?>"
                                role="button"><i class="bi bi-arrow-right-circle me-2"></i>Sair</a>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-center">
                         <div class="col-12">
-                            <table id="contactAppTrash" class="table table-sm table-bordered border-secondary table-striped" style="width:100%">
+                            <table id="extensionsDisabled" class="table table-sm table-bordered border-secondary table-striped" style="width:100%">
                                 <thead class="table-secondary">
                                 <tr>
                                     <th class="text-center">SETOR</th>
@@ -61,7 +64,7 @@
                                 <?php
                                         endforeach;
                                             else:
-                                                echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-book-half fs-5 me-2"></i> Não existem contatos na lixeira !!!</div>';
+                                                echo '<div class="alert alert-danger fw-semibold text-center" role="alert"><i class="bi bi-telephone fs-5 me-2"></i> Não existem ramais desativados !!!</div>';
                                             endif;
                                 ?>
 

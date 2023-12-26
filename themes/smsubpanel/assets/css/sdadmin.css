@@ -162,8 +162,8 @@
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
     display: flex;
     align-items: center;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.50rem;
+    padding-bottom: 0.50rem;
     position: relative;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {

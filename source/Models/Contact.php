@@ -18,63 +18,6 @@ class Contact extends Model
     }
 
     /**
-     * @param string $sector
-     * @param string $collaborator
-     * @param string $ramal
-     * @param string|null $document
-     * @return Contact
-     */
-    public function bootstrap(
-        string $sector,
-        string $collaborator,
-        string $ramal
-    ): Contact
-    {
-        $this->sector = $sector;
-        $this->collaborator = $collaborator;
-        $this->ramal = $ramal;
-        return $this;
-    }
-
-    /**
-     * @param string $id
-     * @param int $sector
-     * @param string $collaborator
-     * @param string $ramal
-     * @return $this
-     */
-    public function bootstrapId(
-        string $id,
-        int $sector,
-        string $collaborator,
-        string $ramal
-    ): Contact
-    {
-        $this->id = $id;
-        $this->sector = $sector;
-        $this->collaborator = $collaborator;
-        $this->ramal = $ramal;
-        return $this;
-    }
-
-    /**
-     * @param string $id
-     * @param string $status
-     * @return $this
-     */
-    public function bootstrapTrash(
-        string $id,
-        string $status,
-        string $deleted_at
-    ): Contact
-    {
-        $this->id = $id;
-        $this->status = $status;
-        $this->deleted_at = $deleted_at;
-        return $this;
-    }
-
-    /**
      * @param string $ramal
      * @param string $columns
      * @return null|Contact
@@ -83,57 +26,6 @@ class Contact extends Model
     {
         $find = $this->find("ramal = :ramal", "ramal={$ramal}", $columns);
         return $find->fetch();
-    }
-
-    public function updated(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
-    {
-        if(!$contact->save()) {
-            $this->message = $contact->message;
-            return false;
-        }else {
-            $this->message->warning("Edição de {$contact->collaborator} salva com sucesso!!!")->icon()->flash();
-        }
-
-        return true;
-    }
-
-    public function deleted(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
-    {
-        if(!$contact->save()) {
-            $this->message = $contact->message;
-            return false;
-        }else {
-            $this->message->warning("Envio a lixeira de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon("trash")->flash();
-            redirect("/dashboard/listar-contatos");
-        }
-
-        return true;
-    }
-
-    public function reactivated(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
-    {
-        if(!$contact->save()) {
-            $this->message = $contact->message;
-            return false;
-        }else {
-            $this->message->success("Reativação de : {$contact->collaborator} - Ramal : {$contact->ramal} feita com sucesso!!!")->icon("award")->flash();
-            redirect("/dashboard/lixeira-contatos");
-        }
-
-        return true;
-    }
-
-    public function delet(Contact $contact): bool // Só aceita um objeto da Classe Contact e bool só retorna true e false
-    {
-        if(!$contact->delete("id = :id", "id={$this->id}")) {
-            $this->message = $contact->message;
-            return false;
-        }else {
-            $this->message->error("Exclusão definitiva de contato feita com sucesso!!!")->icon("trash")->flash();
-            redirect("/dashboard/listar-contatos");
-        }
-
-        return true;
     }
 
     static function completeRamal($columns): ?Contact

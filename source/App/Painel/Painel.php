@@ -5,6 +5,8 @@ namespace Source\App\Painel;
 use Source\Core\Controller;
 use Source\Models\Auth;
 
+date_default_timezone_set('America/Sao_Paulo');
+
 /**
  * Class Admin
  * @package Source\App\Admin
