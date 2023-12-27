@@ -131,9 +131,8 @@ $route->post("/dash/home", "Dash:home");
 $route->get("/logoff", "Dash:logoff");
 
 // Contacts
-$route->get("/agenda", "Agenda:list");
+$route->get("/agenda", "Agenda:activedExtensions");
 $route->get("/agenda/ramais/ativados", "Agenda:activedExtensions");
-$route->get("/agenda/setores", "Agenda:sectors");
 $route->get("/agenda/ramais/desativados", "Agenda:disabledExtensions");
 $route->get("/agenda/ramais/ramal", "Agenda:contact");
 $route->post("/agenda/ramais/ramal", "Agenda:contact");
@@ -142,6 +141,17 @@ $route->post("/agenda/ramais/ramal/{ramal_id}", "Agenda:contact");
 $route->get("/agenda/ramais/ramal/desativar/{ramal_id}", "Agenda:disabledExtension");
 $route->get("/agenda/ramais/ramal/excluir/{ramal_id}", "Agenda:deletedExtension");
 $route->get("/agenda/ramais/ramal/ativar/{ramal_id}", "Agenda:activatedExtension");
+
+// Sectors
+$route->get("/agenda/setores/ativados", "Agenda:activedSectors");
+$route->get("/agenda/setores/desativados", "Agenda:disabledSectors");
+$route->get("/agenda/setores/setor", "Agenda:sector");
+$route->post("/agenda/setores/setor", "Agenda:sector");
+$route->get("/agenda/setores/setor/{sector_id}", "Agenda:sector");
+$route->post("/agenda/setores/setor/{sector_id}", "Agenda:sector");
+$route->get("/agenda/setores/setor/desativar/{sector_id}", "Agenda:disabledSector");
+$route->get("/agenda/setores/setor/excluir/{sector_id}", "Agenda:deletedSector");
+$route->get("/agenda/setores/setor/ativar/{sector_id}", "Agenda:activatedSector");
 
 
 //control

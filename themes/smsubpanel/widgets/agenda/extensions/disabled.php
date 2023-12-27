@@ -49,7 +49,7 @@
                                         foreach ($contacts as $list):
                                 ?>
                                     <tr>
-                                        <?php if(!empty($list->sector) && $list->sector()->status == "post"):
+                                        <?php if(!empty($list->sector) && $list->sector()->status == "actived"):
                                             echo '<td class="text-center">'.$list->sector()->sector_name;
                                         else:
                                             echo '<td class="text-center text-danger"><del>'.$list->sector()->sector_name.'<del>';

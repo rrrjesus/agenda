@@ -60,6 +60,17 @@ class Sector extends Model
         return $this;
     }
 
+    /**
+     * @param string $sector
+     * @param string $columns
+     * @return null|Sector
+     */
+    public function findBySector(string $sector, string $columns = "*"): ?Sector
+    {
+        $find = $this->find("sector_name = :s", "s={$sector}", $columns);
+        return $find->fetch();
+    }
+
     /** @return Sector|null
      */
     public function sector(): ?Sector
@@ -130,7 +141,7 @@ class Sector extends Model
 
     static function completeSector($columns): ?Sector
     {
-        $stm = (new Sector())->find("status=:s","s=active",$columns);
+        $stm = (new Sector())->find("status=:s","s=actived",$columns);
         $array = array();
 
         if(!empty($stm)):

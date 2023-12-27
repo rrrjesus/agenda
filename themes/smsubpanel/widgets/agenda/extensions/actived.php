@@ -5,7 +5,7 @@
         <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
             <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("")?>"><i class="bi bi-house-door"></i> Painel</a></li>
             <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("/painel/agenda/ramais/ativados")?>"><i class="bi bi-telephone"></i> Ramais</a></li>
-            <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> Ramais Ativos <span class="badge bg-<?=CONF_PANEL_COLOR?>" rounded-pill"><?=$ramais->ativos?></span></li>
+            <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> Ramais Ativos <span class="badge bg-<?=CONF_PANEL_COLOR?> rounded-pill"><?=$ramais->ativos?></span></li>
         </ol>
     </nav>
 </div>
@@ -25,12 +25,12 @@
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-12 ml-auto text-center">
                             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
-                               data-bs-title="Clique para cadastrar novo contato" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/agenda/ramais/ramal")?>"
+                               data-bs-title="Clique para cadastrar novo ramal" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/agenda/ramais/ramal")?>"
                                role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Novo</a>
                             <?php if(!empty($ramais->desativados)){ ?>
                                 <a role="button" href="<?=url("/painel/agenda/ramais/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                                   data-bs-title="Clique para acessar a lixeira de contatos" class="btn btn-outline-secondary btn-sm position-relative fw-semibold mt-1"><i class="bi bi-trash-fill text-primary">
-                                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"><?=$ramais->desativados?></span></a>
+                                   data-bs-title="Clique para acessar ramais desativados" class="btn btn-outline-secondary btn-sm position-relative fw-semibold mt-1"><i class="bi bi-trash-fill text-secondary-emphasis">
+                                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$ramais->desativados?></span></a>
                             <?php } ?>
 
                         </div>
@@ -45,8 +45,8 @@
                                     <th class="text-center">SETOR</th>
                                     <th class="text-center">NOME</th>
                                     <th class="text-center">RAMAL</th>
-                                    <th class="text-center">CRIADO EM:</th>
-                                    <th class="text-center">EDITADO EM:</th>
+                                    <th class="text-center">CRIADO:</th>
+                                    <th class="text-center">EDITADO:</th>
                                     <th class="text-center">LIXEIRA</th>
                                     <th class="text-center">DEFINITIVO?</th>
                                 </tr>
@@ -55,7 +55,7 @@
                                 <?php foreach ($contatos as $lista): ?>
                                     <tr>
                                         <td class="text-center"><?=$lista->id?></td>
-                                        <?php if(!empty($lista->sector) && $lista->sector()->status == 'active'):
+                                        <?php if(!empty($lista->sector) && $lista->sector()->status == 'actived'):
                                             echo '<td class="text-center">'.$lista->sector()->sector_name.'</td>';
                                         else:
                                             echo '<td class="text-center text-primary">

@@ -94,7 +94,7 @@ class Web extends Controller
 //        $post->views += 1;
 //        $post->save();
 
-        $contact = (new Contact())->find("status = :s", "s=post")->fetch(true);
+        $contact = (new Contact())->find("status = :s", "s=actived")->fetch(true);
 
         echo $this->view->render("contact",
             [

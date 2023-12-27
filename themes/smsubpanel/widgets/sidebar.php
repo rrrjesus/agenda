@@ -40,18 +40,18 @@
                         </a>
                         <div class="collapse" id="agendaCollapseSector" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionAgenda">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/contatos")?>"><i class="bi bi-person-add  mb-2 me-2"></i> Cadastrar</a>
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/lista")?>"><i class="bi bi-list  mb-2 me-2"></i> Listar</a>
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/lixeira")?>"><i class="bi bi-trash  mb-2 me-2"></i> Lixeira</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/setor")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Cadastrar</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/ativados")?>"><i class="bi bi-globe-americas bi-2xx me-2"></i> Ativos</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/desativados")?>"><i class="bi bi-trash bi-2xx me-2"></i> Desativados</a>
                             </nav>
                         </div>
                     </nav>
                 </div>
             </div>
         </div>
-        <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+        <div class="sb-sidenav-footer fw-semibold">
+            <div class="small">Logado como:</div>
+            <?=(new \Source\Models\Auth())->user()->first_name?>
         </div>
     </nav>
 </div>
