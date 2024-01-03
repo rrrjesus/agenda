@@ -56,7 +56,7 @@
                                         endif;
                                         ?></td>
                                         <td class="text-center"><?=$list->collaborator?></td>
-                                        <td class="text-center"><span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill"><?=$list->ramal?></span></td>
+                                        <td class="text-center"><span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill fs-6"><?=$list->ramal?></span></td>
                                         <td class="text-center"><?php if(empty($list->deleted_at)) {echo '';} else {date('d/m/Y H\hi', strtotime($list->deleted_at));}?></td>
                                         <td class="text-center"><?=$list->id?></td>
                                         <td class="text-center"><?=$list->id?></td>

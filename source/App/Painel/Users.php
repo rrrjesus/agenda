@@ -2,20 +2,16 @@
 
 namespace Source\App\Painel;
 
-use Source\App\Admin\Admin;
 use Source\Models\User;
 use Source\Support\Pager;
 use Source\Support\Thumb;
 use Source\Support\Upload;
 
-use function Source\App\Admin\date_fmt_back;
-use function Source\App\Admin\str_search;
-
 /**
  * Class Users
  * @package Source\App\Admin
  */
-class Users extends Admin
+class Users extends Painel
 {
     /**
      * Users constructor.
@@ -78,7 +74,7 @@ class Users extends Admin
     {
         //create
         if (!empty($data["action"]) && $data["action"] == "create") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
             $userCreate = new User();
             $userCreate->first_name = $data["first_name"];
@@ -121,7 +117,7 @@ class Users extends Admin
 
         //update
         if (!empty($data["action"]) && $data["action"] == "update") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $userUpdate = (new User())->findById($data["user_id"]);
 
             if (!$userUpdate) {
@@ -173,7 +169,7 @@ class Users extends Admin
 
         //delete
         if (!empty($data["action"]) && $data["action"] == "delete") {
-            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $userDelete = (new User())->findById($data["user_id"]);
 
             if (!$userDelete) {

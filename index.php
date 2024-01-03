@@ -204,13 +204,12 @@ $route->get("/site/carousel/{carousel_id}", "Site:carousel");
 $route->post("/site/carousel/{carousel_id}", "Site:carousel");
 
 //users
-$route->get("/users/home", "Users:home");
-$route->post("/users/home", "Users:home");
-$route->get("/users/home/{search}/{page}", "Users:home");
-$route->get("/users/user", "Users:user");
-$route->post("/users/user", "Users:user");
-$route->get("/users/user/{user_id}", "Users:user");
-$route->post("/users/user/{user_id}", "Users:user");
+$route->get("/usuarios", "Users:home");
+$route->post("/usuarios", "Users:home");
+$route->get("/usuarios/usuario", "Users:user");
+$route->post("/usuarios/usuario", "Users:user");
+$route->get("/usuarios/usuario/{user_id}", "Users:user");
+$route->post("/usuarios/usuario/{user_id}", "Users:user");
 
 //notification center
 $route->post("/notifications/count", "Notifications:count");

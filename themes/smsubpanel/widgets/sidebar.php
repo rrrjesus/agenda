@@ -29,9 +29,9 @@
                         </a>
                         <div class="collapse" id="agendaCollapseContact" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionAgenda">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/ramais/ramal")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Cadastrar</a>
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/ramais/ativados")?>"><i class="bi bi-telephone bi-2xx me-2"></i> Ativos</a>
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/ramais/desativados")?>"><i class="bi bi-trash bi-2xx me-2"></i> Desativados</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/ramais/ramal")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Novo Ramal</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/ramais/ativados")?>"><i class="bi bi-telephone bi-2xx me-2"></i> Ramais Ativos</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/ramais/desativados")?>"><i class="bi bi-trash bi-2xx me-2"></i> Ramais Inativos</a>
                             </nav>
                         </div>
                         <a class="nav-link  collapsed fw-semibold fs-6" href="<?=url("/painel/agenda/setores")?>" data-bs-toggle="collapse" data-bs-target="#agendaCollapseSector" aria-expanded="false" aria-controls="agendaCollapseSector">
@@ -40,11 +40,22 @@
                         </a>
                         <div class="collapse" id="agendaCollapseSector" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionAgenda">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/setor")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Cadastrar</a>
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/ativados")?>"><i class="bi bi-globe-americas bi-2xx me-2"></i> Ativos</a>
-                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/desativados")?>"><i class="bi bi-trash bi-2xx me-2"></i> Desativados</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/setor")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Novo Setor</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/ativados")?>"><i class="bi bi-globe-americas bi-2xx me-2"></i> Setores Ativos</a>
+                                <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/agenda/setores/desativados")?>"><i class="bi bi-trash bi-2xx me-2"></i> Setores Inativos</a>
                             </nav>
                         </div>
+                    </nav>
+                </div>
+                <a class="nav-link collapsed fw-semibold fs-6" href="<?=url("/painel/users/home")?>" data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="bi bi-person bi-2xx"></i></div>
+                    Usuários
+                    <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-double-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionUser">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/usuarios")?>"><i class="bi bi-list bi-2xx me-2"></i> Usuários</a>
+                        <a class="nav-link fw-semibold fs-6" href="<?=url("/painel/usuarios/usuario")?>"><i class="bi bi-person-add bi-2xx me-2"></i> Novo Usuário</a>
                     </nav>
                 </div>
             </div>

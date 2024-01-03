@@ -80,33 +80,6 @@ $("#sector-register").validate({
     }
 });
 
-$("#contact-edit").validate({
-    rules: {
-        sector: {
-            required: true
-            // remote: "remote/valida-email.php"
-        },
-        collaborator: {
-            required: true
-        },
-        ramal: {
-            required: true
-        }
-    },
-    messages: {
-        sector: {
-            required: "Digite o setor !!!"
-            // remote: "Email não encontrado !!!"
-        },
-        collaborator: {
-            required: "Digite o nome !!!"
-        },
-        ramal: {
-            required: "Digite o ramal !!!"
-        }
-    }
-});
-
 $("#user-updated").validate({
     rules: {
         first_name: {

@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-3">
             <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("")?>"><i class="bi bi-house-door"></i> Painel</a></li>
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("/painel/agenda/ramais/ativados")?>"><i class="bi bi-telephone"></i> Setores</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none text-<?=CONF_PANEL_COLOR?>" href="<?=url("/painel/agenda/setores/ativados")?>"><i class="bi bi-telephone"></i> Setores</a></li>
             <li class="breadcrumb-item fw-semibold active" aria-current="page"><i class="bi bi-list"></i> <?php if(!empty($sector->id)): echo "Editar Setor ".$sector->sector_name; else : echo "Cadastrar"; endif;?></li>
         </ol>
     </nav>
@@ -18,7 +18,7 @@
                     <div class="container-fluid">
                         <div class="d-flex justify-content-center">
                             <div class="col-12">
-                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/ramais/ramal")?>" method="post" enctype="multipart/form-data">
+                                <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="sector-register" action="<?=url("/painel/agenda/setores/setor")?>" method="post" enctype="multipart/form-data">
 
                                     <!-- ACTION SPOOFING-->
                                     <input type="hidden" name="action" value="create"/>
@@ -61,7 +61,7 @@
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
                         <div class="col-12">
-                            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="contact-register" action="<?=url("/painel/agenda/ramais/ramal/{$sector->id}")?>" method="post" enctype="multipart/form-data">
+                            <form class="row gy-2 gx-3 align-items-center needs-validation" novalidate id="sector-register" action="<?=url("/painel/agenda/setores/setor/{$sector->id}")?>" method="post" enctype="multipart/form-data">
 
                                 <!-- ACTION SPOOFING-->
                                 <input type="hidden" name="action" value="update"/>

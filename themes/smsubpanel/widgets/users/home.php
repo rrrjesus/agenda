@@ -1,4 +1,4 @@
-<?php $this->layout("_admin"); ?>
+<?php $this->layout("_panel"); ?>
 <?php $this->insert("widgets/users/sidebar"); ?>
 
 <section class="dash_content_app">
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="actions">
-                            <a class="icon-cog btn btn-blue" href="<?= url("/admin/users/user/{$user->id}"); ?>"
+                            <a class="icon-cog btn btn-blue" href="<?= url("/painel/usuarios/usuario/{$user->id}"); ?>"
                                title="">Gerenciar</a>
                         </div>
                     </article>

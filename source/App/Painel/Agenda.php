@@ -19,170 +19,6 @@ class Agenda extends Painel
     }
 
     /*
-     * AGENDA DE SETORES
-     */
-
-    /**
-     * @param array|null $data
-     * @throws \Exception
-     */
-
-    /** @return void */
-    public function activedSectors(): void
-    {
-        $head = $this->seo->render(
-            "Setores Ativados - " . CONF_SITE_NAME ,
-            "Painel para gerenciamento de setores ativados",
-            url("/painel/agenda/setores/ativados"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $sector = (new Sector());
-        $sectors = $sector->find("status = :s", "s=actived")->fetch(true);
-
-        echo $this->view->render("widgets/agenda/sectors/actived",
-            [
-                "app" => "agenda",
-                "head" => $head,
-                "sectors" => $sectors,
-                "painel" => (object)[
-                    "ativos" => $sector->find("status = :s", "s=actived")->count(),
-                    "desativados" => $sector->find("status = :s", "s=disabled")->count()
-                ]
-            ]);
-
-    }
-
-    /**
-     * @param array|null $data
-     * @throws \Exception
-     */
-    /** @return void */
-    public function disabledSectors(): void
-    {
-        $head = $this->seo->render(
-            "Setores Desativados - " . CONF_SITE_NAME ,
-            "Painel para gerenciamento de setores desativados",
-            url("/painel/agenda/setores/desativados"),
-            theme("/assets/images/share.jpg")
-        );
-
-        $sector = (new Sector());
-        $sectors = $sector->find("status = :s", "s=disabled")->fetch(true);
-        $lixeira = $sector->find("status = :s", "s=disabled")->count();
-
-        echo $this->view->render("widgets/agenda/sectors/disabled",
-            [
-                "app" => "agenda",
-                "head" => $head,
-                "sectors" => $sectors,
-                "lixeira" => $lixeira
-            ]);
-
-    }
-
-    /** @return void
-     * @param null|array $data
-     */
-    public function sector(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
-    {
-        if(!empty($data['csrf'])) {
-            //create
-            if (!empty($data["action"]) && $data["action"] == "create") {
-                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-                if(in_array("", $data)){
-                    $json['message'] = $this->message->info("Digite o setor, nome e ramal para criar o contato ...")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                if (!csrf_verify($data)) {
-                    $json['message'] = $this->message->error("Erro ao cadastrar, verifique os dados ...")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $sectorCreate = new Sector();
-
-                $sectorCreate->id = $sectorId;
-
-                if ($sectorCreate->find("sector_name = :s AND id != :i", "s={$sectorCreate->sector_name}&i={$sectorId}", "id")->fetch()) {
-                    $json['message'] = $this->message->warning("O setor informado já está cadastrado");
-                    echo json_encode($json);
-                    return;
-                }
-
-                $sectorCreate->sector = $data["sector"];
-
-                if (!$sectorCreate->save()) {
-                    $json["message"] = $sectorCreate->message()->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $this->message->success("Cadastro de {$data["sector"]} salvo com sucesso ...")->icon()->flash();
-                $json["redirect"] = url("/painel/agenda/setores/setor");
-                echo json_encode($json);
-                return;
-            }
-
-            //update
-            if (!empty($data["action"]) && $data["action"] == "update") {
-                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $sectorEdit = (new Sector())->findById($data["sector_id"]);
-                $sector = (new Sector());
-
-                if ($sector->find("sector_name = :s AND id != :i", "s={$data["sector"]}&i={$data["sector_id"]}", "id")->fetch()) {
-                    $json['message'] = $this->message->warning("O Setor informado já existe ...")->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                if (!$sectorEdit) {
-                    $this->message->error("Você tentou atualizar um setor que não existe ou foi removido")->icon()->flash();
-                    echo json_encode(["redirect" => url("/painel/agenda/ramais/ativados")]);
-                    return;
-                }
-
-                $sectorEdit->sector_name = $data["sector"];
-
-                if (!$sectorEdit->save()) {
-                    $json["message"] = $sectorEdit->message()->icon()->render();
-                    echo json_encode($json);
-                    return;
-                }
-
-                $this->message->success("Setor {$data["sector"]} atualizado com sucesso...")->icon("check2-all")->flash();
-                $json["redirect"] = url("/painel/agenda/setores/ativados");
-                echo json_encode($json);
-                return;
-            }
-        }
-
-        $sectorEdit = null;
-        if (!empty($data["sector_id"])) {
-            $sectorId = filter_var($data["sector_id"], FILTER_VALIDATE_INT);
-            $sectorEdit = (new Sector())->findById($sectorId);
-        }
-
-        $head = $this->seo->render(
-            "Setores - " . CONF_SITE_TITLE,
-            CONF_SITE_DESC,
-            url("/painel/agenda/setores/setor"),
-            theme("/assets/images/share.jpg")
-        );
-
-        echo $this->view->render("widgets/agenda/sectors/sector",
-            [
-                "app" => "agenda",
-                "head" => $head,
-                "sector" => $sectorEdit
-            ]);
-    }
-
-
-    /*
      * AGENDA DE RAMAIS
      */
 
@@ -449,5 +285,245 @@ class Agenda extends Painel
 
         $this->message->success("Ramal {$ramalDisable->ramal} excluido com sucesso...")->icon("trash")->flash();
         redirect("/painel/agenda/ramais/ativados");
+    }
+
+    /*
+ * AGENDA DE SETORES
+ */
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+
+    /** @return void */
+    public function activedSectors(): void
+    {
+        $head = $this->seo->render(
+            "Setores Ativados - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento de setores ativados",
+            url("/painel/agenda/setores/ativados"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $sector = (new Sector());
+        $sectors = $sector->find("status = :s", "s=actived")->fetch(true);
+
+        echo $this->view->render("widgets/agenda/sectors/actived",
+            [
+                "app" => "agenda",
+                "head" => $head,
+                "sectors" => $sectors,
+                "painel" => (object)[
+                    "ativos" => $sector->find("status = :s", "s=actived")->count(),
+                    "desativados" => $sector->find("status = :s", "s=disabled")->count()
+                ]
+            ]);
+
+    }
+
+    /**
+     * @param array|null $data
+     * @throws \Exception
+     */
+    /** @return void */
+    public function disabledSectors(): void
+    {
+        $head = $this->seo->render(
+            "Setores Desativados - " . CONF_SITE_NAME ,
+            "Painel para gerenciamento de setores desativados",
+            url("/painel/agenda/setores/desativados"),
+            theme("/assets/images/share.jpg")
+        );
+
+        $sector = (new Sector());
+        $sectors = $sector->find("status = :s", "s=disabled")->fetch(true);
+        $lixeira = $sector->find("status = :s", "s=disabled")->count();
+
+        echo $this->view->render("widgets/agenda/sectors/disabled",
+            [
+                "app" => "agenda",
+                "head" => $head,
+                "sectors" => $sectors,
+                "lixeira" => $lixeira
+            ]);
+
+    }
+
+    /** @return void
+     * @param null|array $data
+     */
+    public function sector(?array $data): void // O ?array $data é pela existência de duas rotas com o mesmo método
+    {
+        if(!empty($data['csrf'])) {
+            //create
+            if (!empty($data["action"]) && $data["action"] == "create") {
+                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                if(in_array("", $data)){
+                    $json['message'] = $this->message->info("Digite o setor ...")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if (!csrf_verify($data)) {
+                    $json['message'] = $this->message->error("Erro ao cadastrar, verifique os dados ...")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $sectorCreate = new Sector();
+
+                if ( $sectorCreate->findBySector( $data["sector"], "id")) {
+                    $json['message'] = $this->message->warning("O Setor informado já esta cadastrado")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $sectorCreate->sector_name = $data["sector"];
+
+                if (!$sectorCreate->save()) {
+                    $json["message"] = $sectorCreate->message()->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $this->message->success("Cadastro de {$data["sector"]} salvo com sucesso ...")->icon()->flash();
+                $json["redirect"] = url("/painel/agenda/setores/setor");
+                echo json_encode($json);
+                return;
+            }
+
+            //update
+            if (!empty($data["action"]) && $data["action"] == "update") {
+                $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $sectorEdit = (new Sector())->findById($data["sector_id"]);
+                $sector = (new Sector());
+
+                if ($sector->find("sector_name = :s AND id != :i", "s={$data["sector"]}&i={$data["sector_id"]}", "id")->fetch()) {
+                    $json['message'] = $this->message->warning("O Setor informado já existe ...")->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                if (!$sectorEdit) {
+                    $this->message->error("Você tentou atualizar um setor que não existe ou foi removido")->icon()->flash();
+                    echo json_encode(["redirect" => url("/painel/agenda/ramais/ativados")]);
+                    return;
+                }
+
+                $sectorEdit->sector_name = $data["sector"];
+
+                if (!$sectorEdit->save()) {
+                    $json["message"] = $sectorEdit->message()->icon()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $this->message->success("Setor {$data["sector"]} atualizado com sucesso...")->icon("check2-all")->flash();
+                $json["redirect"] = url("/painel/agenda/setores/ativados");
+                echo json_encode($json);
+                return;
+            }
+        }
+
+        $sectorEdit = null;
+        if (!empty($data["sector_id"])) {
+            $sectorId = filter_var($data["sector_id"], FILTER_VALIDATE_INT);
+            $sectorEdit = (new Sector())->findById($sectorId);
+        }
+
+        $head = $this->seo->render(
+            "Setores - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url("/painel/agenda/setores/setor"),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("widgets/agenda/sectors/sector",
+            [
+                "app" => "agenda",
+                "head" => $head,
+                "sector" => $sectorEdit
+            ]);
+    }
+
+    /** @param array $data
+     * @return void */
+    public function disabledSector(?array $data): void
+    {
+        if (!empty($data["sector_id"])) {
+            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sectorDisable = (new Sector())->findById($data["sector_id"]);
+
+            if (!$sectorDisable) {
+                $this->message->error("Você tentou desabilitar um setor que não existe ou foi removido")->icon()->flash();
+                redirect("/painel/agenda/setores/ativados");
+                return;
+            }
+
+            $sectorDisable->status = "disabled";
+            $sectorDisable->updated_at = (new \DateTime())->format("Y-m-d H:i:s");
+
+            if (!$sectorDisable->save()) {
+                $sectorDisable->message()->icon()->render();
+                redirect("/painel/agenda/setores/ativados");
+                return;
+            }
+
+        }
+
+        $this->message->success("Setor {$sectorDisable->sector_name} desabilitado com sucesso...")->icon("check2-all")->flash();
+        redirect("/painel/agenda/setores/ativados");
+    }
+
+    /** @param array $data
+     * @return void */
+    public function activatedSector(?array $data): void
+    {
+        if (!empty($data["sector_id"])) {
+            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sectorDisable = (new Sector())->findById($data["sector_id"]);
+
+            if (!$sectorDisable) {
+                $this->message->error("Você tentou desabilitar um setor que não existe ou foi removido")->icon()->flash();
+                redirect("/painel/agenda/setores/desativados");
+                return;
+            }
+
+            $sectorDisable->status = "actived";
+            $sectorDisable->updated_at = (new \DateTime())->format("Y-m-d H:i:s");
+
+            if (!$sectorDisable->save()) {
+                $sectorDisable->message()->icon()->render();
+                redirect("/painel/agenda/setores/desativados");
+                return;
+            }
+
+        }
+
+        $this->message->success("Setor {$sectorDisable->sector_name} ativado com sucesso...")->icon("check2-all")->flash();
+        redirect("/painel/agenda/setores/desativados");
+    }
+
+    /** @param array $data
+     * @return void */
+    public function deletedSector(?array $data): void
+    {
+        if (!empty($data["sector_id"])) {
+            $data = filter_var_array($data, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sectorDisable = (new Sector())->findById($data["sector_id"]);
+
+            if (!$sectorDisable) {
+                $this->message->error("Você tentou excluir um setorl que não existe ou foi removido")->icon()->flash();
+                redirect("/painel/agenda/setores/ativados");
+                return;
+            }
+
+            $sectorDisable->destroy();
+        }
+
+        $this->message->success("Ramal {$sectorDisable->sector_name} excluido com sucesso...")->icon("trash")->flash();
+        redirect("/painel/agenda/setores/ativados");
     }
 }
