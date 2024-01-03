@@ -58,23 +58,23 @@ $(document).ready(function() {
                 "aTargets": [0], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<a data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para editar o contato ' + full[2] + ' - Ramal : ' + full[3] + '" href="ramal/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
+                        'data-bs-title="Clique para editar o contato" href="ramal/' + full[0] + '" role="button" class="btn btn-outline-warning btn-sm rounded-circle text-center"><i class="bi bi-pencil text-secondary"></i></a>';
                 }
             },
             {
                 "aTargets": [6], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
                     return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
-                        'data-bs-title="Clique para excluir o contato ' + full[2] + ' - Ramal : ' + full[3] + '" class="btn btn-outline-warning btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'">' +
-                                '<i class="bi bi-trash"></i></button>' +
+                        'data-bs-title="Clique para desativar o contato" class="btn btn-outline-secondary btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[0]+'">' +
+                                '<i class="bi bi-telephone-x text-danger"></i></button>' +
                                 '<div class="modal fade" id="trashModal' + full[0] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                                     '<div class="modal-dialog modal-sm">\n' +
                                         '<div class="modal-content">\n' +
-                                            '<div class="modal-header bg-warning text-secondary">\n' +
-                                                '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Enviar a Lixeira Ramal '+ full[3] +'</h6>\n' +
+                                            '<div class="modal-header bg-secondary text-white">\n' +
+                                                '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-telephone-x text-danger me-2"></i> Desativar Ramal '+ full[3] +'</h6>\n' +
                                                 '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                             '</div>\n' +
-                                            '<div class="modal-body fw-semibold">Deseja enviar a lixeira o ramal : ' + full[3] + ' ?</div>\n' +
+                                            '<div class="modal-body fw-semibold">Deseja desativar o ramal : ' + full[3] + ' ?</div>\n' +
                                                 '<div class="modal-footer">\n' +
                                                     '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
                                                     '<a href="ramal/desativar/' + full[0] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
@@ -87,16 +87,17 @@ $(document).ready(function() {
             {
                 "aTargets": [7], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[7]+'">' +
+                    return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+                        'data-bs-title="Clique para excluir definitivamente o contato" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[7]+'">' +
                         '<i class="bi bi-trash"></i></button>' +
                         '<div class="modal fade" id="trashModalFim' + full[7] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                         '<div class="modal-dialog modal-sm">\n' +
                         '<div class="modal-content">\n' +
                         '<div class="modal-header bg-danger text-light">\n' +
-                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir Definitivo Ramal ' + full[3] + '</h6>\n' +
+                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir o Ramal ' + full[3] + '</h6>\n' +
                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                         '</div>\n' +
-                        '<div class="modal-body fw-semibold">Deseja excluir definitivo o ramal : ' + full[3] + ' ?</div>\n' +
+                        '<div class="modal-body fw-semibold">Deseja excluir o ramal : ' + full[3] + ' ?</div>\n' +
                         '<div class="modal-footer">\n' +
                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
                         '<a href="ramal/excluir/' + full[7] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
@@ -149,16 +150,17 @@ $(document).ready(function() {
             {
                 "aTargets": [4], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" class="btn btn-outline-warning btn-sm rounded-circle text-secondary" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[4]+'">' +
-                                '<i class="bi bi-arrow-up-circle"></i></button>' +
+                    return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+                        'data-bs-title="Clique para reativar o ramal" class="btn btn-outline-success btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModal'+ full[4]+'">' +
+                                '<i class="bi bi-telephone-outbound"></i></button>' +
                                     '<div class="modal fade" id="trashModal' + full[4] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                                         '<div class="modal-dialog modal-sm">\n' +
                                             '<div class="modal-content">\n' +
-                                                '<div class="modal-header bg-warning text-secondary">\n' +
-                                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-arrow-up-circle me-2"></i> Restaurar Ramal '+ full[2] +'</h6>\n' +
+                                                '<div class="modal-header bg-success text-white">\n' +
+                                                    '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-telephone-outbound me-2"></i> Ativar Ramal '+ full[2] +'</h6>\n' +
                                                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                                                 '</div>\n' +
-                                            '<div class="modal-body fw-semibold">Deseja restaurar o ramal : ' + full[2] + ' ?</div>\n' +
+                                            '<div class="modal-body fw-semibold">Deseja ativar o ramal : ' + full[2] + ' ?</div>\n' +
                                         '<div class="modal-footer">\n' +
                                             '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
                                             '<a href="ramal/ativar/' + full[4] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +
@@ -171,16 +173,17 @@ $(document).ready(function() {
             {
                 "aTargets": [5], // o numero 6 é o nº da coluna
                 "mRender": function (data, type, full) { //aqui é uma funçãozinha para pegar os ids
-                    return '<button type="button" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[5]+'">' +
+                    return '<button type="button" data-bs-togglee="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"\n' +
+                        'data-bs-title="Clique para excluir definitivamente o ramal" class="btn btn-outline-danger btn-sm rounded-circle" data-bs-toggle="modal" data-bs-target="#trashModalFim'+ full[5]+'">' +
                         '<i class="bi bi-trash"></i></button>' +
                         '<div class="modal fade" id="trashModalFim' + full[5] + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
                         '<div class="modal-dialog modal-sm">\n' +
                         '<div class="modal-content">\n' +
                         '<div class="modal-header bg-danger text-light">\n' +
-                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir Contato ' + full[1] + '</h6>\n' +
+                        '<h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Excluir Ramal ' + full[2] + '</h6>\n' +
                         '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
                         '</div>\n' +
-                        '<div class="modal-body fw-semibold">Deseja excluir definitivo o contato : ' + full[1] + ' ?</div>\n' +
+                        '<div class="modal-body fw-semibold">Deseja excluir o ramal : ' + full[2] + ' ?</div>\n' +
                         '<div class="modal-footer">\n' +
                         '<button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>\n' +
                         '<a href="ramal/excluir/' + full[5] + '" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>\n' +

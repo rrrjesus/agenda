@@ -39,8 +39,8 @@
                                     <th class="text-center">NOME</th>
                                     <th class="text-center">RAMAL</th>
                                     <th class="text-center">EXCLUIDO EM:</th>
-                                    <th class="text-center">RESTAURAR</th>
-                                    <th class="text-center">DEFINITIVO?</th>
+                                    <th class="text-center">ATIVAR</th>
+                                    <th class="text-center">EXCLUIR</th>
                                 </tr>
                                 </thead>
                                 <tbody>

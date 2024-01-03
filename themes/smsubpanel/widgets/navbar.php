@@ -63,5 +63,5 @@
             </ul>
         </li>
     </ul>
-    <a class="btn btn-outline-danger me-0 me-md-3 my-2 my-md-0 fw-semibold" role="button" title="Sair" href="<?= url("/painel/logoff"); ?>"><i class="bi bi-power mb-2"></i> Sair</a>
+    <a class="btn btn-sm btn-danger me-0 me-md-3 my-2 my-md-0 fw-semibold" role="button" title="Sair" href="<?= url("/painel/logoff"); ?>"><i class="bi bi-power mb-2"></i> Sair</a>
 </nav>

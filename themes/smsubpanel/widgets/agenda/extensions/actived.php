@@ -26,11 +26,11 @@
                         <div class="col-md-12 ml-auto text-center">
                             <a data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
                                data-bs-title="Clique para cadastrar novo ramal" class="btn btn-outline-success btn-sm me-3 fw-semibold" href="<?=url("/painel/agenda/ramais/ramal")?>"
-                               role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Novo</a>
+                               role="button"><i class="bi bi-telephone-plus me-2 mt-1"></i>Novo Ramal</a>
                             <?php if(!empty($ramais->desativados)){ ?>
                                 <a role="button" href="<?=url("/painel/agenda/ramais/desativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
-                                   data-bs-title="Clique para acessar ramais desativados" class="btn btn-outline-secondary btn-sm position-relative fw-semibold mt-1"><i class="bi bi-trash-fill text-secondary-emphasis">
-                                    </i> Lixo<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$ramais->desativados?></span></a>
+                                   data-bs-title="Clique para acessar ramais desativados" class="btn btn-outline-secondary btn-sm position-relative fw-semibold mt-1"><i class="bi bi-telephone-x text-danger me-2 mt-1">
+                                    </i> Desativados<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?=$ramais->desativados?></span></a>
                             <?php } ?>
 
                         </div>
@@ -47,39 +47,23 @@
                                     <th class="text-center">RAMAL</th>
                                     <th class="text-center">CRIADO:</th>
                                     <th class="text-center">EDITADO:</th>
-                                    <th class="text-center">LIXEIRA</th>
-                                    <th class="text-center">DEFINITIVO?</th>
+                                    <th class="text-center">DESATIVAR</th>
+                                    <th class="text-center">EXCLUIR</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($contatos as $lista): ?>
                                     <tr>
                                         <td class="text-center"><?=$lista->id?></td>
-                                        <?php if(!empty($lista->sector) && $lista->sector()->status == 'actived'):
+                                        <?php
+                                        if(!empty($lista->sector) && $lista->sector()->status == "actived"):
                                             echo '<td class="text-center">'.$lista->sector()->sector_name.'</td>';
                                         else:
-                                            echo '<td class="text-center text-primary">
-                                                    <button type="button" class="btn btn-outline-success btn-sm rounded-circle me-2" data-bs-toggle="modal" data-bs-target="#trashModal">
-                                                    <i class="bi bi-arrow-counterclockwise"></i></button>
-                                                    <div class="modal fade" id="trashModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header bg-secondary text-light">
-                                                                    <h6 class="modal-title text-center" id="exampleModalLabel"><i class="bi bi-trash me-2"></i> Setor '.$lista->sector()->sector_name.'</h6>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body fw-semibold">Deseja reativar o setor : '.$lista->sector()->sector_name.' ?</div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-danger btn-sm fw-semibold" data-bs-dismiss="modal"><i class="bi bi-trash"></i> Não</button>
-                                                                    <a href="reativar-setor/'.$lista->sector.'" class="btn btn-outline-success btn-sm fw-semibold"><i class="bi bi-plus-circle" role="button" ></i> Sim</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <del>'.$lista->sector()->sector_name.'<del></td>';
-                                        endif; ?>
+                                            echo '<td class="text-center text-danger"><del>'.$lista->sector()->sector_name.'<del></td>';
+                                        endif;
+                                        ?>
                                         <td class="text-center"><?=$lista->collaborator?></td>
-                                        <td class="text-center"><?=$lista->ramal?></td>
+                                        <td class="text-center"><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis rounded-pill fs-6"><?=$lista->ramal?></span></td>
                                         <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->created_at))?></td>
                                         <td class="text-center"><?=date('d/m/Y H\hi', strtotime($lista->updated_at))?></td>
                                         <td class="text-center"><?=$lista->id?></td>

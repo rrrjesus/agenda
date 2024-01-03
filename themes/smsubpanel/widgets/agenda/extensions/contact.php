@@ -56,13 +56,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="row justify-content-center mt-3 mb-3">
+                                    <div class="row justify-content-center mt-4 mb-3">
                                         <div class="col-auto">
-                                            <button data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para gravar o registro"
-                                                    class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
-                                            <a href="<?=url("/painel/agenda/ramais/ativados")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
-                                               data-bs-custom-class="custom-tooltip"
-                                               data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                                            <button data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                                                    data-bs-title="Clique para gravar" class="btn btn-sm btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> GRAVAR</button>
+                                            <a href="<?=url("/painel/agenda/ramais/ativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                               data-bs-title="Clique para listar os ramais" class="btn btn-sm btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                                         </div>
                                     </div>
                             </form>
@@ -114,13 +113,12 @@
                                     </div>
                                 </div>
 
-                                <div class="row justify-content-center mt-3 mb-3">
+                                <div class="row justify-content-center mt-4 mb-3">
                                     <div class="col-auto">
-                                        <button data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Clique para gravar o registro"
-                                                class="btn btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> ATUALIZAR</button>
-                                        <a href="<?=url("/painel/agenda/ramais/ativados")?>" data-bs-toggle="tooltip" data-bs-placement="bottom" role="button"
-                                           data-bs-custom-class="custom-tooltip"
-                                           data-bs-title="Clique para listar os contatos" class="btn btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
+                                        <button data-bs-togglee="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="Clique para atualizar o ramal" class="btn btn-sm btn-outline-success fw-bold me-3"><i class="bi bi-disc-fill me-1"></i> ATUALIZAR</button>
+                                        <a href="<?=url("/painel/agenda/ramais/ativados")?>" data-bs-togglee="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                           data-bs-title="Clique para listar os ramais" class="btn btn-sm btn-outline-info fw-bold"><i class="bi bi-list-columns me-2"></i>LISTAR</a>
                                     </div>
                                 </div>
                             </form>
